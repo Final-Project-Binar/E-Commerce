@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">E-Commerce</string>
+    <string name="title_activity_akun_saya">AkunSayaActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="home">Home</string>
+    <string name="notifikasi">Notifikasi</string>
+    <string name="jual">Jual</string>
+    <string name="daftar_jual">Daftar Jual</string>
+    <string name="akun">Akun</string>
+    <string name="akun_saya">Akun Saya</string>
+    <string name="todo">TODO</string>
+    <string name="keluar">Keluar</string>
+    <string name="penganturan_akun">Penganturan akun</string>
 </resources>

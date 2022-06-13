@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="@string/home"
+        android:id="@+id/dashboard"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:title="@string/notifikasi"
+        android:id="@+id/notifikasi"
+        android:icon="@drawable/ic_notifications"/>
+
+    <item
+        android:title="@string/jual"
+        android:id="@+id/jual"
+        android:icon="@drawable/ic_add_circle"/>
+
+    <item
+        android:title="@string/daftar_jual"
+        android:id="@+id/daftar_jual"
+        android:icon="@drawable/ic_format_list"/>
+
+    <item
+        android:title="@string/akun"
+        android:id="@+id/akun"
+        android:icon="@drawable/ic_person_24"/>
+
+</menu>
