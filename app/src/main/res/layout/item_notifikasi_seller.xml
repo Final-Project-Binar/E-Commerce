@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardNotifikasiSeller"
+    android:layout_margin="20sp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="10dp"
+    android:layout_height="wrap_content"
+    app:cardElevation="10dp"
+    app:cardMaxElevation="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/gambarProdukSeller"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/gambarProdukSeller"
+            android:id="@+id/notikasiSeller_statusproduk"
+            android:text="Penawaran Produk"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_toEndOf="@id/notikasiSeller_statusproduk"
+            android:id="@+id/notikasiSeller_waktu"
+            android:text="20 april,14:04"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+        <ImageView
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/notikasiSeller_alert"
+            android:src="@drawable/ic_baseline_circle_24"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_toEndOf="@id/notikasiSeller_waktu"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/gambarProdukSeller"
+            android:layout_below="@id/notikasiSeller_statusproduk"
+            android:id="@+id/notifikasiSeller_namaProduk"
+            android:text="Jam Tangan Casio"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/gambarProdukSeller"
+            android:id="@+id/notifikasiSeller_harga"
+            android:text="Rp 250.000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@id/notifikasiSeller_namaProduk"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/gambarProdukSeller"
+            android:id="@+id/notifikasiSeller_tawar"
+            android:text="Ditawar Rp 200.000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@id/notifikasiSeller_harga"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/gambarProdukSeller"
+            android:id="@+id/notifikasiSeller_dialihkan"
+            android:layout_below="@id/notifikasiSeller_tawar"
+            android:text="Penawaran Produk"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

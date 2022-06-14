@@ -18,6 +18,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.NotifikasiSellerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.NotifikasiBuyerActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.AkunSayaActivity"
             android:exported="true"
             android:label="@string/title_activity_akun_saya" />

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10sp"
+    tools:context=".view.NotifikasiBuyerActivity">
+
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:id="@+id/notifikasiBuyer_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notifikasi"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="20sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/notifikasiBuyer_welcome"
+        android:layout_margin="20dp"
+        android:id="@+id/rv_notifikasiBuyer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/login_btn_bg"
+        app:itemIconTint="#E91E63"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/menu" />
+</RelativeLayout>
