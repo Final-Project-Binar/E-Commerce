@@ -18,8 +18,8 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".AkunSayaActivity"
-            android:exported="false"
+            android:name=".view.AkunSayaActivity"
+            android:exported="true"
             android:label="@string/title_activity_akun_saya" />
         <activity
             android:name=".view.RegisterActivity"

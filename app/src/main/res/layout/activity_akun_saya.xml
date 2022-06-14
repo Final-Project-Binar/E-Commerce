@@ -98,9 +98,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemBackground="@color/white"
-        app:itemIconTint="@drawable/selector"
-        app:itemTextColor="@drawable/selector"
+        android:background="@drawable/login_btn_bg"
+        app:itemIconTint="#E91E63"
+        app:itemTextColor="@color/white"
         app:menu="@menu/menu" />
 
 </RelativeLayout>

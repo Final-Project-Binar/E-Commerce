@@ -2,8 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:state_selected="true"
-        android:drawable="@color/black"/>
+        android:drawable="@color/birutua"/>
     <item
         android:state_selected="false"
-        android:color="@color/material_dynamic_neutral70"/>
+        android:color="@color/birumuda"/>
 </selector>
