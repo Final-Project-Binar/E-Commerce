@@ -3,21 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/drawable-v24/ic_email.xml" value="0.1405" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/drawable-v24/ic_lock.xml" value="0.1405" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/drawable-v24/login_btn_bg.xml" value="0.1405" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/drawable/custom_drawable.xml" value="0.1405" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/drawable/ic_home.xml" value="0.1405" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/drawable/selector.xml" value="0.1405" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_akun_saya.xml" value="0.264" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_login.xml" value="0.264" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_notifikasi_buyer.xml" value="0.2" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_notifikasi_seller.xml" value="0.16576086956521738" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_register.xml" value="0.16576086956521738" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/item_notifikasi_buyer.xml" value="0.2" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/item_notifikasi_seller.xml" value="0.264" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/menu/menu.xml" value="0.2234375" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable-v24/ic_email.xml" value="0.1815" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable-v24/login_btn_bg.xml" value="0.2115" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/custom_drawable.xml" value="0.1815" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/custom_spinner.xml" value="0.2115" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/ic_add_circle.xml" value="0.2115" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/ic_camera.xml" value="0.1815" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/ic_edit_.xml" value="0.1815" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/ic_format_list.xml" value="0.1815" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/ic_home.xml" value="0.1815" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/ic_person_24.xml" value="0.1815" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/ic_settings.xml" value="0.2115" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/selector.xml" value="0.2115" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_akun_saya.xml" value="0.20416666666666666" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_notifikasi_buyer.xml" value="0.20416666666666666" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_notifikasi_seller.xml" value="0.20416666666666666" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_register.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
