@@ -33,6 +33,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".LengkapiDetailProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.AkunSayaActivity"
             android:exported="true"
             android:label="@string/title_activity_akun_saya" />

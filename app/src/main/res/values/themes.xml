@@ -17,6 +17,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="SpinnerTheme">
+        <item name="android:radius">0dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:drawableEnd">@drawable/style_spinner</item>
+    </style>
     <style name="Theme.ECommerce.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.ECommerce.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
