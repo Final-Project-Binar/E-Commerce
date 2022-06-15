@@ -18,10 +18,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".DaftarJualActivity"
+            android:name=".view.AddProductBuyerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.AddProductSellerActivity"
             android:exported="false" />
         <activity
-            android:name=".AddProductActivity"
+            android:name=".view.DaftarJualActivity"
             android:exported="false" />
         <activity
             android:name=".view.NotifikasiSellerActivity"
@@ -32,14 +41,10 @@
         <activity
             android:name=".view.ProfileActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".LengkapiDetailProductActivity"
+            android:name=".view.LengkapiDetailProductActivity"
             android:exported="false" />
         <activity
             android:name=".view.AkunSayaActivity"
