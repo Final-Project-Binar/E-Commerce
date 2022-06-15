@@ -47,11 +47,13 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="25sp" />
+
             <ImageView
-                android:layout_below="@+id/cd_produkmatch"
+                android:layout_marginTop="20dp"
                 android:id="@+id/customDialog_gambarPenjual"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:layout_below="@+id/cd_produkmatch"
                 android:src="@drawable/penjual" />
 
             <TextView
@@ -77,11 +79,12 @@
                 android:textSize="14sp" />
 
             <ImageView
-                android:layout_below="@+id/customDialog_gambarPenjual"
+                android:layout_marginTop="20dp"
                 android:id="@+id/customDialog_gambarProduk"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/penjual" />
+                android:layout_below="@+id/customDialog_gambarPenjual"
+                android:src="@drawable/ic_launcher_background" />
 
             <TextView
                 android:layout_below="@+id/customDialog_gambarPenjual"
@@ -96,6 +99,7 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/cd_harga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/customDialog_namaProduk"
@@ -104,39 +108,30 @@
                 android:text="Rp 250.000"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/cd_hargatawar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cd_harga"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/customDialog_gambarProduk"
+                android:text="Ditawar Rp 200.000"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Harga Tawar"
-        android:layout_gravity="start"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:background="@drawable/custom_drawable"
-            android:inputType="numberDecimal"
-            android:hint="Rp 0,00"
-            android:id="@+id/ca_hargatawar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginTop="10dp"
         android:id="@+id/ca_hargatawar_btnok"
         android:textColor="@color/black"
         android:background="@drawable/login_btn_bg"
-        android:text="Ok"
+        android:drawableEnd="@drawable/ic_person_24"
+        android:text="Hubungi via Whatsapp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>
