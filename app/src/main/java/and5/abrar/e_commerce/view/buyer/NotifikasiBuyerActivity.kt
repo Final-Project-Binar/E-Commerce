@@ -1,4 +1,4 @@
-package and5.abrar.e_commerce.view
+package and5.abrar.e_commerce.view.buyer
 
 import and5.abrar.e_commerce.R
 import androidx.appcompat.app.AppCompatActivity
