@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.AddProductActivity">
+    tools:context=".view.AddProductSellerActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -129,6 +129,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
@@ -172,7 +173,7 @@
         </FrameLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/login_btnLogin"
+            android:id="@+id/addProductSeller_btnTerbit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/login_btn_bg"
