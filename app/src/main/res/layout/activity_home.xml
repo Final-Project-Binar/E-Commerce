@@ -24,7 +24,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="0dp"
                 android:layout_height="350dp"
-                android:src="#4BFF0016"
+                android:src="#4B0048FF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="ContentDescription,MissingConstraints" />
