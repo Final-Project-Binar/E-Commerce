@@ -140,6 +140,7 @@
             android:background="@drawable/custom_drawable"
             android:inputType="text"
             tools:ignore="HardcodedText,Autofill,LabelFor,TextFields" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView

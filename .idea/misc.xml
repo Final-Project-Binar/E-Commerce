@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/KULIAH/Binar/Materi/E-Commerce/app/src/main/res/layout/activity_add_product.xml" value="0.22" />
+        <entry key="..\:/KULIAH/Binar/Materi/E-Commerce/app/src/main/res/layout/activity_akun_saya.xml" value="0.1331521739130435" />
+        <entry key="..\:/KULIAH/Binar/Materi/E-Commerce/app/src/main/res/layout/activity_daftar_jual.xml" value="0.16666666666666666" />
+        <entry key="..\:/KULIAH/Binar/Materi/E-Commerce/app/src/main/res/layout/activity_lengkapi_detail_product.xml" value="0.1331521739130435" />
+        <entry key="..\:/KULIAH/Binar/Materi/E-Commerce/app/src/main/res/layout/activity_login.xml" value="0.1796875" />
+        <entry key="..\:/KULIAH/Binar/Materi/E-Commerce/app/src/main/res/layout/activity_notifikasi_buyer.xml" value="0.14990942028985507" />
+        <entry key="..\:/KULIAH/Binar/Materi/E-Commerce/app/src/main/res/layout/activity_notifikasi_seller.xml" value="0.14990942028985507" />
+        <entry key="..\:/KULIAH/Binar/Materi/E-Commerce/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/KULIAH/Binar/Materi/E-Commerce/app/src/main/res/layout/item_notifikasi_buyer.xml" value="0.4466666666666667" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable-v24/ic_email.xml" value="0.1815" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable-v24/login_btn_bg.xml" value="0.2115" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/custom_drawable.xml" value="0.1815" />
