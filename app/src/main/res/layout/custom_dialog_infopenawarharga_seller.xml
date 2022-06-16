@@ -130,8 +130,9 @@
         android:id="@+id/ca_hargatawar_btnok"
         android:textColor="@color/black"
         android:background="@drawable/login_btn_bg"
-        android:drawableEnd="@drawable/ic_person_24"
-        android:text="Hubungi via Whatsapp"
+        android:text="Hubungi via Whatsapp "
+        android:paddingEnd="10dp"
+        android:drawableEnd="@drawable/whatsapp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>

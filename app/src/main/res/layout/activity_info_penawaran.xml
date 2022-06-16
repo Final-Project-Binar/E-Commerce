@@ -51,7 +51,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="100dp">
 
             <ImageView
                 android:id="@+id/gambarProdukBuyer"
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_toRightOf="@id/gambarProdukBuyer"
                 android:text="Nama Pembeli"
@@ -106,127 +106,11 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,MissingConstraints" />
 
-    <RelativeLayout
-        android:layout_marginTop="20dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_margin="20dp"
+        android:id="@+id/rv_infoPenawaran"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginStart="20dp">
-
-        <ImageView
-            android:id="@+id/gambarInfoPenawarProdukBuyer"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_launcher_background"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/infopenawar_statusproduk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/gambarInfoPenawarProdukBuyer"
-            android:text="Penawaran Produk"
-            android:textSize="15sp"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:id="@+id/infopenawar_waktu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/infopenawar_statusproduk"
-            android:text="20 april,14:04"
-            android:textSize="15sp"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/gambarInfoPenawarProdukBuyer"
-            android:layout_below="@id/infopenawar_statusproduk"
-            android:id="@+id/infopenawar_namaProduk"
-            android:text="Jam Tangan Casio"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/gambarInfoPenawarProdukBuyer"
-            android:id="@+id/infopenawar_harga"
-            android:text="Rp 250.000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_below="@id/infopenawar_namaProduk"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:ignore="HardcodedText,RtlHardcoded" />
-
-        <TextView
-            android:id="@+id/infopenawar_tawar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/infopenawar_harga"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/gambarInfoPenawarProdukBuyer"
-            android:text="Ditawar Rp 200.000"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText,RtlHardcoded" />
-
-        <TextView
-            android:id="@+id/notifikasiBuyer_dialihkan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/infopenawar_tawar"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/gambarInfoPenawarProdukBuyer"
-            android:text="Penawaran Produk"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_InfoPenawarTolak"
-            android:layout_width="160dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/login_btn_bg"
-            android:text="Tolak"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="HardcodedText,MissingConstraints" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_InfoPenawarTerima"
-            android:layout_width="160dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/login_btn_bg"
-            android:text="Terima"
-            android:textSize="16sp"
-            android:layout_toEndOf="@id/btn_InfoPenawarTolak"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="HardcodedText,MissingConstraints" />
+        android:layout_height="wrap_content"/>
 
 
-            </RelativeLayout>
 </LinearLayout>

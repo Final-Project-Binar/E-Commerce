@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardNotifikasiBuyer"
+    android:layout_margin="20sp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="10dp"
+    android:layout_height="wrap_content"
+    app:cardElevation="10dp"
+    app:cardMaxElevation="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/gambarInfoPenawarProdukBuyer"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_launcher_background"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/infopenawar_statusproduk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/gambarInfoPenawarProdukBuyer"
+            android:text="Penawaran Produk"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/infopenawar_waktu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/infopenawar_statusproduk"
+            android:text="20 april,14:04"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/gambarInfoPenawarProdukBuyer"
+            android:layout_below="@id/infopenawar_statusproduk"
+            android:id="@+id/infopenawar_namaProduk"
+            android:text="Jam Tangan Casio"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/gambarInfoPenawarProdukBuyer"
+            android:id="@+id/infopenawar_harga"
+            android:text="Rp 250.000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@id/infopenawar_namaProduk"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/infopenawar_tawar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/infopenawar_harga"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/gambarInfoPenawarProdukBuyer"
+            android:text="Ditawar Rp 200.000"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/infoPenawar_dialihkan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/infopenawar_tawar"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/gambarInfoPenawarProdukBuyer"
+            android:text="Penawaran Produk"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_InfoPenawarTolak"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/infoPenawar_dialihkan"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/login_btn_bg"
+            android:text="Tolak"
+            android:textSize="16sp"
+            android:visibility="invisible"
+
+            tools:ignore="HardcodedText,MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_InfoPenawarTerima"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/infoPenawar_dialihkan"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="visible"
+            android:layout_toEndOf="@id/btn_InfoPenawarTolak"
+            android:background="@drawable/login_btn_bg"
+            android:text="Terima"
+            android:paddingEnd="10dp"
+            android:drawableEnd="@drawable/whatsapp"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText,MissingConstraints" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
