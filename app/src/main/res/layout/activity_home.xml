@@ -8,10 +8,11 @@
     tools:context=".view.HomeActivity">
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
@@ -32,8 +33,8 @@
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView"
@@ -50,9 +51,9 @@
                         android:layout_marginStart="15dp"
                         android:background="@drawable/custom_drawable"
                         android:drawableLeft="@drawable/ic_baseline_search_24"
-                        android:textSize="16sp"
                         android:padding="15dp"
                         android:text="Semua"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/button_Hoby"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -67,9 +68,9 @@
                         android:layout_marginStart="15dp"
                         android:background="@drawable/custom_drawable"
                         android:drawableLeft="@drawable/ic_baseline_search_24"
-                        android:textSize="16sp"
                         android:padding="15dp"
                         android:text="Hoby"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/button_Kendaraan"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -84,9 +85,9 @@
                         android:layout_marginStart="15dp"
                         android:background="@drawable/custom_drawable"
                         android:drawableLeft="@drawable/ic_baseline_search_24"
-                        android:textSize="16sp"
                         android:padding="15dp"
                         android:text="Kendaraan"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/button_Komputer"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -102,9 +103,9 @@
                         android:layout_marginEnd="15dp"
                         android:background="@drawable/custom_drawable"
                         android:drawableLeft="@drawable/ic_baseline_search_24"
-                        android:textSize="16sp"
                         android:padding="15dp"
                         android:text="Komputer"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -119,7 +120,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -145,6 +146,22 @@
         tools:ignore="MissingConstraints">
 
     </androidx.appcompat.widget.SearchView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/login_btn_bg"
+        app:labelVisibilityMode="labeled"
+        android:layout_margin="10dp"
+        app:itemIconTint="#E91E63"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu"
+        tools:ignore="MissingConstraints" />
 
 
 

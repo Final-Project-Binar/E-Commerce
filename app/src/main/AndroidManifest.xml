@@ -6,20 +6,35 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".network.ECommerceApplication"
+        android:name=".di.MyApplication"
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="E-Commerce"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ECommerce"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:ignore="UnusedAttribute">
+
+
+<!--        android:allowBackup="true"-->
+<!--        android:dataExtractionRules="@xml/data_extraction_rules"-->
+<!--        android:fullBackupContent="@xml/backup_rules"-->
+<!--        android:icon="@mipmap/ic_launcher"-->
+<!--        android:label="@string/app_name"-->
+<!--        android:roundIcon="@mipmap/ic_launcher_round"-->
+<!--        android:supportsRtl="true"-->
+<!--        android:theme="@style/Theme.ECommerce"-->
+<!--        android:usesCleartextTraffic="true">-->
         <activity
             android:name=".view.SplashActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.seller.DaftarJualDiminatiSellerActivity"
             android:exported="false" />
@@ -38,11 +53,7 @@
         <activity
             android:name=".view.ProfileActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".view.seller.LengkapiDetailProductActivity"
@@ -53,10 +64,16 @@
             android:label="@string/title_activity_akun_saya" />
         <activity
             android:name=".view.RegisterActivity"
-            android:exported="false" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".view.LoginActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".view.HomeActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

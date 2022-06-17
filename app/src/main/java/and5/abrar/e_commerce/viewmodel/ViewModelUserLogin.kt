@@ -10,18 +10,18 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
-@HiltViewModel
-class ViewModelUserLogin @Inject constructor(api : ApiService) : ViewModel(){
-    private val liveDataUser = MutableLiveData<List<GetLogin>>()
-    val user : LiveData<List<GetLogin>> = liveDataUser
-    private val apiServices = api
-
-    init {
-        viewModelScope.launch {
-            val dataUser = api.getAllUser()
-            delay(2000)
-            liveDataUser.value = dataUser
-        }
-    }
-}
+//
+//@HiltViewModel
+//class ViewModelUserLogin @Inject constructor(api : ApiService) : ViewModel(){
+//    private val liveDataUser = MutableLiveData<List<GetLogin>>()
+//    val user : LiveData<List<GetLogin>> = liveDataUser
+//    private val apiServices = api
+//
+//    init {
+//        viewModelScope.launch {
+//            val dataUser = api.getAllUser()
+//            delay(2000)
+//            liveDataUser.value = dataUser
+//        }
+//    }
+//}
