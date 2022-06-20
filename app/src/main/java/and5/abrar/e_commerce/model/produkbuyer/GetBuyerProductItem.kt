@@ -1,12 +1,14 @@
-package and5.abrar.e_commerce.model.produkseller
+package and5.abrar.e_commerce.model.produkbuyer
 
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class GetProductSeller(
+data class GetBuyerProductItem(
     @SerializedName("base_price")
     val basePrice: Int,
+    @SerializedName("categories")
+    val categories: List<Category>,
     @SerializedName("created_at")
     val createdAt: String,
     @SerializedName("id")

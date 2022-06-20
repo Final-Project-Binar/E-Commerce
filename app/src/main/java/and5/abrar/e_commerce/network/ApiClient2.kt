@@ -1,50 +1,34 @@
-package and5.abrar.e_commerce.di
+package and5.abrar.e_commerce.network
 
-import and5.abrar.e_commerce.network.ApiService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
-@Module
-@InstallIn(SingletonComponent::class)
-object AppModule {
 
+object ApiClient2 {
     private const val BASE_URL = "https://market-final-project.herokuapp.com/"
 
+    var gson: Gson = GsonBuilder()
+        .setLenient()
+        .create()
     private  val logging : HttpLoggingInterceptor
-        get(){
+        get() {
             val httpLoggingInterceptor = HttpLoggingInterceptor()
             return httpLoggingInterceptor.apply {
                 httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             }
         }
 
-    private val client = OkHttpClient.Builder().addInterceptor(logging).build()
-
-    var gson: Gson = GsonBuilder()
-        .setLenient()
-        .create()
-
-    @Singleton
-    @Provides
-    fun provideRetrofit() : Retrofit =
-        Retrofit.Builder()
+    private val clint = OkHttpClient.Builder().addInterceptor(logging).build()
+    val instance : ApiService by lazy {
+        val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .client(client)
+            .client(clint)
             .build()
-
-    @Singleton
-    @Provides
-    fun provideApi(retrofit: Retrofit) : ApiService =
         retrofit.create(ApiService::class.java)
-
+    }
 }

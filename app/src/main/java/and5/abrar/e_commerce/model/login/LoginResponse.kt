@@ -10,6 +10,9 @@ data class LoginResponse (
     @SerializedName("access_token")
     var authToken: String,
 
+    @SerializedName("id")
+    var id: String,
+
     @SerializedName("user")
     var user: GetLogin
 ):Serializable

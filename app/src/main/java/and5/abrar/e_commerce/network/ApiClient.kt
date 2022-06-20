@@ -1,6 +1,7 @@
 package and5.abrar.e_commerce.network
 
 import android.content.Context
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,13 +13,16 @@ class ApiClient {
     private lateinit var apiService: ApiService
     val BASE = "https://market-final-project.herokuapp.com/"
 
+    var gson: Gson = GsonBuilder()
+        .setLenient()
+        .create()
     fun getApiService(context: Context): ApiService {
 
         // Initialize ApiService if not initialized yet
         if (!::apiService.isInitialized) {
             val retrofit = Retrofit.Builder()
                 .baseUrl(BASE)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okhttpClient(context))
                 .build()
 
