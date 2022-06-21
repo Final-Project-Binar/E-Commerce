@@ -9,4 +9,4 @@ data class Category(
     val id: Int,
     @SerializedName("name")
     val name: String
-):Serializable
+)

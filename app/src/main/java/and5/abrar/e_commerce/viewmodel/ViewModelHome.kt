@@ -16,8 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ViewModelHome @Inject constructor(apiService: ApiService): ViewModel() {
-    val apiKey = MutableLiveData<String>()
-    var liveDataProduct = MutableLiveData<List<GetBuyerProductItem>>()
+    private var liveDataProduct = MutableLiveData<List<GetBuyerProductItem>>()
     val product : LiveData<List<GetBuyerProductItem>> = liveDataProduct
 
     init {
@@ -27,12 +26,4 @@ class ViewModelHome @Inject constructor(apiService: ApiService): ViewModel() {
             liveDataProduct.value = dataproduct
         }
     }
-   fun getProduk() = liveData(Dispatchers.IO){
-       emit(Resource.loading(null))
-       try{
-           emit(Resource.success(apiKey.value))
-       }catch (e:Exception){
-           emit(Resource.error(data = null, message = e.message?:"Error"))
-       }
-   }
 }

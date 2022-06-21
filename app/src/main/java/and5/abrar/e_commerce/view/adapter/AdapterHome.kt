@@ -3,6 +3,8 @@ package and5.abrar.e_commerce.view.adapter
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +35,7 @@ class AdapterHome(private var onClick : (GetBuyerProductItem)->Unit):RecyclerVie
             .load(dataProduk!![position].imageUrl)
             .into(holder.itemView.imageProduct)
 
-       val category = dataProduk!![position].categories
+        val category = dataProduk!![position].categories
         holder.itemView.tvKategori_product.text = ""
         if(category.isNotEmpty()){
         for (i in category.indices){
