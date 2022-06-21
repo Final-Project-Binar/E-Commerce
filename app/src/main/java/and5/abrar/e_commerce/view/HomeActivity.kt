@@ -5,6 +5,9 @@ import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.network.ApiClient2
 import and5.abrar.e_commerce.view.adapter.AdapterHome
 import and5.abrar.e_commerce.view.seller.AddProductSellerActivity
+import and5.abrar.e_commerce.view.seller.DaftarJualActivity
+import and5.abrar.e_commerce.view.seller.LengkapiDetailProductActivity
+import and5.abrar.e_commerce.view.seller.NotifikasiSellerActivity
 import and5.abrar.e_commerce.viewmodel.ViewModelHome
 import android.content.Intent
 import android.content.pm.ApplicationInfo
@@ -13,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_home.*
 

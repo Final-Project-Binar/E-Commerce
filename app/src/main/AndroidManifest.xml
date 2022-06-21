@@ -19,15 +19,13 @@
         tools:targetApi="31">
         <activity
             android:name=".view.SplashActivity"
-            android:exported="false" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".view.HomeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".view.seller.DaftarJualDiminatiSellerActivity"
@@ -47,6 +45,7 @@
         <activity
             android:name=".view.ProfileActivity"
             android:exported="true">
+
         </activity>
         <activity
             android:name=".view.seller.LengkapiDetailProductActivity"
@@ -54,13 +53,23 @@
         <activity
             android:name=".view.AkunSayaActivity"
             android:exported="true"
-            android:label="@string/title_activity_akun_saya" />
+            android:label="@string/title_activity_akun_saya" >
+
+        </activity>
         <activity
             android:name=".view.RegisterActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.LoginActivity"
-            android:exported="true" />
+            android:exported="true" >
+
+        </activity>
     </application>
 
 </manifest>
