@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.map
 class UserManager(context : Context) {
     private var prefs: SharedPreferences = context.getSharedPreferences(context.getString(R.string.app_name), Context.MODE_PRIVATE)
     companion object {
-        const val USER_TOKEN = "user_token"
+        const val USER_TOKEN = "access_token"
     }
 
     fun saveAuthToken(token: String) {

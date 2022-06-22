@@ -17,11 +17,14 @@ interface ApiService {
 
     @GET("seller/product")
     suspend fun getSellerProduct(
-        @Header("Authorization") token : String,
+        @Header("access_token") token : String,
         @Query("status") status: String = "available"
     ): List<GetProdukSellerItem>
 
     @GET("notification")
-    fun getNotif(): Call<GetNotifikasiItem>
+    fun getNotif(
+        @Header("access_token") token: String
+    ): Call<List<GetNotifikasiItem>>
+
 
 }
