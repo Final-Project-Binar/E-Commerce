@@ -41,7 +41,7 @@
             android:exported="false" />
         <activity
             android:name=".view.buyer.NotifikasiBuyerActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".view.ProfileActivity"
             android:exported="true">

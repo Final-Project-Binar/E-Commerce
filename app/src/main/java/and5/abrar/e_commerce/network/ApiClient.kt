@@ -13,9 +13,19 @@ class ApiClient {
     private lateinit var apiService: ApiService
     val BASE = "https://market-final-project.herokuapp.com/"
 
+    private  val logging : HttpLoggingInterceptor
+        get() {
+            val httpLoggingInterceptor = HttpLoggingInterceptor()
+            return httpLoggingInterceptor.apply {
+                httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+            }
+        }
+
     var gson: Gson = GsonBuilder()
         .setLenient()
         .create()
+
+    private val clint = OkHttpClient.Builder().addInterceptor(logging).build()
     fun getApiService(context: Context): ApiService {
 
         // Initialize ApiService if not initialized yet
@@ -23,7 +33,7 @@ class ApiClient {
             val retrofit = Retrofit.Builder()
                 .baseUrl(BASE)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(okhttpClient(context))
+                .client(clint)
                 .build()
 
             apiService = retrofit.create(ApiService::class.java)
@@ -31,6 +41,8 @@ class ApiClient {
 
         return apiService
     }
+
+
 
     /**
      * Initialize OkhttpClient with our interceptor
