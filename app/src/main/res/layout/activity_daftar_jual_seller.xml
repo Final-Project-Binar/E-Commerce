@@ -9,15 +9,15 @@
     android:layout_margin="10sp">
 
     <TextView
+        android:id="@+id/seller_daftar_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/daftar_jual_saya"
-        android:textStyle="bold"
-        android:textColor="@color/black"
         android:layout_marginTop="10sp"
-        android:textSize="25sp"
         android:layout_marginBottom="16dp"
-        android:id="@+id/seller_daftar"/>
+        android:text="@string/daftar_jual_saya"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_seller"
@@ -27,7 +27,7 @@
         app:cardCornerRadius="10sp"
         android:orientation="vertical"
         android:paddingLeft="30sp"
-        android:layout_below="@+id/seller_daftar">
+        android:layout_below="@+id/seller_daftar_product">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,34 +35,35 @@
             android:padding="16dp">
 
             <ImageView
-                android:id="@+id/IV_penjual"
+                android:id="@+id/IV_penjual_product"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@drawable/penjual" />
 
             <TextView
-                android:id="@+id/TV_nama"
+                android:id="@+id/TV_nama_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@id/IV_penjual"
+                android:layout_toRightOf="@id/IV_penjual_product"
                 android:text="Nama Penjual"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/TV_kota_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/TV_nama"
+                android:layout_below="@id/TV_nama_product"
                 android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@id/IV_penjual"
+                android:layout_toRightOf="@id/IV_penjual_product"
                 android:text="Kota"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/login_btnLogin"
+                android:id="@+id/btnedit_product"
                 android:layout_width="60sp"
                 android:layout_height="30sp"
                 android:background="@drawable/custom_drawable"
@@ -187,91 +188,17 @@
 
     </HorizontalScrollView>
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="185dp"
-        android:layout_height="230sp"
-        android:layout_marginTop="20sp"
-        android:layout_marginStart="10sp"
-        android:background="@drawable/custom_drawable"
-        app:cardCornerRadius="8sp"
-        android:layout_below="@+id/scroolviewe">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_margin="10sp">
-
-            <ImageView
-                android:id="@+id/add_product"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:padding="10sp"
-                android:src="@drawable/ic_add_circle" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tambah Product"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:layout_below="@id/add_product"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="185sp"
-        android:layout_height="230sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProductSeller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/scroolviewe"
-        android:layout_alignParentRight="true"
         android:layout_marginStart="10sp"
         android:layout_marginTop="20sp"
-        android:background="@drawable/custom_drawable"
-        app:cardCornerRadius="8sp">
+        android:layout_marginEnd="10sp"
+        android:layout_marginBottom="70dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10sp"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="100sp"
-                android:background="@drawable/jamtangan" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10sp"
-                android:text="Jam Tangan Casio"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10sp"
-                android:text="Aksesoris"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10sp"
-                android:text="Rp. 250.00"
-                android:textColor="@color/black"
-                android:textSize="17sp" />
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"

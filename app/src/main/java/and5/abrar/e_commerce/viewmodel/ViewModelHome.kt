@@ -1,15 +1,9 @@
 package and5.abrar.e_commerce.viewmodel
 
-import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
-import and5.abrar.e_commerce.model.produkseller.GetProdukSellerItem
-import and5.abrar.e_commerce.network.ApiClient
-import and5.abrar.e_commerce.network.ApiClient2
 import and5.abrar.e_commerce.network.ApiService
-import and5.abrar.e_commerce.utils.Resource
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -175,10 +175,10 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addProductBuyer_btnTertarik"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:background="@drawable/login_btn_bg"
             android:text="Saya Tertarik dan Ingin Nego"
-            android:layout_margin="20sp"
+            android:layout_margin="10dp"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold"/>

@@ -29,4 +29,4 @@ data class GetNotifikasiItem(
     val transactionDate: String,
     @SerializedName("updated_at")
     val updatedAt: String
-):Serializable
+): Serializable

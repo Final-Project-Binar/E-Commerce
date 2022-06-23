@@ -40,7 +40,7 @@ class RegisterActivity : AppCompatActivity() {
         goToLogin()
 
     }
-//
+
 ////     using view model
 //    private fun register(){
 //        btn_daftar.setOnClickListener {
@@ -84,7 +84,7 @@ class RegisterActivity : AppCompatActivity() {
 //                tv_error_city_register.text = "Kota harus di isi"
 //            } else {
 //                Toast.makeText(this, "Berhasil Registrasi", Toast.LENGTH_SHORT).show()
-////                startActivity(Intent(this, LoginActivity::class.java))
+//                startActivity(Intent(this, LoginActivity::class.java))
 //            }
 //        })
 //
@@ -114,7 +114,7 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Panjang Password kurang dari 5", Toast.LENGTH_SHORT).show()
                 tv_error_password_register.text = "Panjang Password kurang dari 5"
             } else {
-//                startActivity(Intent(this, LoginActivity::class.java))
+                startActivity(Intent(this, LoginActivity::class.java))
                 doRegister(email, fullName, password)
             }
         }
@@ -124,7 +124,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun doRegister(email: String, fullName: String, password: String){
         apiClient = ApiClient()
 
-        apiClient.getApiService(this).register(RequestPost("-", "-", email, fullName, "-", password, 62))
+        ApiClient3.instance.register(RequestPost("-", "-", email, fullName, "-", password, 62))
             .enqueue(object : Callback<PostUserRegister> {
                 override fun onResponse(
                     call: Call<PostUserRegister>,
