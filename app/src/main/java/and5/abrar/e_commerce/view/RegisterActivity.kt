@@ -4,29 +4,16 @@ import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.model.register.PostUserRegister
 import and5.abrar.e_commerce.model.register.RequestPost
 import and5.abrar.e_commerce.network.ApiClient
-import and5.abrar.e_commerce.network.ApiClient3
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Bitmap
-import android.media.MediaScannerConnection
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
-import androidx.core.graphics.isSrgb
-import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_register.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.util.*
 
 @SuppressLint("SetTextI18n")
 @AndroidEntryPoint
@@ -124,7 +111,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun doRegister(email: String, fullName: String, password: String){
         apiClient = ApiClient()
 
-        ApiClient3.instance.register(RequestPost("-", "-", email, fullName, "-", password, 62))
+        apiClient.getApiService(this).register(RequestPost("-", "-", email, fullName, "-", password, 62))
             .enqueue(object : Callback<PostUserRegister> {
                 override fun onResponse(
                     call: Call<PostUserRegister>,
