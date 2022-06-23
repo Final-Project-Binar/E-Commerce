@@ -36,10 +36,9 @@ class LoginActivity : AppCompatActivity() {
                         call: Call<LoginResponse>,
                         response: Response<LoginResponse>
                     ) {
-                        val loginResponse = response.body()
                         if (response.isSuccessful) {
-                            userManager.saveAuthToken(token = loginResponse!!.authToken)
-                            startActivity(Intent(applicationContext,HomeActivity::class.java))
+                            userManager.saveAuthToken(token = response.body()!!.authToken)
+                            startActivity(Intent(applicationContext,NotifikasiBuyerActivity::class.java))
                         } else {
                             Toast.makeText(applicationContext, "gagal login", Toast.LENGTH_SHORT).show()
                         }

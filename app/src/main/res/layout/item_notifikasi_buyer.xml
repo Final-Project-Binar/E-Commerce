@@ -44,7 +44,7 @@
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/notikasiBuyer_statusproduk"
             android:text="20 april,14:04"
-            android:textSize="15sp"
+            android:textSize="10sp"
             tools:ignore="HardcodedText" />
 
         <ImageView

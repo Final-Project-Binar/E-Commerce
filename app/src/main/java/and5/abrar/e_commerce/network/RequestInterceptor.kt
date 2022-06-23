@@ -8,14 +8,32 @@ import okhttp3.Response
 class RequestInterceptor(context: Context):Interceptor {
     private val userManager = UserManager(context)
 
+
     override fun intercept(chain: Interceptor.Chain): Response {
-        val requestBuilder = chain.request().newBuilder()
-
-        // Jika token ada di session manager, token sisipkan di request header
-        userManager.fetchAuthToken()?.let {
-            requestBuilder.addHeader("Authorization", "Bearer $it")
+        val token = userManager.fetchAuthToken()
+        return if(!token.isNullOrEmpty()) {
+            val requestBuilder = chain.request()
+                .newBuilder()
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "application/json")
+                .addHeader("access_token", token)
+                .build()
+            chain.proceed(requestBuilder)
+        }else{
+            val requestBuilder = chain.request()
+                .newBuilder()
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "application/json")
+                .build()
+            chain.proceed(requestBuilder)
         }
-
-        return chain.proceed(requestBuilder.build())
     }
+        // Jika token ada di session manager, token sisipkan di request header
+//        userManager.fetchAuthToken()?.let {
+//            requestBuilder.addHeader("Content-Type", "application/json")
+//            requestBuilder.addHeader("Accept", "application/json")
+//            requestBuilder.addHeader("access_token", it)
+//        }
+//
+//        return chain.proceed(requestBuilder.build())
 }
