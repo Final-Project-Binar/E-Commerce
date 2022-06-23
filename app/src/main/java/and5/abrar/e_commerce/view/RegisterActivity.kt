@@ -28,58 +28,6 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-////     using view model
-//    private fun register(){
-//        btn_daftar.setOnClickListener {
-//            registerUsingViewModel()
-//        }
-//    }
-//
-//    private fun registerUsingViewModel(){
-//        val address = etAddress_register.text.toString()
-//        val city = etCity_register.text.toString()
-//        val email = etEmail_register.text.toString()
-//        val fullName = etNama_register.text.toString()
-//        val password = etPassword_register.text.toString()
-//        val phoneNumber = etPhone_register.text.toString()
-//
-//        val viewModel = ViewModelProvider(this)[ViewModelUserRegister::class.java]
-//        viewModel.registerLiveData.observe(this, Observer {
-//            if (fullName.isEmpty()){
-//                Toast.makeText(this, "Nama lengkap harus di isi", Toast.LENGTH_SHORT).show()
-//                tv_error_nama_register.text = "Nama lengkap harus di isi"
-//            } else if (email.isEmpty()){
-//                Toast.makeText(this, "Email harus diisi", Toast.LENGTH_SHORT).show()
-//                tv_error_email_register.text = "Email harus diisi"
-//            } else if (password.isEmpty()){
-//                Toast.makeText(this, "Password harus di isi", Toast.LENGTH_SHORT).show()
-//                tv_error_password_register.text = "Password harus di isi"
-//            } else if (password.length < 5){
-//                Toast.makeText(this, "Panjang Password kurang dari 5", Toast.LENGTH_SHORT).show()
-//                tv_error_password_register.text = "Panjang Password kurang dari 5"
-//            } else if (phoneNumber.toLong() <= 0){
-//                Toast.makeText(this, "Phone Number harus di isi", Toast.LENGTH_SHORT).show()
-//                tv_error_phone_register.text = "Phone Number harus di isi"
-//            } else if (phoneNumber.toLong() <= 10){
-//                Toast.makeText(this, "Phone Number kurang dari 10", Toast.LENGTH_SHORT).show()
-//                tv_error_phone_register.text = "Phone Number kurang dari 10"
-//            } else if (address.isEmpty()){
-//                Toast.makeText(this, "Alamat harus di isi", Toast.LENGTH_SHORT).show()
-//                tv_error_address_register.text = "Alamat harus di isi"
-//            } else if (city.isEmpty()){
-//                Toast.makeText(this, "Kota harus di isi", Toast.LENGTH_SHORT).show()
-//                tv_error_city_register.text = "Kota harus di isi"
-//            } else {
-//                Toast.makeText(this, "Berhasil Registrasi", Toast.LENGTH_SHORT).show()
-//                startActivity(Intent(this, LoginActivity::class.java))
-//            }
-//        })
-//
-//        viewModel.register(address, city, email, fullName, image_register.toString(), password, phoneNumber.toLong())
-//    }
-
-
-
      // retrofit
 
     private fun register(){
@@ -88,22 +36,8 @@ class RegisterActivity : AppCompatActivity() {
             val fullName = etNama_register.text.toString()
             val password = etPassword_register.text.toString()
 
-            if (fullName.isEmpty()){
-                Toast.makeText(this, "Nama lengkap harus di isi", Toast.LENGTH_SHORT).show()
-                tv_error_nama_register.text = "Nama lengkap harus di isi"
-            } else if (email.isEmpty()){
-                Toast.makeText(this, "Email harus diisi", Toast.LENGTH_SHORT).show()
-                tv_error_email_register.text = "Email harus diisi"
-            } else if (password.isEmpty()){
-                Toast.makeText(this, "Password harus di isi", Toast.LENGTH_SHORT).show()
-                tv_error_password_register.text = "Password harus di isi"
-            } else if (password.length < 5){
-                Toast.makeText(this, "Panjang Password kurang dari 5", Toast.LENGTH_SHORT).show()
-                tv_error_password_register.text = "Panjang Password kurang dari 5"
-            } else {
-                startActivity(Intent(this, LoginActivity::class.java))
-                doRegister(email, fullName, password)
-            }
+            doRegister(email, fullName, password)
+
         }
 
     }
@@ -118,7 +52,22 @@ class RegisterActivity : AppCompatActivity() {
                     response: Response<PostUserRegister>
                 ) {
                     if (response.isSuccessful){
-                        Toast.makeText(this@RegisterActivity, response.message(), Toast.LENGTH_SHORT).show()
+                        if (fullName.isEmpty()){
+                            Toast.makeText(this@RegisterActivity, "Nama lengkap harus di isi", Toast.LENGTH_SHORT).show()
+                            tv_error_nama_register.text = "Nama lengkap harus di isi"
+                        } else if (email.isEmpty()){
+                            Toast.makeText(this@RegisterActivity, "Email harus diisi", Toast.LENGTH_SHORT).show()
+                            tv_error_email_register.text = "Email harus diisi"
+                        } else if (password.isEmpty()){
+                            Toast.makeText(this@RegisterActivity, "Password harus di isi", Toast.LENGTH_SHORT).show()
+                            tv_error_password_register.text = "Password harus di isi"
+                        } else if (password.length < 5){
+                            Toast.makeText(this@RegisterActivity, "Panjang Password kurang dari 5", Toast.LENGTH_SHORT).show()
+                            tv_error_password_register.text = "Panjang Password kurang dari 5"
+                        } else {
+                            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+                            Toast.makeText(this@RegisterActivity, response.message(), Toast.LENGTH_SHORT).show()
+                        }
                     } else {
                         Toast.makeText(this@RegisterActivity, response.message(), Toast.LENGTH_SHORT).show()
                     }
