@@ -47,6 +47,7 @@
                 android:src="@drawable/ic_edit_"
                 android:padding="10sp"/>
             <TextView
+                android:id="@+id/ubah_akun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ubah akun"
@@ -83,6 +84,7 @@
                 android:src="@drawable/ic_edit_"
                 android:padding="10sp"/>
             <TextView
+                android:id="@+id/keluar_akun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/keluar"
