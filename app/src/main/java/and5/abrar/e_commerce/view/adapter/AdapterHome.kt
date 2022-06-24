@@ -21,7 +21,8 @@ class AdapterHome(private var onClick : (GetBuyerProductItem)->Unit):RecyclerVie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val viewitem = LayoutInflater.from(parent.context).inflate(R.layout.item_product_home,parent, false)
+        val viewitem = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_product_home,parent, false)
         return ViewHolder(viewitem)
     }
 
@@ -38,19 +39,19 @@ class AdapterHome(private var onClick : (GetBuyerProductItem)->Unit):RecyclerVie
         val category = dataProduk!![position].categories
         holder.itemView.tvKategori_product.text = ""
         if(category.isNotEmpty()){
-        for (i in category.indices){
-            if(category.lastIndex == 0){
-            holder.itemView.tvKategori_product.text = category[i].name
-                break
-        }
-            if (i==0){
-                holder.itemView.tvKategori_product.text = category[i].name + ", "
-            }else if (i != category.lastIndex && i>0){
-                holder.itemView.tvKategori_product.text.toString() + category[i].name + ", "
-            }else {
-                holder.itemView.tvKategori_product.text.toString() + category[i].name
+            for (i in category.indices){
+                if(category.lastIndex == 0){
+                holder.itemView.tvKategori_product.text = category[i].name
+                    break
+                }
+                if (i==0){
+                    holder.itemView.tvKategori_product.text = category[i].name + ", "
+                }else if (i != category.lastIndex && i>0){
+                    holder.itemView.tvKategori_product.text.toString() + category[i].name + ", "
+                }else {
+                    holder.itemView.tvKategori_product.text.toString() + category[i].name
+                }
             }
-        }
         }
         holder.itemView.tvHarga_product.text = dataProduk!![position].basePrice.toString()
     }

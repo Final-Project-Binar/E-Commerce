@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
- private lateinit var  adapterHome: AdapterHome
+    private lateinit var  adapterHome: AdapterHome
     private lateinit var  userManager: UserManager
 
     private val bottomNavigasi = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -60,10 +60,15 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun iniviewmodel(){
-        adapterHome = AdapterHome{
-            val pindahdata = Intent(applicationContext, AddProductSellerActivity::class.java)
-            pindahdata.putExtra("detailproduk",it)
-            startActivity(pindahdata)
+        adapterHome = AdapterHome() {
+            val clickedProduct = Bundle()
+            clickedProduct.putSerializable("detailproduk",it)
+            val pindah = Intent(this, AddProductSellerActivity::class.java)
+                .putExtras(clickedProduct)
+            startActivity(pindah)
+//            val pindahdata = Intent(applicationContext, AddProductSellerActivity::class.java)
+//            pindahdata.putExtra("detailproduk",it)
+//            startActivity(pindahdata)
         }
         rv_homeProduk.layoutManager=GridLayoutManager(this,2)
         rv_homeProduk.adapter=adapterHome

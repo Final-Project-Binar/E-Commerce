@@ -1,8 +1,11 @@
 package and5.abrar.e_commerce.model.register
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class PostUserRegister(
     @SerializedName("address")
     val address: String,
@@ -24,4 +27,4 @@ data class PostUserRegister(
     val phoneNumber: Long,
     @SerializedName("updatedAt")
     val updatedAt: String
-)
+) : Parcelable

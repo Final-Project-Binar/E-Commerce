@@ -50,14 +50,26 @@
                 android:layout_marginLeft="16dp"
                 android:layout_toRightOf="@id/customDialog_gambarProduk"
                 android:text="Jam Tangan Casio"
-                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/custum_Categoriproduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/customDialog_namaProduk"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/customDialog_gambarProduk"
+                android:text="Accesoris"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/custom_hargaproduk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/customDialog_namaProduk"
+                android:layout_below="@id/custum_Categoriproduct"
                 android:layout_marginLeft="16dp"
                 android:layout_toRightOf="@id/customDialog_gambarProduk"
                 android:text="Rp 250.000"
