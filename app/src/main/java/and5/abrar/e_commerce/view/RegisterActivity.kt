@@ -36,7 +36,21 @@ class RegisterActivity : AppCompatActivity() {
             val fullName = etNama_register.text.toString()
             val password = etPassword_register.text.toString()
 
-            doRegister(email, fullName, password)
+            if (fullName.isEmpty()){
+                Toast.makeText(this@RegisterActivity, "Nama lengkap harus di isi", Toast.LENGTH_SHORT).show()
+                tv_error_nama_register.text = "Nama lengkap harus di isi"
+            } else if (email.isEmpty()){
+                Toast.makeText(this@RegisterActivity, "Email harus diisi", Toast.LENGTH_SHORT).show()
+                tv_error_email_register.text = "Email harus diisi"
+            } else if (password.isEmpty()){
+                Toast.makeText(this@RegisterActivity, "Password harus di isi", Toast.LENGTH_SHORT).show()
+                tv_error_password_register.text = "Password harus di isi"
+            } else if (password.length < 5){
+                Toast.makeText(this@RegisterActivity, "Panjang Password kurang dari 5", Toast.LENGTH_SHORT).show()
+                tv_error_password_register.text = "Panjang Password kurang dari 5"
+            } else {
+                doRegister(email, fullName, password)
+            }
 
         }
 
@@ -52,22 +66,24 @@ class RegisterActivity : AppCompatActivity() {
                     response: Response<PostUserRegister>
                 ) {
                     if (response.isSuccessful){
-                        if (fullName.isEmpty()){
-                            Toast.makeText(this@RegisterActivity, "Nama lengkap harus di isi", Toast.LENGTH_SHORT).show()
-                            tv_error_nama_register.text = "Nama lengkap harus di isi"
-                        } else if (email.isEmpty()){
-                            Toast.makeText(this@RegisterActivity, "Email harus diisi", Toast.LENGTH_SHORT).show()
-                            tv_error_email_register.text = "Email harus diisi"
-                        } else if (password.isEmpty()){
-                            Toast.makeText(this@RegisterActivity, "Password harus di isi", Toast.LENGTH_SHORT).show()
-                            tv_error_password_register.text = "Password harus di isi"
-                        } else if (password.length < 5){
-                            Toast.makeText(this@RegisterActivity, "Panjang Password kurang dari 5", Toast.LENGTH_SHORT).show()
-                            tv_error_password_register.text = "Panjang Password kurang dari 5"
-                        } else {
-                            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-                            Toast.makeText(this@RegisterActivity, response.message(), Toast.LENGTH_SHORT).show()
-                        }
+                        startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+                        Toast.makeText(this@RegisterActivity, response.message(), Toast.LENGTH_SHORT).show()
+//                        if (fullName.isEmpty()){
+//                            Toast.makeText(this@RegisterActivity, "Nama lengkap harus di isi", Toast.LENGTH_SHORT).show()
+//                            tv_error_nama_register.text = "Nama lengkap harus di isi"
+//                        } else if (email.isEmpty()){
+//                            Toast.makeText(this@RegisterActivity, "Email harus diisi", Toast.LENGTH_SHORT).show()
+//                            tv_error_email_register.text = "Email harus diisi"
+//                        } else if (password.isEmpty()){
+//                            Toast.makeText(this@RegisterActivity, "Password harus di isi", Toast.LENGTH_SHORT).show()
+//                            tv_error_password_register.text = "Password harus di isi"
+//                        } else if (password.length < 5){
+//                            Toast.makeText(this@RegisterActivity, "Panjang Password kurang dari 5", Toast.LENGTH_SHORT).show()
+//                            tv_error_password_register.text = "Panjang Password kurang dari 5"
+//                        } else {
+//                            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+//                            Toast.makeText(this@RegisterActivity, response.message(), Toast.LENGTH_SHORT).show()
+//                        }
                     } else {
                         Toast.makeText(this@RegisterActivity, response.message(), Toast.LENGTH_SHORT).show()
                     }

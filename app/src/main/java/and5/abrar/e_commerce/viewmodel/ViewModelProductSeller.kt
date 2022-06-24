@@ -20,7 +20,7 @@ class ViewModelProductSeller @Inject constructor(api: ApiService) : ViewModel() 
     private val liveDataSeller = MutableLiveData<GetUserResponse>()
     val seller: LiveData<GetUserResponse> = liveDataSeller
 
-    val apiServices = api
+    private val apiServices = api
 
     fun getAllSellerProduct(token: String) {
         apiServices.getProductSeller(token)

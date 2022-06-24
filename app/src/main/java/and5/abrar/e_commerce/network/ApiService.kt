@@ -35,12 +35,12 @@ interface ApiService {
 
     @GET("auth/user")
     fun getSellerData(
-        @Header("Authorization") token: String
+        @Header("access_token") token: String
     ): Call<GetUserResponse>
 
     @GET("seller/product")
     fun getProductSeller(
-        @Header("Authorization") token : String
+        @Header("access_token") token : String
     ) : Call<List<GetDataProductSellerItem>>
 
     @POST("auth/register")

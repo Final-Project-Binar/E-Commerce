@@ -6,6 +6,7 @@ import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
 import and5.abrar.e_commerce.network.ApiClient
 import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.view.HomeActivity
+import and5.abrar.e_commerce.view.ProfileActivity
 import and5.abrar.e_commerce.view.adapter.AdapterProductSeller
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
 import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
@@ -69,7 +70,11 @@ class DaftarJualActivity : AppCompatActivity() {
         viewModelSeller.getSeller(userManager.fetchAuthToken().toString())
 
         initView()
+        editSeller()
+
     }
+
+
 
     private fun initView(){
         val viewModelDataSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
@@ -77,7 +82,6 @@ class DaftarJualActivity : AppCompatActivity() {
         viewModelDataSeller.seller.observe(this){
             TV_nama_product.text = it.fullName
             TV_kota_product.text = it.city
-            seller_daftar_product.text = it.address
             Glide.with(applicationContext).load(it.imageUrl).into(IV_penjual_product)
         }
 
@@ -91,7 +95,7 @@ class DaftarJualActivity : AppCompatActivity() {
         viewModelProductSeller.getAllSellerProduct(token = userManager.fetchAuthToken().toString())
 
         adapter = AdapterProductSeller()
-        rvProductSeller.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        rvProductSeller.layoutManager = GridLayoutManager(this, 2)
         rvProductSeller.adapter = adapter
 
         viewModelProductSeller.sellerProduct.observe(this){
@@ -102,27 +106,11 @@ class DaftarJualActivity : AppCompatActivity() {
         }
     }
 
-//    private fun getProductSeller(){
-//        apiClient = ApiClient()
-//        userManager = UserManager(this)
-//        apiClient.getApiService(this).getProductSeller(userManager.fetchAuthToken().toString())
-//            .enqueue(object : Callback<List<GetDataProductSellerItem>>{
-//                override fun onResponse(call: Call<List<GetDataProductSellerItem>>, response: Response<List<GetDataProductSellerItem>>) {
-//                    if (response.isSuccessful){
-//                        val dataProductSeller = response.body()
-//                        val adapterProductSeller = AdapterProductSeller(dataProductSeller!!)
-//                        val linear = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-//                        rvProductSeller.layoutManager = linear
-//                        rvProductSeller.adapter = adapterProductSeller
-//                    } else {
-//                        Toast.makeText(this@DaftarJualActivity, response.message(), Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<List<GetDataProductSellerItem>>, t: Throwable) {
-//                    Toast.makeText(this@DaftarJualActivity, t.message, Toast.LENGTH_SHORT).show()
-//                }
-//
-//            })
-//    }
+
+    private fun editSeller(){
+        btnedit_product.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+    }
+
 }

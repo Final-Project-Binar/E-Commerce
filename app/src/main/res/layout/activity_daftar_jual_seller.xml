@@ -66,12 +66,12 @@
                 android:id="@+id/btnedit_product"
                 android:layout_width="60sp"
                 android:layout_height="30sp"
+                android:layout_alignParentRight="true"
                 android:background="@drawable/custom_drawable"
                 android:text="Edit"
-                android:layout_alignParentRight="true"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -92,6 +92,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView_productSeller"
                 android:layout_width="140dp"
                 android:layout_height="60sp"
                 android:layout_marginRight="10dp"
@@ -123,6 +124,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView_diminatiSeller"
                 android:layout_width="140dp"
                 android:layout_height="60sp"
                 android:layout_marginRight="10dp"

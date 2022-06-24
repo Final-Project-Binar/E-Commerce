@@ -31,7 +31,7 @@ class AdapterProductSeller() : RecyclerView.Adapter<AdapterProductSeller.ViewHol
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: AdapterProductSeller.ViewHolder, position: Int) {
         holder.itemView.tvJudul_product_seller.text = dataProductSeller!![position].name
-//        val category = dataProductSeller[position].categories
+//        val category = dataProductSeller!![position].categories
 //        holder.itemView.tvKategori_product_seller.text = ""
 //        if(category.isNotEmpty()){
 //            for (i in category.indices){
@@ -48,7 +48,6 @@ class AdapterProductSeller() : RecyclerView.Adapter<AdapterProductSeller.ViewHol
 //                }
 //            }
 //        }
-
         holder.itemView.tvHarga_product_seller.text = dataProductSeller!![position].basePrice.toString()
         Glide.with(holder.itemView.context).load(dataProductSeller!![position].imageUrl).into(holder.itemView.imageProductSeller)
 
