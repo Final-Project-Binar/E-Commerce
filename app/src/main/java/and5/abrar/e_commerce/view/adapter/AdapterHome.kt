@@ -37,7 +37,7 @@ class AdapterHome(private var onClick : (GetBuyerProductItem)->Unit):RecyclerVie
             .into(holder.itemView.imageProduct)
 
         val category = dataProduk!![position].categories
-        holder.itemView.tvKategori_product.text = ""
+        holder.itemView.tvKategori_product.text = "masih kosong"
         if(category.isNotEmpty()){
             for (i in category.indices){
                 if(category.lastIndex == 0){

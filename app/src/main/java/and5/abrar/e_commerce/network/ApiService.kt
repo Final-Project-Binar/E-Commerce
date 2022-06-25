@@ -11,6 +11,7 @@ import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
 import and5.abrar.e_commerce.model.produkseller.GetUserResponse
 import and5.abrar.e_commerce.model.register.PostUserRegister
 import and5.abrar.e_commerce.model.register.RequestPost
+import and5.abrar.e_commerce.model.user.GetUser
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -27,6 +28,11 @@ interface ApiService {
         @Header("access_token") token: String,
         @Body reqBidPrice: PostBuyerOrder
     ): Call<PostBuyerOrderResponseItem>
+
+    @GET("buyer/product")
+    fun getBuyerProductSearch(
+    @Query("search") search : String
+    ): Call<List<GetBuyerProductItem>>
 
     @GET("notification")
     fun getNotif(
@@ -53,6 +59,16 @@ interface ApiService {
         @Field("full_name") full_name: String,
         @Field("password") password: String
     ): Call<PostUserRegister>
+
+    @PUT("auth/user")
+    fun profileuser(
+        @Header("access_token") token : String,
+        @Field("full_name") fname : String,
+        @Field("phone_number") pnumber: String,
+        @Field("address") address : String,
+        @Field("image") image :String,
+        @Field("city") city : String
+    ) : Call<GetUser>
 
 
 }

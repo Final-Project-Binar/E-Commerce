@@ -4,6 +4,7 @@ import and5.abrar.e_commerce.model.login.LoginRequest
 import and5.abrar.e_commerce.model.login.LoginResponse
 import and5.abrar.e_commerce.model.login.PostLoginUserResponse
 import and5.abrar.e_commerce.model.register.PostUserRegister
+import and5.abrar.e_commerce.model.user.GetUser
 import and5.abrar.e_commerce.network.ApiClient
 import and5.abrar.e_commerce.network.ApiService
 import androidx.lifecycle.LiveData
@@ -17,61 +18,28 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ViewModelUser @Inject constructor(api: ApiService) : ViewModel() {
-    private val livedataUser = MutableLiveData<PostLoginUserResponse>()
-    private val liveDatUserReg = MutableLiveData<PostUserRegister>()
+    private val livedatauserprofile = MutableLiveData<GetUser>()
 
-    val user : LiveData<PostLoginUserResponse> = livedataUser
-    val userReg : LiveData<PostUserRegister> = liveDatUserReg
+    val profile : LiveData<GetUser> = livedatauserprofile
+
     private val liveDataResponseMessage = MutableLiveData<Boolean>()
     val responseMessage: LiveData<Boolean> = liveDataResponseMessage
     private val apiService = api
-    private lateinit var apiClient: ApiClient
 
-    fun userLogin(loginRequest: LoginRequest){
 
-        apiClient = ApiClient()
-        apiService.auth(loginRequest)
-            .enqueue(object : Callback<PostLoginUserResponse> {
-                override fun onResponse(
-                    call: Call<PostLoginUserResponse>,
-                    response: Response<PostLoginUserResponse>
-                ) {
-                    liveDataResponseMessage.value = response.isSuccessful
-                    if (response.isSuccessful) {
-
-                        livedataUser.value = response.body()
-
-                    } else {
-                        liveDataResponseMessage.value = false
-                    }
+    fun userProfile(token : String,fname : String, phone : String, address : String, image:String,city:String){
+        apiService.profileuser(token,fname,phone,address,image, city)
+            .enqueue(object  : Callback<GetUser>{
+                override fun onResponse(call: Call<GetUser>, response: Response<GetUser>) {
+                   if(response.isSuccessful){
+                       livedatauserprofile.value = response.body()
+                   }
                 }
 
-                override fun onFailure(call: Call<PostLoginUserResponse>, t: Throwable) {
-                    liveDataResponseMessage.value = false
+                override fun onFailure(call: Call<GetUser>, t: Throwable) {
+                   //
                 }
 
             })
     }
-
-    fun registerUser(email: String, full_name: String, password: String){
-        apiService.registeruser(email, full_name, password)
-            .enqueue(object : Callback<PostUserRegister> {
-                override fun onResponse(
-                    call: Call<PostUserRegister>,
-                    response: Response<PostUserRegister>
-                ) {
-                    if (response.isSuccessful){
-                        liveDatUserReg.postValue(response.body())
-                    } else {
-
-                    }
-                }
-
-                override fun onFailure(call: Call<PostUserRegister>, t: Throwable) {
-
-                }
-
-            })
-    }
-
 }

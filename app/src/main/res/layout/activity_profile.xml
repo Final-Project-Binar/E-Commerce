@@ -58,7 +58,7 @@
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout1"
+        android:id="@+id/profile_etnama"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
@@ -91,7 +91,7 @@
         android:textSize="16sp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout1"
+        app:layout_constraintTop_toBottomOf="@+id/profile_etnama"
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -106,14 +106,13 @@
         app:layout_constraintTop_toBottomOf="@id/tv_Kota"
         tools:ignore="MissingConstraints">
 
-        <Spinner
-            android:id="@+id/spinner_kota"
+        <EditText
+            android:id="@+id/profile_kota"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:padding="10dp"
+            android:hint="kota"
             android:background="@drawable/custom_drawable"
-            android:theme="@style/SpinnerTheme"
-            android:entries="@array/kota"
             android:popupBackground="@color/white"
             tools:ignore="HardcodedText" />
 

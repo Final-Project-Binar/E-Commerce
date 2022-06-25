@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_akun_saya.*
 
 class AkunSayaActivity : AppCompatActivity() {
 
@@ -43,5 +44,9 @@ class AkunSayaActivity : AppCompatActivity() {
         setContentView(R.layout.activity_akun_saya)
         val botnav = findViewById<BottomNavigationView>(R.id.navigation)
         botnav.setOnNavigationItemSelectedListener(bottomNavigasi)
+        akunsaya_btnkeluar.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+
     }
 }

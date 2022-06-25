@@ -61,7 +61,7 @@ class AddProductBuyerActivity : AppCompatActivity() {
             }
 
             addProductBuyer_btnTertarik.setOnClickListener {
-
+            iniDialogTawarHarga()
             }
         }
     }

@@ -3,9 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Binar/E-Commerce/app/src/main/res/layout/activity_add_product_buyer.xml" value="0.20353982300884957" />
-        <entry key="..\:/Binar/E-Commerce/app/src/main/res/layout/activity_login.xml" value="0.17552083333333332" />
-        <entry key="..\:/Binar/E-Commerce/app/src/main/res/layout/custom_dialog_hargatawar_buyer.xml" value="0.14666666666666667" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable-v24/ic_email.xml" value="0.1815" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable-v24/login_btn_bg.xml" value="0.2115" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable-v24/style_spinner.xml" value="0.2115" />
@@ -42,18 +39,19 @@
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/item_notifikasi_buyer.xml" value="0.20416666666666666" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/item_notifikasi_seller.xml" value="0.20416666666666666" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/item_product_home.xml" value="0.5" />
-        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/item_product_seller.xml" value="0.22" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/item_productdiminati.xml" value="0.20416666666666666" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/drawable/ic_add_circle.xml" value="0.1" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/drawable/ic_baseline_circle_24.xml" value="0.1" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/drawable/ic_baseline_circle_ijo.xml" value="0.1" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_add_product_seller.xml" value="0.16576086956521738" />
+        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_akun_saya.xml" value="0.264" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_daftar_jual_diminati_seller.xml" value="0.16576086956521738" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_daftar_jual_seller.xml" value="0.16576086956521738" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_home.xml" value="0.16576086956521738" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_lengkapi_detail_product.xml" value="0.16576086956521738" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_login.xml" value="0.10822401614530777" />
-        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_notifikasi_buyer.xml" value="0.1" />
+        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_notifikasi_buyer.xml" value="0.264" />
+        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_profile.xml" value="0.18568840579710144" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/item_notifikasi_buyer.xml" value="0.2" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/item_product_home.xml" value="0.16576086956521738" />
       </map>

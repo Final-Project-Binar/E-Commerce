@@ -31,7 +31,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/login_btn_bg"
+        app:labelVisibilityMode="labeled"
+        android:layout_margin="10dp"
         app:itemIconTint="#E91E63"
         app:itemTextColor="@color/white"
-        app:menu="@menu/menu" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu"
+        tools:ignore="MissingConstraints" />
 </RelativeLayout>

@@ -1,9 +1,10 @@
-package and5.abrar.e_commerce.model.login
+package and5.abrar.e_commerce.model.user
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-data class GetLogin(
+data class GetUser(
     @SerializedName("address")
     val address: String,
     @SerializedName("createdAt")
@@ -12,6 +13,8 @@ data class GetLogin(
     val email: String,
     @SerializedName("full_name")
     val fullName: String,
+    @SerializedName("city")
+    val city: String,
     @SerializedName("id")
     val id: Int,
     @SerializedName("image_url")
@@ -22,4 +25,4 @@ data class GetLogin(
     val phoneNumber: Long,
     @SerializedName("updatedAt")
     val updatedAt: String
-)
+):Serializable
