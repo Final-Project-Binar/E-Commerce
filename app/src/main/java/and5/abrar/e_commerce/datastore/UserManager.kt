@@ -30,6 +30,13 @@ class UserManager(context : Context) {
         .apply()
     }
 
+        fun logout(){
+        val edit = prefs.edit()
+        edit
+            .clear()
+            .apply()
+    }
+
     fun fetchAuthToken(): String? {
         return prefs.getString(USER_TOKEN, null)
     }
