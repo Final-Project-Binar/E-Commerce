@@ -79,7 +79,7 @@ class UserManager(context : Context) {
         it[ACCESS_TOKEN] ?: ""
     }
 
-    val booelan: Flow<Boolean> = dataStore.data.map {
+    val ceklogin: Flow<Boolean> = dataStore.data.map {
         it[BOOLEAN] ?: false
     }
 

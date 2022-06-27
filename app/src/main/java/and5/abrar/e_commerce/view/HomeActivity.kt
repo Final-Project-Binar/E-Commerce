@@ -7,6 +7,7 @@ import and5.abrar.e_commerce.view.adapter.AdapterHome
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
 import and5.abrar.e_commerce.view.seller.AddProductSellerActivity
 import and5.abrar.e_commerce.view.seller.DaftarJualActivity
+import and5.abrar.e_commerce.view.seller.LengkapiDetailProductActivity
 import and5.abrar.e_commerce.viewmodel.ViewModelHome
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -40,7 +41,7 @@ class HomeActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener false
             }
             R.id.jual -> {
-                startActivity(Intent(this, AddProductSellerActivity::class.java))
+                startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.akun -> {

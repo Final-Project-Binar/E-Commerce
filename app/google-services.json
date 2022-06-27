@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1055188341074",
+    "project_id": "binar-12502",
+    "storage_bucket": "binar-12502.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055188341074:android:d19637cd797c22f9906a8b",
+        "android_client_info": {
+          "package_name": "and5.abrar.e_commerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055188341074-5oe1mr72j5n05ibckp8s4f6a43hs1rot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtrleD2YwikPmrO9lQcQr6AGJVSe-UTjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055188341074-5oe1mr72j5n05ibckp8s4f6a43hs1rot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

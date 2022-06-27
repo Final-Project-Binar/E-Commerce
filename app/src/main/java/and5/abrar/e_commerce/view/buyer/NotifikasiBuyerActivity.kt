@@ -11,6 +11,7 @@ import and5.abrar.e_commerce.view.adapter.AdapterNotifikasiBuyer
 import and5.abrar.e_commerce.view.seller.AddProductSellerActivity
 import and5.abrar.e_commerce.view.seller.DaftarJualActivity
 import and5.abrar.e_commerce.view.seller.InfoPenawaranActivity
+import and5.abrar.e_commerce.view.seller.LengkapiDetailProductActivity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -39,7 +40,7 @@ class NotifikasiBuyerActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.jual -> {
-                startActivity(Intent(this, AddProductSellerActivity::class.java))
+                startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.akun -> {

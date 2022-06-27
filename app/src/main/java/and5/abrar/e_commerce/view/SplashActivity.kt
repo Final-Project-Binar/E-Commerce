@@ -32,52 +32,20 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         userManager = UserManager(this)
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            userManager.booelan.asLiveData().observe(this) {
-                if (it == true ) {
-                    userManager.email.asLiveData().observe(this) { result ->
-                        email = result.toString()
-                    }
-                    userManager.password.asLiveData().observe(this) { result ->
-                        password = result.toString()
-                    }
-                    requestNewLoginToken(email, password)
-                } else {
-                    startActivity(Intent(this, LoginActivity::class.java))
-                    finish()
-                }
-            }
-        }, 2000)
+        checkAccount()
     }
-
-    private fun requestNewLoginToken(email: String, password: String){
-        val viewModelUser = ViewModelProvider(this)[ViewModelUser::class.java]
-        viewModelUser.userLogin(LoginRequest(email, password))
-        viewModelUser.responseMessage.observe(this) { responseMessage ->
-            if (responseMessage){
-                viewModelUser.user.observe(this) {
-                    saveToken(it, password)
-                }
-            } else {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    private fun saveToken(postLoginUserResponse: PostLoginUserResponse, password: String ){
+    private fun checkAccount(){
         userManager = UserManager(this)
-        lifecycleScope.launch {
-            withContext(Dispatchers.Main){
-                userManager.setBoolean(true)
-                userManager.saveToken(
-                    postLoginUserResponse.email,
-                    postLoginUserResponse.name,
-                    postLoginUserResponse.access_token,
-                    password
-                )
-                startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
+        val checkToken = userManager.fetchAuthToken().toString()
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (checkToken != ""){
+                startActivity(Intent(this, HomeActivity::class.java))
+                finish()
+            } else {
+                startActivity(Intent(this, HomeActivity::class.java))
+                finish()
             }
-        }
+        },3500)
     }
+
 }

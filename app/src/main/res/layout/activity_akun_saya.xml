@@ -94,6 +94,25 @@
                 android:textColor="@color/black"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/akunsaya_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_edit_"
+                android:padding="10sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:padding="10sp"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

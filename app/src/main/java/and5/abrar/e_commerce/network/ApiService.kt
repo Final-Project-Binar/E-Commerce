@@ -9,16 +9,19 @@ import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrderResponseItem
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
 import and5.abrar.e_commerce.model.produkseller.GetUserResponse
+import and5.abrar.e_commerce.model.produkseller.PostSellerProduct
 import and5.abrar.e_commerce.model.register.PostUserRegister
 import and5.abrar.e_commerce.model.register.RequestPost
 import and5.abrar.e_commerce.model.user.GetUser
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
+import java.io.File
 
 interface ApiService {
     @POST("auth/login")
     fun login(@Body request: LoginRequest): Call<LoginResponse>
-    fun auth(@Body request: LoginRequest): Call<PostLoginUserResponse>
 
     @GET("buyer/product")
     suspend fun getBuyerProduct(): List<GetBuyerProductItem>
@@ -61,14 +64,25 @@ interface ApiService {
     ): Call<PostUserRegister>
 
     @PUT("auth/user")
+    @Multipart
     fun profileuser(
         @Header("access_token") token : String,
-        @Field("full_name") fname : String,
-        @Field("phone_number") pnumber: String,
-        @Field("address") address : String,
-        @Field("image") image :String,
-        @Field("city") city : String
+        @Part ("full_name") fname : RequestBody,
+        @Part ("phone_number") pnumber: RequestBody,
+        @Part ("address") address : RequestBody,
+        @Part ("city") city : RequestBody,
+        @Part image :MultipartBody.Part
     ) : Call<GetUser>
 
-
+    @POST("seller/product")
+    @Multipart
+    fun tambahproduct(
+        @Header("access_token") token : String,
+        @Part("name") nama : RequestBody,
+        @Part("description") desc : RequestBody,
+        @Part("base_price") harga : RequestBody,
+        @Part("category_ids") category: List<Int>,
+        @Part("location ") lokasi : RequestBody,
+        @Part image :MultipartBody.Part
+    ):Call<PostSellerProduct>
 }

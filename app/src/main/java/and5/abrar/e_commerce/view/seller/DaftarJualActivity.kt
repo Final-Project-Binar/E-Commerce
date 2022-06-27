@@ -44,7 +44,7 @@ class DaftarJualActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.jual -> {
-                startActivity(Intent(this, AddProductSellerActivity::class.java))
+                startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.akun -> {

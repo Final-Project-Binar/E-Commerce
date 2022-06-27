@@ -19,6 +19,7 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Call
@@ -53,6 +54,9 @@ class LoginActivity : AppCompatActivity() {
                     val loginResponse = response.body()
                     if (response.isSuccessful) {
                         userManager.saveAuthToken(token = loginResponse!!.authToken)
+                        GlobalScope.launch {
+                            userManager.setBoolean(true)
+                        }
                         startActivity(Intent(applicationContext, HomeActivity::class.java))
                     } else {
                         Toast.makeText(applicationContext, "gagal login", Toast.LENGTH_SHORT).show()
