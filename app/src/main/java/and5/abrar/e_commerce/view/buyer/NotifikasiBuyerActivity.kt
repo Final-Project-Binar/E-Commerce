@@ -74,10 +74,12 @@ class NotifikasiBuyerActivity : AppCompatActivity() {
             ) {
                 if(response.isSuccessful){
                     adapterNotifikasiBuyer = AdapterNotifikasiBuyer(response.body()!!) {
+                        apiClient.getApiService(applicationContext).patchNotif(token = userManager.fetchAuthToken().toString(),it.id)
                         val pindah = Intent(applicationContext,InfoPenawaranActivity::class.java)
                            pindah.putExtra("detailinfo", it)
                            startActivity(pindah)
                     }
+
                     rv_notifikasiBuyer.layoutManager = LinearLayoutManager(applicationContext)
                     rv_notifikasiBuyer.adapter = adapterNotifikasiBuyer
 

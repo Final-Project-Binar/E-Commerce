@@ -79,7 +79,11 @@ class AkunSayaActivity : AppCompatActivity() {
             if (it == true){
                 akunsaya_login.isInvisible = true
             }else{
+                akunsaya_btnkeluar.isInvisible = true
                 akunsaya_login.isVisible = true
+                akunsaya_login.setOnClickListener{
+                    startActivity(Intent(this@AkunSayaActivity, LoginActivity::class.java))
+                }
             }
         }
         keluar()
@@ -89,7 +93,7 @@ class AkunSayaActivity : AppCompatActivity() {
 
     private fun keluar(){
         val dataUserManager = and5.abrar.e_commerce.datastore.UserManager(this)
-        keluar_akun.setOnClickListener {
+        akunsaya_btnkeluar.setOnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("KONFIRMASI LOGOUT")
                 .setMessage("Anda Yakin Ingin Logout ?")

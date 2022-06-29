@@ -71,15 +71,12 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun iniviewmodel(){
-        adapterHome = AdapterHome() {
+        adapterHome = AdapterHome {
             val clickedProduct = Bundle()
             clickedProduct.putSerializable("detailproduk",it)
             val pindah = Intent(this, AddProductSellerActivity::class.java)
                 .putExtras(clickedProduct)
             startActivity(pindah)
-//            val pindahdata = Intent(applicationContext, AddProductSellerActivity::class.java)
-//            pindahdata.putExtra("detailproduk",it)
-//            startActivity(pindahdata)
         }
         rv_homeProduk.layoutManager=GridLayoutManager(this,2)
         rv_homeProduk.adapter=adapterHome
@@ -89,7 +86,6 @@ class HomeActivity : AppCompatActivity() {
               adapterHome.setProduk(it)
               adapterHome.notifyDataSetChanged()
           }
-
         }
 
     }
@@ -180,11 +176,25 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun search(){
-        searchView.setOnKeyListener(View.OnKeyListener { v, keyCode, event  ->
-            if(keyCode == KeyEvent.KEYCODE_ENTER){
-                val cari = searchView.toString()
-                val viewModel = ViewModelProvider(this).get(ViewModelHome::class.java)
-                viewModel.searchproduct(cari)
+                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+                    androidx.appcompat.widget.SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        val viewModel = ViewModelProvider(this@HomeActivity)[ViewModelHome::class.java]
+                        viewModel.searchproduct(query!!)
+                        viewModel.product.observe(this@HomeActivity) {
+                            if (it != null) {
+                                adapterHome.setProduk(it)
+                                adapterHome.notifyDataSetChanged()
+                            }
+                        }
+                        return false
+                    }
+
+                    override fun onQueryTextChange(p0: String?): Boolean {
+                        iniviewmodel()
+                        return false
+                    }
+                })
                 adapterHome = AdapterHome{
                     val pindahdata = Intent(applicationContext, AddProductSellerActivity::class.java)
                     pindahdata.putExtra("detailproduk",it)
@@ -192,9 +202,6 @@ class HomeActivity : AppCompatActivity() {
                 }
                 rv_homeProduk.layoutManager=GridLayoutManager(this,2)
                 rv_homeProduk.adapter=adapterHome
-                return@OnKeyListener true
+
             }
-            false
-        })
-        }
 }

@@ -24,7 +24,9 @@ interface ApiService {
     fun login(@Body request: LoginRequest): Call<LoginResponse>
 
     @GET("buyer/product")
-    suspend fun getBuyerProduct(): List<GetBuyerProductItem>
+    suspend fun getBuyerProduct(
+        @Query("status") status: String = "available"
+    ): List<GetBuyerProductItem>
 
     @POST("buyer/order")
     fun updateBidPrice(
@@ -40,6 +42,12 @@ interface ApiService {
     @GET("notification")
     fun getNotif(
         @Header("access_token") token: String
+    ): Call<List<GetNotifikasiItem>>
+
+    @PATCH("notification")
+    fun patchNotif(
+        @Header("access_token") token: String,
+        @Path("id") id : Int
     ): Call<List<GetNotifikasiItem>>
 
     @GET("auth/user")
@@ -81,7 +89,7 @@ interface ApiService {
         @Part("name") nama : RequestBody,
         @Part("description") desc : RequestBody,
         @Part("base_price") harga : RequestBody,
-        @Part("category_ids") category: List<Int>,
+        @Part("category_ids") category: RequestBody,
         @Part("location ") lokasi : RequestBody,
         @Part image :MultipartBody.Part
     ):Call<PostSellerProduct>

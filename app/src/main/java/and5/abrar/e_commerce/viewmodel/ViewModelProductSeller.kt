@@ -33,7 +33,7 @@ class ViewModelProductSeller @Inject constructor(api: ApiService) : ViewModel() 
         nama : RequestBody,
         desc : RequestBody,
         harga : RequestBody,
-        category : List<Int>,
+        category : RequestBody,
         lokasi :RequestBody,
         image:MultipartBody.Part){
         apiServices.tambahproduct(token, nama, desc, harga, category, lokasi, image)
