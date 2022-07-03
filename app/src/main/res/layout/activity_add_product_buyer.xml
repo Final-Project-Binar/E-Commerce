@@ -21,7 +21,7 @@
                 android:id="@+id/tv_imgdetailproduct"
                 android:layout_width="match_parent"
                 android:layout_height="360dp"
-                android:background="@drawable/jamtangan"
+                android:src="@drawable/jamtangan"
                 tools:ignore="ContentDescription,MissingConstraints" />
 
             <ImageView

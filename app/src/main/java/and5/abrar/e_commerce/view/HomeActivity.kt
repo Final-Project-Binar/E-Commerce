@@ -4,6 +4,7 @@ import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import and5.abrar.e_commerce.view.adapter.AdapterHome
+import and5.abrar.e_commerce.view.buyer.AddProductBuyerActivity
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
 import and5.abrar.e_commerce.view.seller.AddProductSellerActivity
 import and5.abrar.e_commerce.view.seller.DaftarJualActivity
@@ -62,6 +63,10 @@ class HomeActivity : AppCompatActivity() {
         userManager = UserManager(this)
         val botnav = findViewById<BottomNavigationView>(R.id.navigation)
         botnav.setOnNavigationItemSelectedListener(bottomNavigasi)
+        button_Hoby.isClickable = false
+        button_semua.isClickable = true
+        button_Kendaraan.isClickable = false
+        button_Electronic.isClickable = false
         search()
         iniviewmodel()
         ctgyhoby()
@@ -74,8 +79,8 @@ class HomeActivity : AppCompatActivity() {
         adapterHome = AdapterHome {
             val clickedProduct = Bundle()
             clickedProduct.putSerializable("detailproduk",it)
-            val pindah = Intent(this, AddProductSellerActivity::class.java)
-                .putExtras(clickedProduct)
+            val pindah = Intent(this, AddProductBuyerActivity::class.java)
+                pindah.putExtras(clickedProduct)
             startActivity(pindah)
         }
         rv_homeProduk.layoutManager=GridLayoutManager(this,2)
@@ -189,7 +194,6 @@ class HomeActivity : AppCompatActivity() {
                         }
                         return false
                     }
-
                     override fun onQueryTextChange(p0: String?): Boolean {
                         iniviewmodel()
                         return false
@@ -202,6 +206,5 @@ class HomeActivity : AppCompatActivity() {
                 }
                 rv_homeProduk.layoutManager=GridLayoutManager(this,2)
                 rv_homeProduk.adapter=adapterHome
-
             }
 }

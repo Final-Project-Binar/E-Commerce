@@ -2,10 +2,16 @@ package and5.abrar.e_commerce.view.buyer
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
+import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
+import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponseItem
+import and5.abrar.e_commerce.room.Diminati
+import and5.abrar.e_commerce.room.DiminatiDatabase
+import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.viewmodel.BuyerOrderViewModel
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -16,21 +22,27 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_add_product_buyer.*
 import kotlinx.android.synthetic.main.custom_dialog_hargatawar_buyer.view.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 
 @AndroidEntryPoint
 class AddProductBuyerActivity : AppCompatActivity() {
-
+    private var diminatiDb: DiminatiDatabase? = null
     private lateinit var userManager: UserManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product_buyer)
+        back.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
+        }
         detailData()
     }
 
     @SuppressLint("SetTextI18n")
     private fun detailData(){
-        val dataProduct = intent.extras!!.getSerializable("detailproduk") as GetBuyerProductItem
+        val dataProduct = intent.extras!!.getSerializable("detailproduk") as GetBuyerProductItem?
+        val dataProductnotif = intent.extras!!.getSerializable("detailnotif") as GetNotifikasiItem?
         if (dataProduct != null) {
             Glide.with(this)
                 .load(dataProduct.imageUrl)
@@ -38,9 +50,10 @@ class AddProductBuyerActivity : AppCompatActivity() {
             tv_judulproductdetail.text = dataProduct.name
             tv_acesorisproductdetail.text = dataProduct.categories.toString()
             tv_hargaproductdetail.text = dataProduct.basePrice.toString()
+            tv_deskripsidetail.text = dataProduct.description
 
             tv_acesorisproductdetail.text = ""
-            if (dataProduct.categories!!.isNotEmpty()){
+            if (dataProduct.categories.isNotEmpty()){
                 for (i in dataProduct.categories.indices){
                     if (dataProduct.categories.lastIndex == 0){
                         tv_acesorisproductdetail.text = dataProduct.categories[i].name
@@ -59,9 +72,12 @@ class AddProductBuyerActivity : AppCompatActivity() {
             } else {
                 tv_acesorisproductdetail.text = "Lainnya"
             }
-
-            addProductBuyer_btnTertarik.setOnClickListener {
-            iniDialogTawarHarga()
+            if (dataProductnotif != null){
+                addProductBuyer_btnTertarik.text = "Menunggu Respon Penjual"
+            }else if(dataProduct != null) {
+                addProductBuyer_btnTertarik.setOnClickListener {
+                    iniDialogTawarHarga()
+                }
             }
         }
     }
@@ -87,6 +103,7 @@ class AddProductBuyerActivity : AppCompatActivity() {
                 if (detailBarang.categories.lastIndex == 0) {
                     dialogView.custum_Categoriproduct.text =
                         "Kategori: ${detailBarang.categories[i].name}"
+
                     break
                 }
                 if (i == 0) {
@@ -110,9 +127,27 @@ class AddProductBuyerActivity : AppCompatActivity() {
             val edtTawar = dialogView.ca_hargatawar.text.toString().toInt()
 
             if (edtTawar.toString().isNotEmpty()) {
-                val buyerOrderViewModel = ViewModelProvider(this).get(BuyerOrderViewModel::class.java)
-                userManager.accessToken.asLiveData().observe(this) {
-                    buyerOrderViewModel.postBuyerOrder(it, PostBuyerOrder(productId!!, edtTawar))
+                val buyerOrderViewModel = ViewModelProvider(this)[BuyerOrderViewModel::class.java]
+                    buyerOrderViewModel.postBuyerOrder(userManager.fetchAuthToken().toString(), PostBuyerOrder(productId!!, edtTawar))
+                for (i in detailBarang.categories.indices) {
+                    if (detailBarang.categories.lastIndex == 0) {
+                        GlobalScope.async {
+                            diminatiDb?.diminatiDao()?.addDiminati(
+                                Diminati(
+                                    detailBarang.id,
+                                    detailBarang.imageUrl,
+                                    detailBarang.name,
+                                    detailBarang.categories[i].name,
+                                    detailBarang.basePrice.toString(),
+                                    edtTawar.toString(),
+                                    detailBarang.description,
+                                    detailBarang.status,
+                                    detailBarang.updatedAt
+                                )
+                            )
+                        }
+                        break
+                    }
                 }
                 Toast.makeText(this, "Tawaran sudah dikirim", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()

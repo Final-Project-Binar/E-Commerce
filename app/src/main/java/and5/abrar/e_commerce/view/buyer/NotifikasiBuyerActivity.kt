@@ -16,6 +16,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_notifikasi_buyer.*
@@ -75,9 +76,28 @@ class NotifikasiBuyerActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     adapterNotifikasiBuyer = AdapterNotifikasiBuyer(response.body()!!) {
                         apiClient.getApiService(applicationContext).patchNotif(token = userManager.fetchAuthToken().toString(),it.id)
-                        val pindah = Intent(applicationContext,InfoPenawaranActivity::class.java)
-                           pindah.putExtra("detailinfo", it)
-                           startActivity(pindah)
+                            .enqueue(object : Callback<GetNotifikasiItem>{
+                                override fun onResponse(
+                                    call: Call<GetNotifikasiItem>,
+                                    response: Response<GetNotifikasiItem>
+                                ) {
+                                    if (response.isSuccessful){
+                                        var livedata : MutableLiveData<GetNotifikasiItem> = MutableLiveData()
+                                        livedata.postValue(response.body())
+                                    }
+                                }
+
+                                override fun onFailure(
+                                    call: Call<GetNotifikasiItem>,
+                                    t: Throwable
+                                ) {
+                                 //
+                                }
+
+                            })
+//                        val pindah = Intent(applicationContext,AddProductBuyerActivity::class.java)
+//                           pindah.putExtra("detailnotif", it)
+//                           startActivity(pindah)
                     }
 
                     rv_notifikasiBuyer.layoutManager = LinearLayoutManager(applicationContext)

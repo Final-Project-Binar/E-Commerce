@@ -1,11 +1,11 @@
 package and5.abrar.e_commerce.viewmodel
 
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
-import and5.abrar.e_commerce.network.ApiClient
+import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponseItem
+import and5.abrar.e_commerce.model.produkseller.Category
 import and5.abrar.e_commerce.network.ApiService
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -17,6 +17,12 @@ import javax.inject.Inject
 class ViewModelHome @Inject constructor(apiService: ApiService): ViewModel() {
     private var liveDataProduct = MutableLiveData<List<GetBuyerProductItem>>()
     val product : LiveData<List<GetBuyerProductItem>> = liveDataProduct
+
+    private var liveDataDetail = MutableLiveData<GetBuyerProductResponseItem>()
+    val detail : LiveData<GetBuyerProductResponseItem> = liveDataDetail
+
+    private var liveCategory = MutableLiveData<Category>()
+    var listCategory = liveCategory
     private val apiServices = apiService
 
     init {
@@ -27,7 +33,25 @@ class ViewModelHome @Inject constructor(apiService: ApiService): ViewModel() {
         }
     }
 
+    fun detailproduct(id : Int){
+        apiServices.getdetailproduct(id).enqueue(object : Callback<GetBuyerProductResponseItem>{
+            override fun onResponse(
+                call: Call<GetBuyerProductResponseItem>,
+                response: Response<GetBuyerProductResponseItem>
+            ) {
+                if (response.isSuccessful){
+                    liveDataDetail.value = response.body()
+                }else{
 
+                }
+            }
+
+            override fun onFailure(call: Call<GetBuyerProductResponseItem>, t: Throwable) {
+               //
+            }
+
+        })
+    }
 
     fun searchproduct(search : String){
         apiServices.getBuyerProductSearch(search).enqueue(object : Callback<List<GetBuyerProductItem>>{

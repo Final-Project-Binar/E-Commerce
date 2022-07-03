@@ -186,152 +186,152 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-<!--        <TextView-->
-<!--            android:id="@+id/tv_phone_register"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="15dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:text="Phone Number : "-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="16sp"-->
-<!--            android:textStyle="normal"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"-->
-<!--            tools:ignore="HardcodedText,MissingConstraints" />-->
+        <TextView
+           android:id="@+id/tv_phone_register"
+           android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="Phone Number : "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+            tools:ignore="HardcodedText,MissingConstraints" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/tv_error_phone_register"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:textColor="#F40808"-->
-<!--            android:textSize="14sp"-->
-<!--            android:textStyle="italic"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/tv_phone_register"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"-->
-<!--            tools:ignore="HardcodedText,MissingConstraints" />-->
+        <TextView
+            android:id="@+id/tv_error_phone_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#F40808"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@+id/tv_phone_register"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+            tools:ignore="HardcodedText,MissingConstraints" />
 
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/textInputLayout4"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="55dp"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            android:layout_marginTop="2dp"-->
-<!--            android:layout_marginEnd="20dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/tv_phone_register"-->
-<!--            tools:ignore="MissingConstraints">-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_phone_register"
+            tools:ignore="MissingConstraints">
 
-<!--            <EditText-->
-<!--                android:id="@+id/etPhone_register"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:hint="Phone Number"-->
-<!--                android:background="@drawable/custom_drawable"-->
-<!--                android:inputType="number"-->
-<!--                tools:ignore="HardcodedText,Autofill,LabelFor,TextFields" />-->
+            <EditText
+                android:id="@+id/etPhone_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:background="@drawable/custom_drawable"
+                android:inputType="number"
+                tools:ignore="HardcodedText,Autofill,LabelFor,TextFields" />
 
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
+        </com.google.android.material.textfield.TextInputLayout>
 
-<!--        <TextView-->
-<!--            android:id="@+id/tv_address_register"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="15dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:text="Alamat : "-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="16sp"-->
-<!--            android:textStyle="normal"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"-->
-<!--            tools:ignore="HardcodedText,MissingConstraints" />-->
+        <TextView
+            android:id="@+id/tv_address_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="Alamat : "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+            tools:ignore="HardcodedText,MissingConstraints" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/tv_error_address_register"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:textColor="#F40808"-->
-<!--            android:textSize="14sp"-->
-<!--            android:textStyle="italic"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/tv_address_register"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"-->
-<!--            tools:ignore="HardcodedText,MissingConstraints" />-->
+        <TextView
+            android:id="@+id/tv_error_address_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#F40808"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@+id/tv_address_register"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+            tools:ignore="HardcodedText,MissingConstraints" />
 
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/textInputLayout5"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="55dp"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            android:layout_marginTop="2dp"-->
-<!--            android:layout_marginEnd="20dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/tv_address_register"-->
-<!--            tools:ignore="MissingConstraints">-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_address_register"
+            tools:ignore="MissingConstraints">
 
-<!--            <EditText-->
-<!--                android:id="@+id/etAddress_register"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:hint="Alamat"-->
-<!--                android:background="@drawable/custom_drawable"-->
-<!--                android:inputType="text"-->
-<!--                tools:ignore="HardcodedText,Autofill,LabelFor,TextFields" />-->
+            <EditText
+                android:id="@+id/etAddress_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Alamat"
+                android:background="@drawable/custom_drawable"
+                android:inputType="text"
+                tools:ignore="HardcodedText,Autofill,LabelFor,TextFields" />
 
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
+        </com.google.android.material.textfield.TextInputLayout>
 
-<!--        <TextView-->
-<!--            android:id="@+id/tv_city_register"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="15dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:text="City : "-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="16sp"-->
-<!--            android:textStyle="normal"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"-->
-<!--            tools:ignore="HardcodedText,MissingConstraints" />-->
+        <TextView
+            android:id="@+id/tv_city_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="City : "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"
+            tools:ignore="HardcodedText,MissingConstraints" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/tv_error_city_register"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:textColor="#F40808"-->
-<!--            android:textSize="14sp"-->
-<!--            android:textStyle="italic"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/tv_city_register"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"-->
-<!--            tools:ignore="HardcodedText,MissingConstraints" />-->
+        <TextView
+            android:id="@+id/tv_error_city_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#F40808"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@+id/tv_city_register"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"
+            tools:ignore="HardcodedText,MissingConstraints" />
 
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/textInputLayout6"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="55dp"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            android:layout_marginTop="2dp"-->
-<!--            android:layout_marginEnd="20dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/tv_city_register"-->
-<!--            tools:ignore="MissingConstraints">-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_city_register"
+            tools:ignore="MissingConstraints">
 
-<!--            <EditText-->
-<!--                android:id="@+id/etCity_register"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:hint="City"-->
-<!--                android:background="@drawable/custom_drawable"-->
-<!--                android:inputType="text"-->
-<!--                tools:ignore="HardcodedText,Autofill,LabelFor,TextFields" />-->
+            <EditText
+                android:id="@+id/etCity_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="City"
+                android:background="@drawable/custom_drawable"
+                android:inputType="text"
+                tools:ignore="HardcodedText,Autofill,LabelFor,TextFields" />
 
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_daftar"
@@ -346,7 +346,7 @@
             app:layout_constraintBottom_toTopOf="@+id/tv_sudah_punya_akun"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout6"
             tools:ignore="HardcodedText,MissingConstraints" />
 
         <TextView

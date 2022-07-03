@@ -1,6 +1,7 @@
 package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R
+import and5.abrar.e_commerce.model.banner.GetBannerItem
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
@@ -8,14 +9,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.activity_home.view.*
 import kotlinx.android.synthetic.main.item_product_home.view.*
 
 class AdapterHome(private var onClick : (GetBuyerProductItem)->Unit):RecyclerView.Adapter<AdapterHome.ViewHolder>() {
     class ViewHolder(itemView : View):RecyclerView.ViewHolder(itemView)
     private var dataProduk : List<GetBuyerProductItem>? = null
-
+    private var dataBanner : List<GetBannerItem>? = null
     fun setProduk(produk : List<GetBuyerProductItem>){
         this.dataProduk = produk
     }
@@ -35,13 +38,12 @@ class AdapterHome(private var onClick : (GetBuyerProductItem)->Unit):RecyclerVie
         Glide.with(holder.itemView.context)
             .load(dataProduk!![position].imageUrl)
             .into(holder.itemView.imageProduct)
-
         val category = dataProduk!![position].categories
         holder.itemView.tvKategori_product.text = "masih kosong"
         if(category.isNotEmpty()){
             for (i in category.indices){
                 if(category.lastIndex == 0){
-                holder.itemView.tvKategori_product.text = category[i].name
+                    holder.itemView.tvKategori_product.text = category[i].name
                     break
                 }
                 if (i==0){

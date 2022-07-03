@@ -30,6 +30,7 @@
             android:exported="true" >
 
         </activity>
+        <activity android:name=".view.buyer.AddProductBuyerActivity"/>
         <activity
             android:name=".view.seller.DaftarJualDiminatiSellerActivity"
             android:exported="false" />

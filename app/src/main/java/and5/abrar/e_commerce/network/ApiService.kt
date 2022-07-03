@@ -2,11 +2,11 @@ package and5.abrar.e_commerce.network
 
 import and5.abrar.e_commerce.model.login.LoginRequest
 import and5.abrar.e_commerce.model.login.LoginResponse
-import and5.abrar.e_commerce.model.login.PostLoginUserResponse
 import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrderResponseItem
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
+import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponseItem
 import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
 import and5.abrar.e_commerce.model.produkseller.GetUserResponse
 import and5.abrar.e_commerce.model.produkseller.PostSellerProduct
@@ -17,7 +17,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
-import java.io.File
 
 interface ApiService {
     @POST("auth/login")
@@ -39,16 +38,21 @@ interface ApiService {
     @Query("search") search : String
     ): Call<List<GetBuyerProductItem>>
 
+    @GET("buyer/product/{id}")
+    fun getdetailproduct(
+        @Path("id") id : Int
+    ): Call<GetBuyerProductResponseItem>
+
     @GET("notification")
     fun getNotif(
         @Header("access_token") token: String
     ): Call<List<GetNotifikasiItem>>
 
-    @PATCH("notification")
+    @PATCH("notification/{id}")
     fun patchNotif(
         @Header("access_token") token: String,
         @Path("id") id : Int
-    ): Call<List<GetNotifikasiItem>>
+    ): Call<GetNotifikasiItem>
 
     @GET("auth/user")
     fun getSellerData(
@@ -64,11 +68,15 @@ interface ApiService {
     fun register(@Body requestPost: RequestPost): Call<PostUserRegister>
 
     @POST("auth/register")
-    @FormUrlEncoded
+    @Multipart
     fun registeruser(
-        @Field("email") email: String,
-        @Field("full_name") full_name: String,
-        @Field("password") password: String
+        @Part("email") email: RequestBody,
+        @Part("full_name") full_name: RequestBody,
+        @Part("password") password: RequestBody,
+        @Part("phone_number") phone : RequestBody,
+        @Part("address") alamat : RequestBody,
+        @Part("city") city : RequestBody,
+        @Part image :MultipartBody.Part
     ): Call<PostUserRegister>
 
     @PUT("auth/user")
