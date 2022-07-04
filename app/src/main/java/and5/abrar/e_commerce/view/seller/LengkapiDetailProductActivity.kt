@@ -6,6 +6,7 @@ import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
 import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.view.LoginActivity
 import and5.abrar.e_commerce.view.adapter.AdapterProductSeller
+import and5.abrar.e_commerce.viewmodel.ViewModelHome
 import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
 import android.app.ProgressDialog
 import android.content.Intent
@@ -13,11 +14,9 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -44,11 +43,34 @@ class LengkapiDetailProductActivity : AppCompatActivity() {
         icon_foto.setImageURI(result)
         image = result!!
     }
+    private lateinit var arrayAdapter: ArrayAdapter<String>
+    private lateinit var postCategory : String
+    var categoryID = mutableListOf<Int>()
+    var categoryName = mutableListOf<String>()
+    var selectedName : MutableList<String?> = mutableListOf()
+    var selectedID : MutableList<Int> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lengkapi_detail_product)
         userManager = UserManager(this)
+        getCategory()
+        arrayAdapter = ArrayAdapter(this,android.R.layout.simple_dropdown_item_1line, categoryName)
+        select_kategori.setAdapter(arrayAdapter)
+        select_kategori.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
+        arrayAdapter.notifyDataSetChanged()
+        select_kategori.setOnItemClickListener{ adapterView, view,position,l ->
+            val selected : String? = arrayAdapter.getItem(position)
+            selectedName.add(arrayAdapter.getItem(position))
+            selectedID.add(categoryID[position])
+            categoryName.remove(selected)
+            categoryID.remove(categoryID[position])
+            val getID = selectedID.toString()
+            postCategory = getID.replace("[","").replace("]","")
+            Log.e("postcate", postCategory)
+            Log.e("slecid",selectedID.toString())
+        }
+
         btn_terbitkan.setOnClickListener {
             jualbarang()
         }
@@ -70,13 +92,16 @@ class LengkapiDetailProductActivity : AppCompatActivity() {
     }
 
     fun jualbarang(){
+        var categoryProduct : RequestBody =
+            postCategory.toRequestBody("text/plain".toMediaTypeOrNull())
         val namaProdcut : RequestBody =
             edt_namaprodut.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
         val hargaProduct : RequestBody =
             edt_hargaproduct.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
         val lokasi: RequestBody =
-            edtDeskripsiKegiatan.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-
+            edt_lokasi.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
+        val desc : RequestBody =
+            edt_deskripsi.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
         val contentResolver = this.applicationContext.contentResolver
         val type = contentResolver.getType(image)
         val tempFile = File.createTempFile("temp-", null, null)
@@ -87,6 +112,7 @@ class LengkapiDetailProductActivity : AppCompatActivity() {
         val requestBody: RequestBody = tempFile.asRequestBody(type?.toMediaType())
         val body = MultipartBody.Part.createFormData("image", tempFile.name, requestBody)
         val viewModelDataSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
+        viewModelDataSeller.jualproduct(userManager.fetchAuthToken().toString(),namaProdcut,desc,hargaProduct,categoryProduct,lokasi,body)
         startActivity(Intent(applicationContext, HomeActivity::class.java))
     }
 
@@ -99,5 +125,15 @@ class LengkapiDetailProductActivity : AppCompatActivity() {
             }
             .create()
             .show()
+    }
+    private fun getCategory(){
+        val viewModelSellerCategory = ViewModelProvider(this)[ViewModelProductSeller::class.java]
+        viewModelSellerCategory.sellerCategory.observe(this){ it ->
+            it.forEach{
+                categoryName.add(it.name)
+                categoryID.add(it.id)
+            }
+        }
+        viewModelSellerCategory.getSellerCategory()
     }
 }

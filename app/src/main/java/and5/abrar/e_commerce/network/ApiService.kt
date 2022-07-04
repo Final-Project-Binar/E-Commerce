@@ -1,5 +1,6 @@
 package and5.abrar.e_commerce.network
 
+import and5.abrar.e_commerce.model.category.GetCategorySellerItem
 import and5.abrar.e_commerce.model.login.LoginRequest
 import and5.abrar.e_commerce.model.login.LoginResponse
 import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
@@ -98,7 +99,11 @@ interface ApiService {
         @Part("description") desc : RequestBody,
         @Part("base_price") harga : RequestBody,
         @Part("category_ids") category: RequestBody,
-        @Part("location ") lokasi : RequestBody,
+        @Part("location") lokasi : RequestBody,
         @Part image :MultipartBody.Part
     ):Call<PostSellerProduct>
+
+    @GET("seller/category")
+    suspend fun GetCategory() : List<GetCategorySellerItem>
+
 }

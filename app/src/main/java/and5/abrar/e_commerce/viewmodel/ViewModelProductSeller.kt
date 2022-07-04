@@ -1,13 +1,17 @@
 package and5.abrar.e_commerce.viewmodel
 
+import and5.abrar.e_commerce.model.category.GetCategorySellerItem
 import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
 import and5.abrar.e_commerce.model.produkseller.GetUserResponse
 import and5.abrar.e_commerce.model.produkseller.PostSellerProduct
 import and5.abrar.e_commerce.network.ApiService
+import and5.abrar.e_commerce.repository.ProductRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -16,7 +20,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class ViewModelProductSeller @Inject constructor(api: ApiService) : ViewModel() {
+class ViewModelProductSeller @Inject constructor(private var productRepository: ProductRepository, api: ApiService) : ViewModel() {
     private val liveDataSellerProduct = MutableLiveData<List<GetDataProductSellerItem>>()
     val sellerProduct: LiveData<List<GetDataProductSellerItem>> = liveDataSellerProduct
 
@@ -25,6 +29,8 @@ class ViewModelProductSeller @Inject constructor(api: ApiService) : ViewModel() 
 
     private val livedataJualProduct = MutableLiveData<PostSellerProduct>()
     val jualproduct : LiveData<PostSellerProduct> = livedataJualProduct
+
+    var sellerCategory = MutableLiveData<List<GetCategorySellerItem>>()
 
     private val apiServices = api
 
@@ -51,7 +57,12 @@ class ViewModelProductSeller @Inject constructor(api: ApiService) : ViewModel() 
                 }
             })
     }
-
+    fun getSellerCategory(){
+        viewModelScope.launch {
+            val category = productRepository.getSellerCategory()
+            sellerCategory.value = category
+        }
+    }
     fun getAllSellerProduct(token: String) {
         apiServices.getProductSeller(token)
             .enqueue(object : Callback<List<GetDataProductSellerItem>> {

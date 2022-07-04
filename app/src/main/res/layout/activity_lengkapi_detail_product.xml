@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:hint="Harga Product"
             android:background="@drawable/custom_drawable"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             tools:ignore="HardcodedText,Autofill,LabelFor,TextFields" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -131,14 +131,14 @@
         app:layout_constraintTop_toBottomOf="@id/tv_kategori"
         tools:ignore="MissingConstraints">
 
-        <Spinner
+        <MultiAutoCompleteTextView
+            android:hint="Select Category"
             android:id="@+id/select_kategori"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:theme="@style/SpinnerTheme"
-            android:background="@drawable/custom_drawable"
-            android:inputType="text"
-            tools:ignore="HardcodedText,Autofill,LabelFor,TextFields" />
+            android:ems="10"
+            android:completionThreshold="1"
+            android:background="@drawable/custom_drawable"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -148,7 +148,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
-        android:text="Deskription"
+        android:text="Description"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="normal"
@@ -157,27 +157,62 @@
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edt_deskripsi"
+        android:id="@+id/deskripsi"
         android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_description"
+        tools:ignore="MissingConstraints">
+
+        <EditText
+            android:id="@+id/edt_deskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Deskripsi"
+            android:background="@drawable/custom_drawable"
+            android:inputType="text"
+            tools:ignore="HardcodedText,Autofill,LabelFor,TextFields" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_lokasi"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="top"
-        android:text="Jalan Yos Sudarso"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="15dp"
+        android:text="Location"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_description">
+        app:layout_constraintTop_toBottomOf="@+id/deskripsi"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtDeskripsiKegiatan"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lokasi"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_lokasi"
+        tools:ignore="MissingConstraints">
+
+        <EditText
+            android:id="@+id/edt_lokasi"
             android:layout_width="match_parent"
-            android:layout_height="104dp"
+            android:layout_height="wrap_content"
+            android:hint="Lokasi"
             android:background="@drawable/custom_drawable"
-            android:gravity="top"
             android:inputType="text"
-            android:padding="10dp"
-            android:textSize="14sp" />
+            tools:ignore="HardcodedText,Autofill,LabelFor,TextFields" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -192,7 +227,7 @@
         android:textSize="16sp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_deskripsi"
+        app:layout_constraintTop_toBottomOf="@+id/lokasi"
         tools:ignore="HardcodedText,MissingConstraints" />
 
 
