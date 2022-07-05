@@ -1,75 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--<androidx.cardview.widget.CardView-->
+<!--    android:id="@+id/cardProductSeller"-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_marginStart="10dp"-->
+<!--    android:layout_marginEnd="10dp"-->
+<!--    android:layout_marginTop="15dp"-->
+<!--    android:layout_marginBottom="15dp"-->
+<!--    app:cardCornerRadius="15dp"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content">-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_margin="10dp">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imageProductSeller"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="130dp"-->
+<!--            android:src="@drawable/jamtangan"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/tvJudul_product_seller"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            tools:ignore="ContentDescription,MissingConstraints" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvJudul_product_seller"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="start"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:text="Jam Tangan Casio"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textColor="@color/black"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/tvKategori_product_seller"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/imageProductSeller"-->
+<!--            tools:ignore="MissingConstraints" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvKategori_product_seller"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="start"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:text="Fashion"-->
+<!--            android:textSize="15sp"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/tvHarga_product_seller"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tvJudul_product_seller"-->
+<!--            tools:ignore="MissingConstraints,SmallSp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvHarga_product_seller"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="start"-->
+<!--            android:text="Rp. 150.000"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/black"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tvKategori_product_seller"-->
+<!--            tools:ignore="MissingConstraints" />-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--</androidx.cardview.widget.CardView>-->
+
 <androidx.cardview.widget.CardView
-    android:id="@+id/cardProductSeller"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginTop="15dp"
-    android:layout_marginBottom="15dp"
-    app:cardCornerRadius="15dp"
-    android:layout_width="wrap_content"
+android:id="@+id/cardProductSeller"
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_marginStart="10dp"
+android:layout_marginEnd="10dp"
+android:layout_marginTop="15dp"
+android:layout_marginBottom="15dp"
+app:cardCornerRadius="15dp"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp">
+    <ImageView
+        android:id="@+id/imageProductSeller"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/jamtangan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,MissingConstraints" />
 
-        <ImageView
-            android:id="@+id/imageProductSeller"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
-            android:src="@drawable/jamtangan"
-            app:layout_constraintBottom_toTopOf="@+id/tvJudul_product_seller"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription,MissingConstraints" />
+    <TextView
+        android:id="@+id/tvJudul_product_seller"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:text="Jam Tangan Casio"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvKategori_product_seller"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageProductSeller"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/tvJudul_product_seller"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:layout_marginTop="15dp"
-            android:text="Jam Tangan Casio"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/tvKategori_product_seller"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageProductSeller"
-            tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/tvKategori_product_seller"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="start"
+        android:text=""
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvHarga_product_seller"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageProductSeller"
+        app:layout_constraintTop_toBottomOf="@+id/tvJudul_product_seller"
+        tools:ignore="MissingConstraints,SmallSp" />
 
-        <TextView
-            android:id="@+id/tvKategori_product_seller"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:layout_marginTop="5dp"
-            android:text=""
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/tvHarga_product_seller"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvJudul_product_seller"
-            tools:ignore="MissingConstraints,SmallSp" />
+    <TextView
+        android:id="@+id/tvHarga_product_seller"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="start"
+        android:text="Rp. 150.000"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageProductSeller"
+        app:layout_constraintTop_toBottomOf="@+id/tvKategori_product_seller"
+        tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/tvHarga_product_seller"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:text="Rp. 150.000"
-            android:layout_marginTop="5dp"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvKategori_product_seller"
-            tools:ignore="MissingConstraints" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

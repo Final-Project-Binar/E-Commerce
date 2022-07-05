@@ -106,6 +106,7 @@
                 android:src="@drawable/ic_edit_"
                 android:padding="10sp"/>
             <TextView
+                android:id="@+id/goToLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Login"

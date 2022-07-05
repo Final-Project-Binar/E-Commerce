@@ -54,7 +54,7 @@
             android:layout_height="100dp">
 
             <ImageView
-                android:id="@+id/gambarProdukBuyer"
+                android:id="@+id/gambarProdukBuyerInfo"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_centerVertical="true"
@@ -71,7 +71,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:layout_toRightOf="@id/gambarProdukBuyer"
+                android:layout_toRightOf="@id/gambarProdukBuyerInfo"
                 android:text="Nama Pembeli"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/namapembeli"
                 android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/gambarProdukBuyer"
+                android:layout_toEndOf="@id/gambarProdukBuyerInfo"
                 android:text="Yuta"
                 android:textSize="20sp"
                 tools:ignore="HardcodedText" />

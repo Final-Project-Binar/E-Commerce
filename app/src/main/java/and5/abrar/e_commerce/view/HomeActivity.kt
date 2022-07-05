@@ -3,12 +3,14 @@ package and5.abrar.e_commerce.view
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
+import and5.abrar.e_commerce.view.adapter.AdapterBanner
 import and5.abrar.e_commerce.view.adapter.AdapterHome
 import and5.abrar.e_commerce.view.buyer.AddProductBuyerActivity
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
 import and5.abrar.e_commerce.view.seller.AddProductSellerActivity
 import and5.abrar.e_commerce.view.seller.DaftarJualActivity
 import and5.abrar.e_commerce.view.seller.LengkapiDetailProductActivity
+import and5.abrar.e_commerce.viewmodel.ViewModelBanner
 import and5.abrar.e_commerce.viewmodel.ViewModelHome
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +19,7 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_home.*
@@ -25,6 +28,8 @@ import kotlinx.android.synthetic.main.activity_home.*
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     private lateinit var  adapterHome: AdapterHome
+    private lateinit var adapterBanner: AdapterBanner
+    lateinit var viewPager: ViewPager
     private lateinit var  userManager: UserManager
 
     private val bottomNavigasi = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -69,6 +74,7 @@ class HomeActivity : AppCompatActivity() {
         ctgyhome()
         ctgyelektronik()
         ctgykendaraan()
+        bannerSeller()
     }
 
     fun iniviewmodel(){
@@ -203,4 +209,18 @@ class HomeActivity : AppCompatActivity() {
                 rv_homeProduk.layoutManager=GridLayoutManager(this,2)
                 rv_homeProduk.adapter=adapterHome
             }
+
+
+    private fun bannerSeller(){
+        viewPager = findViewById(R.id.imageView)
+
+        val viewModelBanner = ViewModelProvider(this)[ViewModelBanner::class.java]
+        viewModelBanner.sellerBanner.observe(this){
+            adapterBanner = AdapterBanner(this, it)
+            imageView.adapter = adapterBanner
+        }
+        
+        viewModelBanner.getBanner()
+
+    }
 }

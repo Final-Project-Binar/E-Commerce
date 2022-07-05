@@ -88,6 +88,7 @@ class AkunSayaActivity : AppCompatActivity() {
         }
         keluar()
         ubahAkun()
+        loginAkun()
 
     }
 
@@ -120,6 +121,14 @@ class AkunSayaActivity : AppCompatActivity() {
                 .show()
         }
     }
+
+
+    private fun loginAkun(){
+        goToLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+    }
+
 
     private fun ubahAkun(){
         ubah_akun.setOnClickListener {

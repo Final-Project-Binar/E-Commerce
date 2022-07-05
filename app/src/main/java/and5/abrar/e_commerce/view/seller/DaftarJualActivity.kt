@@ -93,8 +93,11 @@ class DaftarJualActivity : AppCompatActivity() {
 
         viewModelProductSeller.getAllSellerProduct(token = userManager.fetchAuthToken().toString())
 
-        adapter = AdapterProductSeller()
-        rvProductSeller.layoutManager = GridLayoutManager(this, 2)
+        adapter = AdapterProductSeller(){
+
+        }
+//        rvProductSeller.layoutManager = GridLayoutManager(this, 2)
+        rvProductSeller.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rvProductSeller.adapter = adapter
 
         viewModelProductSeller.sellerProduct.observe(this){

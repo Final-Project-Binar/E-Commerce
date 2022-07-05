@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardNotifikasiBuyer"
+    android:id="@+id/cardInfoPenawaran"
     android:layout_margin="20sp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -12,6 +12,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
+        android:id="@+id/clickable_infoPenawaran"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -108,8 +109,6 @@
             android:background="@drawable/login_btn_bg"
             android:text="Tolak"
             android:textSize="16sp"
-            android:visibility="invisible"
-
             tools:ignore="HardcodedText,MissingConstraints" />
 
         <androidx.appcompat.widget.AppCompatButton

@@ -1,5 +1,6 @@
 package and5.abrar.e_commerce.network
 
+import and5.abrar.e_commerce.model.banner.GetBannerItem
 import and5.abrar.e_commerce.model.category.GetCategorySellerItem
 import and5.abrar.e_commerce.model.login.LoginRequest
 import and5.abrar.e_commerce.model.login.LoginResponse
@@ -111,5 +112,9 @@ interface ApiService {
     fun getOrderSeller(
         @Header("access_token") token : String
     ) : Call<List<GetOrderSellerItem>>
+
+    @GET("seller/banner")
+    fun getBannerItem() : Call<List<GetBannerItem>>
+
 
 }

@@ -72,6 +72,12 @@
             android:exported="true" >
 
         </activity>
+
+        <activity
+            android:name=".view.seller.InfoPenawaranActivity"
+            android:exported="true" >
+
+        </activity>
     </application>
 
 </manifest>
