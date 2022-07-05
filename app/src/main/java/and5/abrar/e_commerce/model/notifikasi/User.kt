@@ -1,8 +1,7 @@
-package and5.abrar.e_commerce.model.produkbuyer
+package and5.abrar.e_commerce.model.notifikasi
 
 
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
 data class User(
     @SerializedName("address")

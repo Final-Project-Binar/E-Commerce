@@ -1,5 +1,6 @@
 package and5.abrar.e_commerce.model.orderbuyer
 
+
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
@@ -17,5 +18,11 @@ data class PostBuyerOrderResponseItem(
     @SerializedName("status")
     val status: String,
     @SerializedName("updated_at")
-    val updatedAt: String
+    val updatedAt: String,
+    @SerializedName("image_product")
+    val image : String,
+    @SerializedName("base_price")
+    val base_price : Int,
+    @SerializedName("product_name")
+    val product_name : String
 ): Parcelable

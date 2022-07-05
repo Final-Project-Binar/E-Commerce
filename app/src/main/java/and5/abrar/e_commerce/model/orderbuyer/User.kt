@@ -1,9 +1,11 @@
-package and5.abrar.e_commerce.model.produkbuyer
+package and5.abrar.e_commerce.model.orderbuyer
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class User(
     @SerializedName("address")
     val address: String,
@@ -15,8 +17,6 @@ data class User(
     val fullName: String,
     @SerializedName("id")
     val id: Int,
-    @SerializedName("image_url")
-    val imageUrl: String,
     @SerializedName("phone_number")
     val phoneNumber: String
-)
+): Parcelable

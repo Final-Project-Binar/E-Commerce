@@ -5,7 +5,6 @@ import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
-import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponseItem
 import and5.abrar.e_commerce.room.Diminati
 import and5.abrar.e_commerce.room.DiminatiDatabase
 import and5.abrar.e_commerce.view.HomeActivity
@@ -16,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
@@ -75,8 +73,14 @@ class AddProductBuyerActivity : AppCompatActivity() {
             if (dataProductnotif != null){
                 addProductBuyer_btnTertarik.text = "Menunggu Respon Penjual"
             }else if(dataProduct != null) {
+
                 addProductBuyer_btnTertarik.setOnClickListener {
-                    iniDialogTawarHarga()
+                    if(userManager.fetchAuthToken().toString() != null){
+                        iniDialogTawarHarga()
+                    }else{
+                        Toast.makeText(this, "Anda Belom Login", Toast.LENGTH_SHORT).show()
+                    }
+
                 }
             }
         }

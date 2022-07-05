@@ -1,6 +1,7 @@
 package and5.abrar.e_commerce.viewmodel
 
 import and5.abrar.e_commerce.model.category.GetCategorySellerItem
+import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
 import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
 import and5.abrar.e_commerce.model.produkseller.GetUserResponse
 import and5.abrar.e_commerce.model.produkseller.PostSellerProduct
@@ -30,10 +31,30 @@ class ViewModelProductSeller @Inject constructor(private var productRepository: 
     private val livedataJualProduct = MutableLiveData<PostSellerProduct>()
     val jualproduct : LiveData<PostSellerProduct> = livedataJualProduct
 
+    private val liveDiminati = MutableLiveData<List<GetOrderSellerItem>>()
+    val diminati : LiveData<List<GetOrderSellerItem>> = liveDiminati
+
     var sellerCategory = MutableLiveData<List<GetCategorySellerItem>>()
 
     private val apiServices = api
 
+    fun getOrder(token: String){
+        apiServices.getOrderSeller(token).enqueue(object : Callback<List<GetOrderSellerItem>>{
+            override fun onResponse(
+                call: Call<List<GetOrderSellerItem>>,
+                response: Response<List<GetOrderSellerItem>>
+            ) {
+                if (response.isSuccessful) {
+                    liveDiminati.value = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<List<GetOrderSellerItem>>, t: Throwable) {
+                  //
+            }
+
+        })
+    }
     fun jualproduct(
         token :String,
         nama : RequestBody,

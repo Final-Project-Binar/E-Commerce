@@ -2,7 +2,6 @@ package and5.abrar.e_commerce.viewmodel
 
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrderResponseItem
-import and5.abrar.e_commerce.network.ApiClient
 import and5.abrar.e_commerce.network.ApiService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

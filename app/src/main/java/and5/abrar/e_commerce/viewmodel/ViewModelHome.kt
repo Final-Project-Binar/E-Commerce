@@ -1,11 +1,8 @@
 package and5.abrar.e_commerce.viewmodel
 
-import and5.abrar.e_commerce.model.category.GetCategorySellerItem
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponseItem
-import and5.abrar.e_commerce.model.produkseller.Category
 import and5.abrar.e_commerce.network.ApiService
-import and5.abrar.e_commerce.repository.ProductRepository
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay

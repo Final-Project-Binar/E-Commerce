@@ -61,17 +61,16 @@ class DaftarJualActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daftar_jual_seller)
-
-
         userManager = UserManager(this)
         val botnav = findViewById<BottomNavigationView>(R.id.navigation)
         botnav.setOnNavigationItemSelectedListener(bottomNavigasi)
         val viewModelSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
         viewModelSeller.getSeller(userManager.fetchAuthToken().toString())
-
         initView()
         editSeller()
-
+        cardView_diminatiSeller.setOnClickListener {
+            startActivity(Intent(this, DaftarJualDiminatiSellerActivity::class.java))
+        }
     }
 
 

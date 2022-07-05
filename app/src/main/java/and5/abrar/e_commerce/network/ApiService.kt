@@ -6,6 +6,7 @@ import and5.abrar.e_commerce.model.login.LoginResponse
 import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrderResponseItem
+import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponseItem
 import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
@@ -105,5 +106,10 @@ interface ApiService {
 
     @GET("seller/category")
     suspend fun GetCategory() : List<GetCategorySellerItem>
+
+    @GET("seller/order")
+    fun getOrderSeller(
+        @Header("access_token") token : String
+    ) : Call<List<GetOrderSellerItem>>
 
 }

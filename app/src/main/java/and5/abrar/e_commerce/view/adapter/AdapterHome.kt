@@ -4,12 +4,9 @@ import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.model.banner.GetBannerItem
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_home.view.*

@@ -5,14 +5,12 @@ import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isGone
-import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_notifikasi_buyer.view.*
 
-class AdapterNotifikasiBuyer( private var dataNotif : List<GetNotifikasiItem>,
-    private  var onClick : (GetNotifikasiItem)->Unit):RecyclerView.Adapter<AdapterNotifikasiBuyer.ViewHolder>() {
+class AdapterNotifikasiBuyer(private var dataNotif : List<GetNotifikasiItem>,
+                             private  var onClick : (GetNotifikasiItem)->Unit):RecyclerView.Adapter<AdapterNotifikasiBuyer.ViewHolder>() {
     class ViewHolder(itemView : View):RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,7 +34,9 @@ class AdapterNotifikasiBuyer( private var dataNotif : List<GetNotifikasiItem>,
                 }else if (read == true){
                     notikasiBuyer_alert.setImageResource(R.drawable.ic_baseline_circle_ijo)
                 }
+                notifikasiBuyer_namaProduk.text = productName
                 notikasiBuyer_statusproduk.text = status
+                notifikasiBuyer_harga.text =  basePrice
                 notifikasiBuyer_tawar.text = "Ditawar Rp $bidPrice"
                 notikasiBuyer_waktu.text = transactionDate
 

@@ -6,11 +6,8 @@ import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.network.ApiClient
 import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.view.HomeActivity
-import and5.abrar.e_commerce.view.ProfileActivity
 import and5.abrar.e_commerce.view.adapter.AdapterNotifikasiBuyer
-import and5.abrar.e_commerce.view.seller.AddProductSellerActivity
 import and5.abrar.e_commerce.view.seller.DaftarJualActivity
-import and5.abrar.e_commerce.view.seller.InfoPenawaranActivity
 import and5.abrar.e_commerce.view.seller.LengkapiDetailProductActivity
 import android.content.Intent
 import android.os.Bundle

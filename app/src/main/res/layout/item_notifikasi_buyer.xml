@@ -58,16 +58,16 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/gambarProdukBuyer"
-            android:layout_below="@id/notikasiBuyer_statusproduk"
             android:id="@+id/notifikasiBuyer_namaProduk"
-            android:text="Jam Tangan Casio"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/notikasiBuyer_statusproduk"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/gambarProdukBuyer"
+            android:text="Jam Tangan Casio"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -97,14 +97,14 @@
             tools:ignore="HardcodedText,RtlHardcoded" />
 
         <TextView
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/gambarProdukBuyer"
             android:id="@+id/notifikasiBuyer_dialihkan"
-            android:layout_below="@id/notifikasiBuyer_tawar"
-            android:text="Penawaran Produk"
-            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/notifikasiBuyer_tawar"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/gambarProdukBuyer"
+            android:text="Penawaran Produk"
+            android:textSize="20sp"
             tools:ignore="HardcodedText" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
