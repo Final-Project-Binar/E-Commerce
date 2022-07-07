@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_productdiminati.view.*
 
-class AdapterDiminati():RecyclerView.Adapter<AdapterDiminati.ViewHolder>() {
+class AdapterDiminati(private var onClick : (GetOrderSellerItem)->Unit):RecyclerView.Adapter<AdapterDiminati.ViewHolder>() {
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView)
 
     private var listDiminati:List<GetOrderSellerItem>? = null
@@ -26,25 +26,16 @@ class AdapterDiminati():RecyclerView.Adapter<AdapterDiminati.ViewHolder>() {
             .into(holder.itemView.diminati_image)
         with(holder.itemView) {
             with(listDiminati!![position]) {
-            diminati_status.text = status
-                if (productName != null){
-                    diminati_product.text = productName.toString()
-                }else{
-                    diminati_product.text = product.name
-                }
-            if (basePrice != null){
+                diminati_status.text = status
+                diminati_product.text = productName
                 diminati_harga.text = basePrice.toString()
-            }else{
-                diminati_harga.text = product.basePrice.toString()
+                diminati_tawar.text = price.toString()
+                diminati_tanggal.text = updatedAt
             }
-                if (price != null){
-                    diminati_tawar.text = price.toString()
-                }else{
-                    diminati_tawar.text = ""
-                }
+        }
 
-            diminati_tanggal.text = updatedAt
-            }
+        holder.itemView.keInformasiPenawar.setOnClickListener {
+            onClick(listDiminati!![position])
         }
     }
 

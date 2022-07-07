@@ -1,39 +1,41 @@
 package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R
-import and5.abrar.e_commerce.model.orderseller.GetSellerOrderProductIdItem
-import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
-import android.annotation.SuppressLint
+import and5.abrar.e_commerce.model.ordersellerid.GetSellerOrderId
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_info_penawaran.view.*
-import kotlinx.android.synthetic.main.item_infopenawar.view.*
-import kotlinx.android.synthetic.main.item_product_home.view.*
+import kotlinx.android.synthetic.main.info_penawar_info.view.*
 
-class AdapterOrderSeller(private var onClick : (GetSellerOrderProductIdItem)->Unit): RecyclerView.Adapter<AdapterOrderSeller.ViewHolder>() {
-    class ViewHolder(itemView : View): RecyclerView.ViewHolder(itemView)
-    private var dataProductOrderSeller : List<GetSellerOrderProductIdItem>? = null
+class AdapterOrderSeller(private var onClick : (GetSellerOrderId)->Unit): RecyclerView.Adapter<AdapterOrderSeller.ViewHolder>() {
 
-    fun setProductOrderSeller(produk : List<GetSellerOrderProductIdItem>){
+    private var dataProductOrderSeller : List<GetSellerOrderId>? = null
+
+    fun setProductOrderSeller(produk : List<GetSellerOrderId>){
         this.dataProductOrderSeller = produk
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val viewitem = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_infopenawar,parent, false)
-        return ViewHolder(viewitem)
+    class ViewHolder(itemView : View): RecyclerView.ViewHolder(itemView) {
+
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.infopenawar_namaProduk.text = dataProductOrderSeller!![position].product.name
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.info_penawar_info, parent, false)
+        return ViewHolder(itemView)
+    }
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
-            .load(dataProductOrderSeller!![position].product.imageUrl)
-            .into(holder.itemView.gambarInfoPenawarProdukBuyer)
+            .load(dataProductOrderSeller!![position].imageProduct)
+            .into(holder.itemView.imageViewPenawaran)
+
+        with(holder.itemView) {
+            with(dataProductOrderSeller!![position]) {
+                textJudulPenawaran.text = productName
+            }
+        }
     }
 
     override fun getItemCount(): Int {

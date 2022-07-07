@@ -79,7 +79,11 @@ class DaftarJualDiminatiSellerActivity : AppCompatActivity() {
 
         viewModelProductSeller.getOrder(token = userManager.fetchAuthToken().toString())
 
-        adapter = AdapterDiminati()
+        adapter = AdapterDiminati{
+                val pindah = Intent(applicationContext,InfoPenawaranActivity::class.java)
+                pindah.putExtra("detailnotif", it)
+                startActivity(pindah)
+        }
         rv_diminati.layoutManager = LinearLayoutManager(this)
         rv_diminati.adapter = adapter
 

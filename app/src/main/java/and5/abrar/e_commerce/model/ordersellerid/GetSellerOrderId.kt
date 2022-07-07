@@ -1,15 +1,14 @@
-package and5.abrar.e_commerce.model.orderseller
+package and5.abrar.e_commerce.model.ordersellerid
 
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
-import java.io.Serializable
 
 @Parcelize
-data class GetOrderSellerItem(
+data class GetSellerOrderId(
     @SerializedName("base_price")
-    val basePrice: Int?,
+    val basePrice: String,
     @SerializedName("buyer_id")
     val buyerId: Int,
     @SerializedName("createdAt")
@@ -19,7 +18,7 @@ data class GetOrderSellerItem(
     @SerializedName("image_product")
     val imageProduct: String?,
     @SerializedName("price")
-    val price: Int?,
+    val price: Int,
     @SerializedName("Product")
     val product: Product,
     @SerializedName("product_id")
@@ -33,5 +32,5 @@ data class GetOrderSellerItem(
     @SerializedName("updatedAt")
     val updatedAt: String,
     @SerializedName("User")
-    val user: User
-):Parcelable
+    val user: UserX
+) : Parcelable

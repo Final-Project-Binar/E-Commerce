@@ -33,26 +33,6 @@ class AdapterProductSeller(private  var onClick : (GetDataProductSellerItem)->Un
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.tvJudul_product_seller.text = dataProductSeller!![position].name
         holder.itemView.tvKategori_product_seller.text = dataProductSeller!![position].location
-//        holder.itemView.tvKategori_product_seller.text = dataProductSeller!![position].categories.name
-
-//        val category = dataProductSeller!![position].categories
-//        holder.itemView.tvKategori_product_seller.text = "masih kosong"
-//        if(category.isNotEmpty()){
-//            for (i in category.indices){
-//                if(category.lastIndex == 0){
-//                    holder.itemView.tvKategori_product_seller.text = category[i].name
-//                    break
-//                }
-//                if (i==0){
-//                    holder.itemView.tvKategori_product_seller.text = category[i].name + ", "
-//                }else if (i != category.lastIndex && i>0){
-//                    holder.itemView.tvKategori_product_seller.text.toString() + category[i].name + ", "
-//                }else {
-//                    holder.itemView.tvKategori_product_seller.text.toString() + category[i].name
-//                }
-//            }
-//        }
-
         holder.itemView.tvHarga_product_seller.text = "Rp. ${dataProductSeller!![position].basePrice.toString()}"
         Glide.with(holder.itemView.context).load(dataProductSeller!![position].imageUrl).into(holder.itemView.imageProductSeller)
 

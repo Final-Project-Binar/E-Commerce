@@ -14,25 +14,6 @@ import java.util.*
 
 class AdapterBanner(val context: Context, private  var bannerItem: List<GetBannerItem>) :  PagerAdapter() {
 
-    //    class ViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView) {
-//
-//    }
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.image_slider_item, parent, false)
-//        return ViewHolder(itemView)
-//    }
-//
-//    @SuppressLint("SetTextI18n")
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//
-//        Glide.with(holder.itemView.context).load(bannerItem[position].imageUrl).into(holder.itemView.findViewById(R.id.idIVImage))
-//
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return bannerItem.size
-//    }
     override fun getCount(): Int {
         return bannerItem.size
     }
@@ -57,11 +38,5 @@ class AdapterBanner(val context: Context, private  var bannerItem: List<GetBanne
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as RelativeLayout)
     }
-
-
-
-
-
-
 
 }
