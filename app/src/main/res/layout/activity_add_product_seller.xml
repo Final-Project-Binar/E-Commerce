@@ -21,7 +21,7 @@
                 android:id="@+id/add_gambar"
                 android:layout_width="match_parent"
                 android:layout_height="360dp"
-                android:background="@drawable/jamtangan"
+                android:src="@drawable/jamtangan"
                 tools:ignore="ContentDescription,MissingConstraints"/>
 
             <ImageView
@@ -120,6 +120,7 @@
                                 android:textSize="14sp" />
 
                             <TextView
+                                android:id="@+id/seller_kota"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/TV_nama"

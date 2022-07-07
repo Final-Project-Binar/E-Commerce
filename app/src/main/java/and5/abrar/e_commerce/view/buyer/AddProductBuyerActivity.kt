@@ -5,8 +5,6 @@ import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
-import and5.abrar.e_commerce.room.Diminati
-import and5.abrar.e_commerce.room.DiminatiDatabase
 import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.viewmodel.BuyerOrderViewModel
 import android.annotation.SuppressLint
@@ -25,7 +23,6 @@ import kotlinx.coroutines.async
 
 @AndroidEntryPoint
 class AddProductBuyerActivity : AppCompatActivity() {
-    private var diminatiDb: DiminatiDatabase? = null
     private lateinit var userManager: UserManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -133,26 +130,6 @@ class AddProductBuyerActivity : AppCompatActivity() {
             if (edtTawar.toString().isNotEmpty()) {
                 val buyerOrderViewModel = ViewModelProvider(this)[BuyerOrderViewModel::class.java]
                     buyerOrderViewModel.postBuyerOrder(userManager.fetchAuthToken().toString(), PostBuyerOrder(productId!!, edtTawar))
-                for (i in detailBarang.categories.indices) {
-                    if (detailBarang.categories.lastIndex == 0) {
-                        GlobalScope.async {
-                            diminatiDb?.diminatiDao()?.addDiminati(
-                                Diminati(
-                                    detailBarang.id,
-                                    detailBarang.imageUrl,
-                                    detailBarang.name,
-                                    detailBarang.categories[i].name,
-                                    detailBarang.basePrice.toString(),
-                                    edtTawar.toString(),
-                                    detailBarang.description,
-                                    detailBarang.status,
-                                    detailBarang.updatedAt
-                                )
-                            )
-                        }
-                        break
-                    }
-                }
                 Toast.makeText(this, "Tawaran sudah dikirim", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }

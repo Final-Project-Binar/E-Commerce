@@ -53,7 +53,12 @@ class LoginActivity : AppCompatActivity() {
                 ) {
                     val loginResponse = response.body()
                     if (response.isSuccessful) {
-                        userManager.saveAuthToken(token = loginResponse!!.authToken)
+                        userManager.saveAuthToken(
+                            token = loginResponse!!.authToken,
+                            loginResponse.user.fullName,
+                            loginResponse.user.imageUrl.toString(),
+                            loginResponse.user.city
+                        )
                         GlobalScope.launch {
                             userManager.setBoolean(true)
                         }

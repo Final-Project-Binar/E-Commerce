@@ -104,7 +104,6 @@ class AkunSayaActivity : AppCompatActivity() {
                     GlobalScope.launch {
                         dataUserManager.setBoolean(false)
                         dataUserManager.logout()
-                        dataUserManager.clearToken()
                         startActivity(Intent(this@AkunSayaActivity, HomeActivity::class.java))
                         finish()
                     }

@@ -19,12 +19,8 @@ data class Diminati(
     val category : String,
     @ColumnInfo(name = "harga")
     val harga : String,
-    @ColumnInfo(name = "harga tawar")
-    val tawar : String,
     @ColumnInfo(name = "deskripsi")
     val deskripsi : String,
-    @ColumnInfo(name = "status")
-    val status : String,
-    @ColumnInfo(name = "tanggal")
-    val tanggal : String
+    @ColumnInfo(name = "lokasi")
+    val lokasi : String
 ):Parcelable
