@@ -19,11 +19,15 @@
         android:textSize="20sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/notifikasiBuyer_welcome"
-        android:layout_margin="20dp"
         android:id="@+id/rv_notifikasiBuyer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/navigation"
+        android:layout_below="@id/notifikasiBuyer_welcome"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"

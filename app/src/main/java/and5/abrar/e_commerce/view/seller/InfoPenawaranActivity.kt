@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
@@ -38,6 +39,9 @@ import okhttp3.RequestBody.Companion.toRequestBody
 class InfoPenawaranActivity : AppCompatActivity() {
     private lateinit var userManager: UserManager
     private lateinit var adapterInfo : AdapterOrderSeller
+    var radioGroup : RadioGroup? = null
+    lateinit var radioButton: RadioButton
+//    private lateinit var button:
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +88,7 @@ class InfoPenawaranActivity : AppCompatActivity() {
 
 
                 if (it.status == "pending") {
-                    val accepted : RequestBody = "accepted".toRequestBody("accepted".toMediaTypeOrNull())
+                    val accepted : RequestBody = "terima".toRequestBody("terima".toMediaTypeOrNull())
                     val declined : RequestBody = "declined".toRequestBody("declined".toMediaTypeOrNull())
                     btn_InfoPenawarTerima.setOnClickListener {
                         viewModelNotifikasiId.patchInfoPenawar(
@@ -103,43 +107,54 @@ class InfoPenawaranActivity : AppCompatActivity() {
                     }
 
                     // ubah status
-                } else if (it.status == "accepted" || it.status == "declined"){
-//                    btn_InfoPenawarTolak.setOnClickListener{
-//                    val alertA = LayoutInflater.from(this).inflate(R.layout.custom_dialog_seller_28, null, false)
-//                        val alertB = AlertDialog.Builder(this)
-//                            .setView(alertA)
-//                            .create()
-//                            .show()
-//
-//                        if (view is RadioButton) {
-//                            // Is the button now checked?
-//                            val checked = (view as RadioButton).isChecked
-//
-//                            // Check which radio button was clicked
-//                            when (view.getId()) {
-//                                R.id.berhasil_terjual ->
-//                                    if (checked) {
-//                                        alertA.btn_kirim.setOnClickListener {
-//                                            viewModelNotifikasiId.patchInfoPenawar(
-//                                                userManager.fetchAuthToken().toString(),
-//                                                detailInfo.id,
-//                                                berhasilTerjual
-//                                            )
-//                                        }
-//                                    }
-//                                R.id.batalkan_transaksi ->
-//                                    if (checked) {
-//                                        alertA.btn_kirim.setOnClickListener {
-//                                            viewModelNotifikasiId.patchInfoPenawar(
-//                                                userManager.fetchAuthToken().toString(),
-//                                                detailInfo.id,
-//                                                batalkanTransaksi
-//                                            )
-//                                        }
-//                                    }
+                } else if (it.status == "terima" || it.status == "declined"){
+                    btn_InfoPenawarTolak.setOnClickListener{
+
+                    val alertA = LayoutInflater.from(this).inflate(R.layout.custom_dialog_seller_28, null, false)
+                        val alertB = AlertDialog.Builder(this)
+                            .setView(alertA)
+                            .create()
+                            .show()
+
+                        if (view is RadioButton) {
+                            // Is the button now checked?
+                            val checked = (view as RadioButton).isChecked
+                            radioGroup = findViewById(R.id.radioGroup)
+
+                            // Check which radio button was clicked
+
+//                            btn_kirim.setOnClickListener {
+
+                                when (view.getId()) {
+                                    R.id.berhasil_terjual ->
+                                        if (checked) {
+                                        btn_kirim.setOnClickListener {
+                                            val accepted : RequestBody = "accepted".toRequestBody("accepted".toMediaTypeOrNull())
+                                            val declined : RequestBody = "declined".toRequestBody("declined".toMediaTypeOrNull())
+                                            viewModelNotifikasiId.patchInfoPenawar(
+                                                userManager.fetchAuthToken().toString(),
+                                                detailInfo.id,
+                                                accepted
+                                            )
+                                        }
+                                        }
+                                    R.id.batalkan_transaksi ->
+                                        if (checked) {
+                                        btn_kirim.setOnClickListener {
+                                            val accepted : RequestBody = "accepted".toRequestBody("accepted".toMediaTypeOrNull())
+                                            val declined : RequestBody = "declined".toRequestBody("declined".toMediaTypeOrNull())
+                                            viewModelNotifikasiId.patchInfoPenawar(
+                                                userManager.fetchAuthToken().toString(),
+                                                detailInfo.id,
+                                                declined
+                                            )
+                                        }
+                                        }
+                                }
 //                            }
-//                        }
-//                    }
+                        }
+
+                    }
 
                 }
 
