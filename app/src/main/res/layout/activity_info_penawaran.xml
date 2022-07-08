@@ -26,8 +26,8 @@
 
             <ImageView
                 android:id="@+id/imageViewInfoPenawaran"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/custom_drawable"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -37,26 +37,28 @@
 
             <TextView
                 android:id="@+id/buyerName_infoPenawar"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="20dp"
                 android:text="name buyer"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 app:layout_constraintBottom_toTopOf="@+id/location_infoPenawar"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewInfoPenawaran"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/location_infoPenawar"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="20dp"
                 android:text="location buyer"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewInfoPenawaran"
                 app:layout_constraintTop_toBottomOf="@+id/buyerName_infoPenawar"
                 tools:ignore="MissingConstraints" />
@@ -66,12 +68,27 @@
     </androidx.cardview.widget.CardView>
 
 
+    <TextView
+        android:id="@+id/textDaftarProdukmu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/cardView"
+        android:text="Daftar Produkmu Yang Ditawar" />
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardInfoPenawaran"
-        android:layout_margin="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_width="match_parent"
-        app:cardCornerRadius="10dp"
-        android:layout_below="@+id/cardView"
+        android:layout_below="@+id/textDaftarProdukmu"
         android:layout_height="wrap_content"
         app:cardElevation="10dp"
         app:cardMaxElevation="20dp">
@@ -86,8 +103,8 @@
                 android:id="@+id/gambarInfoPenawarProdukBuyer"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginTop="40dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="35dp"
                 android:src="@drawable/ic_launcher_background"
                 tools:ignore="ContentDescription" />
 
@@ -106,9 +123,9 @@
                 android:id="@+id/infopenawar_waktu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
-                android:layout_toEndOf="@id/infopenawar_statusproduk"
+                android:layout_marginEnd="15dp"
                 android:text="20 april,14:04"
                 android:textSize="10sp"
                 tools:ignore="HardcodedText" />

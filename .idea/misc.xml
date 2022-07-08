@@ -16,6 +16,7 @@
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/ic_home.xml" value="0.1815" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/ic_person_24.xml" value="0.1815" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/ic_settings.xml" value="0.2115" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/ic_twotone_add_box_24.xml" value="0.2115" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/drawable/selector.xml" value="0.2115" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_add_product_buyer.xml" value="0.20416666666666666" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_add_product_seller.xml" value="0.20416666666666666" />
@@ -41,6 +42,7 @@
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/item_notifikasi_buyer.xml" value="0.25" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/item_notifikasi_seller.xml" value="0.20416666666666666" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/item_product_home.xml" value="0.5" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/item_product_seller.xml" value="0.20364583333333333" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/item_productdiminati.xml" value="0.20416666666666666" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/drawable/ic_add_circle.xml" value="0.1" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/drawable/ic_baseline_circle_24.xml" value="0.1" />

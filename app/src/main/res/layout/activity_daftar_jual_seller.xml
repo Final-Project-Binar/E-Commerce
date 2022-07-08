@@ -190,13 +190,27 @@
 
     </HorizontalScrollView>
 
+    <ImageView
+        android:id="@+id/image_tambah_produk"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/scroolviewe"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/custom_drawable"
+        android:src="@drawable/ic_baseline_add_24"
+        tools:ignore="ContentDescription" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProductSeller"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/scroolviewe"
+        android:layout_below="@+id/image_tambah_produk"
         android:layout_marginStart="10sp"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="15sp"
         android:layout_marginEnd="10sp"
         android:layout_marginBottom="70dp">
 

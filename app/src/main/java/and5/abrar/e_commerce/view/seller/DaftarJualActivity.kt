@@ -68,6 +68,7 @@ class DaftarJualActivity : AppCompatActivity() {
         viewModelSeller.getSeller(userManager.fetchAuthToken().toString())
         initView()
         editSeller()
+        addProduct()
         cardView_diminatiSeller.setOnClickListener {
             startActivity(Intent(this, DaftarJualDiminatiSellerActivity::class.java))
         }
@@ -114,5 +115,12 @@ class DaftarJualActivity : AppCompatActivity() {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
+
+    private fun addProduct(){
+        image_tambah_produk.setOnClickListener {
+            startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
+        }
+    }
+
 
 }
