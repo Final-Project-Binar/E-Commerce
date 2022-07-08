@@ -78,6 +78,7 @@ class AkunSayaActivity : AppCompatActivity() {
         userManager.ceklogin.asLiveData().observe(this){
             if (it == true){
                 akunsaya_login.isInvisible = true
+                keluar()
             }else{
                 akunsaya_btnkeluar.isInvisible = true
                 akunsaya_login.isVisible = true
@@ -86,15 +87,13 @@ class AkunSayaActivity : AppCompatActivity() {
                 }
             }
         }
-        keluar()
         ubahAkun()
-        loginAkun()
-
     }
 
     private fun keluar(){
         val dataUserManager = and5.abrar.e_commerce.datastore.UserManager(this)
         akunsaya_btnkeluar.setOnClickListener {
+
             AlertDialog.Builder(this)
                 .setTitle("KONFIRMASI LOGOUT")
                 .setMessage("Anda Yakin Ingin Logout ?")
@@ -104,6 +103,7 @@ class AkunSayaActivity : AppCompatActivity() {
                     GlobalScope.launch {
                         dataUserManager.setBoolean(false)
                         dataUserManager.logout()
+                        dataUserManager.clearPreview()
                         startActivity(Intent(this@AkunSayaActivity, HomeActivity::class.java))
                         finish()
                     }
@@ -120,14 +120,6 @@ class AkunSayaActivity : AppCompatActivity() {
                 .show()
         }
     }
-
-
-    private fun loginAkun(){
-        goToLogin.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-        }
-    }
-
 
     private fun ubahAkun(){
         ubah_akun.setOnClickListener {

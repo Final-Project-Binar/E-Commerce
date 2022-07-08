@@ -49,12 +49,9 @@ class UserManager(context : Context) {
     }
 
 
-    fun saveAuthToken(token: String,username : String,image: String,kota:String) {
+    fun saveAuthToken(token: String) {
         val editor = prefs.edit()
         editor.putString(USER_TOKEN, token)
-        editor.putString(USERNAME, username)
-        editor.putString(IMAGEUSER,image)
-        editor.putString(KOTA, kota)
         .apply()
     }
 
