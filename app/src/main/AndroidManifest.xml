@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".di.MyApplication"
         android:allowBackup="true"
@@ -17,8 +18,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ChangePasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,18 +31,14 @@
         </activity>
         <activity
             android:name=".view.HomeActivity"
-            android:exported="true" >
-
-        </activity>
-        <activity android:name=".view.buyer.AddProductBuyerActivity"/>
+            android:exported="true"></activity>
+        <activity android:name=".view.buyer.AddProductBuyerActivity" />
         <activity
             android:name=".view.seller.DaftarJualDiminatiSellerActivity"
             android:exported="false" />
         <activity
             android:name=".view.seller.DaftarJualActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".view.seller.AddProductSellerActivity"
             android:exported="false" />
@@ -50,34 +50,23 @@
             android:exported="true" />
         <activity
             android:name=".view.ProfileActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".view.seller.LengkapiDetailProductActivity"
             android:exported="false" />
         <activity
             android:name=".view.AkunSayaActivity"
             android:exported="true"
-            android:label="@string/title_activity_akun_saya" >
-
-        </activity>
+            android:label="@string/title_activity_akun_saya"></activity>
         <activity
             android:name=".view.RegisterActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".view.LoginActivity"
-            android:exported="true" >
-
-        </activity>
-
+            android:exported="true"></activity>
         <activity
             android:name=".view.seller.InfoPenawaranActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

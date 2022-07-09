@@ -1,4 +1,4 @@
-package and5.abrar.e_commerce.model.produkseller
+package and5.abrar.e_commerce.model.user
 
 
 import android.os.Parcelable
@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class GetUserResponse(
+data class GetUserProfile(
     @SerializedName("address")
     val address: String,
     @SerializedName("city")
@@ -27,4 +27,4 @@ data class GetUserResponse(
     val phoneNumber: Long,
     @SerializedName("updatedAt")
     val updatedAt: String
-): Parcelable
+) : Parcelable

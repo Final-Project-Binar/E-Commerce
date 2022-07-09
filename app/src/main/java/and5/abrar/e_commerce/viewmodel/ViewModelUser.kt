@@ -6,6 +6,7 @@ import and5.abrar.e_commerce.model.login.PostLoginUserResponse
 import and5.abrar.e_commerce.model.produkseller.GetUserResponse
 import and5.abrar.e_commerce.model.register.PostUserRegister
 import and5.abrar.e_commerce.model.user.GetUser
+import and5.abrar.e_commerce.model.user.GetUserProfile
 import and5.abrar.e_commerce.network.ApiClient
 import and5.abrar.e_commerce.network.ApiService
 import androidx.lifecycle.LiveData
@@ -30,6 +31,9 @@ class ViewModelUser @Inject constructor(api: ApiService) : ViewModel() {
     val responseMessage: LiveData<Boolean> = liveDataResponseMessage
     private val apiService = api
 
+    // profile get
+    private val liveDataProfile = MutableLiveData<GetUserProfile>()
+    val profileData: LiveData<GetUserProfile> = liveDataProfile
 
     fun userProfile(token : String, fname : RequestBody, phone : RequestBody, address : RequestBody, city:RequestBody,image :MultipartBody.Part  ){
         apiService.profileuser(token,fname,phone,address, city,image)
@@ -46,4 +50,29 @@ class ViewModelUser @Inject constructor(api: ApiService) : ViewModel() {
 
             })
     }
+
+
+    fun getProfiler(token: String) {
+        apiService.getProfileData(token)
+            .enqueue(object : Callback<GetUserProfile> {
+                override fun onResponse(
+                    call: Call<GetUserProfile>,
+                    response: Response<GetUserProfile>
+                ) {
+                    if (response.isSuccessful) {
+                        liveDataProfile.value = response.body()
+                    } else {
+                        //
+                    }
+                }
+
+                override fun onFailure(call: Call<GetUserProfile>, t: Throwable) {
+                    //
+                }
+
+            })
+    }
+
+
+
 }

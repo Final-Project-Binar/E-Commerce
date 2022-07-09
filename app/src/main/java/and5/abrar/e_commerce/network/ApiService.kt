@@ -18,6 +18,7 @@ import and5.abrar.e_commerce.model.produkseller.PostSellerProduct
 import and5.abrar.e_commerce.model.register.PostUserRegister
 import and5.abrar.e_commerce.model.register.RequestPost
 import and5.abrar.e_commerce.model.user.GetUser
+import and5.abrar.e_commerce.model.user.GetUserProfile
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -80,8 +81,7 @@ interface ApiService {
         @Part("password") password: RequestBody,
         @Part("phone_number") phone : RequestBody,
         @Part("address") alamat : RequestBody,
-        @Part("city") city : RequestBody,
-        @Part image :MultipartBody.Part
+        @Part("city") city : RequestBody
     ): Call<PostUserRegister>
 
     @PUT("auth/user")
@@ -132,5 +132,11 @@ interface ApiService {
         @Path("id") id : Int,
         @Part ("status") status: RequestBody
     ) : Call<PathSellerOrderId>
+
+    @GET("auth/user")
+    fun getProfileData(
+        @Header("access_token") token: String
+    ): Call<GetUserProfile>
+
 
 }

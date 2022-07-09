@@ -107,5 +107,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
+
+    //animation
+    implementation 'com.airbnb.android:lottie:3.4.4'
 }
 

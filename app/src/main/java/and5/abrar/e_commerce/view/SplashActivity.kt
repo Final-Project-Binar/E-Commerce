@@ -13,10 +13,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -33,8 +35,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         userManager = UserManager(this)
         checkAccount()
+        textView5.isVisible = true
+        progressBarSplash.isVisible = true
     }
     private fun checkAccount(){
+
         userManager = UserManager(this)
         val checkToken = userManager.fetchAuthToken().toString()
         Handler(Looper.getMainLooper()).postDelayed({
@@ -45,7 +50,8 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(Intent(this, HomeActivity::class.java))
                 finish()
             }
-        },3500)
+        },4500)
+
     }
 
 }

@@ -9,9 +9,11 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -43,15 +45,11 @@ class InfoPenawaranActivity : AppCompatActivity() {
         setContentView(R.layout.activity_info_penawaran)
 
         infoPenawar()
-        btnVisible()
-
+        backProductDiminati()
     }
 
-    private fun btnVisible(){
 
-    }
-
-    private fun infoPenawar(){
+    private fun infoPenawar() {
         userManager = UserManager(this)
         val detailInfo = intent.getParcelableExtra<GetOrderSellerItem>("detailnotif")
         val viewModelNotifikasiId = ViewModelProvider(this)[ViewModelInfoPenawarSeller::class.java]
@@ -60,16 +58,20 @@ class InfoPenawaranActivity : AppCompatActivity() {
         location_infoPenawar.text = detailInfo?.user?.city
 
 
-        viewModelNotifikasiId.getInfoPenawar(userManager.fetchAuthToken().toString(), detailInfo!!.id)
+        viewModelNotifikasiId.getInfoPenawar(
+            userManager.fetchAuthToken().toString(),
+            detailInfo!!.id
+        )
 
-        viewModelNotifikasiId.sellerInfoPenawar.observe(this){
-            if (it != null){
+        viewModelNotifikasiId.sellerInfoPenawar.observe(this) {
+            if (it != null) {
                 infopenawar_namaProduk.text = it.productName
                 infopenawar_harga.text = "Rp. ${it.basePrice}"
                 infopenawar_tawar.text = "Rp. ${it.price}"
                 infopenawar_waktu.text = it.updatedAt
                 infopenawar_statusproduk.text = it.status
-                Glide.with(applicationContext).load(it.product.imageUrl).into(gambarInfoPenawarProdukBuyer)
+                Glide.with(applicationContext).load(it.product.imageUrl)
+                    .into(gambarInfoPenawarProdukBuyer)
 
                 when (it.status) {
                     "pending" -> {
@@ -89,8 +91,10 @@ class InfoPenawaranActivity : AppCompatActivity() {
 
                 when (it.status) {
                     "pending" -> {
-                        val accepted : RequestBody = "terima".toRequestBody("terima".toMediaTypeOrNull())
-                        val declined : RequestBody = "declined".toRequestBody("declined".toMediaTypeOrNull())
+                        val accepted: RequestBody =
+                            "terima".toRequestBody("terima".toMediaTypeOrNull())
+                        val declined: RequestBody =
+                            "declined".toRequestBody("declined".toMediaTypeOrNull())
                         btn_InfoPenawarTerima.setOnClickListener {
                             viewModelNotifikasiId.patchInfoPenawar(
                                 userManager.fetchAuthToken().toString(),
@@ -144,44 +148,42 @@ class InfoPenawaranActivity : AppCompatActivity() {
                         }
 
                         // ubah status
-
                         btn_InfoPenawarTolak.setOnClickListener {
 
                             val alertd = LayoutInflater.from(this)
                                 .inflate(R.layout.custom_dialog_seller_28, null, false)
-                            AlertDialog.Builder(this)
+
+                            val acceptedRadio = alertd.berhasil_terjual
+                            val declinedRadio = alertd.batalkan_transaksi
+
+                            val alertB = AlertDialog.Builder(this)
                                 .setView(alertd)
                                 .create()
-                                .show()
 
                             alertd.btn_kirim.setOnClickListener {
                                 val accepted: RequestBody = "accepted".toRequestBody("accepted".toMediaTypeOrNull())
                                 val declined: RequestBody = "declined".toRequestBody("declined".toMediaTypeOrNull())
-                                if (view is RadioButton){
-                                    val checked = (view as RadioButton).isChecked
 
-                                    when (view.id){
-                                        R.id.berhasil_terjual ->
-                                            if (checked) {
-                                                viewModelNotifikasiId.patchInfoPenawar(
-                                                    userManager.fetchAuthToken().toString(),
-                                                    detailInfo.id,
-                                                    accepted
-                                                )
-                                            }
-                                        R.id.batalkan_transaksi ->
-                                            if (checked) {
-                                                viewModelNotifikasiId.patchInfoPenawar(
-                                                    userManager.fetchAuthToken().toString(),
-                                                    detailInfo.id,
-                                                    declined
-                                                )
-                                            }
-                                    }
+                                if (acceptedRadio!!.isChecked) {
+                                    viewModelNotifikasiId.patchInfoPenawar(
+                                        userManager.fetchAuthToken().toString(),
+                                        detailInfo.id,
+                                        accepted
+                                    )
+                                    recreate()
+                                } else if (declinedRadio!!.isChecked) {
+                                    viewModelNotifikasiId.patchInfoPenawar(
+                                        userManager.fetchAuthToken().toString(),
+                                        detailInfo.id,
+                                        declined
+                                    )
+                                    recreate()
+                                } else {
+                                    Toast.makeText(this, "Pilih Salah Satu", Toast.LENGTH_SHORT).show()
                                 }
-                                recreate()
                             }
 
+                            alertB.show()
                         }
 
 
@@ -219,55 +221,59 @@ class InfoPenawaranActivity : AppCompatActivity() {
                             }
                         }
 
+
+                        //ubah status
                         btn_InfoPenawarTolak.setOnClickListener {
 
                             val alertd = LayoutInflater.from(this)
                                 .inflate(R.layout.custom_dialog_seller_28, null, false)
-                            AlertDialog.Builder(this)
+
+                            val acceptedRadio = alertd.berhasil_terjual
+                            val declinedRadio = alertd.batalkan_transaksi
+
+                            val alertB = AlertDialog.Builder(this)
                                 .setView(alertd)
                                 .create()
-                                .show()
 
                             alertd.btn_kirim.setOnClickListener {
-                                val accepted: RequestBody = "accepted".toRequestBody("accepted".toMediaTypeOrNull())
-                                val declined: RequestBody = "declined".toRequestBody("declined".toMediaTypeOrNull())
-                                if (view is RadioButton){
-                                    val checked = (view as RadioButton).isChecked
+                                val accepted: RequestBody =
+                                    "accepted".toRequestBody("accepted".toMediaTypeOrNull())
+                                val declined: RequestBody =
+                                    "declined".toRequestBody("declined".toMediaTypeOrNull())
 
-                                    when (view.id){
-                                        R.id.berhasil_terjual ->
-                                            if (checked) {
-                                                viewModelNotifikasiId.patchInfoPenawar(
-                                                    userManager.fetchAuthToken().toString(),
-                                                    detailInfo.id,
-                                                    accepted
-                                                )
-                                            }
-                                        R.id.batalkan_transaksi ->
-                                            if (checked) {
-                                                viewModelNotifikasiId.patchInfoPenawar(
-                                                    userManager.fetchAuthToken().toString(),
-                                                    detailInfo.id,
-                                                    declined
-                                                )
-                                            }
-                                    }
+                                if (acceptedRadio!!.isChecked) {
+                                    viewModelNotifikasiId.patchInfoPenawar(
+                                        userManager.fetchAuthToken().toString(),
+                                        detailInfo.id,
+                                        accepted
+                                    )
+                                    recreate()
+                                } else if (declinedRadio!!.isChecked) {
+                                    viewModelNotifikasiId.patchInfoPenawar(
+                                        userManager.fetchAuthToken().toString(),
+                                        detailInfo.id,
+                                        declined
+                                    )
+                                    recreate()
+                                } else {
+                                    Toast.makeText(this, "Pilih Salah Satu", Toast.LENGTH_SHORT).show()
                                 }
-                                recreate()
                             }
 
+                            alertB.show()
                         }
-
-
-
                     }
                 }
-
             }
         }
-
     }
 
 
+    private fun backProductDiminati(){
+        kembali_keproductdiminati.setOnClickListener {
+            startActivity(Intent(this, DaftarJualDiminatiSellerActivity::class.java))
+            finish()
+        }
+    }
 
 }

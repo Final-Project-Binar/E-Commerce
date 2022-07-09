@@ -24,6 +24,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_akun_saya.*
+import kotlinx.android.synthetic.main.activity_daftar_jual_diminati_seller.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.parse
@@ -67,11 +68,14 @@ class ProfileActivity : AppCompatActivity() {
 
             }
         }
+
+        getprofile()
     }
-    fun getprofile(){
-        val viewModelDataSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
-        viewModelDataSeller.getSeller(token = userManager.fetchAuthToken().toString())
-        viewModelDataSeller.seller.observe(this) {
+    
+    private fun getprofile(){
+        val viewModelDataSeller = ViewModelProvider(this)[ViewModelUser::class.java]
+        viewModelDataSeller.getProfiler(token = userManager.fetchAuthToken().toString())
+        viewModelDataSeller.profileData.observe(this) {
             etNama_profile.setText(it.fullName)
             profile_kota.setText(it.city)
             etAlamat_profile.setText(it.address)
@@ -79,13 +83,14 @@ class ProfileActivity : AppCompatActivity() {
             Glide.with(applicationContext).load(it.imageUrl).into(pict_image_profile)
         }
     }
-     fun viewmodel(token : String, fname : RequestBody , phone : RequestBody , address : RequestBody ,  city:RequestBody, image :MultipartBody.Part  ){
+
+     private fun viewmodel(token : String, fname : RequestBody , phone : RequestBody , address : RequestBody ,  city:RequestBody, image :MultipartBody.Part  ){
         val viewModelDataSeller = ViewModelProvider(this@ProfileActivity)[ViewModelUser::class.java]
         viewModelDataSeller.userProfile(token,fname, phone, address, city,image)
         finish()
     }
 
-     fun updatedata() {
+     private fun updatedata() {
          btn_simpan_profile.setOnClickListener {
              val fname: RequestBody =
                  etNama_profile.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
@@ -171,4 +176,6 @@ class ProfileActivity : AppCompatActivity() {
                 }
         }
     }
+
+
 }
