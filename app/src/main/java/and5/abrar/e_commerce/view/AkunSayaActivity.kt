@@ -73,6 +73,7 @@ class AkunSayaActivity : AppCompatActivity() {
         viewModelDataSeller.getSeller(token = userManager.fetchAuthToken().toString())
         viewModelDataSeller.seller.observe(this) {
             Glide.with(applicationContext).load(it.imageUrl).into(icon_foto)
+            username_akunsaya.text = it.fullName
         }
 
         userManager.ceklogin.asLiveData().observe(this){
@@ -88,6 +89,7 @@ class AkunSayaActivity : AppCompatActivity() {
             }
         }
         ubahAkun()
+        changePassword()
     }
 
     private fun keluar(){
@@ -124,6 +126,12 @@ class AkunSayaActivity : AppCompatActivity() {
     private fun ubahAkun(){
         ubah_akun.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
+        }
+    }
+
+    private fun changePassword(){
+        pengaturanAkun.setOnClickListener {
+            startActivity(Intent(this, ChangePasswordActivity::class.java))
         }
     }
 }
