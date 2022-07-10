@@ -2,20 +2,13 @@ package and5.abrar.e_commerce.view
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
-import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
 import and5.abrar.e_commerce.viewmodel.ViewModelUser
 import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -23,11 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_akun_saya.*
-import kotlinx.android.synthetic.main.activity_daftar_jual_diminati_seller.*
 import kotlinx.android.synthetic.main.activity_profile.*
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.parse
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -140,6 +129,7 @@ class ProfileActivity : AppCompatActivity() {
 
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode != Activity.RESULT_OK) {

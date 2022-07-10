@@ -112,4 +112,9 @@ class NotifikasiBuyerActivity : AppCompatActivity() {
 
         })
     }
+
+    override fun onResume() {
+        super.onResume()
+        fetchnotif()
+    }
 }

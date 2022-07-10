@@ -13,6 +13,7 @@ class ApiClient {
     private lateinit var apiService: ApiService
     val BASE = "https://market-final-project.herokuapp.com/"
 
+
     private  val logging : HttpLoggingInterceptor
         get() {
             val httpLoggingInterceptor = HttpLoggingInterceptor()

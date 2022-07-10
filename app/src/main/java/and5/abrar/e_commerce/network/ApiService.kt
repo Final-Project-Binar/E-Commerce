@@ -8,10 +8,11 @@ import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrderResponseItem
 import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
+import and5.abrar.e_commerce.model.orderseller.GetSellerOrderProductIdItem
 import and5.abrar.e_commerce.model.ordersellerid.GetSellerOrderId
 import and5.abrar.e_commerce.model.ordersellerid.PathSellerOrderId
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
-import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponseItem
+import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponse
 import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
 import and5.abrar.e_commerce.model.produkseller.GetUserResponse
 import and5.abrar.e_commerce.model.produkseller.PostSellerProduct
@@ -45,9 +46,9 @@ interface ApiService {
     ): Call<List<GetBuyerProductItem>>
 
     @GET("buyer/product/{id}")
-    fun getdetailproduct(
+     fun getdetailproduct(
         @Path("id") id : Int
-    ): Call<GetBuyerProductResponseItem>
+    ): Call<GetBuyerProductResponse>
 
     @GET("notification")
     fun getNotif(
@@ -113,6 +114,12 @@ interface ApiService {
     @GET("seller/order")
     fun getOrderSeller(
         @Header("access_token") token : String
+    ) : Call<List<GetOrderSellerItem>>
+
+    @GET("seller/order")
+    fun getOrderSellerStatus(
+        @Header("access_token") token : String,
+        @Query("status") status: String = "accepted"
     ) : Call<List<GetOrderSellerItem>>
 
     @GET("seller/banner")

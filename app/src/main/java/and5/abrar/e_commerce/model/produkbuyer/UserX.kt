@@ -2,9 +2,8 @@ package and5.abrar.e_commerce.model.produkbuyer
 
 
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
-data class User(
+data class UserX(
     @SerializedName("address")
     val address: String,
     @SerializedName("city")
@@ -19,4 +18,4 @@ data class User(
     val imageUrl: String,
     @SerializedName("phone_number")
     val phoneNumber: String
-):Serializable
+)

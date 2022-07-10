@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_daftar_jual_diminati_seller.*
-import kotlinx.android.synthetic.main.activity_daftar_jual_seller.*
 
 @AndroidEntryPoint
 class DaftarJualDiminatiSellerActivity : AppCompatActivity() {
@@ -58,6 +57,12 @@ class DaftarJualDiminatiSellerActivity : AppCompatActivity() {
         botnav.setOnNavigationItemSelectedListener(bottomNavigasi)
         val viewModelSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
         viewModelSeller.getSeller(userManager.fetchAuthToken().toString())
+        daftar_jual_product.setOnClickListener {
+            startActivity(Intent(this,DaftarJualActivity::class.java))
+        }
+        daftarTerjual.setOnClickListener {
+            startActivity(Intent(this,DaftarJualTerjual::class.java))
+        }
         initView()
     }
 

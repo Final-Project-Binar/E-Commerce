@@ -23,6 +23,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_lengkapi_detail_product.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
@@ -33,6 +34,7 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
+@DelicateCoroutinesApi
 @AndroidEntryPoint
 class LengkapiDetailProductActivity : AppCompatActivity() {
     private var selectedUri: Uri? = null
@@ -197,6 +199,7 @@ class LengkapiDetailProductActivity : AppCompatActivity() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 

@@ -27,8 +27,6 @@ class BuyerOrderViewModel @Inject constructor(api : ApiService) : ViewModel(){
                 ) {
                     if (response.isSuccessful){
                         liveDataBuyerOrder.value = response.body()
-                    } else {
-
                     }
                 }
 

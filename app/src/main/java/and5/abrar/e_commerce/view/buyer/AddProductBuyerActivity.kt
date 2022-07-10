@@ -5,12 +5,15 @@ import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
+import and5.abrar.e_commerce.network.ApiClient
 import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.viewmodel.BuyerOrderViewModel
+import and5.abrar.e_commerce.viewmodel.ViewModelHome
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -18,16 +21,18 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_add_product_buyer.*
 import kotlinx.android.synthetic.main.custom_dialog_hargatawar_buyer.view.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 @AndroidEntryPoint
 class AddProductBuyerActivity : AppCompatActivity() {
     private lateinit var userManager: UserManager
-
+    private lateinit var apiClient: ApiClient
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product_buyer)
+        apiClient = ApiClient()
         back.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
         }
@@ -39,6 +44,14 @@ class AddProductBuyerActivity : AppCompatActivity() {
         val dataProduct = intent.extras!!.getSerializable("detailproduk") as GetBuyerProductItem?
         val dataProductnotif = intent.extras!!.getSerializable("detailnotif") as GetNotifikasiItem?
         if (dataProduct != null) {
+            val viewModel = ViewModelProvider(this)[ViewModelHome::class.java]
+            viewModel.detailproduct(dataProduct.id)
+            viewModel.detail.observe(this){
+                Glide.with(this@AddProductBuyerActivity).load(it.imageUrl)
+                    .into(IV_penjual)
+                addBuyer_kota.text = it.user.city
+                TV_nama.text = it.user.fullName
+            }
             Glide.with(this)
                 .load(dataProduct.imageUrl)
                 .into(tv_imgdetailproduct)
@@ -46,7 +59,6 @@ class AddProductBuyerActivity : AppCompatActivity() {
             tv_acesorisproductdetail.text = dataProduct.categories.toString()
             tv_hargaproductdetail.text = dataProduct.basePrice.toString()
             tv_deskripsidetail.text = dataProduct.description
-
             tv_acesorisproductdetail.text = ""
             if (dataProduct.categories.isNotEmpty()){
                 for (i in dataProduct.categories.indices){
@@ -58,10 +70,10 @@ class AddProductBuyerActivity : AppCompatActivity() {
                         tv_acesorisproductdetail.text = dataProduct.categories[i].name + ","
                     } else if (i != dataProduct.categories.lastIndex && i > 0){
                         tv_acesorisproductdetail.text = tv_acesorisproductdetail.text.toString() +
-                                dataProduct.categories[i].name  + ","
+                        dataProduct.categories[i].name  + ","
                     } else {
                         tv_acesorisproductdetail.text = tv_acesorisproductdetail.text.toString() +
-                                dataProduct.categories[i].name
+                        dataProduct.categories[i].name
                     }
                 }
             } else {
@@ -70,14 +82,12 @@ class AddProductBuyerActivity : AppCompatActivity() {
             if (dataProductnotif != null){
                 addProductBuyer_btnTertarik.text = "Menunggu Respon Penjual"
             }else if(dataProduct != null) {
-
                 addProductBuyer_btnTertarik.setOnClickListener {
                     if(userManager.fetchAuthToken().toString() != null){
                         iniDialogTawarHarga()
                     }else{
                         Toast.makeText(this, "Anda Belom Login", Toast.LENGTH_SHORT).show()
                     }
-
                 }
             }
         }
@@ -86,11 +96,9 @@ class AddProductBuyerActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun iniDialogTawarHarga(){
         userManager = UserManager(this)
-
         val dialog = BottomSheetDialog(this)
         val dialogView = layoutInflater.inflate(R.layout.custom_dialog_hargatawar_buyer, null)
         val detailBarang = intent.extras!!.getSerializable("detailproduk") as GetBuyerProductItem
-
         val  btnTawaran = dialogView.ca_hargatawar_btnok
         dialogView.customDialog_namaProduk.text = detailBarang!!.name
         dialogView.custom_hargaproduk.text = "Harga : Rp. ${detailBarang.basePrice}"
@@ -104,7 +112,6 @@ class AddProductBuyerActivity : AppCompatActivity() {
                 if (detailBarang.categories.lastIndex == 0) {
                     dialogView.custum_Categoriproduct.text =
                         "Kategori: ${detailBarang.categories[i].name}"
-
                     break
                 }
                 if (i == 0) {
@@ -126,7 +133,6 @@ class AddProductBuyerActivity : AppCompatActivity() {
         btnTawaran.setOnClickListener {
             val productId = detailBarang.id
             val edtTawar = dialogView.ca_hargatawar.text.toString().toInt()
-
             if (edtTawar.toString().isNotEmpty()) {
                 val buyerOrderViewModel = ViewModelProvider(this)[BuyerOrderViewModel::class.java]
                     buyerOrderViewModel.postBuyerOrder(userManager.fetchAuthToken().toString(), PostBuyerOrder(productId!!, edtTawar))
@@ -137,5 +143,9 @@ class AddProductBuyerActivity : AppCompatActivity() {
         dialog.setCancelable(true)
         dialog.setContentView(dialogView)
         dialog.show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

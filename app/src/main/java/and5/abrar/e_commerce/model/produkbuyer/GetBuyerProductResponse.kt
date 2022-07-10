@@ -1,14 +1,15 @@
 package and5.abrar.e_commerce.model.produkbuyer
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class GetBuyerProductResponseItem(
+data class GetBuyerProductResponse(
     @SerializedName("base_price")
     val basePrice: Int,
     @SerializedName("Categories")
-    val categories: List<Category>,
+    val categories: List<CategoryX>,
     @SerializedName("createdAt")
     val createdAt: String,
     @SerializedName("description")
@@ -28,7 +29,7 @@ data class GetBuyerProductResponseItem(
     @SerializedName("updatedAt")
     val updatedAt: String,
     @SerializedName("User")
-    val user: User,
+    val user: UserX,
     @SerializedName("user_id")
     val userId: Int
 ):Serializable

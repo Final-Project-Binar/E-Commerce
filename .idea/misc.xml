@@ -37,9 +37,9 @@
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_notifikasi_buyer.xml" value="0.20416666666666666" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_notifikasi_seller.xml" value="0.20416666666666666" />
-        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_profile.xml" value="0.13114754098360656" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_register.xml" value="0.25" />
-        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_splash.xml" value="0.22" />
+        <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/custom_dialog_hargatawar_buyer.xml" value="0.20416666666666666" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/custom_dialog_infopenawarharga_seller.xml" value="0.20416666666666666" />
         <entry key="..\:/SI.BINAR.X.KAMPUS.MERDEKA/Chapter/Chapter4/E-Commerce/app/src/main/res/layout/custom_dialog_seller_28.xml" value="0.25" />
@@ -55,7 +55,9 @@
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_add_product_seller.xml" value="0.264" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_akun_saya.xml" value="0.264" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_daftar_jual_diminati_seller.xml" value="0.16576086956521738" />
+        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_daftar_jual_dua_diminati_kosong.xml" value="0.20260416666666667" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_daftar_jual_seller.xml" value="0.16576086956521738" />
+        <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_daftar_jual_terjual.xml" value="0.20260416666666667" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_home.xml" value="0.16576086956521738" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_info_penawaran.xml" value="0.20364583333333333" />
         <entry key="..\:/kuliah/kampus-merdeka/materi/binar/android-studio/ECommerce/app/src/main/res/layout/activity_lengkapi_detail_product.xml" value="0.2" />

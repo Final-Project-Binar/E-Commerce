@@ -1,7 +1,7 @@
 package and5.abrar.e_commerce.viewmodel
 
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
-import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponseItem
+import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponse
 import and5.abrar.e_commerce.network.ApiService
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,13 +13,12 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class ViewModelHome @Inject constructor(apiService: ApiService): ViewModel() {
+class ViewModelHome @Inject constructor( apiService: ApiService): ViewModel() {
     private var liveDataProduct = MutableLiveData<List<GetBuyerProductItem>>()
     val product : LiveData<List<GetBuyerProductItem>> = liveDataProduct
 
-    private var liveDataDetail = MutableLiveData<GetBuyerProductResponseItem>()
-    val detail : LiveData<GetBuyerProductResponseItem> = liveDataDetail
-
+    private var liveDataDetail = MutableLiveData<GetBuyerProductResponse>()
+    val detail : LiveData<GetBuyerProductResponse> = liveDataDetail
 
 
     private val apiServices = apiService
@@ -33,23 +32,24 @@ class ViewModelHome @Inject constructor(apiService: ApiService): ViewModel() {
     }
 
     fun detailproduct(id : Int){
-        apiServices.getdetailproduct(id).enqueue(object : Callback<GetBuyerProductResponseItem>{
-            override fun onResponse(
-                call: Call<GetBuyerProductResponseItem>,
-                response: Response<GetBuyerProductResponseItem>
-            ) {
-                if (response.isSuccessful){
-                    liveDataDetail.value = response.body()
-                }else{
-
-                }
-            }
-
-            override fun onFailure(call: Call<GetBuyerProductResponseItem>, t: Throwable) {
-               //
-            }
-
-        })
+        viewModelScope.launch {
+            apiServices.getdetailproduct(id)
+                .enqueue(object : Callback<GetBuyerProductResponse> {
+                    override fun onResponse(
+                        call: Call<GetBuyerProductResponse>,
+                        response: Response<GetBuyerProductResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            liveDataDetail.postValue(response.body())
+                        } else {
+                            liveDataDetail.postValue(null)
+                        }
+                    }
+                    override fun onFailure(call: Call<GetBuyerProductResponse>, t: Throwable) {
+                        liveDataDetail.postValue(null)
+                    }
+                })
+        }
     }
 
     fun searchproduct(search : String){
@@ -60,8 +60,6 @@ class ViewModelHome @Inject constructor(apiService: ApiService): ViewModel() {
             ) {
                 if (response.isSuccessful){
                     liveDataProduct.value = response.body()
-                }else{
-
                 }
             }
             override fun onFailure(call: Call<List<GetBuyerProductItem>>, t: Throwable) {

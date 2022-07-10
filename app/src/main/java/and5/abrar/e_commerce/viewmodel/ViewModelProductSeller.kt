@@ -31,6 +31,9 @@ class ViewModelProductSeller @Inject constructor(private var productRepository: 
     private val livedataJualProduct = MutableLiveData<PostSellerProduct>()
     val jualproduct : LiveData<PostSellerProduct> = livedataJualProduct
 
+    private val livedataorder = MutableLiveData<List<GetOrderSellerItem>>()
+    val dataorder : LiveData<List<GetOrderSellerItem>> = livedataorder
+
     private val liveDiminati = MutableLiveData<List<GetOrderSellerItem>>()
     val diminati : LiveData<List<GetOrderSellerItem>> = liveDiminati
 
@@ -38,6 +41,23 @@ class ViewModelProductSeller @Inject constructor(private var productRepository: 
 
     private val apiServices = api
 
+    fun getorderstatus(token : String){
+        apiServices.getOrderSellerStatus(token).enqueue(object : Callback<List<GetOrderSellerItem>>{
+            override fun onResponse(
+                call: Call<List<GetOrderSellerItem>>,
+                response: Response<List<GetOrderSellerItem>>
+            ) {
+                if(response.isSuccessful){
+                    livedataorder.value = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<List<GetOrderSellerItem>>, t: Throwable) {
+               //
+            }
+
+        })
+    }
     fun getOrder(token: String){
         apiServices.getOrderSeller(token).enqueue(object : Callback<List<GetOrderSellerItem>>{
             override fun onResponse(

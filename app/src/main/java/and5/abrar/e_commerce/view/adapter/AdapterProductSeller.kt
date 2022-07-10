@@ -1,6 +1,7 @@
 package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R
+import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
 import and5.abrar.e_commerce.model.produkseller.Category
 import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
 import android.annotation.SuppressLint
@@ -20,9 +21,7 @@ class AdapterProductSeller(private  var onClick : (GetDataProductSellerItem)->Un
         this.dataProductSeller = list
     }
 
-    class ViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView) {
-
-    }
+    class ViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_product_seller, parent, false)
@@ -32,9 +31,18 @@ class AdapterProductSeller(private  var onClick : (GetDataProductSellerItem)->Un
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.tvJudul_product_seller.text = dataProductSeller!![position].name
+
+
         holder.itemView.tvKategori_product_seller.text = dataProductSeller!![position].location
-        holder.itemView.tvHarga_product_seller.text = "Rp. ${dataProductSeller!![position].basePrice.toString()}"
-        Glide.with(holder.itemView.context).load(dataProductSeller!![position].imageUrl).into(holder.itemView.imageProductSeller)
+
+
+        holder.itemView.tvHarga_product_seller.text = "Rp. ${dataProductSeller!![position].basePrice}"
+
+
+        Glide.with(holder.itemView.context)
+            .load(dataProductSeller!![position].imageUrl)
+            .into(holder.itemView.imageProductSeller)
+
 
 
         holder.itemView.cardProductSeller.setOnClickListener {
