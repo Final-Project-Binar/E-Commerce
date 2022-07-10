@@ -138,5 +138,13 @@ interface ApiService {
         @Header("access_token") token: String
     ): Call<GetUserProfile>
 
+    @PUT("auth/change-password")
+    @Multipart
+    fun changePassword(
+        @Header("access_token") token: String,
+        @Part ("current_password") current_password: RequestBody,
+        @Part ("new_password") new_password: RequestBody,
+        @Part ("confirm_password") confirm_password: RequestBody
+    ): Call<PostUserRegister>
 
 }

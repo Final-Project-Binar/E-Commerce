@@ -18,23 +18,33 @@
         android:textSize="25sp"
         android:id="@+id/user_akunsaya"/>
 
-    <ImageButton
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/icon_foto"
         android:layout_width="100sp"
         android:layout_height="100sp"
         android:layout_below="@+id/user_akunsaya"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30sp"
-        android:background="@drawable/custom_drawable"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/ic_camera" />
+        android:src="@drawable/ic_baseline_account_circle_24" />
+
+    <TextView
+        android:id="@+id/username_akunsaya"
+        android:layout_width="wrap_content"
+        android:text="kelompok 4"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_below="@+id/icon_foto"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        tools:ignore="HardcodedText" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/icon_foto"
         android:orientation="vertical"
-        android:layout_marginTop="20sp">
+        android:layout_marginTop="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,7 +54,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit_"
+                android:src="@drawable/ic_baseline_change_circle_24"
                 android:padding="10sp"/>
             <TextView
                 android:id="@+id/ubah_akun"
@@ -59,13 +69,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_settings"
-                android:padding="10sp"/>
+                android:src="@drawable/ic_baseline_manage_accounts_24"
+                android:padding="10sp"
+                tools:ignore="ContentDescription" />
             <TextView
+                android:id="@+id/pengaturanAkun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/penganturan_akun"
@@ -82,7 +95,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit_"
+                android:src="@drawable/ic_baseline_logout_24"
                 android:padding="10sp"/>
             <TextView
                 android:id="@+id/keluar_akun"
@@ -103,7 +116,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit_"
+                android:src="@drawable/ic_baseline_login_24"
                 android:padding="10sp"/>
             <TextView
                 android:id="@+id/goToLogin"
