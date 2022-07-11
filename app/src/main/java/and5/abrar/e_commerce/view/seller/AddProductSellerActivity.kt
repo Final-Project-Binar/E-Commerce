@@ -2,25 +2,16 @@ package and5.abrar.e_commerce.view.seller
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
-import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
-import and5.abrar.e_commerce.model.produkseller.Category
-import and5.abrar.e_commerce.room.Diminati
-import and5.abrar.e_commerce.room.DiminatiDatabase
-import and5.abrar.e_commerce.viewmodel.ViewModelHome
-import android.content.Intent
+import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import com.bumptech.glide.Glide
-
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_add_product_seller.*
-import kotlinx.android.synthetic.main.item_product_home.view.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import retrofit2.Call
 
+@AndroidEntryPoint
 class AddProductSellerActivity : AppCompatActivity() {
 
     private lateinit var  userManager: UserManager
@@ -29,6 +20,13 @@ class AddProductSellerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product_seller)
         userManager = UserManager(this)
+        val viewModelDataSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
+        viewModelDataSeller.getSeller(token = userManager.fetchAuthToken().toString())
+        viewModelDataSeller.seller.observe(this) {
+            TV_nama.text = it.fullName
+            seller_kota.text = it.city
+            Glide.with(this@AddProductSellerActivity).load(it.imageUrl).into(IV_penjual)
+        }
         userManager.name.asLiveData().observe(this){
             addProduct_namaproduk.text = it
         }

@@ -5,13 +5,12 @@ import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_notifikasi_buyer.view.*
 
-class AdapterNotifikasiBuyer(private var dataNotif : List<GetNotifikasiItem>,
-                             private  var onClick : (GetNotifikasiItem)->Unit):RecyclerView.Adapter<AdapterNotifikasiBuyer.ViewHolder>() {
+class AdapterNotifikasiSeller(private var dataNotif : List<GetNotifikasiItem>,
+                              private var onClick : (GetNotifikasiItem)->Unit):RecyclerView.Adapter<AdapterNotifikasiSeller.ViewHolder>()  {
     class ViewHolder(itemView : View):RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,6 +21,7 @@ class AdapterNotifikasiBuyer(private var dataNotif : List<GetNotifikasiItem>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.itemView){
             with(dataNotif[position]){
+                if (notificationType == "seller"){
                     cardNotifikasiBuyer.setOnClickListener {
                         onClick(dataNotif[position])
                     }
@@ -40,7 +40,10 @@ class AdapterNotifikasiBuyer(private var dataNotif : List<GetNotifikasiItem>,
                     notifikasiBuyer_harga.text =  basePrice
                     notifikasiBuyer_tawar.text = "Ditawar Rp $bidPrice"
                     notikasiBuyer_waktu.text = transactionDate
+                }else{
+                return
                 }
+            }
         }
     }
 
@@ -49,6 +52,7 @@ class AdapterNotifikasiBuyer(private var dataNotif : List<GetNotifikasiItem>,
             0
         }else{
             dataNotif.size
+
         }
     }
 }

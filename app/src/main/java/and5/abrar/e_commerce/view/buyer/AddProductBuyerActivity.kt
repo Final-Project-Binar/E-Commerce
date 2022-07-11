@@ -13,7 +13,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -21,9 +20,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_add_product_buyer.*
 import kotlinx.android.synthetic.main.custom_dialog_hargatawar_buyer.view.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 @AndroidEntryPoint
 class AddProductBuyerActivity : AppCompatActivity() {
@@ -32,6 +28,7 @@ class AddProductBuyerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product_buyer)
+        userManager = UserManager(this)
         apiClient = ApiClient()
         back.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
@@ -41,6 +38,7 @@ class AddProductBuyerActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun detailData(){
+        userManager = UserManager(this)
         val dataProduct = intent.extras!!.getSerializable("detailproduk") as GetBuyerProductItem?
         val dataProductnotif = intent.extras!!.getSerializable("detailnotif") as GetNotifikasiItem?
         if (dataProduct != null) {
@@ -135,7 +133,7 @@ class AddProductBuyerActivity : AppCompatActivity() {
             val edtTawar = dialogView.ca_hargatawar.text.toString().toInt()
             if (edtTawar.toString().isNotEmpty()) {
                 val buyerOrderViewModel = ViewModelProvider(this)[BuyerOrderViewModel::class.java]
-                    buyerOrderViewModel.postBuyerOrder(userManager.fetchAuthToken().toString(), PostBuyerOrder(productId!!, edtTawar))
+                    buyerOrderViewModel.postBuyerOrder(userManager.fetchAuthToken().toString(), PostBuyerOrder(productId, edtTawar))
                 Toast.makeText(this, "Tawaran sudah dikirim", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }

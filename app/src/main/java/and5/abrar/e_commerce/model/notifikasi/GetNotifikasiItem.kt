@@ -16,6 +16,10 @@ data class GetNotifikasiItem(
     val id: Int,
     @SerializedName("image_url")
     val imageUrl: String,
+    @SerializedName("notification_type")
+    val notificationType: String,
+    @SerializedName("order_id")
+    val orderId: Int,
     @SerializedName("Product")
     val product: Product,
     @SerializedName("product_id")

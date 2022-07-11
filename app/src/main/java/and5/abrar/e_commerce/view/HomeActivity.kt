@@ -206,10 +206,11 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun search(){
+        Handler(Looper.getMainLooper()).postDelayed({
                 searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
                     androidx.appcompat.widget.SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
-                        Handler(Looper.getMainLooper()).postDelayed({
+
                             val viewModel =
                                 ViewModelProvider(this@HomeActivity)[ViewModelHome::class.java]
                             viewModel.searchproduct(query!!)
@@ -219,7 +220,7 @@ class HomeActivity : AppCompatActivity() {
                                     adapterHome.notifyDataSetChanged()
                                 }
                             }
-                        },1500)
+
                         return false
                     }
 
@@ -228,6 +229,7 @@ class HomeActivity : AppCompatActivity() {
                         return false
                     }
                 })
+        },10000)
                 adapterHome = AdapterHome{
                     val pindahdata = Intent(applicationContext, AddProductSellerActivity::class.java)
                     pindahdata.putExtra("detailproduk",it)
@@ -249,5 +251,10 @@ class HomeActivity : AppCompatActivity() {
         
         viewModelBanner.getBanner()
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        finish()
     }
 }

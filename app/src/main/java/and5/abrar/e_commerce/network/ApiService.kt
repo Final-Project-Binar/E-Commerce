@@ -8,7 +8,6 @@ import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrderResponseItem
 import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
-import and5.abrar.e_commerce.model.orderseller.GetSellerOrderProductIdItem
 import and5.abrar.e_commerce.model.ordersellerid.GetSellerOrderId
 import and5.abrar.e_commerce.model.ordersellerid.PathSellerOrderId
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
