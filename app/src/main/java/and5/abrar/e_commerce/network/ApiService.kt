@@ -12,9 +12,7 @@ import and5.abrar.e_commerce.model.ordersellerid.GetSellerOrderId
 import and5.abrar.e_commerce.model.ordersellerid.PathSellerOrderId
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponse
-import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
-import and5.abrar.e_commerce.model.produkseller.GetUserResponse
-import and5.abrar.e_commerce.model.produkseller.PostSellerProduct
+import and5.abrar.e_commerce.model.produkseller.*
 import and5.abrar.e_commerce.model.register.PostUserRegister
 import and5.abrar.e_commerce.model.register.RequestPost
 import and5.abrar.e_commerce.model.user.GetUser
@@ -106,6 +104,24 @@ interface ApiService {
         @Part("location") lokasi : RequestBody,
         @Part image :MultipartBody.Part
     ):Call<PostSellerProduct>
+
+    @PUT("seller/product/{id}")
+    @Multipart
+    fun updateProduct(
+        @Header("access_token") token : String,
+        @Part("name") nama : RequestBody,
+        @Part("description") desc : RequestBody,
+        @Part("base_price") harga : RequestBody,
+        @Part("category_ids") category: RequestBody,
+        @Part("location") lokasi : RequestBody,
+        @Part image :MultipartBody.Part
+    ): Call<PutSellerProduct>
+
+    @DELETE("seller/product/{id}")
+    fun deleteProduct(
+        @Header("access_token") token: String,
+        @Path("id") id: Int
+    ): Call<DeleteSellerProduct>
 
     @GET("seller/category")
     suspend fun GetCategory() : List<GetCategorySellerItem>
