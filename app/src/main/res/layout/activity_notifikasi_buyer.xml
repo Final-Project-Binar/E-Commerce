@@ -9,14 +9,14 @@
     tools:context=".view.buyer.NotifikasiBuyerActivity">
 
     <TextView
-        android:layout_marginLeft="10sp"
         android:id="@+id/notifikasiBuyer_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notifikasi Buyer"
-        android:textStyle="bold"
+        android:layout_marginLeft="10sp"
+        android:text="Notifikasi"
         android:textColor="@color/black"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_notifikasiBuyer"

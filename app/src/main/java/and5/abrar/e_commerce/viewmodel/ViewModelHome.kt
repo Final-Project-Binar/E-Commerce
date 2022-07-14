@@ -3,6 +3,8 @@ package and5.abrar.e_commerce.viewmodel
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponse
 import and5.abrar.e_commerce.network.ApiService
+import and5.abrar.e_commerce.room.Offline
+import and5.abrar.e_commerce.room.OfflineDao
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -13,21 +15,38 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class ViewModelHome @Inject constructor( apiService: ApiService): ViewModel() {
+class ViewModelHome @Inject constructor( apiService: ApiService, offlineDao: OfflineDao): ViewModel() {
     private var liveDataProduct = MutableLiveData<List<GetBuyerProductItem>>()
     val product : LiveData<List<GetBuyerProductItem>> = liveDataProduct
 
     private var liveDataDetail = MutableLiveData<GetBuyerProductResponse>()
     val detail : LiveData<GetBuyerProductResponse> = liveDataDetail
 
+    private val livedataOffline = MutableLiveData<List<Offline>>()
+    var offlinedata : LiveData<List<Offline>> = livedataOffline
+    private val dao = offlineDao
 
     private val apiServices = apiService
 
     init {
         viewModelScope.launch {
+            val dataOffline = offlineDao.getOffline()
             val dataproduct = apiService.getBuyerProduct()
             delay(2000)
             liveDataProduct.value = dataproduct
+            livedataOffline.value = dataOffline
+        }
+    }
+
+    fun insertOffline(offline: Offline){
+        viewModelScope.launch {
+            dao.insertOffline(offline)
+        }
+    }
+
+    fun deleteoffline(){
+        viewModelScope.launch{
+            dao.deleteoffline()
         }
     }
 

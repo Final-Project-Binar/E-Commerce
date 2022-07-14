@@ -26,7 +26,6 @@ class NotifikasiBuyerActivity : AppCompatActivity() {
     private lateinit var  userManager: UserManager
     private lateinit var apiClient: ApiClient
     private lateinit var adapterNotifikasiBuyer: AdapterNotifikasiBuyer
-
     private val bottomNavigasi = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId){
             R.id.notifikasi -> {
@@ -92,22 +91,16 @@ class NotifikasiBuyerActivity : AppCompatActivity() {
                                 }
 
                             })
-//                        val pindah = Intent(applicationContext,AddProductBuyerActivity::class.java)
-//                           pindah.putExtra("detailnotif", it)
-//                           startActivity(pindah)
                     }
 
                     rv_notifikasiBuyer.layoutManager = LinearLayoutManager(applicationContext)
                     rv_notifikasiBuyer.adapter = adapterNotifikasiBuyer
 
-                }else{
-                    Toast.makeText(applicationContext,userManager.fetchAuthToken(),Toast.LENGTH_LONG).show()
-//                    Toast.makeText(applicationContext,response.message(),Toast.LENGTH_LONG).show()
                 }
             }
 
             override fun onFailure(call: Call<List<GetNotifikasiItem>>, t: Throwable) {
-                Toast.makeText(applicationContext,t.message, Toast.LENGTH_LONG).show()
+                //
             }
 
         })

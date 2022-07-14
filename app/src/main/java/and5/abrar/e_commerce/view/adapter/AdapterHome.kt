@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.item_product_home.view.*
 class AdapterHome(private var onClick : (GetBuyerProductItem)->Unit):RecyclerView.Adapter<AdapterHome.ViewHolder>() {
     class ViewHolder(itemView : View):RecyclerView.ViewHolder(itemView)
     private var dataProduk : List<GetBuyerProductItem>? = null
+
     fun setProduk(produk : List<GetBuyerProductItem>){
         this.dataProduk = produk
     }

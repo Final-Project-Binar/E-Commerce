@@ -1,7 +1,11 @@
 package and5.abrar.e_commerce.model.produkbuyer
 
 
+import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
 data class GetBuyerProductItem(

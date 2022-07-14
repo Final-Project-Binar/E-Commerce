@@ -1,11 +1,16 @@
 package and5.abrar.e_commerce.di
 
 import and5.abrar.e_commerce.network.ApiService
+import and5.abrar.e_commerce.room.OfflineDao
+import and5.abrar.e_commerce.room.OfflineDatabase
+import android.content.Context
+import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -47,4 +52,13 @@ object AppModule {
     fun provideApi(retrofit: Retrofit) : ApiService =
         retrofit.create(ApiService::class.java)
 
+    @Provides
+    @Singleton
+    fun provideofflinedatabse(@ApplicationContext context: Context) : OfflineDatabase =
+        OfflineDatabase.getInstance(context)!!
+
+    @Provides
+    @Singleton
+    fun provideofflineDao(offlineDatabase: OfflineDatabase): OfflineDao =
+        offlineDatabase.offlineDao()
 }
