@@ -4,28 +4,21 @@ import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.login.LoginRequest
 import and5.abrar.e_commerce.model.login.LoginResponse
-import and5.abrar.e_commerce.model.login.PostLoginUserResponse
 import and5.abrar.e_commerce.network.ApiClient
-import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
-import and5.abrar.e_commerce.view.seller.DaftarJualActivity
-import and5.abrar.e_commerce.viewmodel.ViewModelUser
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.lifecycleScope
+import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@DelicateCoroutinesApi
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private lateinit var userManager: UserManager

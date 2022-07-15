@@ -6,23 +6,24 @@ import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.network.ApiClient
 import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.view.HomeActivity
-import and5.abrar.e_commerce.view.adapter.AdapterNotifikasiBuyer
 import and5.abrar.e_commerce.view.adapter.AdapterNotifikasiSeller
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_notifikasi_buyer.*
 import kotlinx.android.synthetic.main.activity_notifikasi_buyer.rv_notifikasiBuyer
 import kotlinx.android.synthetic.main.activity_notifikasi_seller.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@DelicateCoroutinesApi
+@Suppress("DEPRECATION")
 class NotifikasiSellerActivity : AppCompatActivity() {
     private lateinit var  userManager: UserManager
     private lateinit var apiClient: ApiClient
@@ -82,7 +83,7 @@ class NotifikasiSellerActivity : AppCompatActivity() {
                                     response: Response<GetNotifikasiItem>
                                 ) {
                                     if (response.isSuccessful){
-                                        var livedata : MutableLiveData<GetNotifikasiItem> = MutableLiveData()
+                                        val livedata : MutableLiveData<GetNotifikasiItem> = MutableLiveData()
                                         livedata.postValue(response.body())
                                     }
                                 }

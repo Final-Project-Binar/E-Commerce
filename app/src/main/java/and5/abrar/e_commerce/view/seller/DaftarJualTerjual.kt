@@ -2,17 +2,15 @@ package and5.abrar.e_commerce.view.seller
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
-import and5.abrar.e_commerce.network.ApiClient
 import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.view.HomeActivity
-import and5.abrar.e_commerce.view.adapter.AdapterProductSeller
 import and5.abrar.e_commerce.view.adapter.AdapterTerjual
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
 import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -22,10 +20,13 @@ import kotlinx.android.synthetic.main.activity_daftar_jual_seller.IV_penjual_pro
 import kotlinx.android.synthetic.main.activity_daftar_jual_seller.TV_kota_product
 import kotlinx.android.synthetic.main.activity_daftar_jual_seller.TV_nama_product
 import kotlinx.android.synthetic.main.activity_daftar_jual_terjual.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
+@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class DaftarJualTerjual : AppCompatActivity() {
-    private lateinit var apiClient: ApiClient
+
     private lateinit var adapter : AdapterTerjual
     private lateinit var  userManager: UserManager
     private val bottomNavigasi = BottomNavigationView.OnNavigationItemSelectedListener { item ->

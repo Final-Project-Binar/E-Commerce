@@ -1,3 +1,7 @@
+@file:Suppress("SimplifyBooleanWithConstants", "SimplifyBooleanWithConstants",
+    "SimplifyBooleanWithConstants", "SimplifyBooleanWithConstants"
+)
+
 package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R
@@ -5,7 +9,6 @@ import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_notifikasi_buyer.view.*
@@ -45,10 +48,6 @@ class AdapterNotifikasiBuyer(private var dataNotif : List<GetNotifikasiItem>,
     }
 
     override fun getItemCount(): Int {
-        return if (dataNotif == null){
-            0
-        }else{
-            dataNotif.size
-        }
+        return dataNotif.size
     }
 }

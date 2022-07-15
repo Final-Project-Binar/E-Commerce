@@ -1,43 +1,50 @@
+@file:Suppress("DEPRECATION")
+
 package and5.abrar.e_commerce.view
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
-import and5.abrar.e_commerce.model.login.LoginRequest
-import and5.abrar.e_commerce.model.login.LoginResponse
-import and5.abrar.e_commerce.model.login.PostLoginUserResponse
-import and5.abrar.e_commerce.viewmodel.ViewModelUser
+import and5.abrar.e_commerce.view.seller.OfflineActvty
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_splash.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     private lateinit var userManager: UserManager
-    private lateinit var email : String
-    private lateinit var password: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         userManager = UserManager(this)
-        checkAccount()
+
+        val cm = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+        val isConnected: Boolean = activeNetwork?.isConnected == true
+        if (isConnected){
+            checkAccount()
+        }else{
+            Toast.makeText(applicationContext, "Tidak Ada Koneksi Internet", Toast.LENGTH_SHORT)
+                .show()
+            startActivity(Intent(this, OfflineActvty::class.java))
+        }
         textView5.isVisible = true
         progressBarSplash.isVisible = true
     }
+
     private fun checkAccount(){
 
         userManager = UserManager(this)

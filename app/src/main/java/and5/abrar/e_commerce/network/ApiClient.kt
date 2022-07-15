@@ -1,3 +1,9 @@
+@file:Suppress("PropertyName", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate"
+)
+
 package and5.abrar.e_commerce.network
 
 import android.content.Context

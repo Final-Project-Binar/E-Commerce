@@ -1,13 +1,7 @@
 package and5.abrar.e_commerce.viewmodel
 
-import and5.abrar.e_commerce.model.login.LoginRequest
-import and5.abrar.e_commerce.model.login.LoginResponse
-import and5.abrar.e_commerce.model.login.PostLoginUserResponse
-import and5.abrar.e_commerce.model.produkseller.GetUserResponse
-import and5.abrar.e_commerce.model.register.PostUserRegister
 import and5.abrar.e_commerce.model.user.GetUser
 import and5.abrar.e_commerce.model.user.GetUserProfile
-import and5.abrar.e_commerce.network.ApiClient
 import and5.abrar.e_commerce.network.ApiService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +12,6 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel

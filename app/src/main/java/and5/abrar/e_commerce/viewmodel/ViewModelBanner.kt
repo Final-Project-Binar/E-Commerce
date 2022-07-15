@@ -1,7 +1,6 @@
 package and5.abrar.e_commerce.viewmodel
 
 import and5.abrar.e_commerce.model.banner.GetBannerItem
-import and5.abrar.e_commerce.model.orderseller.GetSellerOrderProductIdItem
 import and5.abrar.e_commerce.network.ApiService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

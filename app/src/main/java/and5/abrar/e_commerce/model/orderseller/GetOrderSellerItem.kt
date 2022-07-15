@@ -4,7 +4,6 @@ package and5.abrar.e_commerce.model.orderseller
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
-import java.io.Serializable
 
 @Parcelize
 data class GetOrderSellerItem(

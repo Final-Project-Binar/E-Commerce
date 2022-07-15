@@ -1,3 +1,5 @@
+@file:Suppress("RedundantOverride", "RedundantOverride", "RedundantOverride")
+
 package and5.abrar.e_commerce.view.buyer
 
 import and5.abrar.e_commerce.R
@@ -20,7 +22,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_add_product_buyer.*
 import kotlinx.android.synthetic.main.custom_dialog_hargatawar_buyer.view.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
 @AndroidEntryPoint
 class AddProductBuyerActivity : AppCompatActivity() {
     private lateinit var userManager: UserManager
@@ -79,13 +83,9 @@ class AddProductBuyerActivity : AppCompatActivity() {
             }
             if (dataProductnotif != null){
                 addProductBuyer_btnTertarik.text = "Menunggu Respon Penjual"
-            }else if(dataProduct != null) {
+            }else {
                 addProductBuyer_btnTertarik.setOnClickListener {
-                    if(userManager.fetchAuthToken().toString() != null){
-                        iniDialogTawarHarga()
-                    }else{
-                        Toast.makeText(this, "Anda Belom Login", Toast.LENGTH_SHORT).show()
-                    }
+                    iniDialogTawarHarga()
                 }
             }
         }
@@ -98,14 +98,14 @@ class AddProductBuyerActivity : AppCompatActivity() {
         val dialogView = layoutInflater.inflate(R.layout.custom_dialog_hargatawar_buyer, null)
         val detailBarang = intent.extras!!.getSerializable("detailproduk") as GetBuyerProductItem
         val  btnTawaran = dialogView.ca_hargatawar_btnok
-        dialogView.customDialog_namaProduk.text = detailBarang!!.name
+        dialogView.customDialog_namaProduk.text = detailBarang.name
         dialogView.custom_hargaproduk.text = "Harga : Rp. ${detailBarang.basePrice}"
         Glide.with(dialogView.customDialog_gambarProduk.context)
             .load(detailBarang.imageUrl)
             .error(R.drawable.ic_launcher_background)
             .into(dialogView.customDialog_gambarProduk)
         dialogView.custum_Categoriproduct.text = ""
-        if (detailBarang.categories!!.isNotEmpty()){
+        if (detailBarang.categories.isNotEmpty()){
             for (i in detailBarang.categories.indices){
                 if (detailBarang.categories.lastIndex == 0) {
                     dialogView.custum_Categoriproduct.text =

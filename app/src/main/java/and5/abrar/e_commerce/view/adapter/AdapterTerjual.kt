@@ -2,7 +2,6 @@ package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
-import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

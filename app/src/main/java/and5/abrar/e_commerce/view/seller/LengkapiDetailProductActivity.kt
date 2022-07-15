@@ -1,3 +1,5 @@
+@file:Suppress("CanBeVal", "CanBeVal", "CanBeVal", "DEPRECATION")
+
 package and5.abrar.e_commerce.view.seller
 
 import and5.abrar.e_commerce.R

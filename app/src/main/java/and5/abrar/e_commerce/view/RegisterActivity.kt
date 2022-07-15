@@ -2,32 +2,23 @@ package and5.abrar.e_commerce.view
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.model.register.PostUserRegister
-import and5.abrar.e_commerce.model.register.RequestPost
 import and5.abrar.e_commerce.network.ApiClient
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_register.*
-import okhttp3.MediaType.Companion.toMediaType
+import kotlinx.coroutines.DelicateCoroutinesApi
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
 
+@DelicateCoroutinesApi
 @SuppressLint("SetTextI18n")
 @AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {

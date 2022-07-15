@@ -1,7 +1,6 @@
 package and5.abrar.e_commerce.model.produkbuyer
 
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 

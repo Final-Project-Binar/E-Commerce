@@ -1,3 +1,7 @@
+@file:Suppress("ReplaceGetOrSet", "ReplaceGetOrSet", "ReplaceGetOrSet", "DEPRECATION",
+    "NAME_SHADOWING"
+)
+
 package and5.abrar.e_commerce.view
 
 import and5.abrar.e_commerce.R
@@ -6,39 +10,37 @@ import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import and5.abrar.e_commerce.room.Offline
 import and5.abrar.e_commerce.view.adapter.AdapterBanner
 import and5.abrar.e_commerce.view.adapter.AdapterHome
-import and5.abrar.e_commerce.view.adapter.AdapterHomeOffline
 import and5.abrar.e_commerce.view.buyer.AddProductBuyerActivity
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
 import and5.abrar.e_commerce.view.seller.AddProductSellerActivity
 import and5.abrar.e_commerce.view.seller.DaftarJualActivity
 import and5.abrar.e_commerce.view.seller.LengkapiDetailProductActivity
+import and5.abrar.e_commerce.view.seller.OfflineActvty
 import and5.abrar.e_commerce.viewmodel.ViewModelBanner
 import and5.abrar.e_commerce.viewmodel.ViewModelHome
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.DelicateCoroutinesApi
 
 
+@DelicateCoroutinesApi
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     private lateinit var  adapterHome: AdapterHome
-    private lateinit var  adapterHomeOffline: AdapterHomeOffline
     private lateinit var adapterBanner: AdapterBanner
     lateinit var viewPager: ViewPager
     private lateinit var  userManager: UserManager
@@ -75,12 +77,7 @@ class HomeActivity : AppCompatActivity() {
         userManager = UserManager(this)
         val botnav = findViewById<BottomNavigationView>(R.id.navigation)
         botnav.setOnNavigationItemSelectedListener(bottomNavigasi)
-        button_Fashion.isClickable = false
-        button_semua.isClickable = true
-        button_Other.isClickable = false
-        button_Electronic.isClickable = false
-        val connected = isOnline(this)
-        if(connected){
+        if(isOnline(this)){
             search()
             iniviewmodel()
             ctgyfashion()
@@ -88,18 +85,15 @@ class HomeActivity : AppCompatActivity() {
             ctgyelektronik()
             ctgyother()
             bannerSeller()
-        }else if(!connected){
-            val viewModel = ViewModelProvider(this)[ViewModelHome::class.java]
-            adapterHomeOffline = AdapterHomeOffline()
-            rv_homeProduk.layoutManager = LinearLayoutManager(this)
-            viewModel.offlinedata.observe(this){
-                if (it != null)
-                    adapterHomeOffline.setOffline(it)
-                adapterHomeOffline.notifyDataSetChanged()
-            }
-            rv_homeProduk.adapter = adapterHomeOffline
+        }else{
+            Toast.makeText(applicationContext, "Tidak Ada Koneksi Internet", Toast.LENGTH_SHORT)
+                .show()
+            startActivity(Intent(this, OfflineActvty::class.java))
         }
-
+        button_Fashion.isClickable = false
+        button_semua.isClickable = true
+        button_Other.isClickable = false
+        button_Electronic.isClickable = false
     }
 
     fun iniviewmodel(){
@@ -118,14 +112,18 @@ class HomeActivity : AppCompatActivity() {
           if (it != null){
               adapterHome.setProduk(it)
               adapterHome.notifyDataSetChanged()
-              for (i in it){
                   for (z in it.indices) {
+                      for (z in 1..10){
                       for (j in it[z].categories.indices) {
-                          viewModel.insertOffline(Offline(null, i.imageUrl, i.name,it[z].categories[j].name,i.basePrice.toString()))
+                            viewModel.insertOffline(Offline(null,
+                                it[z].imageUrl,
+                                it[z].name,
+                                it[z].categories[j].name,
+                                it[z].basePrice.toString()))
+                        }
                       }
+                      break
                   }
-              }
-
           }
         }
 
@@ -270,7 +268,6 @@ class HomeActivity : AppCompatActivity() {
                 rv_homeProduk.adapter=adapterHome
             }
 
-
     private fun bannerSeller(){
         viewPager = findViewById(R.id.imageView)
 
@@ -297,6 +294,7 @@ class HomeActivity : AppCompatActivity() {
         }
         return false
     }
+
     override fun onDestroy() {
         super.onDestroy()
         finish()

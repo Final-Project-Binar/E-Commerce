@@ -3,10 +3,8 @@ package and5.abrar.e_commerce.datastore
 import and5.abrar.e_commerce.R
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.Preference
 import androidx.datastore.DataStore
 import androidx.datastore.preferences.*
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

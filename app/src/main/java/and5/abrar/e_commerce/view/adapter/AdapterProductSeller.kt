@@ -1,8 +1,6 @@
 package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R
-import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
-import and5.abrar.e_commerce.model.produkseller.Category
 import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -10,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_product_home.view.*
 import kotlinx.android.synthetic.main.item_product_seller.view.*
 
 class AdapterProductSeller(private  var onClick : (GetDataProductSellerItem)->Unit) : RecyclerView.Adapter<AdapterProductSeller.ViewHolder> () {

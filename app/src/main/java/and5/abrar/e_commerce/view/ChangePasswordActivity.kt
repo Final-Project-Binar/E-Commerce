@@ -3,13 +3,13 @@ package and5.abrar.e_commerce.view
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.register.PostUserRegister
-import and5.abrar.e_commerce.model.user.PostUser
 import and5.abrar.e_commerce.network.ApiClient
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_change_password.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -17,6 +17,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@DelicateCoroutinesApi
 class ChangePasswordActivity : AppCompatActivity() {
     private lateinit var apiClient: ApiClient
     private lateinit var userManager: UserManager

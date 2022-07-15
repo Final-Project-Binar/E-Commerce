@@ -1,21 +1,19 @@
+@file:Suppress("DEPRECATION")
+
 package and5.abrar.e_commerce.view
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
-import and5.abrar.e_commerce.view.seller.AddProductSellerActivity
 import and5.abrar.e_commerce.view.seller.DaftarJualActivity
 import and5.abrar.e_commerce.view.seller.LengkapiDetailProductActivity
+import and5.abrar.e_commerce.viewmodel.ViewModelHome
 import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
-import and5.abrar.e_commerce.viewmodel.ViewModelUser
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.UserManager
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isGone
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
@@ -24,8 +22,6 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_akun_saya.*
-import kotlinx.android.synthetic.main.activity_daftar_jual_seller.*
-import kotlinx.android.synthetic.main.activity_login.view.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -93,9 +89,9 @@ class AkunSayaActivity : AppCompatActivity() {
     }
 
     private fun keluar(){
+        val viewModel = ViewModelProvider(this)[ViewModelHome::class.java]
         val dataUserManager = and5.abrar.e_commerce.datastore.UserManager(this)
         akunsaya_btnkeluar.setOnClickListener {
-
             AlertDialog.Builder(this)
                 .setTitle("KONFIRMASI LOGOUT")
                 .setMessage("Anda Yakin Ingin Logout ?")
@@ -106,6 +102,7 @@ class AkunSayaActivity : AppCompatActivity() {
                         dataUserManager.setBoolean(false)
                         dataUserManager.logout()
                         dataUserManager.clearPreview()
+                        viewModel.deleteoffline()
                         startActivity(Intent(this@AkunSayaActivity, HomeActivity::class.java))
                         finish()
                     }

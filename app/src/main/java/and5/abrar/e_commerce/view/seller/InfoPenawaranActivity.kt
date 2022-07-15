@@ -1,44 +1,37 @@
+@file:Suppress("NestedLambdaShadowedImplicitParameter", "NestedLambdaShadowedImplicitParameter",
+    "NestedLambdaShadowedImplicitParameter", "NestedLambdaShadowedImplicitParameter",
+    "NestedLambdaShadowedImplicitParameter", "NestedLambdaShadowedImplicitParameter",
+    "NestedLambdaShadowedImplicitParameter", "NestedLambdaShadowedImplicitParameter"
+)
+
 package and5.abrar.e_commerce.view.seller
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
-import and5.abrar.e_commerce.view.adapter.AdapterOrderSeller
 import and5.abrar.e_commerce.viewmodel.ViewModelInfoPenawarSeller
 import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_daftar_jual_diminati_seller.*
-import kotlinx.android.synthetic.main.activity_daftar_jual_seller.*
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_info_penawaran.*
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.view.*
-import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.custom_dialog_hargatawar_buyer.*
-import kotlinx.android.synthetic.main.custom_dialog_infopenawarharga_seller.*
 import kotlinx.android.synthetic.main.custom_dialog_infopenawarharga_seller.view.*
-import kotlinx.android.synthetic.main.custom_dialog_seller_28.*
 import kotlinx.android.synthetic.main.custom_dialog_seller_28.view.*
-import kotlinx.android.synthetic.main.item_infopenawar.view.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 
+@DelicateCoroutinesApi
 @AndroidEntryPoint
 class InfoPenawaranActivity : AppCompatActivity() {
     private lateinit var userManager: UserManager
-    private lateinit var adapterInfo : AdapterOrderSeller
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

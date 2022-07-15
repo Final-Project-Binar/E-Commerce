@@ -5,7 +5,10 @@ import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponse
 import and5.abrar.e_commerce.network.ApiService
 import and5.abrar.e_commerce.room.Offline
 import and5.abrar.e_commerce.room.OfflineDao
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -30,17 +33,24 @@ class ViewModelHome @Inject constructor( apiService: ApiService, offlineDao: Off
 
     init {
         viewModelScope.launch {
-            val dataOffline = offlineDao.getOffline()
             val dataproduct = apiService.getBuyerProduct()
             delay(2000)
             liveDataProduct.value = dataproduct
-            livedataOffline.value = dataOffline
         }
     }
+
 
     fun insertOffline(offline: Offline){
         viewModelScope.launch {
             dao.insertOffline(offline)
+        }
+    }
+
+    fun getOffline(){
+        viewModelScope.launch {
+           val dataoff = dao.getOffline()
+            delay(4000)
+            livedataOffline.value = dataoff
         }
     }
 
@@ -82,10 +92,7 @@ class ViewModelHome @Inject constructor( apiService: ApiService, offlineDao: Off
                 }
             }
             override fun onFailure(call: Call<List<GetBuyerProductItem>>, t: Throwable) {
-
             }
-
         })
     }
-
 }

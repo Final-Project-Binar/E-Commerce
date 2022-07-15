@@ -2,7 +2,6 @@ package and5.abrar.e_commerce.viewmodel
 
 import and5.abrar.e_commerce.model.ordersellerid.GetSellerOrderId
 import and5.abrar.e_commerce.model.ordersellerid.PathSellerOrderId
-import and5.abrar.e_commerce.model.user.GetUser
 import and5.abrar.e_commerce.network.ApiService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

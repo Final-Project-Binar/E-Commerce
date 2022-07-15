@@ -18,7 +18,8 @@ abstract class OfflineDatabase : RoomDatabase() {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
                         OfflineDatabase::class.java, "offline.db"
-                    ).allowMainThreadQueries().build()
+                    ).allowMainThreadQueries()
+                        .build()
                 }
             }
             return INSTANCE
