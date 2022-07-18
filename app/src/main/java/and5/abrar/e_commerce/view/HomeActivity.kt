@@ -90,13 +90,14 @@ class HomeActivity : AppCompatActivity() {
                 .show()
             startActivity(Intent(this, OfflineActvty::class.java))
         }
-        button_Fashion.isClickable = false
-        button_semua.isClickable = true
-        button_Other.isClickable = false
-        button_Electronic.isClickable = false
+
     }
 
     fun iniviewmodel(){
+        button_Fashion.isClickable = true
+        button_semua.isClickable = false
+        button_Other.isClickable = true
+        button_Electronic.isClickable = true
         adapterHome = AdapterHome {
             val clickedProduct = Bundle()
             clickedProduct.putSerializable("detailproduk",it)
@@ -235,30 +236,28 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun search(){
+        val viewModel =
+            ViewModelProvider(this@HomeActivity)[ViewModelHome::class.java]
         Handler(Looper.getMainLooper()).postDelayed({
                 searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
                     androidx.appcompat.widget.SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
-
-                            val viewModel =
-                                ViewModelProvider(this@HomeActivity)[ViewModelHome::class.java]
                             viewModel.searchproduct(query!!)
-                            viewModel.product.observe(this@HomeActivity) {
-                                if (it != null) {
-                                    adapterHome.setProduk(it)
-                                    adapterHome.notifyDataSetChanged()
-                                }
-                            }
-
                         return false
                     }
 
                     override fun onQueryTextChange(p0: String?): Boolean {
-                        iniviewmodel()
+//                        iniviewmodel()
                         return false
                     }
                 })
-        },10000)
+        },3000)
+        viewModel.product.observe(this@HomeActivity) {
+            if (it != null) {
+                adapterHome.setProduk(it)
+                adapterHome.notifyDataSetChanged()
+            }
+        }
                 adapterHome = AdapterHome{
                     val pindahdata = Intent(applicationContext, AddProductSellerActivity::class.java)
                     pindahdata.putExtra("detailproduk",it)

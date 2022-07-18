@@ -32,7 +32,7 @@ class AdapterHome(private var onClick : (GetBuyerProductItem)->Unit):RecyclerVie
         holder.itemView.tvJudul_product.text = dataProduk!![position].name
         Glide.with(holder.itemView.context)
             .load(dataProduk!![position].imageUrl)
-
+            .override(150,150)
             .into(holder.itemView.imageProduct)
         val category = dataProduk!![position].categories
         holder.itemView.tvKategori_product.text = "masih kosong"

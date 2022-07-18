@@ -49,13 +49,14 @@ class AddProductBuyerActivity : AppCompatActivity() {
             val viewModel = ViewModelProvider(this)[ViewModelHome::class.java]
             viewModel.detailproduct(dataProduct.id)
             viewModel.detail.observe(this){
-                Glide.with(this@AddProductBuyerActivity).load(it.imageUrl)
+                Glide.with(this@AddProductBuyerActivity).load(it.user.imageUrl).override(45,45)
                     .into(IV_penjual)
                 addBuyer_kota.text = it.user.city
                 TV_nama.text = it.user.fullName
             }
             Glide.with(this)
                 .load(dataProduct.imageUrl)
+                .override(400,350)
                 .into(tv_imgdetailproduct)
             tv_judulproductdetail.text = dataProduct.name
             tv_acesorisproductdetail.text = dataProduct.categories.toString()

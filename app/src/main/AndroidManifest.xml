@@ -10,10 +10,11 @@
     <application
         android:name=".di.MyApplication"
         android:allowBackup="true"
+        android:largeHeap="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/jamtangan"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/jamtangan"
         android:supportsRtl="true"
         android:label="SecondHand"
         android:theme="@style/Theme.ECommerce"

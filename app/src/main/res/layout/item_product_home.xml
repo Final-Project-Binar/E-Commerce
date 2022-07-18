@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/imageProduct"
             android:layout_width="150dp"
-            android:layout_height="130dp"
+            android:layout_height="150dp"
             android:src="@drawable/jamtangan"
             app:layout_constraintBottom_toTopOf="@+id/tvJudul_product"
             app:layout_constraintTop_toTopOf="parent"
