@@ -112,4 +112,17 @@
         app:layout_constraintEnd_toEndOf="@+id/cardView2"
         app:layout_constraintStart_toStartOf="@+id/cardView2" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:background="@drawable/login_btn_bg"
+        android:id="@+id/start_authentication"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Biometric"
+        app:layout_constraintTop_toBottomOf="@id/login_regsister"
+        app:layout_constraintEnd_toEndOf="@+id/cardView2"
+        app:layout_constraintStart_toStartOf="@+id/cardView2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
