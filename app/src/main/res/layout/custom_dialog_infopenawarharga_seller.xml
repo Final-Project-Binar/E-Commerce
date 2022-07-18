@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:gravity="center"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -10,25 +10,29 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="15dp"
         android:text="Yeay kamu berhasil mendapatkan harga yang sesuai"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="25sp" />
+        android:textSize="20sp"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20sp"
         android:text="Segera hubungi pembeli melalui whatsapp untuk transaksi "
-        android:textSize="20sp" />
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
 
     <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -39,7 +43,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="10dp">
 
 
             <TextView
@@ -50,82 +54,137 @@
                 android:text="Product Match"
                 android:textColor="@color/black"
                 android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
-            <ImageView
-                android:id="@+id/customDialog_gambarPenjual"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_info_buyer"
+                android:layout_marginTop="35dp"
+                app:cardCornerRadius="5dp"
                 android:layout_below="@+id/cd_produkmatch"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/penjual" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/customDialog_NamaPenjual"
-                android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/customDialog_gambarPenjual"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/penjual"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/customDialog_NamaPenjual"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+                        android:text="Nama Pembeli"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/customDialog_Kotapenjual"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customDialog_gambarPenjual"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        tools:ignore="HardcodedText,MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/customDialog_Kotapenjual"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="kota"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customDialog_gambarPenjual"
+                        app:layout_constraintTop_toBottomOf="@+id/customDialog_NamaPenjual"
+                        tools:ignore="HardcodedText,MissingConstraints" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/cd_produkmatch"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="20dp"
-                android:layout_toRightOf="@id/customDialog_gambarProduk"
-                android:text="Nama Pembeli"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_below="@+id/card_info_buyer"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="5dp">
 
-            <TextView
-                android:id="@+id/customDialog_Kotapenjual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/customDialog_NamaPenjual"
-                android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@id/customDialog_gambarProduk"
-                android:text="kota"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/customDialog_gambarProduk"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_below="@+id/customDialog_gambarPenjual"
-                android:layout_marginTop="25dp"
-                android:src="@drawable/ic_launcher_background" />
+                    <ImageView
+                        android:id="@+id/customDialog_gambarProduk"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/ic_launcher_background"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,MissingConstraints" />
 
-            <TextView
-                android:id="@+id/customDialog_namaProduk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/customDialog_gambarPenjual"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="20dp"
-                android:layout_toRightOf="@id/customDialog_gambarProduk"
-                android:text="Jam Tangan Casio"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/customDialog_namaProduk"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Jam Tangan Casio"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/cd_harga"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customDialog_gambarProduk"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        tools:ignore="HardcodedText,MissingConstraints" />
 
-            <TextView
-                android:id="@+id/cd_harga"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/customDialog_namaProduk"
-                android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@id/customDialog_gambarProduk"
-                android:text="Rp 250.000"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/cd_harga"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Rp 250.000"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@+id/cd_hargatawar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customDialog_gambarProduk"
+                        app:layout_constraintTop_toBottomOf="@+id/customDialog_namaProduk"
+                        tools:ignore="HardcodedText,MissingConstraints" />
 
-            <TextView
-                android:id="@+id/cd_hargatawar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cd_harga"
-                android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@id/customDialog_gambarProduk"
-                android:text="Ditawar Rp 200.000"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/cd_hargatawar"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cd_harga"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Ditawar Rp 200.000"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customDialog_gambarProduk"
+                        app:layout_constraintTop_toBottomOf="@+id/cd_harga"
+                        tools:ignore="HardcodedText,MissingConstraints" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
@@ -133,7 +192,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:id="@+id/ca_hargatawar_wa"
         android:textColor="@color/black"
         android:background="@drawable/login_btn_bg"
@@ -143,5 +202,6 @@
         android:layout_marginBottom="15dp"
         android:drawableEnd="@drawable/whatsapp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        tools:ignore="HardcodedText" />
 </LinearLayout>
