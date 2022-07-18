@@ -73,7 +73,6 @@ class DaftarJualActivity : AppCompatActivity() {
         daftarTerjuall.setOnClickListener {
             startActivity(Intent(this,DaftarJualTerjual::class.java))
         }
-
     }
 
 
@@ -113,8 +112,8 @@ class DaftarJualActivity : AppCompatActivity() {
 
 
     private fun editSeller(){
-        btnedit_product.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
+        daftar_jualEdit.setOnClickListener {
+            startActivity(Intent(this, AkunSayaActivity::class.java))
         }
     }
 

@@ -26,7 +26,7 @@ class AdapterTerjual(private  var onClick :(GetOrderSellerItem)->Unit) : Recycle
         holder.itemView.tvKategori_product_seller.text = dataOrder!![position].product.location
         holder.itemView.tvHarga_product_seller.text = "Rp. ${dataOrder!![position].basePrice}"
         Glide.with(holder.itemView.context)
-            .load(dataOrder!![position].imageProduct)
+            .load(dataOrder!![position].product.imageUrl)
             .into(holder.itemView.imageProductSeller)
     }
 

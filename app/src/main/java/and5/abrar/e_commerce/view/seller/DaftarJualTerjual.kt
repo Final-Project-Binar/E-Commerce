@@ -68,6 +68,9 @@ class DaftarJualTerjual : AppCompatActivity() {
         cardView_productSeller.setOnClickListener {
             startActivity(Intent(this, DaftarJualActivity::class.java))
         }
+        btnedit_product.setOnClickListener {
+            startActivity(Intent(this,AkunSayaActivity::class.java))
+        }
         initView()
     }
     private fun initView(){

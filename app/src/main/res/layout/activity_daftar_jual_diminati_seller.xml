@@ -63,15 +63,15 @@
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/login_btnLogin"
+                android:id="@+id/daftar_jualEdit"
                 android:layout_width="60sp"
                 android:layout_height="30sp"
+                android:layout_alignParentRight="true"
                 android:background="@drawable/custom_drawable"
                 android:text="Edit"
-                android:layout_alignParentRight="true"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
         </RelativeLayout>
 

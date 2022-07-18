@@ -64,6 +64,9 @@ class DaftarJualDiminatiSellerActivity : AppCompatActivity() {
         daftarTerjual.setOnClickListener {
             startActivity(Intent(this,DaftarJualTerjual::class.java))
         }
+        daftar_jualEdit.setOnClickListener {
+            startActivity(Intent(this,AkunSayaActivity::class.java))
+        }
         initView()
     }
 

@@ -63,7 +63,7 @@
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnedit_product"
+                android:id="@+id/daftar_jualEdit"
                 android:layout_width="60sp"
                 android:layout_height="30sp"
                 android:layout_alignParentRight="true"

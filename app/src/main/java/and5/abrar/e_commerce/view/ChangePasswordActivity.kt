@@ -29,7 +29,9 @@ class ChangePasswordActivity : AppCompatActivity() {
         apiClient = ApiClient()
         userManager = UserManager(this)
         changePassword()
-
+        back_keakunsaya.setOnClickListener {
+                startActivity(Intent(this,AkunSayaActivity::class.java))
+        }
     }
 
     private fun changePassword(){

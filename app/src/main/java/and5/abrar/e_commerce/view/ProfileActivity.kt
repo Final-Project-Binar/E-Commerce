@@ -41,6 +41,9 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
         userManager = UserManager(this)
         updatedata()
+        back.setOnClickListener {
+            startActivity(Intent(this,AkunSayaActivity::class.java))
+        }
         pict_image_profile.setOnClickListener {
             when {
                 ContextCompat.checkSelfPermission(
@@ -57,7 +60,6 @@ class ProfileActivity : AppCompatActivity() {
 
             }
         }
-
         getprofile()
     }
     
