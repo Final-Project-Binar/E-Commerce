@@ -12,7 +12,6 @@ import and5.abrar.e_commerce.view.adapter.AdapterBanner
 import and5.abrar.e_commerce.view.adapter.AdapterHome
 import and5.abrar.e_commerce.view.buyer.AddProductBuyerActivity
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
-import and5.abrar.e_commerce.view.seller.AddProductSellerActivity
 import and5.abrar.e_commerce.view.seller.DaftarJualActivity
 import and5.abrar.e_commerce.view.seller.LengkapiDetailProductActivity
 import and5.abrar.e_commerce.view.seller.OfflineActvty
@@ -275,7 +274,6 @@ class HomeActivity : AppCompatActivity() {
                     }
 
                     override fun onQueryTextChange(p0: String?): Boolean {
-//                        iniviewmodel()
                         return false
                     }
                 })
@@ -288,8 +286,7 @@ class HomeActivity : AppCompatActivity() {
             }
         }
                 adapterHome = AdapterHome{
-                    adapterHome.setHasStableIds(true)
-                    val pindahdata = Intent(applicationContext, AddProductSellerActivity::class.java)
+                    val pindahdata = Intent(applicationContext, AddProductBuyerActivity::class.java)
                     pindahdata.putExtra("detailproduk",it)
                     startActivity(pindahdata)
                 }

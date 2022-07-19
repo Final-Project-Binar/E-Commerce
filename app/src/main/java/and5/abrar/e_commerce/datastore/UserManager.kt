@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.map
 class UserManager(context : Context) {
 
     private  val dataStore: DataStore<Preferences>  = context.createDataStore("login-prefs")
+    private val finger : DataStore<Preferences> = context.createDataStore("fingerprint")
     private var prefs: SharedPreferences = context.getSharedPreferences(context.getString(R.string.app_name), Context.MODE_PRIVATE)
     companion object {
         const val USER_TOKEN = "access_token"
@@ -45,7 +46,24 @@ class UserManager(context : Context) {
             it[IMAGE] = image
         }
     }
-
+    suspend fun logindata(
+        email: String,
+    password: String
+    ){
+        dataStore.edit {
+            it[EMAIL] = email
+            it[PASSWORD]= password
+        }
+    }
+    suspend fun finger(
+        email : String,
+        password : String
+    ){
+        finger.edit {
+            it[EMAIL] = email
+            it[PASSWORD] = password
+        }
+    }
 
     fun saveAuthToken(token: String) {
         val editor = prefs.edit()
@@ -63,7 +81,6 @@ class UserManager(context : Context) {
     fun fetchAuthToken(): String? {
         return prefs.getString(USER_TOKEN, null)
     }
-
     fun datasellerusername(): String?{
         return prefs.getString(USERNAME,null)
     }
@@ -82,10 +99,24 @@ class UserManager(context : Context) {
         }
     }
 
+    suspend fun clearfinger(){
+        finger.edit {
+            it.clear()
+        }
+    }
+
     suspend fun clearPreview() {
         dataStore.edit {
             it.clear()
         }
+    }
+
+    val fingerEmail : Flow<String> = finger.data.map {
+        it[EMAIL] ?: ""
+    }
+
+    val fingerPassword : Flow<String> = finger.data.map{
+        it[PASSWORD] ?: ""
     }
 
     val email: Flow<String> = dataStore.data.map {

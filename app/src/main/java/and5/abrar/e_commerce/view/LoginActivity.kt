@@ -24,9 +24,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.os.CancellationSignal
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isInvisible
+import androidx.lifecycle.asLiveData
 
 
 @DelicateCoroutinesApi
@@ -36,6 +38,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var apiClient: ApiClient
     // create a CancellationSignal variable and assign a value null to it
     private var cancellationSignal: CancellationSignal? = null
+    private var email : String = ""
+    private var password : String = ""
 
     // create an authenticationCallback
     private val authenticationCallback: BiometricPrompt.AuthenticationCallback
@@ -56,7 +60,13 @@ class LoginActivity : AppCompatActivity() {
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult?) {
                 super.onAuthenticationSucceeded(result)
                 notifyUser("Authentication Succeeded")
-                loginauth("abrar@mail.com","12345678")
+                Log.e("aaa", email)
+                Log.e("bbb",password)
+                if(email.isEmpty() && password.isEmpty()){
+                    notifyUser("Anda Belum Mendaftar FingerPRint")
+                }else{
+                    loginauth(email,password)
+                }
             }
         }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +75,12 @@ class LoginActivity : AppCompatActivity() {
         userManager = UserManager(this)
         apiClient = ApiClient()
         checkBiometricSupport()
+        userManager.fingerEmail.asLiveData().observe(this){
+            email = it
+        }
+        userManager.fingerPassword.asLiveData().observe(this){
+            password = it
+        }
         login_btnLogin.setOnClickListener {
             loginauth(login_email.text.toString(),login_pass.text.toString())
         }
@@ -104,6 +120,7 @@ class LoginActivity : AppCompatActivity() {
                         )
                         GlobalScope.launch {
                             userManager.setBoolean(true)
+                            userManager.logindata(loginemail,loginPassword)
                         }
                         startActivity(Intent(applicationContext, HomeActivity::class.java))
                     } else {
