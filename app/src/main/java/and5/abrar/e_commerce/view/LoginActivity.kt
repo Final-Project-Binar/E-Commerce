@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
                 Log.e("aaa", email)
                 Log.e("bbb",password)
                 if(email.isEmpty() && password.isEmpty()){
-                    notifyUser("Anda Belum Mendaftar FingerPRint")
+                    notifyUser("Anda Belum Mendaftar FingerPrint")
                 }else{
                     loginauth(email,password)
                 }

@@ -65,7 +65,7 @@ class AkunSayaActivity : AppCompatActivity() {
                 GlobalScope.launch {
                     userManager.finger(email,pass)
                 }
-                notifyUser("Authentication Succeeded")
+                notifyUser("Pendaftaran FingerPrint Berhasil")
             }
         }
     private val bottomNavigasi = BottomNavigationView.OnNavigationItemSelectedListener { item ->
