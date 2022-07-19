@@ -25,6 +25,7 @@ import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -106,13 +107,20 @@ class HomeActivity : AppCompatActivity() {
             startActivity(pindah)
         }
         rv_homeProduk.layoutManager=GridLayoutManager(this,2)
+        rv_homeProduk.setHasFixedSize(true)
+        rv_homeProduk.setItemViewCacheSize(20)
+        rv_homeProduk.isDrawingCacheEnabled = true
+        rv_homeProduk.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
+        adapterHome.setHasStableIds(true)
         rv_homeProduk.adapter=adapterHome
         val viewModel = ViewModelProvider(this)[ViewModelHome::class.java]
         viewModel.searchproduct("")
         viewModel.product.observe(this){
           if (it != null){
-              adapterHome.setProduk(it)
-              adapterHome.notifyDataSetChanged()
+              runOnUiThread {
+                  adapterHome.setProduk(it)
+                  adapterHome.notifyDataSetChanged()
+              }
                   for (z in it.indices) {
                       for (z in 1..10){
                       for (j in it[z].categories.indices) {
@@ -144,6 +152,10 @@ class HomeActivity : AppCompatActivity() {
             button_semua.isSelected = false
             button_Other.isSelected = false
             button_Electronic.isSelected = false
+            rv_homeProduk.setHasFixedSize(true)
+            rv_homeProduk.setItemViewCacheSize(20)
+            rv_homeProduk.isDrawingCacheEnabled = true
+            rv_homeProduk.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
             val viewModel = ViewModelProvider(this).get(ViewModelHome::class.java)
             viewModel.searchproduct("")
             viewModel.product.observe(this){
@@ -157,8 +169,10 @@ class HomeActivity : AppCompatActivity() {
                             }
                         }
                     }
-                    adapterHome.setProduk(listdataproduct)
-                    adapterHome.notifyDataSetChanged()
+                    runOnUiThread {
+                        adapterHome.setProduk(listdataproduct)
+                        adapterHome.notifyDataSetChanged()
+                    }
                 }
             }
         }
@@ -169,7 +183,10 @@ class HomeActivity : AppCompatActivity() {
             button_semua.isSelected = false
             button_Other.isSelected = false
             button_Electronic.isSelected = true
-
+            rv_homeProduk.setHasFixedSize(true)
+            rv_homeProduk.setItemViewCacheSize(20)
+            rv_homeProduk.isDrawingCacheEnabled = true
+            rv_homeProduk.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
             val viewModel = ViewModelProvider(this).get(ViewModelHome::class.java)
             viewModel.searchproduct("")
             viewModel.product.observe(this){
@@ -191,8 +208,10 @@ class HomeActivity : AppCompatActivity() {
                             }
                         }
                     }
-                    adapterHome.setProduk(listdataproduct)
-                    adapterHome.notifyDataSetChanged()
+                    runOnUiThread {
+                        adapterHome.setProduk(listdataproduct)
+                        adapterHome.notifyDataSetChanged()
+                    }
                 }
             }
         }
@@ -204,7 +223,10 @@ class HomeActivity : AppCompatActivity() {
             button_semua.isSelected = false
             button_Other.isSelected = true
             button_Electronic.isSelected = false
-
+            rv_homeProduk.setHasFixedSize(true)
+            rv_homeProduk.setItemViewCacheSize(20)
+            rv_homeProduk.isDrawingCacheEnabled = true
+            rv_homeProduk.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
             val viewModel = ViewModelProvider(this).get(ViewModelHome::class.java)
             viewModel.searchproduct("")
             viewModel.product.observe(this){
@@ -228,14 +250,20 @@ class HomeActivity : AppCompatActivity() {
                             }
                         }
                     }
-                    adapterHome.setProduk(listdataproduct)
-                    adapterHome.notifyDataSetChanged()
+                    runOnUiThread {
+                        adapterHome.setProduk(listdataproduct)
+                        adapterHome.notifyDataSetChanged()
+                    }
                 }
             }
         }
     }
 
     private fun search(){
+        rv_homeProduk.setHasFixedSize(true)
+        rv_homeProduk.setItemViewCacheSize(20)
+        rv_homeProduk.isDrawingCacheEnabled = true
+        rv_homeProduk.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
         val viewModel =
             ViewModelProvider(this@HomeActivity)[ViewModelHome::class.java]
         Handler(Looper.getMainLooper()).postDelayed({
@@ -254,11 +282,13 @@ class HomeActivity : AppCompatActivity() {
         },3000)
         viewModel.product.observe(this@HomeActivity) {
             if (it != null) {
+                runOnUiThread{
                 adapterHome.setProduk(it)
                 adapterHome.notifyDataSetChanged()
             }
         }
                 adapterHome = AdapterHome{
+                    adapterHome.setHasStableIds(true)
                     val pindahdata = Intent(applicationContext, AddProductSellerActivity::class.java)
                     pindahdata.putExtra("detailproduk",it)
                     startActivity(pindahdata)
@@ -266,18 +296,22 @@ class HomeActivity : AppCompatActivity() {
                 rv_homeProduk.layoutManager=GridLayoutManager(this,2)
                 rv_homeProduk.adapter=adapterHome
             }
+    }
 
     private fun bannerSeller(){
         viewPager = findViewById(R.id.imageView)
-
+        rv_homeProduk.setHasFixedSize(true)
+        rv_homeProduk.setItemViewCacheSize(20)
+        rv_homeProduk.isDrawingCacheEnabled = true
+        rv_homeProduk.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
         val viewModelBanner = ViewModelProvider(this)[ViewModelBanner::class.java]
-        viewModelBanner.sellerBanner.observe(this){
-            adapterBanner = AdapterBanner(this, it)
-            imageView.adapter = adapterBanner
+        runOnUiThread {
+            viewModelBanner.sellerBanner.observe(this){
+                adapterBanner = AdapterBanner(this, it)
+                imageView.adapter = adapterBanner
+            }
+            viewModelBanner.getBanner()
         }
-        
-        viewModelBanner.getBanner()
-
     }
 
     fun isOnline(context: Context): Boolean {

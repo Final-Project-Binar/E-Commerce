@@ -3,12 +3,18 @@ package and5.abrar.e_commerce.view.adapter
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_product_home.view.*
+import java.io.InputStream
+
 
 class AdapterHome(private var onClick : (GetBuyerProductItem)->Unit):RecyclerView.Adapter<AdapterHome.ViewHolder>() {
     class ViewHolder(itemView : View):RecyclerView.ViewHolder(itemView)
@@ -29,10 +35,13 @@ class AdapterHome(private var onClick : (GetBuyerProductItem)->Unit):RecyclerVie
         holder.itemView.cardProduct.setOnClickListener {
             onClick(dataProduk!![position])
         }
+        val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL).override(150,150)
+
         holder.itemView.tvJudul_product.text = dataProduk!![position].name
         Glide.with(holder.itemView.context)
             .load(dataProduk!![position].imageUrl)
-            .override(150,150)
+            .thumbnail(0.25f)
+            .apply(requestOptions)
             .into(holder.itemView.imageProduct)
         val category = dataProduk!![position].categories
         holder.itemView.tvKategori_product.text = "masih kosong"

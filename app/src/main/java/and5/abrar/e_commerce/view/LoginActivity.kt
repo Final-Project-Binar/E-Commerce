@@ -26,6 +26,7 @@ import retrofit2.Response
 import android.os.CancellationSignal
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.core.view.isInvisible
 
 
 @DelicateCoroutinesApi
@@ -129,6 +130,7 @@ class LoginActivity : AppCompatActivity() {
     private fun checkBiometricSupport(): Boolean {
         val keyguardManager = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
         if (!keyguardManager.isDeviceSecure) {
+            start_authentication.isInvisible = true
             notifyUser("Fingerprint authentication has not been enabled in settings")
             return false
         }
