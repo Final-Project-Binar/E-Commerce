@@ -80,6 +80,7 @@ class NotifikasiBuyerActivity : AppCompatActivity() {
                                     if (response.isSuccessful ){
                                         var livedata : MutableLiveData<GetNotifikasiItem> = MutableLiveData()
                                         livedata.postValue(response.body())
+                                        recreate()
                                     }
                                 }
 

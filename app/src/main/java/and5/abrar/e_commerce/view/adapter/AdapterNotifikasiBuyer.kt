@@ -40,9 +40,15 @@ class AdapterNotifikasiBuyer(private var dataNotif : List<GetNotifikasiItem>,
                     }
                     notifikasiBuyer_namaProduk.text = productName
                     notikasiBuyer_statusproduk.text = status
-                    notifikasiBuyer_harga.text =  basePrice
+                    notifikasiBuyer_harga.text = "Rp $basePrice"
                     notifikasiBuyer_tawar.text = "Ditawar Rp $bidPrice"
-                    notikasiBuyer_waktu.text = transactionDate
+                    if (transactionDate.isNullOrEmpty()){
+                        notikasiBuyer_waktu.text = updatedAt
+                    }else{
+                        notikasiBuyer_waktu.text = transactionDate
+                    }
+
+                notifikasiBuyer_dialihkan.text = notificationType
                 }
         }
     }

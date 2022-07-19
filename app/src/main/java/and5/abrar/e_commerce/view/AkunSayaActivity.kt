@@ -202,7 +202,6 @@ class AkunSayaActivity : AppCompatActivity() {
         val keyguardManager = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
         if (!keyguardManager.isDeviceSecure) {
             onBiometric.isInvisible = true
-            notifyUser("Fingerprint authentication has not been enabled in settings")
             return false
         }
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.USE_BIOMETRIC) != PackageManager.PERMISSION_GRANTED) {

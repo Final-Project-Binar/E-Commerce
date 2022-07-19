@@ -93,7 +93,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardView_productSeller"
-                android:layout_width="140dp"
+                android:layout_width="wrap_content"
                 android:layout_height="60sp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="@color/design_default_color_primary"
@@ -125,7 +125,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardView_diminatiSeller"
-                android:layout_width="140dp"
+                android:layout_width="wrap_content"
                 android:layout_height="60sp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="#FFA491AC"
@@ -157,7 +157,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/daftarTerjuall"
-                android:layout_width="140dp"
+                android:layout_width="wrap_content"
                 android:layout_height="60sp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="#A491AC"

@@ -38,11 +38,19 @@ class AdapterHome(private var onClick : (GetBuyerProductItem)->Unit):RecyclerVie
         val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL).override(150,150)
 
         holder.itemView.tvJudul_product.text = dataProduk!![position].name
-        Glide.with(holder.itemView.context)
-            .load(dataProduk!![position].imageUrl)
-            .thumbnail(0.25f)
-            .apply(requestOptions)
-            .into(holder.itemView.imageProduct)
+        if (dataProduk!![position].imageUrl.isNullOrEmpty()){
+            Glide.with(holder.itemView.context)
+                .load(R.drawable.ic_launcher_background)
+                .thumbnail(0.25f)
+                .apply(requestOptions)
+                .into(holder.itemView.imageProduct)
+        }else {
+            Glide.with(holder.itemView.context)
+                .load(dataProduk!![position].imageUrl)
+                .thumbnail(0.25f)
+                .apply(requestOptions)
+                .into(holder.itemView.imageProduct)
+        }
         val category = dataProduk!![position].categories
         holder.itemView.tvKategori_product.text = "masih kosong"
         if(category.isNotEmpty()){

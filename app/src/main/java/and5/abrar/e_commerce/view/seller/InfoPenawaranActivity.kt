@@ -51,6 +51,7 @@ class InfoPenawaranActivity : AppCompatActivity() {
         location_infoPenawar.text = detailInfo?.user?.city
 
 
+
         viewModelNotifikasiId.getInfoPenawar(
             userManager.fetchAuthToken().toString(),
             detailInfo!!.id
@@ -58,6 +59,9 @@ class InfoPenawaranActivity : AppCompatActivity() {
 
         viewModelNotifikasiId.sellerInfoPenawar.observe(this) {
             if (it != null) {
+                Glide.with(applicationContext).load(it.user.imageurl)
+                    .override(80,80)
+                    .into(imageViewInfoPenawaran)
                 infopenawar_namaProduk.text = it.productName
                 infopenawar_harga.text = "Rp. ${it.basePrice}"
                 infopenawar_tawar.text = "Rp. ${it.price}"

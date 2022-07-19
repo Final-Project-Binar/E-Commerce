@@ -4,15 +4,19 @@
     android:id="@+id/cardNotifikasiBuyer"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    app:cardCornerRadius="10dp"
     android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="15dp"
     app:cardElevation="10dp"
     app:cardMaxElevation="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:layout_marginLeft="10dp"
@@ -29,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/gambarProdukBuyer"
             android:text="Penawaran Produk"
             android:textSize="15sp"
@@ -59,6 +63,7 @@
             tools:ignore="ContentDescription" />
 
         <TextView
+            android:layout_marginTop="10dp"
             android:id="@+id/notifikasiBuyer_namaProduk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,6 +103,8 @@
             tools:ignore="HardcodedText,RtlHardcoded" />
 
         <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:id="@+id/notifikasiBuyer_dialihkan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

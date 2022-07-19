@@ -80,7 +80,9 @@ class LengkapiDetailProductActivity : AppCompatActivity() {
             Log.e("postcate", postCategory)
             Log.e("slecid", selectedID.toString())
         }
-
+        back.setOnClickListener {
+            startActivity(Intent(this,DaftarJualActivity::class.java) )
+        }
         btn_terbitkan.setOnClickListener {
             jualbarang()
         }
@@ -90,6 +92,7 @@ class LengkapiDetailProductActivity : AppCompatActivity() {
             }
             preview()
         }
+
         icon_foto.setOnClickListener {
             when {
                 ContextCompat.checkSelfPermission(

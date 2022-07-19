@@ -8,30 +8,9 @@
     tools:context=".view.seller.DaftarJualDiminatiSellerActivity"
     android:layout_margin="10sp">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/testrv"
-        android:layout_above="@id/navigation"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/login_btn_bg"
-        app:labelVisibilityMode="labeled"
-        android:layout_margin="10dp"
-        app:itemIconTint="#E91E63"
-        app:itemTextColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu"
-        tools:ignore="MissingConstraints" />
-
-
 
 </RelativeLayout>

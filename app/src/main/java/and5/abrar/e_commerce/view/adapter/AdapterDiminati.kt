@@ -27,9 +27,9 @@ class AdapterDiminati(private var onClick : (GetOrderSellerItem)->Unit):Recycler
         with(holder.itemView) {
             with(listDiminati!![position]) {
                 diminati_status.text = status
-                diminati_product.text = productName
-                diminati_harga.text = basePrice.toString()
-                diminati_tawar.text = price.toString()
+                diminati_product.text = "Product : $productName"
+                diminati_harga.text = "Harga : Rp."+basePrice.toString()
+                diminati_tawar.text = "Ditawar : Rp." +price.toString()
                 diminati_tanggal.text = updatedAt
             }
         }
