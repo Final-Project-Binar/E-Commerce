@@ -43,6 +43,16 @@
         app:layout_constraintTop_toBottomOf="@+id/tvLengkapi_Info_Akun"
         tools:ignore="ContentDescription,MissingConstraints" />
 
+<!--    <ImageView-->
+<!--        android:id="@+id/imagePict"-->
+<!--        android:layout_width="45dp"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:src="@drawable/add"-->
+<!--        android:layout_marginEnd=""-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/pict_image_profile"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/pict_image_profile"-->
+<!--        tools:ignore="ContentDescription,MissingConstraints" />-->
+
     <TextView
         android:id="@+id/tv_nama"
         android:layout_width="wrap_content"
@@ -194,6 +204,22 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_edit_image"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/login_btn_bg"
+        android:text="Ubah Image"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_simpan_profile"
         android:layout_width="match_parent"
         android:layout_height="55dp"
@@ -205,7 +231,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/btn_edit_image"
         tools:ignore="HardcodedText,MissingConstraints" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,8 @@ import and5.abrar.e_commerce.model.register.PostUserRegister
 import and5.abrar.e_commerce.model.register.RequestPost
 import and5.abrar.e_commerce.model.user.GetUser
 import and5.abrar.e_commerce.model.user.GetUserProfile
+import and5.abrar.e_commerce.model.wishlist.Product
+import and5.abrar.e_commerce.model.wishlist.WishListBuyer
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -170,5 +172,17 @@ interface ApiService {
         @Part ("new_password") new_password: RequestBody,
         @Part ("confirm_password") confirm_password: RequestBody
     ): Call<PostUserRegister>
+
+    @POST("buyer/wishlist")
+    @Multipart
+    fun postWishList(
+        @Header("access_token") token: String,
+        @Part("product_id") id : Int
+    ) : Call<WishListBuyer>
+
+    @GET("buyer/wishlist")
+    fun getWishList(
+        @Header("access_token") token: String
+    ) : Call<List<WishListBuyer>>
 
 }

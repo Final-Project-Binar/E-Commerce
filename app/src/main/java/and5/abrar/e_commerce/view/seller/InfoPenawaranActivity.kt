@@ -19,6 +19,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_info_penawaran.*
 import kotlinx.android.synthetic.main.custom_dialog_infopenawarharga_seller.view.*
@@ -114,50 +115,63 @@ class InfoPenawaranActivity : AppCompatActivity() {
                     }
                     "terima" -> {
                         btn_InfoPenawarTerima.setOnClickListener {
-                            val alertt = LayoutInflater.from(this).inflate(
-                                R.layout.custom_dialog_infopenawarharga_seller,
-                                null,
-                                false
-                            )
-                            AlertDialog.Builder(this)
-                                .setView(alertt)
-                                .create()
-                                .show()
+//                            val alertt = LayoutInflater.from(this).inflate(
+//                                R.layout.custom_dialog_infopenawarharga_seller,
+//                                null,
+//                                false
+//                            )
+//                            AlertDialog.Builder(this)
+//                                .setView(alertt)
+//                                .create()
+//                                .show()
 
-                            alertt.customDialog_NamaPenjual.text = detailInfo.user.fullName
-                            alertt.customDialog_Kotapenjual.text = detailInfo.user.city
+                            val dialog = BottomSheetDialog(this)
+                            val dialogView = layoutInflater.inflate(R.layout.custom_dialog_infopenawarharga_seller, null)
+
+                            dialogView.customDialog_NamaPenjual.text = detailInfo.user.fullName
+                            dialogView.customDialog_Kotapenjual.text = detailInfo.user.city
                             viewModelNotifikasiId.sellerInfoPenawar.observe(this) {
                                 Glide.with(applicationContext).load(it.product.imageUrl)
-                                    .into(alertt.customDialog_gambarProduk)
-                                alertt.customDialog_namaProduk.text = it.productName
-                                alertt.cd_harga.text = "Rp. ${it.basePrice}"
-                                alertt.cd_hargatawar.text = "Rp. ${it.price}"
+                                    .into(dialogView.customDialog_gambarProduk)
+                                dialogView.customDialog_namaProduk.text = it.productName
+                                dialogView.cd_harga.text = "Rp. ${it.basePrice}"
+                                dialogView.cd_hargatawar.text = "Rp. ${it.price}"
 
                             }
 
-                            alertt.ca_hargatawar_wa.setOnClickListener {
+                            dialogView.ca_hargatawar_wa.setOnClickListener {
                                 val url =
                                     "https://api.whatsapp.com/send?phone= ${detailInfo.user.phoneNumber}"
                                 val i = Intent(Intent.ACTION_VIEW)
                                 i.data = Uri.parse(url)
                                 startActivity(i)
                             }
+
+                            dialog.setCancelable(true)
+                            dialog.setContentView(dialogView)
+                            dialog.show()
                         }
 
                         // ubah status
                         btn_InfoPenawarTolak.setOnClickListener {
 
-                            val alertd = LayoutInflater.from(this)
-                                .inflate(R.layout.custom_dialog_seller_28, null, false)
+//                            val alertd = LayoutInflater.from(this)
+//                                .inflate(R.layout.custom_dialog_seller_28, null, false)
+//
+//                            val acceptedRadio = alertd.berhasil_terjual
+//                            val declinedRadio = alertd.batalkan_transaksi
+//
+//                            val alertB = AlertDialog.Builder(this)
+//                                .setView(alertd)
+//                                .create()
 
-                            val acceptedRadio = alertd.berhasil_terjual
-                            val declinedRadio = alertd.batalkan_transaksi
+                            val dialog = BottomSheetDialog(this)
+                            val dialogView = layoutInflater.inflate(R.layout.custom_dialog_seller_28, null)
 
-                            val alertB = AlertDialog.Builder(this)
-                                .setView(alertd)
-                                .create()
+                            val acceptedRadio = dialogView.berhasil_terjual
+                            val declinedRadio = dialogView.batalkan_transaksi
 
-                            alertd.btn_kirim.setOnClickListener {
+                            dialogView.btn_kirim.setOnClickListener {
                                 val accepted: RequestBody = "accepted".toRequestBody("accepted".toMediaTypeOrNull())
                                 val declined: RequestBody = "declined".toRequestBody("declined".toMediaTypeOrNull())
 
@@ -180,7 +194,9 @@ class InfoPenawaranActivity : AppCompatActivity() {
                                 }
                             }
 
-                            alertB.show()
+                            dialog.setCancelable(true)
+                            dialog.setContentView(dialogView)
+                            dialog.show()
                         }
 
 
@@ -188,55 +204,65 @@ class InfoPenawaranActivity : AppCompatActivity() {
 
                     "declined", "accepted" -> {
                         btn_InfoPenawarTerima.setOnClickListener {
-                            val alertt = LayoutInflater.from(this).inflate(
-                                R.layout.custom_dialog_infopenawarharga_seller,
-                                null,
-                                false
-                            )
-                            AlertDialog.Builder(this)
-                                .setView(alertt)
-                                .create()
-                                .show()
+//                            val alertt = LayoutInflater.from(this).inflate(
+//                                R.layout.custom_dialog_infopenawarharga_seller,
+//                                null,
+//                                false
+//                            )
+//                            AlertDialog.Builder(this)
+//                                .setView(alertt)
+//                                .create()
+//                                .show()
 
-                            alertt.customDialog_NamaPenjual.text = detailInfo.user.fullName
-                            alertt.customDialog_Kotapenjual.text = detailInfo.user.city
+                            val dialog = BottomSheetDialog(this)
+                            val dialogView = layoutInflater.inflate(R.layout.custom_dialog_infopenawarharga_seller, null)
+
+                            dialogView.customDialog_NamaPenjual.text = detailInfo.user.fullName
+                            dialogView.customDialog_Kotapenjual.text = detailInfo.user.city
                             viewModelNotifikasiId.sellerInfoPenawar.observe(this) {
                                 Glide.with(applicationContext).load(it.product.imageUrl)
-                                    .into(alertt.customDialog_gambarProduk)
-                                alertt.customDialog_namaProduk.text = it.productName
-                                alertt.cd_harga.text = "Rp. ${it.basePrice}"
-                                alertt.cd_hargatawar.text = "Rp. ${it.price}"
+                                    .into(dialogView.customDialog_gambarProduk)
+                                dialogView.customDialog_namaProduk.text = it.productName
+                                dialogView.cd_harga.text = "Rp. ${it.basePrice}"
+                                dialogView.cd_hargatawar.text = "Rp. ${it.price}"
 
                             }
 
-                            alertt.ca_hargatawar_wa.setOnClickListener {
+                            dialogView.ca_hargatawar_wa.setOnClickListener {
                                 val url =
                                     "https://api.whatsapp.com/send?phone= ${detailInfo.user.phoneNumber}"
                                 val i = Intent(Intent.ACTION_VIEW)
                                 i.data = Uri.parse(url)
                                 startActivity(i)
                             }
-                        }
 
+                            dialog.setCancelable(true)
+                            dialog.setContentView(dialogView)
+                            dialog.show()
+                        }
 
                         //ubah status
                         btn_InfoPenawarTolak.setOnClickListener {
 
-                            val alertd = LayoutInflater.from(this)
-                                .inflate(R.layout.custom_dialog_seller_28, null, false)
+//                            val alertd = LayoutInflater.from(this)
+//                                .inflate(R.layout.custom_dialog_seller_28, null, false)
+//
+//                            val acceptedRadio = alertd.berhasil_terjual
+//                            val declinedRadio = alertd.batalkan_transaksi
+//
+//                            val alertB = AlertDialog.Builder(this)
+//                                .setView(alertd)
+//                                .create()
 
-                            val acceptedRadio = alertd.berhasil_terjual
-                            val declinedRadio = alertd.batalkan_transaksi
+                            val dialog = BottomSheetDialog(this)
+                            val dialogView = layoutInflater.inflate(R.layout.custom_dialog_seller_28, null)
 
-                            val alertB = AlertDialog.Builder(this)
-                                .setView(alertd)
-                                .create()
+                            val acceptedRadio = dialogView.berhasil_terjual
+                            val declinedRadio = dialogView.batalkan_transaksi
 
-                            alertd.btn_kirim.setOnClickListener {
-                                val accepted: RequestBody =
-                                    "accepted".toRequestBody("accepted".toMediaTypeOrNull())
-                                val declined: RequestBody =
-                                    "declined".toRequestBody("declined".toMediaTypeOrNull())
+                            dialogView.btn_kirim.setOnClickListener {
+                                val accepted: RequestBody = "accepted".toRequestBody("accepted".toMediaTypeOrNull())
+                                val declined: RequestBody = "declined".toRequestBody("declined".toMediaTypeOrNull())
 
                                 if (acceptedRadio!!.isChecked) {
                                     viewModelNotifikasiId.patchInfoPenawar(
@@ -257,8 +283,11 @@ class InfoPenawaranActivity : AppCompatActivity() {
                                 }
                             }
 
-                            alertB.show()
+                            dialog.setCancelable(true)
+                            dialog.setContentView(dialogView)
+                            dialog.show()
                         }
+
                     }
                 }
             }

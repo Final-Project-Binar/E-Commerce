@@ -219,7 +219,7 @@
             android:layout_marginTop="10dp"
             android:textColor="#F40808"
             android:textSize="14sp"
-            android:text="*  contoh: 85779699422"
+            android:text="*  contoh: +6285779699422"
             android:textStyle="italic"
             app:layout_constraintStart_toEndOf="@+id/tv_phone_register"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"

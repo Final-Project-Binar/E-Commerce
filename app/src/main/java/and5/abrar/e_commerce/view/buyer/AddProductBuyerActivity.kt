@@ -7,28 +7,38 @@ import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
+import and5.abrar.e_commerce.model.wishlist.WishListBuyer
 import and5.abrar.e_commerce.network.ApiClient
 import and5.abrar.e_commerce.view.HomeActivity
+import and5.abrar.e_commerce.view.LoginActivity
 import and5.abrar.e_commerce.viewmodel.BuyerOrderViewModel
 import and5.abrar.e_commerce.viewmodel.ViewModelHome
+import and5.abrar.e_commerce.viewmodel.ViewModelWishList
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_add_product_buyer.*
+import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.custom_dialog_hargatawar_buyer.view.*
+import kotlinx.android.synthetic.main.item_notifikasi_buyer.view.*
 import kotlinx.coroutines.DelicateCoroutinesApi
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 @DelicateCoroutinesApi
 @AndroidEntryPoint
 class AddProductBuyerActivity : AppCompatActivity() {
     private lateinit var userManager: UserManager
     private lateinit var apiClient: ApiClient
+    private lateinit var list: List<WishListBuyer>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product_buyer)
@@ -38,6 +48,7 @@ class AddProductBuyerActivity : AppCompatActivity() {
             startActivity(Intent(this, HomeActivity::class.java))
         }
         detailData()
+        postFavorite()
     }
 
     @SuppressLint("SetTextI18n")
@@ -86,7 +97,16 @@ class AddProductBuyerActivity : AppCompatActivity() {
                 addProductBuyer_btnTertarik.text = "Menunggu Respon Penjual"
             }else {
                 addProductBuyer_btnTertarik.setOnClickListener {
-                    iniDialogTawarHarga()
+                    userManager.ceklogin.asLiveData().observe(this){
+                        if (it == true){
+                            iniDialogTawarHarga()
+                        } else {
+                            Toast.makeText(this, "Anda Belum Login", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, LoginActivity::class.java))
+                            finish()
+                        }
+                    }
+
                 }
             }
         }
@@ -142,6 +162,26 @@ class AddProductBuyerActivity : AppCompatActivity() {
         dialog.setCancelable(true)
         dialog.setContentView(dialogView)
         dialog.show()
+    }
+
+    private fun postFavorite(){
+        userManager = UserManager(this)
+        val buyerWishList = ViewModelProvider(this)[ViewModelWishList::class.java]
+
+        imageWishList.setOnClickListener {
+            userManager.ceklogin.asLiveData().observe(this){
+                if (it == true){
+                    val detailBarangd = intent.extras!!.getSerializable("detailproduk") as GetBuyerProductItem
+                    val productID = detailBarangd.id
+                    buyerWishList.postWishListBuyer(userManager.fetchAuthToken().toString(), productID)
+                    imageWishList.setImageResource(R.drawable.favorite_click)
+                    Toast.makeText(this, "Berhasil Menambahkan Wish List Anda", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Anda Belum Login", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        }
     }
 
     override fun onDestroy() {

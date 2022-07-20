@@ -4,6 +4,7 @@ package and5.abrar.e_commerce.view
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
+import and5.abrar.e_commerce.view.buyer.WishListActivity
 import and5.abrar.e_commerce.view.seller.DaftarJualActivity
 import and5.abrar.e_commerce.view.seller.LengkapiDetailProductActivity
 import and5.abrar.e_commerce.viewmodel.ViewModelHome
@@ -117,10 +118,13 @@ class AkunSayaActivity : AppCompatActivity() {
             if (it == true){
                 akunsaya_login.isInvisible = true
                 keluar()
+                akunsaya_favorite.isVisible = true
+                onBiometric.isInvisible = true
             }else{
                 akunsaya_btnkeluar.isInvisible = true
                 akunsaya_login.isVisible = true
-                onBiometric.isInvisible = true
+                akunsaya_favorite.isInvisible = true
+                onBiometric.isVisible = true
                 akunsaya_login.setOnClickListener{
                     startActivity(Intent(this@AkunSayaActivity, LoginActivity::class.java))
                 }
@@ -129,6 +133,7 @@ class AkunSayaActivity : AppCompatActivity() {
         ubahAkun()
         changePassword()
         fingerprint()
+        goToFavorite()
     }
 
     private fun keluar(){
@@ -186,6 +191,11 @@ class AkunSayaActivity : AppCompatActivity() {
     private fun changePassword(){
         pengaturanAkun.setOnClickListener {
             startActivity(Intent(this, ChangePasswordActivity::class.java))
+        }
+    }
+    private fun goToFavorite(){
+        goToFavorite.setOnClickListener {
+            startActivity(Intent(this, WishListActivity::class.java))
         }
     }
     private fun getCancellationSignal(): CancellationSignal {
