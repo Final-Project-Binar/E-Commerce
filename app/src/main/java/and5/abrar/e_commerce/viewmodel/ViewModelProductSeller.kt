@@ -2,9 +2,7 @@ package and5.abrar.e_commerce.viewmodel
 
 import and5.abrar.e_commerce.model.category.GetCategorySellerItem
 import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
-import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
-import and5.abrar.e_commerce.model.produkseller.GetUserResponse
-import and5.abrar.e_commerce.model.produkseller.PostSellerProduct
+import and5.abrar.e_commerce.model.produkseller.*
 import and5.abrar.e_commerce.network.ApiService
 import and5.abrar.e_commerce.repository.ProductRepository
 import androidx.lifecycle.LiveData
@@ -37,9 +35,190 @@ class ViewModelProductSeller @Inject constructor(private var productRepository: 
     private val liveDiminati = MutableLiveData<List<GetOrderSellerItem>>()
     val diminati : LiveData<List<GetOrderSellerItem>> = liveDiminati
 
+    private val updateProduct = MutableLiveData<PutSellerProduct>()
+    val update : LiveData<PutSellerProduct> = updateProduct
+
+    private val getProduct = MutableLiveData<GetDataProductSellerItem>()
+    val getproduk : LiveData<GetDataProductSellerItem> = getProduct
+
+    private val deleteProduct = MutableLiveData<DeleteSellerProduct>()
+    val deleteProduk : LiveData<DeleteSellerProduct> = deleteProduct
+
     var sellerCategory = MutableLiveData<List<GetCategorySellerItem>>()
 
     private val apiServices = api
+
+    fun deleteProduct(
+        token: String,
+        id: Int
+    ){
+        apiServices.deleteProduct(
+            token,
+            id
+        ).enqueue(object : Callback<DeleteSellerProduct>{
+            override fun onResponse(
+                call: Call<DeleteSellerProduct>,
+                response: Response<DeleteSellerProduct>
+            ) {
+                if(response.isSuccessful){
+                    deleteProduct.value = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<DeleteSellerProduct>, t: Throwable) {
+                //
+            }
+
+        })
+    }
+
+    fun updateProductnc(
+        token: String,
+        id:Int,
+        nama:RequestBody,
+        Deskripsi:RequestBody,
+        harga:RequestBody,
+        lokasi: RequestBody,
+        image :MultipartBody.Part
+    ){
+        apiServices.updateProductimagenocategory(
+            token,
+            id,
+            nama,
+            Deskripsi,
+            harga,
+            lokasi,
+            image
+        ).enqueue(object : Callback<PutSellerProduct>{
+            override fun onResponse(
+                call: Call<PutSellerProduct>,
+                response: Response<PutSellerProduct>
+            ) {
+                if(response.isSuccessful){
+                    updateProduct.value = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<PutSellerProduct>, t: Throwable) {
+                //
+            }
+
+        })
+    }
+
+
+    fun updateproductgambar(
+        token: String,
+        id:Int,
+        nama:RequestBody,
+        Deskripsi:RequestBody,
+        harga:RequestBody,
+        kategori:RequestBody,
+        lokasi: RequestBody,
+        image :MultipartBody.Part){
+        apiServices.updateProductimage(
+            token,
+            id,
+            nama,
+            Deskripsi,
+            harga,
+            kategori,
+            lokasi,
+            image).enqueue(object : Callback<PutSellerProduct>{
+            override fun onResponse(
+                call: Call<PutSellerProduct>,
+                response: Response<PutSellerProduct>
+            ) {
+                if(response.isSuccessful){
+                    updateProduct.value = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<PutSellerProduct>, t: Throwable) {
+               //
+            }
+
+        })
+    }
+
+    fun updateProductngnc(
+        token: String,
+        id: Int,
+        nama:RequestBody,
+        Deskripsi:RequestBody,
+        harga:RequestBody,
+        lokasi: RequestBody
+    ){apiServices.updateProductnoImagenocategory(
+        token,
+        id,
+        nama,
+        Deskripsi,
+        harga,
+        lokasi
+    ).enqueue(object : Callback<PutSellerProduct>{
+        override fun onResponse(
+            call: Call<PutSellerProduct>,
+            response: Response<PutSellerProduct>
+        ) {
+            if(response.isSuccessful){
+                updateProduct.value = response.body()
+            }
+        }
+
+        override fun onFailure(call: Call<PutSellerProduct>, t: Throwable) {
+            //
+        }
+
+    })
+
+    }
+    fun updateproduct(token: String,
+                      id: Int,
+                      nama:RequestBody,
+                      Deskripsi:RequestBody,
+                      harga:RequestBody,
+                      kategori:RequestBody,
+                      lokasi: RequestBody){
+    apiServices.updateProductnoImage(
+        token,
+        id,
+        nama,
+        Deskripsi,
+        harga,
+        kategori,
+        lokasi).enqueue(object : Callback<PutSellerProduct>{
+        override fun onResponse(
+            call: Call<PutSellerProduct>,
+            response: Response<PutSellerProduct>
+        ) {
+            if(response.isSuccessful){
+                updateProduct.value = response.body()
+            }
+        }
+        override fun onFailure(call: Call<PutSellerProduct>, t: Throwable) {
+            //
+        }
+
+    })
+    }
+
+    fun getProductid(token : String, id : Int){
+        apiServices.getProductid(token,id).enqueue(object : Callback<GetDataProductSellerItem>{
+            override fun onResponse(
+                call: Call<GetDataProductSellerItem>,
+                response: Response<GetDataProductSellerItem>
+            ) {
+                if(response.isSuccessful){
+                    getProduct.value = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<GetDataProductSellerItem>, t: Throwable) {
+                //
+            }
+
+        })
+    }
 
     fun getorderstatus(token : String){
         apiServices.getOrderSellerStatus(token).enqueue(object : Callback<List<GetOrderSellerItem>>{
@@ -58,6 +237,7 @@ class ViewModelProductSeller @Inject constructor(private var productRepository: 
 
         })
     }
+
     fun getOrder(token: String){
         apiServices.getOrderSeller(token).enqueue(object : Callback<List<GetOrderSellerItem>>{
             override fun onResponse(
@@ -75,6 +255,7 @@ class ViewModelProductSeller @Inject constructor(private var productRepository: 
 
         })
     }
+
     fun jualproduct(
         token :String,
         nama : RequestBody,

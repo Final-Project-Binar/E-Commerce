@@ -162,13 +162,8 @@ android:layout_height="wrap_content">
             android:id="@+id/button_edit_card"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_edit_" />
-
-        <ImageButton
-            android:id="@+id/button_hapus_card"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_hapus"/>
+            android:src="@drawable/ic_edit_"
+            app:tint="@color/birumuda" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

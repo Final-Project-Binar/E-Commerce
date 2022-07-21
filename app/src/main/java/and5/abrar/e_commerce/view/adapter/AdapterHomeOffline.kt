@@ -16,10 +16,6 @@ import kotlinx.android.synthetic.main.item_product_home.view.*
 class AdapterHomeOffline(private var dataoffline : List<Offline>):RecyclerView.Adapter<AdapterHomeOffline.ViewHolder>() {
     class ViewHolder(itemView : View):RecyclerView.ViewHolder(itemView)
 
-//    private var dataoffline : List<Offline>? = null
-//   fun setOffline(off : List<Offline>?){
-//        this.dataoffline = off
-//    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewitem = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_product_home,parent, false)

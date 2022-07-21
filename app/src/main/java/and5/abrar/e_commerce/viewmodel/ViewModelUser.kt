@@ -45,6 +45,22 @@ class ViewModelUser @Inject constructor(api: ApiService) : ViewModel() {
     }
 
 
+    fun userProfilenogambar(token : String, fname : RequestBody, phone : RequestBody, address : RequestBody, city:RequestBody){
+        apiService.profileusernogambar(token,fname,phone,address, city)
+            .enqueue(object  : Callback<GetUser>{
+                override fun onResponse(call: Call<GetUser>, response: Response<GetUser>) {
+                    if(response.isSuccessful){
+                        livedatauserprofile.value = response.body()
+                    }
+                }
+
+                override fun onFailure(call: Call<GetUser>, t: Throwable) {
+                    //
+                }
+
+            })
+    }
+
     fun getProfiler(token: String) {
         apiService.getProfileData(token)
             .enqueue(object : Callback<GetUserProfile> {

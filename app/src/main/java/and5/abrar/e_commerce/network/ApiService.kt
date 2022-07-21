@@ -72,8 +72,6 @@ interface ApiService {
         @Header("access_token") token : String
     ) : Call<List<GetDataProductSellerItem>>
 
-    @POST("auth/register")
-    fun register(@Body requestPost: RequestPost): Call<PostUserRegister>
 
     @POST("auth/register")
     @Multipart
@@ -97,6 +95,16 @@ interface ApiService {
         @Part image :MultipartBody.Part
     ) : Call<GetUser>
 
+    @PUT("auth/user")
+    @Multipart
+    fun profileusernogambar(
+        @Header("access_token") token : String,
+        @Part ("full_name") fname : RequestBody,
+        @Part ("phone_number") pnumber: RequestBody,
+        @Part ("address") address : RequestBody,
+        @Part ("city") city : RequestBody,
+    ) : Call<GetUser>
+
     @POST("seller/product")
     @Multipart
     fun tambahproduct(
@@ -109,16 +117,58 @@ interface ApiService {
         @Part image :MultipartBody.Part
     ):Call<PostSellerProduct>
 
+    @GET("seller/product/{id}")
+    fun getProductid(
+        @Header("access_token") token: String,
+        @Path("id") id: Int
+    ): Call<GetDataProductSellerItem>
+
     @PUT("seller/product/{id}")
     @Multipart
-    fun updateProduct(
+    fun updateProductimage(
         @Header("access_token") token : String,
+        @Path("id") id :Int,
         @Part("name") nama : RequestBody,
         @Part("description") desc : RequestBody,
         @Part("base_price") harga : RequestBody,
         @Part("category_ids") category: RequestBody,
         @Part("location") lokasi : RequestBody,
         @Part image :MultipartBody.Part
+    ): Call<PutSellerProduct>
+
+    @PUT("seller/product/{id}")
+    @Multipart
+    fun updateProductimagenocategory(
+        @Header("access_token") token : String,
+        @Path("id") id :Int,
+        @Part("name") nama : RequestBody,
+        @Part("description") desc : RequestBody,
+        @Part("base_price") harga : RequestBody,
+        @Part("location") lokasi : RequestBody,
+        @Part image :MultipartBody.Part
+    ): Call<PutSellerProduct>
+
+    @PUT("seller/product/{id}")
+    @Multipart
+    fun updateProductnoImage(
+        @Header("access_token") token : String,
+        @Path("id") id :Int,
+        @Part("name") nama : RequestBody,
+        @Part("description") desc : RequestBody,
+        @Part("base_price") harga : RequestBody,
+        @Part("category_ids") category: RequestBody,
+        @Part("location") lokasi : RequestBody
+    ): Call<PutSellerProduct>
+
+    @PUT("seller/product/{id}")
+    @Multipart
+    fun updateProductnoImagenocategory(
+        @Header("access_token") token : String,
+        @Path("id") id :Int,
+        @Part("name") nama : RequestBody,
+        @Part("description") desc : RequestBody,
+        @Part("base_price") harga : RequestBody,
+        @Part("location") lokasi : RequestBody
     ): Call<PutSellerProduct>
 
     @DELETE("seller/product/{id}")

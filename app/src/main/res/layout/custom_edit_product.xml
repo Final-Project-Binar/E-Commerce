@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.seller.EditProduct">
 
 
     <androidx.core.widget.NestedScrollView
@@ -110,7 +111,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textselectkategori"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="65dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
@@ -120,9 +121,8 @@
                 tools:ignore="MissingConstraints">
 
                 <MultiAutoCompleteTextView
-                    android:hint="@string/select_category"
-                    android:padding="15dp"
-                    android:id="@+id/select_editkategori"
+                    android:hint="Select Category"
+                    android:id="@+id/edt_select_kategori"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -247,7 +247,7 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_terbitkan"
+                android:id="@+id/btn_updatedataproduct"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_marginStart="20dp"
@@ -261,6 +261,23 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintTop_toBottomOf="@+id/inputfoto"
+                app:layout_constraintVertical_bias="0.854"
+                tools:ignore="HardcodedText,MissingConstraints" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_deletedataproduct"
+                android:layout_width="200dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/deletebtn"
+                android:text="Delete Product"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintTop_toBottomOf="@+id/lokasi"
                 app:layout_constraintVertical_bias="0.854"
                 tools:ignore="HardcodedText,MissingConstraints" />
 

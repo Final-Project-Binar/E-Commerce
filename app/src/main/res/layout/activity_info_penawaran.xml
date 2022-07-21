@@ -12,9 +12,21 @@
         android:id="@+id/kembali_keproductdiminati"
         android:src="@drawable/ic_baseline_arrow_back_24"
         android:layout_width="35dp"
-        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
         android:layout_height="35dp"
         tools:ignore="ContentDescription" />
+
+    <TextView
+        android:layout_below="@id/kembali_keproductdiminati"
+        android:id="@+id/infobuyer"
+        android:layout_marginStart="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Informasi Buyer"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -23,7 +35,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/kembali_keproductdiminati"
+        android:layout_below="@+id/infobuyer"
         app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

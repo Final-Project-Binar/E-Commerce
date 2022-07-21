@@ -73,9 +73,8 @@ class DaftarJualActivity : AppCompatActivity() {
         daftarTerjuall.setOnClickListener {
             startActivity(Intent(this,DaftarJualTerjual::class.java))
         }
+
     }
-
-
 
     private fun initView(){
         val viewModelDataSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
@@ -85,7 +84,6 @@ class DaftarJualActivity : AppCompatActivity() {
             TV_kota_product.text = it.city
             Glide.with(applicationContext).load(it.imageUrl).into(IV_penjual_product)
         }
-
         initRecyclerView()
     }
 
@@ -94,15 +92,17 @@ class DaftarJualActivity : AppCompatActivity() {
         val viewModelProductSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
 
         viewModelProductSeller.getAllSellerProduct(token = userManager.fetchAuthToken().toString())
-
         adapter = AdapterProductSeller(){
-
+            val clickedproduct = Bundle()
+            clickedproduct.putSerializable("detailorder",it)
+            val pindah = Intent(this,EditProduct::class.java)
+            pindah.putExtras(clickedproduct)
+            startActivity(pindah)
         }
-//        rvProductSeller.layoutManager = GridLayoutManager(this, 2)
         rvProductSeller.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rvProductSeller.adapter = adapter
 
-        viewModelProductSeller.sellerProduct.observe(this){
+        viewModelProductSeller.sellerProduct.observe(this) {
             if (it.isNotEmpty()){
                 adapter.setDataProductSeller(it)
                 adapter.notifyDataSetChanged()
@@ -110,18 +110,14 @@ class DaftarJualActivity : AppCompatActivity() {
         }
     }
 
-
     private fun editSeller(){
         daftar_jualEdit.setOnClickListener {
             startActivity(Intent(this, AkunSayaActivity::class.java))
         }
     }
-
     private fun addProduct(){
         image_tambah_produk.setOnClickListener {
             startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
         }
     }
-
-
 }

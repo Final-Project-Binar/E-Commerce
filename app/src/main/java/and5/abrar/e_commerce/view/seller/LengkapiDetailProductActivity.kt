@@ -77,8 +77,6 @@ class LengkapiDetailProductActivity : AppCompatActivity() {
             categoryID.remove(categoryID[position])
             val getID = selectedID.toString()
             postCategory = getID.replace("[", "").replace("]", "")
-            Log.e("postcate", postCategory)
-            Log.e("slecid", selectedID.toString())
         }
         back.setOnClickListener {
             startActivity(Intent(this,DaftarJualActivity::class.java) )

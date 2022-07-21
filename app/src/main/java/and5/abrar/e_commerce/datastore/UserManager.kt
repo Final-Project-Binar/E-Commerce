@@ -127,6 +127,10 @@ class UserManager(context : Context) {
         it[NAME] ?: ""
     }
 
+    val harga : Flow<String> = dataStore.data.map {
+        it[HARGA] ?: ""
+    }
+
     val kategori: Flow<String> = dataStore.data.map {
         it[KATEGORI] ?: ""
     }

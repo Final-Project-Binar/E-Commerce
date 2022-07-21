@@ -8,6 +8,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -30,10 +31,12 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var  userManager: UserManager
     private var selectedUri: Uri? = null
     private lateinit var image : Uri
+    private var ngambil : Boolean = false
 
     private val galleryResult = registerForActivityResult(ActivityResultContracts.GetContent()) { result ->
     pict_image_profile.setImageURI(result)
     image = result!!
+    ngambil = true
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,8 +81,15 @@ class ProfileActivity : AppCompatActivity() {
      private fun viewmodel(token : String, fname : RequestBody , phone : RequestBody , address : RequestBody ,  city:RequestBody, image :MultipartBody.Part  ){
         val viewModelDataSeller = ViewModelProvider(this@ProfileActivity)[ViewModelUser::class.java]
         viewModelDataSeller.userProfile(token,fname, phone, address, city,image)
-        finish()
+         startActivity(Intent(this,AkunSayaActivity::class.java))
     }
+
+    private fun updatenogambar(token : String, fname : RequestBody , phone : RequestBody , address : RequestBody ,  city:RequestBody){
+        val viewModelDataSeller = ViewModelProvider(this@ProfileActivity)[ViewModelUser::class.java]
+        viewModelDataSeller.userProfilenogambar(token,fname, phone, address, city)
+        startActivity(Intent(this,AkunSayaActivity::class.java))
+    }
+
 
      private fun updatedata() {
          btn_simpan_profile.setOnClickListener {
@@ -91,27 +101,37 @@ class ProfileActivity : AppCompatActivity() {
                  etAlamat_profile.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
              val nohp: RequestBody =
                  etNohp_profile.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-             val contentResolver = this.applicationContext.contentResolver
-             val type = contentResolver.getType(image)
-             val tempFile = File.createTempFile("temp-", null, null)
-             val inputstream = contentResolver.openInputStream(image)
-             tempFile.outputStream().use {
-                 inputstream?.copyTo(it)
+             if (!ngambil){
+                 Log.e("nogambar","ghg")
+                 updatenogambar(
+                     token = userManager.fetchAuthToken().toString(),
+                     fname,
+                     nohp,
+                     alamat,
+                     kota
+                 )
+             }else{
+                 val contentResolver = this.applicationContext.contentResolver
+                 val type = contentResolver.getType(image)
+                 val tempFile = File.createTempFile("temp-", null, null)
+                 val inputstream = contentResolver.openInputStream(image)
+                 tempFile.outputStream().use {
+                     inputstream?.copyTo(it)
+                 }
+                 val requestBody: RequestBody = tempFile.asRequestBody(type?.toMediaType())
+                 val body = MultipartBody.Part.createFormData("image", tempFile.name, requestBody)
+                 Log.e("ada gambar", type.toString())
+                 viewmodel(
+                     token = userManager.fetchAuthToken().toString(),
+                     fname,
+                     nohp,
+                     alamat,
+                     kota,
+                     body
+                 )
              }
-             val requestBody: RequestBody = tempFile.asRequestBody(type?.toMediaType())
-             val body = MultipartBody.Part.createFormData("image", tempFile.name, requestBody)
-             viewmodel(
-                 token = userManager.fetchAuthToken().toString(),
-                 fname,
-                 nohp,
-                 alamat,
-                 kota,
-                 body
-             )
          }
      }
-
-
 
     private fun startContentProvider() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -128,7 +148,6 @@ class ProfileActivity : AppCompatActivity() {
             }
             .create()
             .show()
-
     }
 
     @Deprecated("Deprecated in Java")
@@ -142,16 +161,8 @@ class ProfileActivity : AppCompatActivity() {
             2020 -> {
                 val uri = data?.data
                 if (uri != null) {
-                    pict_image_profile.setImageURI(uri)
                     selectedUri = uri
-                    image = uri
-                } else {
-                    Toast.makeText(this, "Tidak bisa mendapatkan foto.", Toast.LENGTH_SHORT).show()
                 }
-
-            }
-            else -> {
-                Toast.makeText(this, "Tidak bisa mendapatkan foto.", Toast.LENGTH_SHORT).show()
             }
         }
     }

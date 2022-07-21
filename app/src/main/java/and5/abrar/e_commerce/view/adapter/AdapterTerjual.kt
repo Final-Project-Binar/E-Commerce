@@ -5,6 +5,7 @@ import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_product_seller.view.*
@@ -28,6 +29,7 @@ class AdapterTerjual(private  var onClick :(GetOrderSellerItem)->Unit) : Recycle
         Glide.with(holder.itemView.context)
             .load(dataOrder!![position].product.imageUrl)
             .into(holder.itemView.imageProductSeller)
+        holder.itemView.button_edit_card.isInvisible = true
     }
 
     override fun getItemCount(): Int {

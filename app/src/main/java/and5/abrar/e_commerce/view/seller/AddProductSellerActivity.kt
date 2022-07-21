@@ -23,12 +23,15 @@ class AddProductSellerActivity : AppCompatActivity() {
         val viewModelDataSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
         viewModelDataSeller.getSeller(token = userManager.fetchAuthToken().toString())
         viewModelDataSeller.seller.observe(this) {
-            TV_nama.text = it.fullName
-            seller_kota.text = it.city
+            TV_nama.text = "Nama Seller" + it.fullName
+            seller_kota.text = "Kota Seller" + it.city
             Glide.with(this@AddProductSellerActivity).load(it.imageUrl).into(IV_penjual)
         }
+        userManager.harga.asLiveData().observe(this){
+            addProduct_harga.text = "Rp.$it"
+        }
         userManager.name.asLiveData().observe(this){
-            addProduct_namaproduk.text = it
+            addProduct_namaproduk.text = "Nama Produk : $it"
         }
         userManager.deskripsi.asLiveData().observe(this){
             addProduct_deskripsi.text = it

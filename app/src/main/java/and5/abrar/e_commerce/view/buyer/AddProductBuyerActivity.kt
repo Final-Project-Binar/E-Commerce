@@ -45,7 +45,7 @@ class AddProductBuyerActivity : AppCompatActivity() {
         userManager = UserManager(this)
         apiClient = ApiClient()
         back.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
+            onBackPressed()
         }
         detailData()
         postFavorite()
@@ -184,7 +184,7 @@ class AddProductBuyerActivity : AppCompatActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

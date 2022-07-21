@@ -3,8 +3,10 @@ package and5.abrar.e_commerce.view.seller
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.view.AkunSayaActivity
+import and5.abrar.e_commerce.view.EditProfileActivity
 import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.view.adapter.AdapterTerjual
+import and5.abrar.e_commerce.view.buyer.AddProductBuyerActivity
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
 import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
 import android.content.Intent
@@ -89,6 +91,11 @@ class DaftarJualTerjual : AppCompatActivity() {
         val viewModelProductSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
         viewModelProductSeller.getorderstatus(token = userManager.fetchAuthToken().toString())
         adapter = AdapterTerjual(){
+            val clickedProduct = Bundle()
+            clickedProduct.putParcelable("detailproduk",it)
+            val pindah = Intent(this, EditProfileActivity::class.java)
+            pindah.putExtras(clickedProduct)
+            startActivity(pindah)
         }
         rvTerjual.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rvTerjual.adapter = adapter
@@ -98,5 +105,10 @@ class DaftarJualTerjual : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        recreate()
     }
 }

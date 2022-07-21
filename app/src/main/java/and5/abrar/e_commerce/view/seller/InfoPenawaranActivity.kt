@@ -51,8 +51,6 @@ class InfoPenawaranActivity : AppCompatActivity() {
         buyerName_infoPenawar.text = detailInfo?.user?.fullName
         location_infoPenawar.text = detailInfo?.user?.city
 
-
-
         viewModelNotifikasiId.getInfoPenawar(
             userManager.fetchAuthToken().toString(),
             detailInfo!!.id
@@ -63,9 +61,9 @@ class InfoPenawaranActivity : AppCompatActivity() {
                 Glide.with(applicationContext).load(it.user.imageurl)
                     .override(80,80)
                     .into(imageViewInfoPenawaran)
-                infopenawar_namaProduk.text = it.productName
-                infopenawar_harga.text = "Rp. ${it.basePrice}"
-                infopenawar_tawar.text = "Rp. ${it.price}"
+                infopenawar_namaProduk.text = "Nama : Product"+it.productName
+                infopenawar_harga.text = "Harga : Rp. ${it.basePrice}"
+                infopenawar_tawar.text = "Ditawar : Rp. ${it.price}"
                 infopenawar_waktu.text = it.updatedAt
                 infopenawar_statusproduk.text = it.status
                 Glide.with(applicationContext).load(it.product.imageUrl)

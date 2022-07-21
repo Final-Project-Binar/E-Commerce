@@ -41,7 +41,12 @@ class AdapterNotifikasiBuyer(private var dataNotif : List<GetNotifikasiItem>,
                     notifikasiBuyer_namaProduk.text = productName
                     notikasiBuyer_statusproduk.text = status
                     notifikasiBuyer_harga.text = "Rp $basePrice"
-                    notifikasiBuyer_tawar.text = "Ditawar Rp $bidPrice"
+                    if (status == "create"){
+                        notifikasiBuyer_tawar.text = ""
+                    }else{
+                        notifikasiBuyer_tawar.text = "Ditawar Rp $bidPrice"
+                    }
+
                     if (transactionDate.isNullOrEmpty()){
                         notikasiBuyer_waktu.text = updatedAt
                     }else{
