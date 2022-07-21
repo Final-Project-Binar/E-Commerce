@@ -106,9 +106,4 @@ class DaftarJualTerjual : AppCompatActivity() {
             }
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-        recreate()
-    }
 }
