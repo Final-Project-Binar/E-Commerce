@@ -20,8 +20,6 @@ class ViewModelUser @Inject constructor(api: ApiService) : ViewModel() {
 
     val profile : LiveData<GetUser> = livedatauserprofile
 
-    private val liveDataResponseMessage = MutableLiveData<Boolean>()
-    val responseMessage: LiveData<Boolean> = liveDataResponseMessage
     private val apiService = api
 
     // profile get

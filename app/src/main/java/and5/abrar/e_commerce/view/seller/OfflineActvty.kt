@@ -4,15 +4,10 @@ package and5.abrar.e_commerce.view.seller
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.room.OfflineDatabase
-import and5.abrar.e_commerce.view.AkunSayaActivity
-import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.view.adapter.AdapterHomeOffline
-import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_daftar_jual_dua_diminati_kosong.*
 import kotlinx.coroutines.DelicateCoroutinesApi

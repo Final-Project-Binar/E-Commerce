@@ -1,4 +1,9 @@
-@file:Suppress("RedundantOverride", "RedundantOverride", "RedundantOverride")
+@file:Suppress("RedundantOverride", "RedundantOverride", "RedundantOverride", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused"
+)
 
 package and5.abrar.e_commerce.view.buyer
 
@@ -9,29 +14,23 @@ import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import and5.abrar.e_commerce.model.wishlist.WishListBuyer
 import and5.abrar.e_commerce.network.ApiClient
-import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.view.LoginActivity
 import and5.abrar.e_commerce.viewmodel.BuyerOrderViewModel
 import and5.abrar.e_commerce.viewmodel.ViewModelHome
 import and5.abrar.e_commerce.viewmodel.ViewModelWishList
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_add_product_buyer.*
-import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.custom_dialog_hargatawar_buyer.view.*
-import kotlinx.android.synthetic.main.item_notifikasi_buyer.view.*
 import kotlinx.coroutines.DelicateCoroutinesApi
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 
 @DelicateCoroutinesApi
 @AndroidEntryPoint

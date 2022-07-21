@@ -19,7 +19,6 @@ class ViewModelInfoPenawarSeller @Inject constructor(api: ApiService) : ViewMode
     val sellerInfoPenawar: LiveData<GetSellerOrderId> = liveDataPenawar
 
     private val liveDataUbahStatus = MutableLiveData<PathSellerOrderId>()
-    val sellerInfoPenawarStatus: LiveData<PathSellerOrderId> = liveDataUbahStatus
 
     private val apiServices = api
 

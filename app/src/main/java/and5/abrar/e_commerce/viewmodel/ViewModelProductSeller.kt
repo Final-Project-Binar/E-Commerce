@@ -27,7 +27,6 @@ class ViewModelProductSeller @Inject constructor(private var productRepository: 
     val seller: LiveData<GetUserResponse> = liveDataSeller
 
     private val livedataJualProduct = MutableLiveData<PostSellerProduct>()
-    val jualproduct : LiveData<PostSellerProduct> = livedataJualProduct
 
     private val livedataorder = MutableLiveData<List<GetOrderSellerItem>>()
     val dataorder : LiveData<List<GetOrderSellerItem>> = livedataorder
@@ -36,13 +35,11 @@ class ViewModelProductSeller @Inject constructor(private var productRepository: 
     val diminati : LiveData<List<GetOrderSellerItem>> = liveDiminati
 
     private val updateProduct = MutableLiveData<PutSellerProduct>()
-    val update : LiveData<PutSellerProduct> = updateProduct
 
     private val getProduct = MutableLiveData<GetDataProductSellerItem>()
     val getproduk : LiveData<GetDataProductSellerItem> = getProduct
 
     private val deleteProduct = MutableLiveData<DeleteSellerProduct>()
-    val deleteProduk : LiveData<DeleteSellerProduct> = deleteProduct
 
     var sellerCategory = MutableLiveData<List<GetCategorySellerItem>>()
 

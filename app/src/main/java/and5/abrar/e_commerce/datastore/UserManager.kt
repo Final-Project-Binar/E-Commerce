@@ -25,7 +25,6 @@ class UserManager(context : Context) {
         val LOKASI = preferencesKey<String>("LOKASI")
         val DESC = preferencesKey<String>("DESC")
         val IMAGE = preferencesKey<String>("IMAGE")
-        val ACCESS_TOKEN = preferencesKey<String>("ACCESS_TOKEN")
         val PASSWORD = preferencesKey<String>("PASSWORD")
         val BOOLEAN = preferencesKey<Boolean>("BOOLEAN")
     }
@@ -135,20 +134,12 @@ class UserManager(context : Context) {
         it[KATEGORI] ?: ""
     }
 
-    val lokasi: Flow<String> = dataStore.data.map {
-        it[LOKASI] ?: ""
-    }
-
     val deskripsi: Flow<String> = dataStore.data.map {
         it[DESC] ?: ""
     }
 
     val gambar: Flow<String> = dataStore.data.map {
         it[IMAGE] ?: ""
-    }
-
-    val accessToken: Flow<String> = dataStore.data.map {
-        it[ACCESS_TOKEN] ?: ""
     }
 
     val ceklogin: Flow<Boolean> = dataStore.data.map {

@@ -1,3 +1,5 @@
+@file:Suppress("SimplifyBooleanWithConstants", "SimplifyBooleanWithConstants")
+
 package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R

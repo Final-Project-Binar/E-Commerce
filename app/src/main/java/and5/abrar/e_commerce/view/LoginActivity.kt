@@ -1,3 +1,5 @@
+@file:Suppress("RedundantSamConstructor")
+
 package and5.abrar.e_commerce.view
 
 import and5.abrar.e_commerce.R

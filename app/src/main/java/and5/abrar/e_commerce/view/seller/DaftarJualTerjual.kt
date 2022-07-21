@@ -1,3 +1,5 @@
+@file:Suppress("RemoveEmptyParenthesesFromLambdaCall")
+
 package and5.abrar.e_commerce.view.seller
 
 import and5.abrar.e_commerce.R
@@ -6,7 +8,6 @@ import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.view.EditProfileActivity
 import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.view.adapter.AdapterTerjual
-import and5.abrar.e_commerce.view.buyer.AddProductBuyerActivity
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
 import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
 import android.content.Intent

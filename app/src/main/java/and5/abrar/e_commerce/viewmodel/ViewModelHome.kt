@@ -25,8 +25,6 @@ class ViewModelHome @Inject constructor( apiService: ApiService, offlineDao: Off
     private var liveDataDetail = MutableLiveData<GetBuyerProductResponse>()
     val detail : LiveData<GetBuyerProductResponse> = liveDataDetail
 
-    private val livedataOffline = MutableLiveData<List<Offline>>()
-    var offlinedata : LiveData<List<Offline>> = livedataOffline
     private val dao = offlineDao
 
     private val apiServices = apiService
@@ -46,14 +44,6 @@ class ViewModelHome @Inject constructor( apiService: ApiService, offlineDao: Off
         }
     }
 
-    fun getOffline(){
-        viewModelScope.launch {
-           val dataoff = dao.getOffline()
-            delay(4000)
-            livedataOffline.value = dataoff
-        }
-    }
-
     fun deleteoffline(){
         viewModelScope.launch{
             dao.deleteoffline()
@@ -70,12 +60,10 @@ class ViewModelHome @Inject constructor( apiService: ApiService, offlineDao: Off
                     ) {
                         if (response.isSuccessful) {
                             liveDataDetail.postValue(response.body())
-                        } else {
-                            liveDataDetail.postValue(null)
                         }
                     }
                     override fun onFailure(call: Call<GetBuyerProductResponse>, t: Throwable) {
-                        liveDataDetail.postValue(null)
+                        //
                     }
                 })
         }

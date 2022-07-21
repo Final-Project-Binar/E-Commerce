@@ -1,24 +1,14 @@
 package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R
-import and5.abrar.e_commerce.datastore.UserManager
-import and5.abrar.e_commerce.model.produkseller.DeleteSellerProduct
 import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
-import and5.abrar.e_commerce.network.ApiClient
-import and5.abrar.e_commerce.network.ApiService
-import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.item_product_seller.view.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class AdapterProductSeller(private  var onClick : (GetDataProductSellerItem)->Unit) : RecyclerView.Adapter<AdapterProductSeller.ViewHolder> () {
 

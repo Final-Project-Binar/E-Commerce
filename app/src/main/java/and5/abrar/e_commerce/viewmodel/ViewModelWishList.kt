@@ -1,13 +1,11 @@
 package and5.abrar.e_commerce.viewmodel
 
-import and5.abrar.e_commerce.model.wishlist.Product
 import and5.abrar.e_commerce.model.wishlist.WishListBuyer
 import and5.abrar.e_commerce.network.ApiService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +17,6 @@ class ViewModelWishList @Inject constructor(api : ApiService) : ViewModel(){
     val buyerWishList : LiveData<List<WishListBuyer>> = liveDataWishList
 
     private val liveDataWishListPost = MutableLiveData<WishListBuyer>()
-    val buyerWishListPost : LiveData<WishListBuyer> = liveDataWishListPost
 
     private val apiService = api
 

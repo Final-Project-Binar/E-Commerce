@@ -16,10 +16,8 @@ import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponse
 import and5.abrar.e_commerce.model.produkseller.*
 import and5.abrar.e_commerce.model.register.PostUserRegister
-import and5.abrar.e_commerce.model.register.RequestPost
 import and5.abrar.e_commerce.model.user.GetUser
 import and5.abrar.e_commerce.model.user.GetUserProfile
-import and5.abrar.e_commerce.model.wishlist.Product
 import and5.abrar.e_commerce.model.wishlist.WishListBuyer
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

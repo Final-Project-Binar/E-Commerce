@@ -1,5 +1,8 @@
 @file:Suppress("ReplaceGetOrSet", "ReplaceGetOrSet", "ReplaceGetOrSet", "DEPRECATION",
-    "NAME_SHADOWING"
+    "NAME_SHADOWING", "NestedLambdaShadowedImplicitParameter", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate"
 )
 
 package and5.abrar.e_commerce.view
@@ -28,6 +31,7 @@ import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager.widget.ViewPager
@@ -121,7 +125,7 @@ class HomeActivity : AppCompatActivity() {
                   adapterHome.notifyDataSetChanged()
               }
                   for (z in it.indices) {
-                      for (z in 1..10){
+                      for (z in 1..5){
                       for (j in it[z].categories.indices) {
                             viewModel.insertOffline(Offline(null,
                                 it[z].imageUrl,
@@ -170,6 +174,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                     runOnUiThread {
                         adapterHome.setProduk(listdataproduct)
+                        progressBarHome.isVisible = true
                         adapterHome.notifyDataSetChanged()
                     }
                 }

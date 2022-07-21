@@ -50,13 +50,4 @@ class ApiClient {
     }
 
 
-
-    /**
-     * Initialize OkhttpClient with our interceptor
-     */
-    private fun okhttpClient(context: Context): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(RequestInterceptor(context))
-            .build()
-    }
 }
