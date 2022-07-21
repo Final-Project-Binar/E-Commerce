@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="GeeksIconMissing" severity="error" />
+    <issue id="OldDimens">
+        <ignore path="res/layout/merger.xml" />
+        <ignore path="res/layout-xlarge/merger.xml" />
+    </issue>
+    <issue id="HellOWorld">
+        <ignore path="res/layout/main.xml" />
+    </issue>
+    <issue id="someText" severity="ignore" />
+</lint>
