@@ -16,7 +16,7 @@
         android:layout_height="150dp">
 
         <ImageView
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:id="@+id/gambarProdukSeller"
             android:src="@drawable/ic_launcher_background"
@@ -48,7 +48,7 @@
             tools:ignore="HardcodedText" />
 
         <ImageView
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:id="@+id/notikasiSeller_alert"
             android:src="@drawable/ic_baseline_circle_24"

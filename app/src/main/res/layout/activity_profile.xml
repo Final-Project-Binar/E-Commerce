@@ -124,7 +124,7 @@
             android:hint="kota"
             android:background="@drawable/custom_drawable"
             android:popupBackground="@color/white"
-            tools:ignore="HardcodedText" />
+            tools:ignore="Autofill,HardcodedText,TextFields" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -143,7 +143,7 @@ class AkunSayaActivity : AppCompatActivity() {
                 .setTitle("KONFIRMASI LOGOUT")
                 .setMessage("Anda Yakin Ingin Logout ?")
 
-                .setPositiveButton("YA"){ dialogInterface: DialogInterface, i: Int ->
+                .setPositiveButton("YA"){ _: DialogInterface, _: Int ->
                     Toast.makeText(this@AkunSayaActivity, "Berhasil Keluar", Toast.LENGTH_SHORT).show()
                     GlobalScope.launch {
                         dataUserManager.setBoolean(false)
@@ -154,12 +154,12 @@ class AkunSayaActivity : AppCompatActivity() {
                         finish()
                     }
                 }
-                .setNegativeButton("TIDAK"){ dialogInterface: DialogInterface, i: Int ->
+                .setNegativeButton("TIDAK"){ dialogInterface: DialogInterface, _: Int ->
                     Toast.makeText(this, "Tidak Jadi Keluar", Toast.LENGTH_SHORT).show()
                     dialogInterface.dismiss()
                 }
 
-                .setNeutralButton("NANTI"){ dialogInterface: DialogInterface, i: Int ->
+                .setNeutralButton("NANTI"){ dialogInterface: DialogInterface, _: Int ->
                     dialogInterface.dismiss()
                     Toast.makeText(this, "Tidak Jadi Logout", Toast.LENGTH_SHORT).show()
                 }
@@ -179,7 +179,7 @@ class AkunSayaActivity : AppCompatActivity() {
             }
             val biometricPrompt = BiometricPrompt.Builder(this)
                 .setTitle("Tekan Jari Anda ke fingerprint")
-                .setNegativeButton("Cancel", this.mainExecutor, DialogInterface.OnClickListener { dialog, which ->
+                .setNegativeButton("Cancel", this.mainExecutor, DialogInterface.OnClickListener { _, _ ->
                     notifyUser("Authentication Cancelled")
                 }).build()
 

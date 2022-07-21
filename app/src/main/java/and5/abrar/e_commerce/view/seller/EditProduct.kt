@@ -3,7 +3,7 @@
     "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
     "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
     "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
-    "CanBeVal", "CanBeVal", "CanBeVal"
+    "CanBeVal", "CanBeVal", "CanBeVal", "DEPRECATION"
 )
 
 package and5.abrar.e_commerce.view.seller
@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.custom_edit_product.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -34,6 +35,7 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
+@DelicateCoroutinesApi
 @AndroidEntryPoint
 class EditProduct : AppCompatActivity() {
 
@@ -80,7 +82,7 @@ class EditProduct : AppCompatActivity() {
         edt_select_kategori.setAdapter(arrayAdapter)
         edt_select_kategori.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
         arrayAdapter.notifyDataSetChanged()
-        edt_select_kategori.setOnItemClickListener { adapterView, view, position, l ->
+        edt_select_kategori.setOnItemClickListener { _, _, position, _ ->
             val selected: String? = arrayAdapter.getItem(position)
             selectedName.add(arrayAdapter.getItem(position))
             selectedID.add(categoryID[position])

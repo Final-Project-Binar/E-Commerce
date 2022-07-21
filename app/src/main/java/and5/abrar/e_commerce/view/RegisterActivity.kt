@@ -72,7 +72,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun doRegister(email: RequestBody, fullName: RequestBody, password: RequestBody, alamat : RequestBody, kota : RequestBody, phone : RequestBody){
         apiClient = ApiClient()
 
-        apiClient.getApiService(this).registeruser(email,fullName,password,phone,alamat,kota)
+        apiClient.getApiService().registeruser(email,fullName,password,phone,alamat,kota)
             .enqueue(object : Callback<PostUserRegister> {
                 override fun onResponse(
                     call: Call<PostUserRegister>,

@@ -73,7 +73,7 @@ class LengkapiDetailProductActivity : AppCompatActivity() {
         select_kategori.setAdapter(arrayAdapter)
         select_kategori.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
         arrayAdapter.notifyDataSetChanged()
-        select_kategori.setOnItemClickListener { adapterView, view, position, l ->
+        select_kategori.setOnItemClickListener { _, _, position, _ ->
             val selected: String? = arrayAdapter.getItem(position)
             selectedName.add(arrayAdapter.getItem(position))
             selectedID.add(categoryID[position])

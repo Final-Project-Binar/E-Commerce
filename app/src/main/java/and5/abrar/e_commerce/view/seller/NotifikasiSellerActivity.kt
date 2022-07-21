@@ -68,7 +68,7 @@ class NotifikasiSellerActivity : AppCompatActivity() {
     }
 
     private fun fetchnotifseller(){
-        apiClient.getApiService(this).getNotif(token = userManager.fetchAuthToken().toString()).enqueue(object :
+        apiClient.getApiService().getNotif(token = userManager.fetchAuthToken().toString()).enqueue(object :
             Callback<List<GetNotifikasiItem>> {
             override fun onResponse(
                 call: Call<List<GetNotifikasiItem>>,
@@ -76,7 +76,8 @@ class NotifikasiSellerActivity : AppCompatActivity() {
             ) {
                 if(response.isSuccessful){
                     adapterNotifikasiSeller = AdapterNotifikasiSeller(response.body()!!) {
-                        apiClient.getApiService(applicationContext).patchNotif(token = userManager.fetchAuthToken().toString(),it.id)
+                        apiClient.getApiService()
+                            .patchNotif(token = userManager.fetchAuthToken().toString(),it.id)
                             .enqueue(object : Callback<GetNotifikasiItem> {
                                 override fun onResponse(
                                     call: Call<GetNotifikasiItem>,

@@ -115,7 +115,7 @@ android:layout_height="wrap_content">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageProductSeller"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <TextView
         android:id="@+id/tvKategori_product_seller"
@@ -147,7 +147,7 @@ android:layout_height="wrap_content">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageProductSeller"
         app:layout_constraintTop_toBottomOf="@+id/tvKategori_product_seller"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <LinearLayout
         android:id="@+id/card_daftar_jual_saya_action_section"
@@ -163,7 +163,8 @@ android:layout_height="wrap_content">
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_edit_"
-            app:tint="@color/birumuda" />
+            app:tint="@color/birumuda"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

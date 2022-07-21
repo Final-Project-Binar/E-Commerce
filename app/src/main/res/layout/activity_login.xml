@@ -18,7 +18,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <View
         android:id="@+id/view"
@@ -111,7 +112,8 @@
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/login_btnLogin"
         app:layout_constraintEnd_toEndOf="@+id/cardView2"
-        app:layout_constraintStart_toStartOf="@+id/cardView2" />
+        app:layout_constraintStart_toStartOf="@+id/cardView2"
+        tools:ignore="HardcodedText" />
 
     <ImageButton
         android:id="@+id/start_authentication"
@@ -121,5 +123,6 @@
         android:src="@drawable/ic_baseline_fingerprint_24"
         app:layout_constraintEnd_toEndOf="@+id/cardView2"
         app:layout_constraintStart_toStartOf="@+id/cardView2"
-        app:layout_constraintTop_toBottomOf="@id/login_regsister" />
+        app:layout_constraintTop_toBottomOf="@id/login_regsister"
+        tools:ignore="ContentDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-@file:Suppress("CanBeVal")
+@file:Suppress("CanBeVal", "DEPRECATION")
 
 package and5.abrar.e_commerce.view.buyer
 
@@ -19,11 +19,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_notifikasi_buyer.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
+@DelicateCoroutinesApi
 class NotifikasiBuyerActivity : AppCompatActivity() {
     private lateinit var  userManager: UserManager
     private lateinit var apiClient: ApiClient
@@ -66,14 +68,15 @@ class NotifikasiBuyerActivity : AppCompatActivity() {
     }
 
     private fun fetchnotif(){
-        apiClient.getApiService(this).getNotif(token = userManager.fetchAuthToken().toString()).enqueue(object : Callback<List<GetNotifikasiItem>>{
+        apiClient.getApiService().getNotif(token = userManager.fetchAuthToken().toString()).enqueue(object : Callback<List<GetNotifikasiItem>>{
             override fun onResponse(
                 call: Call<List<GetNotifikasiItem>>,
                 response: Response<List<GetNotifikasiItem>>
             ) {
                 if(response.isSuccessful){
                     adapterNotifikasiBuyer = AdapterNotifikasiBuyer(response.body()!!) {
-                        apiClient.getApiService(applicationContext).patchNotif(token = userManager.fetchAuthToken().toString(),it.id)
+                        apiClient.getApiService()
+                            .patchNotif(token = userManager.fetchAuthToken().toString(),it.id)
                             .enqueue(object : Callback<GetNotifikasiItem>{
                                 override fun onResponse(
                                     call: Call<GetNotifikasiItem>,

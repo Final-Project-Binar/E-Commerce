@@ -99,7 +99,7 @@ class LoginActivity : AppCompatActivity() {
             // fingerprint authentication
             val biometricPrompt = BiometricPrompt.Builder(this)
                 .setTitle("Tekan Jari Anda ke fingerprint")
-                .setNegativeButton("Cancel", this.mainExecutor, DialogInterface.OnClickListener { dialog, which ->
+                .setNegativeButton("Cancel", this.mainExecutor, DialogInterface.OnClickListener { _, _ ->
                     notifyUser("Authentication Cancelled")
                 }).build()
 
@@ -109,7 +109,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginauth(loginemail : String, loginPassword : String){
-        apiClient.getApiService(this).login(LoginRequest(email = loginemail, password = loginPassword))
+        apiClient.getApiService().login(LoginRequest(email = loginemail, password = loginPassword))
             .enqueue(object : Callback<LoginResponse>{
                 override fun onResponse(
                     call: Call<LoginResponse>,

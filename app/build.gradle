@@ -11,7 +11,9 @@ plugins {
 
 android {
     compileSdk 32
-
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
     defaultConfig {
         applicationId "and5.abrar.e_commerce"
         minSdk 23

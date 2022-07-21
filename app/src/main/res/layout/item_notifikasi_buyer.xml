@@ -19,7 +19,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:id="@+id/gambarProdukBuyer"
             android:src="@drawable/ic_launcher_background"
@@ -49,14 +49,14 @@
             android:layout_toStartOf="@+id/notikasiBuyer_alert"
             android:text="20 april,14:04"
             android:textSize="10sp"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText,SmallSp" />
 
         <ImageView
             android:id="@+id/notikasiBuyer_alert"
             android:layout_width="13dp"
             android:layout_height="13dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/ic_baseline_circle_24"

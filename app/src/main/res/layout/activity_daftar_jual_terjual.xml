@@ -27,7 +27,8 @@
         app:cardCornerRadius="10sp"
         android:orientation="vertical"
         android:paddingLeft="30sp"
-        android:layout_below="@+id/seller_daftar_product">
+        android:layout_below="@+id/seller_daftar_product"
+        tools:ignore="RtlHardcoded,RtlSymmetry">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -38,7 +39,8 @@
                 android:id="@+id/IV_penjual_product"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/penjual" />
+                android:src="@drawable/penjual"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/TV_nama_product"
@@ -49,7 +51,8 @@
                 android:text="Nama Penjual"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/TV_kota_product"
@@ -60,7 +63,8 @@
                 android:layout_toRightOf="@id/IV_penjual_product"
                 android:text="Kota"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                tools:ignore="HardcodedText" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnedit_product"
@@ -71,7 +75,8 @@
                 android:text="Edit"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
         </RelativeLayout>
 
@@ -89,7 +94,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10sp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="RtlHardcoded,ScrollViewSize">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardView_productSeller"
@@ -103,13 +109,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:layout_margin="10sp">
+                    android:layout_margin="10sp"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_edit_"
-                        android:padding="10sp"/>
+                        android:padding="10sp"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -118,7 +126,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        android:padding="10sp"/>
+                        android:padding="10sp"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -135,13 +144,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:layout_margin="10sp">
+                    android:layout_margin="10sp"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_favorite_border_24"
-                        android:padding="10sp"/>
+                        android:padding="10sp"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -150,7 +161,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        android:padding="10sp"/>
+                        android:padding="10sp"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -166,13 +178,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:layout_margin="10sp">
+                    android:layout_margin="10sp"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_attach_money_24"
-                        android:padding="10sp"/>
+                        android:padding="10sp"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -181,7 +195,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        android:padding="10sp"/>
+                        android:padding="10sp"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>

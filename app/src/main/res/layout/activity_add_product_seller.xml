@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:ignore="ContentDescription,MissingConstraints">
+            tools:ignore="ContentDescription,MissingConstraints,UselessParent">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -60,7 +60,8 @@
                             android:orientation="vertical"
                             android:paddingLeft="26dp"
                             android:paddingTop="16dp"
-                            android:layout_marginBottom="10sp">
+                            android:layout_marginBottom="10sp"
+                            tools:ignore="RtlHardcoded,RtlSymmetry">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -73,7 +74,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="Jam Tangan Kasino"
                                     android:textColor="@color/black"
-                                    android:textSize="14sp"/>
+                                    android:textSize="14sp"
+                                    tools:ignore="HardcodedText" />
 
                                 <TextView
                                     android:id="@+id/addProduct_category"
@@ -81,7 +83,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="Aksesoris"
                                     android:textColor="@color/black"
-                                    android:textSize="10sp" />
+                                    android:textSize="10sp"
+                                    tools:ignore="HardcodedText,SmallSp" />
 
                                 <TextView
                                     android:id="@+id/addProduct_harga"
@@ -89,7 +92,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="Rp 250.00"
                                     android:textColor="@color/black"
-                                    android:textSize="14sp" />
+                                    android:textSize="14sp"
+                                    tools:ignore="HardcodedText" />
                             </LinearLayout>
 
                         </androidx.cardview.widget.CardView>
@@ -102,7 +106,8 @@
                             app:cardCornerRadius="10sp"
                             android:orientation="vertical"
                             android:paddingLeft="26dp"
-                            android:paddingTop="16dp">
+                            android:paddingTop="16dp"
+                            tools:ignore="RtlHardcoded,RtlSymmetry">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -123,7 +128,8 @@
                                     android:layout_toRightOf="@id/IV_penjual"
                                     android:text="Nama Penjual"
                                     android:textColor="@color/black"
-                                    android:textSize="14sp" />
+                                    android:textSize="14sp"
+                                    tools:ignore="HardcodedText" />
 
                                 <TextView
                                     android:id="@+id/seller_kota"
@@ -134,7 +140,8 @@
                                     android:layout_toRightOf="@id/IV_penjual"
                                     android:text="Kota"
                                     android:textColor="@color/black"
-                                    android:textSize="14sp" />
+                                    android:textSize="14sp"
+                                    tools:ignore="HardcodedText" />
                             </RelativeLayout>
 
                         </androidx.cardview.widget.CardView>
@@ -149,7 +156,8 @@
                             app:cardCornerRadius="10sp"
                             android:orientation="vertical"
                             android:paddingLeft="26dp"
-                            android:paddingTop="16dp">
+                            android:paddingTop="16dp"
+                            tools:ignore="RtlHardcoded,RtlSymmetry">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -163,7 +171,8 @@
                                     android:text="Deskripsi"
                                     android:textColor="@color/black"
                                     android:textStyle="bold"
-                                    android:textSize="15sp" />
+                                    android:textSize="15sp"
+                                    tools:ignore="HardcodedText" />
 
                                 <androidx.core.widget.NestedScrollView
                                     android:layout_width="match_parent"
@@ -171,7 +180,8 @@
 
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"
+                                        tools:ignore="TooDeepLayout">
 
                                         <TextView
                                             android:id="@+id/addProduct_deskripsi"
@@ -184,7 +194,7 @@
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="parent"
-                                            tools:ignore="HardcodedText" />
+                                            tools:ignore="HardcodedText,SmallSp" />
 
                                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -230,7 +240,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

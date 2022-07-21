@@ -32,7 +32,7 @@
                 android:textStyle="bold"
                 android:paddingTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="HardcodedText,MissingConstraints" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputeditnamaproduct"
@@ -127,7 +127,8 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:completionThreshold="1"
-                    android:background="@drawable/custom_drawable"/>
+                    android:background="@drawable/custom_drawable"
+                    tools:ignore="HardcodedText" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

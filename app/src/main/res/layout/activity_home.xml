@@ -64,7 +64,7 @@
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="RtlHardcoded" />
+                        tools:ignore="HardcodedText,RtlHardcoded" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button_Fashion"
@@ -81,7 +81,7 @@
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/button_semua"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="RtlHardcoded" />
+                        tools:ignore="HardcodedText,RtlHardcoded" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button_Electronic"
@@ -98,7 +98,7 @@
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/button_Fashion"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="RtlHardcoded" />
+                        tools:ignore="HardcodedText,RtlHardcoded" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button_Other"
@@ -116,7 +116,7 @@
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/button_Electronic"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="RtlHardcoded" />
+                        tools:ignore="HardcodedText,RtlHardcoded" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -56,7 +56,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         val newPassword : RequestBody = etNewPassword.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
         val confirmPassword : RequestBody = etConfirmPassword.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
 
-        apiClient.getApiService(this).changePassword(
+        apiClient.getApiService().changePassword(
             userManager.fetchAuthToken().toString(),
             currentPassword, newPassword, confirmPassword
 

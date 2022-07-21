@@ -26,7 +26,8 @@
         android:text="Informasi Buyer"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -70,7 +71,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewInfoPenawaran"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="HardcodedText,MissingConstraints" />
 
             <TextView
                 android:id="@+id/location_infoPenawar"
@@ -86,7 +87,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewInfoPenawaran"
                 app:layout_constraintTop_toBottomOf="@+id/buyerName_infoPenawar"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="HardcodedText,MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -100,11 +101,12 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginEnd="20dp"
         android:layout_below="@+id/cardView"
-        android:text="Daftar Produkmu Yang Ditawar" />
+        android:text="Daftar Produkmu Yang Ditawar"
+        tools:ignore="HardcodedText" />
 
 
     <androidx.cardview.widget.CardView
@@ -122,13 +124,14 @@
             android:id="@+id/clickable_infoPenawaran"
             android:clickable="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:focusable="true">
 
             <ImageView
                 android:id="@+id/gambarInfoPenawarProdukBuyer"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="35dp"
                 android:src="@drawable/ic_launcher_background"
                 tools:ignore="ContentDescription" />
@@ -153,7 +156,7 @@
                 android:layout_marginEnd="15dp"
                 android:text="20 april,14:04"
                 android:textSize="10sp"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText,SmallSp" />
 
             <TextView
                 android:id="@+id/infopenawar_namaProduk"
@@ -236,7 +239,7 @@
                 android:text="Terima/hubungi"
                 android:textSize="16sp"
                 android:visibility="visible"
-                tools:ignore="HardcodedText,MissingConstraints" />
+                tools:ignore="HardcodedText,MissingConstraints,RtlSymmetry" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

@@ -50,11 +50,6 @@ class AdapterNotifikasiSeller(private var dataNotif : List<GetNotifikasiItem>,
     }
 
     override fun getItemCount(): Int {
-        return if (dataNotif == null){
-            0
-        }else{
-            dataNotif.size
-
-        }
+        return dataNotif.size
     }
 }

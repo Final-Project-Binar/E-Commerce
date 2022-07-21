@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package and5.abrar.e_commerce.view
 
 import and5.abrar.e_commerce.R
@@ -18,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -26,6 +29,7 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
+@DelicateCoroutinesApi
 @AndroidEntryPoint
 class ProfileActivity : AppCompatActivity() {
     private lateinit var  userManager: UserManager

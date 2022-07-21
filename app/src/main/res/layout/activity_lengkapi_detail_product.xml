@@ -151,7 +151,8 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:completionThreshold="1"
-                    android:background="@drawable/custom_drawable"/>
+                    android:background="@drawable/custom_drawable"
+                    tools:ignore="HardcodedText" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -251,7 +252,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:gravity="top"
-                android:hint="Jalan Yos Sudarso"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"

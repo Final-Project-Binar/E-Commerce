@@ -36,7 +36,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageProduct"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="HardcodedText,MissingConstraints" />
 
         <TextView
             android:id="@+id/tvKategori_product"
@@ -50,7 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvJudul_product"
-            tools:ignore="MissingConstraints,SmallSp" />
+            tools:ignore="HardcodedText,MissingConstraints,SmallSp" />
 
         <TextView
             android:id="@+id/tvHarga_product"
@@ -65,7 +65,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvKategori_product"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="HardcodedText,MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

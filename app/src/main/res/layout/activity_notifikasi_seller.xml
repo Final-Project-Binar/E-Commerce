@@ -9,23 +9,25 @@
     tools:context=".view.seller.NotifikasiSellerActivity">
 
     <TextView
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:id="@+id/notifikasiSeller_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Notifikasi Seller"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        tools:ignore="HardcodedText" />
 
     <ImageView
         android:id="@+id/notifikasi_buyer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/rv_notifikasiBuyer"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10sp"
-        android:src="@drawable/ic_baseline_shopping_cart_24" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10sp"
+        android:src="@drawable/ic_baseline_shopping_cart_24"
+        tools:ignore="ContentDescription" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_notifikasiBuyer"

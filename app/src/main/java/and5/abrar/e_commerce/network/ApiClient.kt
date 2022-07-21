@@ -6,7 +6,6 @@
 
 package and5.abrar.e_commerce.network
 
-import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -33,7 +32,7 @@ class ApiClient {
         .create()
 
     private val clint = OkHttpClient.Builder().addInterceptor(logging).build()
-    fun getApiService(context: Context): ApiService {
+    fun getApiService(): ApiService {
 
         // Initialize ApiService if not initialized yet
         if (!::apiService.isInitialized) {
