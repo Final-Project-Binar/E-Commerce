@@ -1,10 +1,3 @@
-@file:Suppress("RedundantOverride", "RedundantOverride", "RedundantOverride", "unused", "unused",
-    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
-    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
-    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
-    "unused", "unused"
-)
-
 package and5.abrar.e_commerce.view.buyer
 
 import and5.abrar.e_commerce.R
@@ -12,13 +5,11 @@ import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
-import and5.abrar.e_commerce.model.wishlist.WishListBuyer
 import and5.abrar.e_commerce.network.ApiClient
 import and5.abrar.e_commerce.view.LoginActivity
 import and5.abrar.e_commerce.viewmodel.BuyerOrderViewModel
 import and5.abrar.e_commerce.viewmodel.ViewModelHome
 import and5.abrar.e_commerce.viewmodel.ViewModelWishList
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -37,7 +28,6 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 class AddProductBuyerActivity : AppCompatActivity() {
     private lateinit var userManager: UserManager
     private lateinit var apiClient: ApiClient
-    private lateinit var list: List<WishListBuyer>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product_buyer)
@@ -50,7 +40,6 @@ class AddProductBuyerActivity : AppCompatActivity() {
         postFavorite()
     }
 
-    @SuppressLint("SetTextI18n")
     private fun detailData(){
         userManager = UserManager(this)
         val dataProduct = intent.extras!!.getSerializable("detailproduk") as GetBuyerProductItem?
@@ -105,13 +94,12 @@ class AddProductBuyerActivity : AppCompatActivity() {
                             finish()
                         }
                     }
-
                 }
             }
         }
     }
 
-    @SuppressLint("SetTextI18n")
+
     private fun iniDialogTawarHarga(){
         userManager = UserManager(this)
         val dialog = BottomSheetDialog(this)
@@ -181,9 +169,5 @@ class AddProductBuyerActivity : AppCompatActivity() {
             }
 
         }
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
     }
 }

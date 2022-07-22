@@ -118,12 +118,12 @@ class AkunSayaActivity : AppCompatActivity() {
                 akunsaya_login.isInvisible = true
                 keluar()
                 akunsaya_favorite.isVisible = true
-                onBiometric.isInvisible = true
+                onBiometric.isVisible = true
             }else{
                 akunsaya_btnkeluar.isInvisible = true
                 akunsaya_login.isVisible = true
                 akunsaya_favorite.isInvisible = true
-                onBiometric.isVisible = true
+                onBiometric.isInvisible = true
                 akunsaya_login.setOnClickListener{
                     startActivity(Intent(this@AkunSayaActivity, LoginActivity::class.java))
                 }
