@@ -6,12 +6,12 @@ import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import and5.abrar.e_commerce.network.ApiClient
+import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.view.LoginActivity
-import and5.abrar.e_commerce.viewmodel.BuyerOrderViewModel
-import and5.abrar.e_commerce.viewmodel.ViewModelHome
-import and5.abrar.e_commerce.viewmodel.ViewModelWishList
+import and5.abrar.e_commerce.viewmodel.*
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_add_product_buyer.*
+import kotlinx.android.synthetic.main.activity_add_product_buyer.back
 import kotlinx.android.synthetic.main.custom_dialog_hargatawar_buyer.view.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 
@@ -28,6 +29,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 class AddProductBuyerActivity : AppCompatActivity() {
     private lateinit var userManager: UserManager
     private lateinit var apiClient: ApiClient
+    private var datalengkap :String = "ada"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product_buyer)
@@ -44,6 +46,21 @@ class AddProductBuyerActivity : AppCompatActivity() {
         userManager = UserManager(this)
         val dataProduct = intent.extras!!.getSerializable("detailproduk") as GetBuyerProductItem?
         val dataProductnotif = intent.extras!!.getSerializable("detailnotif") as GetNotifikasiItem?
+
+        val viewModelDataSeller = ViewModelProvider(this)[ViewModelUser::class.java]
+        viewModelDataSeller.getProfiler(token = userManager.fetchAuthToken().toString())
+        viewModelDataSeller.profileData.observe(this) {
+            if (it.fullName.isNullOrEmpty() ||
+                it.email.isNullOrEmpty() ||
+                it.imageUrl.isNullOrEmpty() ||
+                it.address.isNullOrEmpty() ||
+                it.city.isNullOrEmpty() ||
+                it.password.isNullOrEmpty() ||
+                it.phoneNumber.toString().isNullOrEmpty()
+            ) {
+                datalengkap = "kosong"
+            }
+        }
         if (dataProduct != null) {
             val viewModel = ViewModelProvider(this)[ViewModelHome::class.java]
             viewModel.detailproduct(dataProduct.id)
@@ -85,10 +102,16 @@ class AddProductBuyerActivity : AppCompatActivity() {
                 addProductBuyer_btnTertarik.text = "Menunggu Respon Penjual"
             }else {
                 addProductBuyer_btnTertarik.setOnClickListener {
+                    Log.e("dada", datalengkap)
                     userManager.ceklogin.asLiveData().observe(this){
-                        if (it == true){
+                        if (it == true && datalengkap == "ada"){
                             iniDialogTawarHarga()
-                        } else {
+                        } else if(datalengkap == "kosong") {
+                            Toast.makeText(this, "Data Anda Belum Lengkap", Toast.LENGTH_SHORT)
+                                .show()
+                            startActivity(Intent(this, AkunSayaActivity::class.java))
+                            finish()
+                        }else{
                             Toast.makeText(this, "Anda Belum Login", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this, LoginActivity::class.java))
                             finish()
@@ -139,13 +162,18 @@ class AddProductBuyerActivity : AppCompatActivity() {
         btnTawaran.setOnClickListener {
             val productId = detailBarang.id
             val edtTawar = dialogView.ca_hargatawar.text.toString().toInt()
-            if (edtTawar.toString().isNotEmpty()) {
-                val buyerOrderViewModel = ViewModelProvider(this)[BuyerOrderViewModel::class.java]
-                    buyerOrderViewModel.postBuyerOrder(userManager.fetchAuthToken().toString(), PostBuyerOrder(productId, edtTawar))
-                Toast.makeText(this, "Tawaran sudah dikirim", Toast.LENGTH_SHORT).show()
-                dialog.dismiss()
+                if (edtTawar.toString().isNotEmpty()) {
+                    val buyerOrderViewModel =
+                        ViewModelProvider(this)[BuyerOrderViewModel::class.java]
+                    buyerOrderViewModel.postBuyerOrder(
+                        userManager.fetchAuthToken().toString(),
+                        PostBuyerOrder(productId, edtTawar)
+                    )
+                    Toast.makeText(this, "Tawaran sudah dikirim", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                }
             }
-        }
+
         dialog.setCancelable(true)
         dialog.setContentView(dialogView)
         dialog.show()
