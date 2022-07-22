@@ -215,6 +215,7 @@ class AkunSayaActivity : AppCompatActivity() {
         }
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.USE_BIOMETRIC) != PackageManager.PERMISSION_GRANTED) {
             notifyUser("Fingerprint Authentication Permission is not enabled")
+            onBiometric.isInvisible = true
             return false
         }
         return if (packageManager.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)) {

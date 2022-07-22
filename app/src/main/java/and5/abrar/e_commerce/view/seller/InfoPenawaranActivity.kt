@@ -15,6 +15,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isInvisible
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -66,7 +67,11 @@ class InfoPenawaranActivity : AppCompatActivity() {
                 infopenawar_statusproduk.text = it.status
                 Glide.with(applicationContext).load(it.product.imageUrl)
                     .into(gambarInfoPenawarProdukBuyer)
-
+                if(it.status == "declined"){
+                    btn_InfoPenawarTolak.isInvisible = true
+                    btn_InfoPenawarTerima.isInvisible = true
+                    info_status.text = "ANDA SUDAH MENOLAK TAWARAN INI"
+                }
                 when (it.status) {
                     "pending" -> {
                         btn_InfoPenawarTolak.text = "Tolak"

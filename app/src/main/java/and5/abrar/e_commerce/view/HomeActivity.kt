@@ -125,7 +125,6 @@ class HomeActivity : AppCompatActivity() {
                   adapterHome.notifyDataSetChanged()
               }
                   for (z in it.indices) {
-                      for (z in 1..5){
                       for (j in it[z].categories.indices) {
                             viewModel.insertOffline(Offline(null,
                                 it[z].imageUrl,
@@ -133,7 +132,6 @@ class HomeActivity : AppCompatActivity() {
                                 it[z].categories[j].name,
                                 it[z].basePrice.toString()))
                         }
-                      }
                       break
                   }
           }
