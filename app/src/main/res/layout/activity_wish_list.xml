@@ -35,19 +35,43 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         tools:ignore="MissingConstraints" />
 
-    <TextView
+    <RelativeLayout
         android:id="@+id/textWishlist"
+        android:visibility="visible"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Belum Ada Barang Favorit Kamu Nihh \n Ayo Tambahkan Sekarang"
-        android:textColor="#F30707"
-        android:layout_marginTop="40dp"
-        android:textSize="25sp"
-        android:textStyle="italic"
-        android:gravity="center"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:ignore="HardcodedText,MissingConstraints" />
+        tools:ignore="MissingConstraints,UselessLeaf">
+
+        <ImageView
+            android:id="@+id/imagekl"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/jika_product_kosong"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imagekl"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:text="Belum ada produk yang ditambahkan nihh, \n ayo segera tambahkan"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

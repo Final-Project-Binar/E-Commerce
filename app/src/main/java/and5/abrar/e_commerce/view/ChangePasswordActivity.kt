@@ -38,12 +38,16 @@ class ChangePasswordActivity : AppCompatActivity() {
         btn_change_pasword.setOnClickListener {
             if (etCurrentPassword.text.toString().isEmpty()){
                 Toast.makeText(this, "password lama tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                tv_error_current_password.text = "Masukan password lama anda"
             } else if (etNewPassword.text.toString().isEmpty()){
                 Toast.makeText(this, "password baru tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                tv_error_new_password.text = "Masukan password baru anda"
             } else if (etConfirmPassword.text.toString().isEmpty()){
                 Toast.makeText(this, "konfirmasi password tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                tv_error_confirm_password.text = "Masukan konfirmasi password"
             } else if (etConfirmPassword.text.toString() != etNewPassword.text.toString()){
                 Toast.makeText(this, "konfirmasi password tidak sama", Toast.LENGTH_SHORT).show()
+                tv_error_confirm_password.text = "Password baru & konfirmasi password harus sama"
             } else {
                 prosesChangePassword()
             }

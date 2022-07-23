@@ -103,13 +103,8 @@ class DaftarJualActivity : AppCompatActivity() {
 
         viewModelProductSeller.sellerProduct.observe(this) {
             if (it.isNotEmpty()){
-                for (i in it.indices){
-                    if (it[i].status != "accepted"){
-                        adapter.setDataProductSeller(it)
-                        adapter.notifyDataSetChanged()
-                    }
-                }
-
+                adapter.setDataProductSeller(it)
+                adapter.notifyDataSetChanged()
             }
 
         }
