@@ -6,6 +6,7 @@ import and5.abrar.e_commerce.view.adapter.AdapterWishList
 import and5.abrar.e_commerce.viewmodel.ViewModelWishList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,8 +35,11 @@ class WishListActivity : AppCompatActivity() {
         val viewModelWishList = ViewModelProvider(this)[ViewModelWishList::class.java]
         viewModelWishList.buyerWishList.observe(this){
             if (it.isNotEmpty()){
+                textWishlist.isVisible = false
                 adapter.setDataFavorite(it)
                 adapter.notifyDataSetChanged()
+            } else {
+                textWishlist.isVisible = true
             }
         }
         viewModelWishList.getWishListBuyer(userManager.fetchAuthToken().toString())

@@ -90,7 +90,7 @@ class DaftarJualActivity : AppCompatActivity() {
         userManager = UserManager(this)
         val viewModelProductSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
 
-        viewModelProductSeller.getAllSellerProduct(token = userManager.fetchAuthToken().toString())
+        viewModelProductSeller.getAllSellerProduct("available", token = userManager.fetchAuthToken().toString())
         adapter = AdapterProductSeller(){
             val clickedproduct = Bundle()
             clickedproduct.putSerializable("detailorder",it)
@@ -103,8 +103,13 @@ class DaftarJualActivity : AppCompatActivity() {
 
         viewModelProductSeller.sellerProduct.observe(this) {
             if (it.isNotEmpty()){
-                adapter.setDataProductSeller(it)
-                adapter.notifyDataSetChanged()
+                for (i in it.indices){
+                    if (it[i].status != "accepted"){
+                        adapter.setDataProductSeller(it)
+                        adapter.notifyDataSetChanged()
+                    }
+                }
+
             }
 
         }

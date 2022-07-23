@@ -9,7 +9,6 @@ package and5.abrar.e_commerce.view.seller
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
-import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.viewmodel.ViewModelInfoPenawarSeller
 import android.content.DialogInterface
 import android.content.Intent
@@ -19,6 +18,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -27,8 +27,6 @@ import kotlinx.android.synthetic.main.activity_info_penawaran.*
 import kotlinx.android.synthetic.main.custom_dialog_infopenawarharga_seller.view.*
 import kotlinx.android.synthetic.main.custom_dialog_seller_28.view.*
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -65,7 +63,7 @@ class InfoPenawaranActivity : AppCompatActivity() {
                 Glide.with(applicationContext).load(it.user.imageurl)
                     .override(80,80)
                     .into(imageViewInfoPenawaran)
-                infopenawar_namaProduk.text = "Nama : Product"+it.productName
+                infopenawar_namaProduk.text = "Nama : ${it.productName}"
                 infopenawar_harga.text = "Harga : Rp. ${it.basePrice}"
                 infopenawar_tawar.text = "Ditawar : Rp. ${it.price}"
                 infopenawar_waktu.text = it.updatedAt
@@ -73,9 +71,8 @@ class InfoPenawaranActivity : AppCompatActivity() {
                 Glide.with(applicationContext).load(it.product.imageUrl)
                     .into(gambarInfoPenawarProdukBuyer)
                 if(it.status == "declined"){
-                    btn_InfoPenawarTolak.isInvisible = true
-                    btn_InfoPenawarTerima.isInvisible = true
-                    info_status.text = "ANDA SUDAH MENOLAK TAWARAN INI"
+                    btn_InfoPenawarTolak.isVisible = true
+                    btn_InfoPenawarTerima.isVisible = true
                 }
                 when (it.status) {
                     "pending" -> {
@@ -147,15 +144,6 @@ class InfoPenawaranActivity : AppCompatActivity() {
                     }
                     "terima" -> {
                         btn_InfoPenawarTerima.setOnClickListener {
-//                            val alertt = LayoutInflater.from(this).inflate(
-//                                R.layout.custom_dialog_infopenawarharga_seller,
-//                                null,
-//                                false
-//                            )
-//                            AlertDialog.Builder(this)
-//                                .setView(alertt)
-//                                .create()
-//                                .show()
 
                             val dialog = BottomSheetDialog(this)
                             val dialogView = layoutInflater.inflate(R.layout.custom_dialog_infopenawarharga_seller, null)
@@ -172,11 +160,27 @@ class InfoPenawaranActivity : AppCompatActivity() {
                             }
 
                             dialogView.ca_hargatawar_wa.setOnClickListener {
-                                val url =
-                                    "https://api.whatsapp.com/send?phone= ${detailInfo.user.phoneNumber}"
-                                val i = Intent(Intent.ACTION_VIEW)
-                                i.data = Uri.parse(url)
-                                startActivity(i)
+                                val message = "Haloo Kak ${detailInfo.user.fullName}," +
+                                        "Terimakasih telah melakukan penawaran pada product kami,\n"+
+                                        "Product yang anda Tawar sbb:\n"+
+                                        "Nama Product : ${detailInfo.product.name}\n"+
+                                        "Harga Product : Rp. ${detailInfo.product.basePrice}\n"+
+                                        "Harga Tawar : Rp. ${detailInfo.price}\n"+
+                                        "Kami telah menerima penawaran nya, mohon segera konfirmasi kelanjutanya "
+
+                                startActivity(
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse(
+                                            String.format(
+                                                "https://api.whatsapp.com/send?phone=%s&text=%s",
+                                                detailInfo.user.phoneNumber,
+                                                message
+                                            )
+                                        )
+                                    )
+                                )
+
                             }
 
                             dialog.setCancelable(true)
@@ -187,15 +191,6 @@ class InfoPenawaranActivity : AppCompatActivity() {
                         // ubah status
                         btn_InfoPenawarTolak.setOnClickListener {
 
-//                            val alertd = LayoutInflater.from(this)
-//                                .inflate(R.layout.custom_dialog_seller_28, null, false)
-//
-//                            val acceptedRadio = alertd.berhasil_terjual
-//                            val declinedRadio = alertd.batalkan_transaksi
-//
-//                            val alertB = AlertDialog.Builder(this)
-//                                .setView(alertd)
-//                                .create()
 
                             val dialog = BottomSheetDialog(this)
                             val dialogView = layoutInflater.inflate(R.layout.custom_dialog_seller_28, null)
@@ -238,15 +233,6 @@ class InfoPenawaranActivity : AppCompatActivity() {
 
                     "declined", "accepted" -> {
                         btn_InfoPenawarTerima.setOnClickListener {
-//                            val alertt = LayoutInflater.from(this).inflate(
-//                                R.layout.custom_dialog_infopenawarharga_seller,
-//                                null,
-//                                false
-//                            )
-//                            AlertDialog.Builder(this)
-//                                .setView(alertt)
-//                                .create()
-//                                .show()
 
                             val dialog = BottomSheetDialog(this)
                             val dialogView = layoutInflater.inflate(R.layout.custom_dialog_infopenawarharga_seller, null)
@@ -263,11 +249,26 @@ class InfoPenawaranActivity : AppCompatActivity() {
                             }
 
                             dialogView.ca_hargatawar_wa.setOnClickListener {
-                                val url =
-                                    "https://api.whatsapp.com/send?phone= ${detailInfo.user.phoneNumber}"
-                                val i = Intent(Intent.ACTION_VIEW)
-                                i.data = Uri.parse(url)
-                                startActivity(i)
+                                val message = "Haloo Kak ${detailInfo.user.fullName}," +
+                                        "Terimakasih telah melakukan penawaran pada product kami,\n"+
+                                        "Product yang anda Tawar sbb:\n"+
+                                        "Nama Product : ${detailInfo.product.name}\n"+
+                                        "Harga Product : Rp. ${detailInfo.product.basePrice}\n"+
+                                        "Harga Tawar : Rp. ${detailInfo.price}\n"+
+                                        "Kami telah menerima penawaran nya, mohon segera konfirmasi kelanjutanya "
+
+                                startActivity(
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse(
+                                            String.format(
+                                                "https://api.whatsapp.com/send?phone=%s&text=%s",
+                                                detailInfo.user.phoneNumber,
+                                                message
+                                            )
+                                        )
+                                    )
+                                )
                             }
 
                             dialog.setCancelable(true)
@@ -277,16 +278,6 @@ class InfoPenawaranActivity : AppCompatActivity() {
 
                         //ubah status
                         btn_InfoPenawarTolak.setOnClickListener {
-
-//                            val alertd = LayoutInflater.from(this)
-//                                .inflate(R.layout.custom_dialog_seller_28, null, false)
-//
-//                            val acceptedRadio = alertd.berhasil_terjual
-//                            val declinedRadio = alertd.batalkan_transaksi
-//
-//                            val alertB = AlertDialog.Builder(this)
-//                                .setView(alertd)
-//                                .create()
 
                             val dialog = BottomSheetDialog(this)
                             val dialogView = layoutInflater.inflate(R.layout.custom_dialog_seller_28, null)

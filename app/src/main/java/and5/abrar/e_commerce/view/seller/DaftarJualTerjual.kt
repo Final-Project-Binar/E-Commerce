@@ -14,6 +14,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -104,6 +106,9 @@ class DaftarJualTerjual : AppCompatActivity() {
             if (it.isNotEmpty()){
                 adapter.setDataOrder(it)
                 adapter.notifyDataSetChanged()
+                klkosongjualnya.isInvisible = true
+            } else {
+                klkosongjualnya.isVisible = true
             }
         }
     }

@@ -11,6 +11,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -86,7 +88,7 @@ class DaftarJualDiminatiSellerActivity : AppCompatActivity() {
         userManager = UserManager(this)
         val viewModelProductSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
 
-        viewModelProductSeller.getOrder(status = "pending", token = userManager.fetchAuthToken().toString())
+        viewModelProductSeller.getOrder("pending", "terima", token = userManager.fetchAuthToken().toString())
 
         adapter = AdapterDiminati{
                 val pindah = Intent(applicationContext,InfoPenawaranActivity::class.java)
@@ -99,12 +101,15 @@ class DaftarJualDiminatiSellerActivity : AppCompatActivity() {
         viewModelProductSeller.diminati.observe(this){
             if (it.isNotEmpty()){
                 for (i in it.indices){
-                    if (it[i].status == "pending"){
+                    if (it[i].status == "pending" || it[i].status == "terima"){
                         adapter.setDataOrder(it)
                         adapter.notifyDataSetChanged()
+                        kalaukosongDiminati.isInvisible = true
                     }
                 }
 
+            } else {
+                kalaukosongDiminati.isVisible = true
             }
         }
     }
