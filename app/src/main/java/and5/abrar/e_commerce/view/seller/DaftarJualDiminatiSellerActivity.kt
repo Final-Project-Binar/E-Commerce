@@ -86,7 +86,7 @@ class DaftarJualDiminatiSellerActivity : AppCompatActivity() {
         userManager = UserManager(this)
         val viewModelProductSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
 
-        viewModelProductSeller.getOrder(token = userManager.fetchAuthToken().toString())
+        viewModelProductSeller.getOrder(status = "pending", token = userManager.fetchAuthToken().toString())
 
         adapter = AdapterDiminati{
                 val pindah = Intent(applicationContext,InfoPenawaranActivity::class.java)
@@ -98,8 +98,13 @@ class DaftarJualDiminatiSellerActivity : AppCompatActivity() {
 
         viewModelProductSeller.diminati.observe(this){
             if (it.isNotEmpty()){
-                adapter.setDataOrder(it)
-                adapter.notifyDataSetChanged()
+                for (i in it.indices){
+                    if (it[i].status == "pending"){
+                        adapter.setDataOrder(it)
+                        adapter.notifyDataSetChanged()
+                    }
+                }
+
             }
         }
     }

@@ -235,8 +235,8 @@ class ViewModelProductSeller @Inject constructor(private var productRepository: 
         })
     }
 
-    fun getOrder(token: String){
-        apiServices.getOrderSeller(token).enqueue(object : Callback<List<GetOrderSellerItem>>{
+    fun getOrder(status: String, token: String){
+        apiServices.getOrderSeller(status, token).enqueue(object : Callback<List<GetOrderSellerItem>>{
             override fun onResponse(
                 call: Call<List<GetOrderSellerItem>>,
                 response: Response<List<GetOrderSellerItem>>

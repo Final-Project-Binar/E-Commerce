@@ -106,6 +106,7 @@ class DaftarJualActivity : AppCompatActivity() {
                 adapter.setDataProductSeller(it)
                 adapter.notifyDataSetChanged()
             }
+
         }
     }
 

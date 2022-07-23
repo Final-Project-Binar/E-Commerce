@@ -27,5 +27,7 @@ data class GetDataProductSellerItem(
     @SerializedName("updated_at")
     val updatedAt: String,
     @SerializedName("user_id")
-    val userId: Int
+    val userId: Int,
+    @SerializedName("status")
+    val status: String
 ):Serializable

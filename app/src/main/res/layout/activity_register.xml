@@ -219,11 +219,12 @@
             android:layout_marginTop="10dp"
             android:textColor="#F40808"
             android:textSize="14sp"
-            android:text="*  contoh: +6285779699422"
+            android:text="*  contoh: 6285779699422"
             android:textStyle="italic"
+            android:inputType="number"
             app:layout_constraintStart_toEndOf="@+id/tv_phone_register"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-            tools:ignore="HardcodedText,MissingConstraints" />
+            tools:ignore="HardcodedText,MissingConstraints,TextViewEdits" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout4"

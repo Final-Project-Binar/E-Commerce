@@ -9,11 +9,14 @@ package and5.abrar.e_commerce.view.seller
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
+import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.viewmodel.ViewModelInfoPenawarSeller
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +27,8 @@ import kotlinx.android.synthetic.main.activity_info_penawaran.*
 import kotlinx.android.synthetic.main.custom_dialog_infopenawarharga_seller.view.*
 import kotlinx.android.synthetic.main.custom_dialog_seller_28.view.*
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -95,21 +100,47 @@ class InfoPenawaranActivity : AppCompatActivity() {
                         val declined: RequestBody =
                             "declined".toRequestBody("declined".toMediaTypeOrNull())
                         btn_InfoPenawarTerima.setOnClickListener {
-                            viewModelNotifikasiId.patchInfoPenawar(
-                                userManager.fetchAuthToken().toString(),
-                                detailInfo.id,
-                                accepted
-                            )
-                            recreate()
+                            AlertDialog.Builder(this)
+                                .setTitle("KONFIRMASI Terima")
+                                .setMessage("Anda Yakin Ingin Terima Penawaran Ini ?")
+
+                                .setPositiveButton("YA"){ _: DialogInterface, _: Int ->
+                                    Toast.makeText(this, "Berhasil Diterima", Toast.LENGTH_SHORT).show()
+                                    viewModelNotifikasiId.patchInfoPenawar(
+                                        userManager.fetchAuthToken().toString(),
+                                        detailInfo.id,
+                                        accepted
+                                    )
+                                    recreate()
+                                }
+                                .setNegativeButton("TIDAK"){ dialogInterface: DialogInterface, _: Int ->
+                                    Toast.makeText(this, "Tidak Jadi Diterima", Toast.LENGTH_SHORT).show()
+                                    dialogInterface.dismiss()
+                                }
+                                .show()
+
                         }
 
                         btn_InfoPenawarTolak.setOnClickListener {
-                            viewModelNotifikasiId.patchInfoPenawar(
-                                userManager.fetchAuthToken().toString(),
-                                detailInfo.id,
-                                declined
-                            )
-                            recreate()
+                            AlertDialog.Builder(this)
+                                .setTitle("KONFIRMASI TOLAK")
+                                .setMessage("Anda Yakin Ingin Menolak Penawaran Ini ?")
+
+                                .setPositiveButton("YA"){ _: DialogInterface, _: Int ->
+                                    Toast.makeText(this, "Berhasil Ditolak", Toast.LENGTH_SHORT).show()
+                                    viewModelNotifikasiId.patchInfoPenawar(
+                                        userManager.fetchAuthToken().toString(),
+                                        detailInfo.id,
+                                        declined
+                                    )
+                                    recreate()
+                                }
+                                .setNegativeButton("TIDAK"){ dialogInterface: DialogInterface, _: Int ->
+                                    Toast.makeText(this, "Tidak Jadi Ditolak", Toast.LENGTH_SHORT).show()
+                                    dialogInterface.dismiss()
+                                }
+                                .show()
+
                         }
 
 
@@ -182,6 +213,7 @@ class InfoPenawaranActivity : AppCompatActivity() {
                                         detailInfo.id,
                                         accepted
                                     )
+                                    Toast.makeText(this, "Berhasil Diperbarui", Toast.LENGTH_SHORT).show()
                                     recreate()
                                 } else if (declinedRadio!!.isChecked) {
                                     viewModelNotifikasiId.patchInfoPenawar(
@@ -189,6 +221,7 @@ class InfoPenawaranActivity : AppCompatActivity() {
                                         detailInfo.id,
                                         declined
                                     )
+                                    Toast.makeText(this, "Berhasil Diperbarui", Toast.LENGTH_SHORT).show()
                                     recreate()
                                 } else {
                                     Toast.makeText(this, "Pilih Salah Satu", Toast.LENGTH_SHORT).show()
@@ -271,6 +304,7 @@ class InfoPenawaranActivity : AppCompatActivity() {
                                         detailInfo.id,
                                         accepted
                                     )
+                                    Toast.makeText(this, "Berhasil Diperbarui", Toast.LENGTH_SHORT).show()
                                     recreate()
                                 } else if (declinedRadio!!.isChecked) {
                                     viewModelNotifikasiId.patchInfoPenawar(
@@ -278,6 +312,7 @@ class InfoPenawaranActivity : AppCompatActivity() {
                                         detailInfo.id,
                                         declined
                                     )
+                                    Toast.makeText(this, "Berhasil Diperbarui", Toast.LENGTH_SHORT).show()
                                     recreate()
                                 } else {
                                     Toast.makeText(this, "Pilih Salah Satu", Toast.LENGTH_SHORT).show()

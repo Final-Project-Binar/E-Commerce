@@ -125,8 +125,12 @@ class LoginActivity : AppCompatActivity() {
                             userManager.logindata(loginemail,loginPassword)
                         }
                         startActivity(Intent(applicationContext, HomeActivity::class.java))
+                    } else if (login_email.text.toString().isEmpty()){
+                        Toast.makeText(applicationContext, "Email Harus Diisi", Toast.LENGTH_SHORT).show()
+                    } else if (login_pass.text.toString().isEmpty()){
+                        Toast.makeText(applicationContext, "Password Harus Diisi", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(applicationContext, "gagal login", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Email atau Password Salah", Toast.LENGTH_SHORT).show()
                     }
                 }
 

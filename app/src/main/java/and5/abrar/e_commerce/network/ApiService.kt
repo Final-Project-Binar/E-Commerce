@@ -67,7 +67,8 @@ interface ApiService {
 
     @GET("seller/product")
     fun getProductSeller(
-        @Header("access_token") token : String
+        @Header("access_token") token : String,
+        @Query("status") status: String = "available"
     ) : Call<List<GetDataProductSellerItem>>
 
 
@@ -180,7 +181,8 @@ interface ApiService {
 
     @GET("seller/order")
     fun getOrderSeller(
-        @Header("access_token") token : String
+        @Query("status") status: String = "pending",
+        @Header("access_token") token : String,
     ) : Call<List<GetOrderSellerItem>>
 
     @GET("seller/order")
