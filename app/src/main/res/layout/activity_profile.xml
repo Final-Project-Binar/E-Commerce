@@ -40,8 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLengkapi_Info_Akun"
-        tools:ignore="ContentDescription,MissingConstraints"
-        app:tint="@color/biru" />
+        tools:ignore="ContentDescription,MissingConstraints" />
 
 <!--    <ImageView-->
 <!--        android:id="@+id/imagePict"-->
@@ -225,6 +224,7 @@
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/login_btn_bg"
         android:text="simpan"
         android:textSize="16sp"

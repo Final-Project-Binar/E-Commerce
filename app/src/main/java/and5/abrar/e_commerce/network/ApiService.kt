@@ -20,6 +20,7 @@ import and5.abrar.e_commerce.model.produkseller.*
 import and5.abrar.e_commerce.model.register.PostUserRegister
 import and5.abrar.e_commerce.model.user.GetUser
 import and5.abrar.e_commerce.model.user.GetUserProfile
+import and5.abrar.e_commerce.model.wishlist.GetWishListItemItem
 import and5.abrar.e_commerce.model.wishlist.WishListBuyer
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -236,7 +237,13 @@ interface ApiService {
     @GET("buyer/wishlist")
     fun getWishList(
         @Header("access_token") token: String
-    ) : Call<List<WishListBuyer>>
+    ) : Call<List<GetWishListItemItem>>
+
+    @DELETE("buyer/wishlist/{id}")
+    fun deleteWishlist(
+        @Header("access_token") token: String,
+        @Path("id") id : Int
+    ) : Call<GetWishListItemItem>
 
     @DELETE("buyer/order/{id}")
     fun deleteorder(

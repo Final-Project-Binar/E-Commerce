@@ -6,11 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".view.buyer.WishListActivity">
 
+    <ImageView
+        android:id="@+id/backWislist"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="15dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,MissingConstraints" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:text="Daftar Wish List kamu"
         android:textAlignment="center"
         android:textColor="@color/black"

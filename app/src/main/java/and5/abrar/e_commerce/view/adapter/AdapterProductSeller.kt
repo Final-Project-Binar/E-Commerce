@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -38,18 +39,20 @@ class AdapterProductSeller(private  var onClick : (GetDataProductSellerItem)->Un
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.tvJudul_product_seller.text = dataProductSeller!![position].name
+        holder.itemView.tvJudul_product_seller.text = "Nama Produk : ${dataProductSeller!![position].name}"
 
 
-        holder.itemView.tvKategori_product_seller.text = dataProductSeller!![position].location
+        holder.itemView.tvKategori_product_seller.text = "Lokasi : ${dataProductSeller!![position].location}"
 
 
-        holder.itemView.tvHarga_product_seller.text = "Rp. ${dataProductSeller!![position].basePrice}"
+        holder.itemView.tvHarga_product_seller.text = "Harga : Rp. ${dataProductSeller!![position].basePrice}"
         holder.itemView.tvStatus_product_seller.text = "Status : ${dataProductSeller!![position].status}"
 
         Glide.with(holder.itemView.context)
             .load(dataProductSeller!![position].imageUrl)
             .into(holder.itemView.imageProductSeller)
+
+        holder.itemView.tvStatus_product_seller.isInvisible = true
 
         holder.itemView.button_delete_card.setOnClickListener {
             userManager = UserManager(holder.itemView.context)

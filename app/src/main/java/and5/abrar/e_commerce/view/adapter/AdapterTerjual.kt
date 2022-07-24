@@ -32,9 +32,9 @@ class AdapterTerjual(private  var onClick :(GetOrderSellerItem)->Unit) : Recycle
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.tvJudul_product_seller.text = dataOrder!![position].productName
+        holder.itemView.tvJudul_product_seller.text = "Nama Produk : ${dataOrder!![position].productName}"
         holder.itemView.tvKategori_product_seller.text = dataOrder!![position].product.location
-        holder.itemView.tvHarga_product_seller.text = "Rp. ${dataOrder!![position].basePrice}"
+        holder.itemView.tvHarga_product_seller.text = "Harga : Rp. ${dataOrder!![position].basePrice}"
         holder.itemView.tvStatus_product_seller.text = "status : ${dataOrder!![position].product.status}"
         Glide.with(holder.itemView.context)
             .load(dataOrder!![position].product.imageUrl)

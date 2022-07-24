@@ -61,9 +61,10 @@ class InfoPenawaranActivity : AppCompatActivity() {
         viewModelNotifikasiId.sellerInfoPenawar.observe(this) {
             if (it != null) {
                 Glide.with(applicationContext).load(it.user.imageurl)
+                    .error(R.drawable.ic_baseline_account_circle_24)
                     .override(80,80)
                     .into(imageViewInfoPenawaran)
-                infopenawar_namaProduk.text = "Nama : ${it.productName}"
+                infopenawar_namaProduk.text = "Nama Produk : ${it.productName}"
                 infopenawar_harga.text = "Harga : Rp. ${it.basePrice}"
                 infopenawar_tawar.text = "Ditawar : Rp. ${it.price}"
                 infopenawar_waktu.text = it.updatedAt
@@ -71,8 +72,9 @@ class InfoPenawaranActivity : AppCompatActivity() {
                 Glide.with(applicationContext).load(it.product.imageUrl)
                     .into(gambarInfoPenawarProdukBuyer)
                 if(it.status == "declined"){
-                    btn_InfoPenawarTolak.isVisible = true
-                    btn_InfoPenawarTerima.isVisible = true
+                    info_status.text = "Kamu Telah Menolak Penawaran Ini"
+                    btn_InfoPenawarTolak.isInvisible = true
+                    btn_InfoPenawarTerima.isInvisible = true
                 }
                 when (it.status) {
                     "pending" -> {
@@ -148,14 +150,16 @@ class InfoPenawaranActivity : AppCompatActivity() {
                             val dialog = BottomSheetDialog(this)
                             val dialogView = layoutInflater.inflate(R.layout.custom_dialog_infopenawarharga_seller, null)
 
-                            dialogView.customDialog_NamaPenjual.text = detailInfo.user.fullName
-                            dialogView.customDialog_Kotapenjual.text = detailInfo.user.city
+                            dialogView.customDialog_NamaPenjual.text = "Nama Pembeli : ${detailInfo.user.fullName}"
+                            dialogView.customDialog_Kotapenjual.text = "Kota : ${detailInfo.user.city}"
                             viewModelNotifikasiId.sellerInfoPenawar.observe(this) {
                                 Glide.with(applicationContext).load(it.product.imageUrl)
                                     .into(dialogView.customDialog_gambarProduk)
-                                dialogView.customDialog_namaProduk.text = it.productName
-                                dialogView.cd_harga.text = "Rp. ${it.basePrice}"
-                                dialogView.cd_hargatawar.text = "Rp. ${it.price}"
+                                Glide.with(applicationContext).load(it.user.imageurl)
+                                    .into(dialogView.customDialog_gambarPenjual)
+                                dialogView.customDialog_namaProduk.text = "Nama Produk : ${it.productName}"
+                                dialogView.cd_harga.text = "Harga : Rp. ${it.basePrice}"
+                                dialogView.cd_hargatawar.text = "Ditawar : Rp. ${it.price}"
 
                             }
 

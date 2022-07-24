@@ -29,6 +29,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         register()
         goToLogin()
+        back()
     }
 
     private fun register(){
@@ -95,6 +96,13 @@ class RegisterActivity : AppCompatActivity() {
     // sudah punya akun
     private fun goToLogin(){
         loginDisini.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+    }
+
+    private fun back(){
+        imageViewKeLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }

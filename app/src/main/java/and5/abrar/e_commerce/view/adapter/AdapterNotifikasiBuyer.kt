@@ -6,6 +6,7 @@ package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ class AdapterNotifikasiBuyer(private var dataNotif : List<GetNotifikasiItem>,
         return ViewHolder(viewitem)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.itemView){
             with(dataNotif[position]){
@@ -38,13 +40,13 @@ class AdapterNotifikasiBuyer(private var dataNotif : List<GetNotifikasiItem>,
                     }else if (read == true){
                         notikasiBuyer_alert.setImageResource(R.drawable.ic_baseline_circle_ijo)
                     }
-                    notifikasiBuyer_namaProduk.text = productName
-                    notikasiBuyer_statusproduk.text = status
-                    notifikasiBuyer_harga.text = "Rp $basePrice"
+                    notifikasiBuyer_namaProduk.text = "Nama Produk : $productName"
+                    notikasiBuyer_statusproduk.text = "Status : $status"
+                    notifikasiBuyer_harga.text = "Harga : Rp. $basePrice"
                     if (status == "create"){
                         notifikasiBuyer_tawar.text = ""
                     }else{
-                        notifikasiBuyer_tawar.text = "Ditawar Rp $bidPrice"
+                        notifikasiBuyer_tawar.text = "Ditawar : Rp. $bidPrice"
                     }
 
                     if (transactionDate.isNullOrEmpty()){

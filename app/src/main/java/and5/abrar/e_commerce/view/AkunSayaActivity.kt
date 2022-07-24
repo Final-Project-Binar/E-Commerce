@@ -104,7 +104,10 @@ class AkunSayaActivity : AppCompatActivity() {
         val viewModelDataSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
         viewModelDataSeller.getSeller(token = userManager.fetchAuthToken().toString())
         viewModelDataSeller.seller.observe(this) {
-            Glide.with(applicationContext).load(it.imageUrl).into(icon_foto)
+            Glide.with(applicationContext)
+                .load(it.imageUrl)
+                .error(R.drawable.ic_baseline_account_circle_24)
+                .into(icon_foto)
             username_akunsaya.text = it.fullName
         }
         userManager.email.asLiveData().observe(this){

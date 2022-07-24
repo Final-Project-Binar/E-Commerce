@@ -2,6 +2,7 @@ package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,13 +22,14 @@ class AdapterDiminati(private var onClick : (GetOrderSellerItem)->Unit):Recycler
         return ViewHolder(viewItem)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView.context).load(listDiminati!![position].product.imageUrl)
             .into(holder.itemView.diminati_image)
         with(holder.itemView) {
             with(listDiminati!![position]) {
                 diminati_status.text = status
-                diminati_product.text = "Product : $productName"
+                diminati_product.text = "Nama Produk : $productName"
                 diminati_harga.text = "Harga : Rp."+basePrice.toString()
                 diminati_tawar.text = "Ditawar : Rp." +price.toString()
                 diminati_tanggal.text = updatedAt

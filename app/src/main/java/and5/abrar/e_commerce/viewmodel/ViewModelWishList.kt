@@ -1,5 +1,6 @@
 package and5.abrar.e_commerce.viewmodel
 
+import and5.abrar.e_commerce.model.wishlist.GetWishListItemItem
 import and5.abrar.e_commerce.model.wishlist.WishListBuyer
 import and5.abrar.e_commerce.network.ApiService
 import androidx.lifecycle.LiveData
@@ -13,19 +14,42 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ViewModelWishList @Inject constructor(api : ApiService) : ViewModel(){
-    private val liveDataWishList = MutableLiveData<List<WishListBuyer>>()
-    val buyerWishList : LiveData<List<WishListBuyer>> = liveDataWishList
+    private val liveDataWishList = MutableLiveData<List<GetWishListItemItem>>()
+    val buyerWishList : LiveData<List<GetWishListItemItem>> = liveDataWishList
+
+    private val liveDataWishListDelete = MutableLiveData<GetWishListItemItem>()
 
     private val liveDataWishListPost = MutableLiveData<WishListBuyer>()
 
     private val apiService = api
 
+    fun getDeleteWishlist(token : String, id: Int){
+        apiService.deleteWishlist(token, id)
+            .enqueue(object : Callback<GetWishListItemItem>{
+                override fun onResponse(
+                    call: Call<GetWishListItemItem>,
+                    response: Response<GetWishListItemItem>
+                ) {
+                    if (response.isSuccessful){
+                        liveDataWishListDelete.value = response.body()
+                    } else {
+                        //
+                    }
+                }
+
+                override fun onFailure(call: Call<GetWishListItemItem>, t: Throwable) {
+                    //
+                }
+
+            })
+    }
+
     fun getWishListBuyer(token : String){
         apiService.getWishList(token)
-            .enqueue(object : Callback<List<WishListBuyer>> {
+            .enqueue(object : Callback<List<GetWishListItemItem>> {
                 override fun onResponse(
-                    call: Call<List<WishListBuyer>>,
-                    response: Response<List<WishListBuyer>>
+                    call: Call<List<GetWishListItemItem>>,
+                    response: Response<List<GetWishListItemItem>>
                 ) {
                     if (response.isSuccessful){
                         liveDataWishList.value = response.body()
@@ -34,7 +58,7 @@ class ViewModelWishList @Inject constructor(api : ApiService) : ViewModel(){
                     }
                 }
 
-                override fun onFailure(call: Call<List<WishListBuyer>>, t: Throwable) {
+                override fun onFailure(call: Call<List<GetWishListItemItem>>, t: Throwable) {
                     //
                 }
 

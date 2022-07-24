@@ -90,6 +90,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
             finish()
         }
+        back()
         start_authentication.setOnClickListener {
             // This creates a dialog of biometric auth and
             // it requires title , subtitle ,
@@ -117,6 +118,7 @@ class LoginActivity : AppCompatActivity() {
                 ) {
                     val loginResponse = response.body()
                     if (response.isSuccessful) {
+                        Toast.makeText(this@LoginActivity, response.message(), Toast.LENGTH_SHORT).show()
                         userManager.saveAuthToken(
                             token = loginResponse!!.authToken
                         )
@@ -169,5 +171,12 @@ class LoginActivity : AppCompatActivity() {
     // it takes a string as parameter
     private fun notifyUser(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun back(){
+        imageBack.setOnClickListener {
+            startActivity(Intent(applicationContext, AkunSayaActivity::class.java))
+            finish()
+        }
     }
 }
