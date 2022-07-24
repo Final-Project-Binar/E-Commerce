@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class GetBuyerProductItem(
+    @SerializedName("message")
+    val message: String,
     @SerializedName("base_price")
     val basePrice: Int,
     @SerializedName("Categories")

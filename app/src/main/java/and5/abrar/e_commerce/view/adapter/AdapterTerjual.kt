@@ -8,10 +8,12 @@ package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_product_seller.view.*
@@ -28,14 +30,16 @@ class AdapterTerjual(private  var onClick :(GetOrderSellerItem)->Unit) : Recycle
         return ViewHolder(itemView)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.tvJudul_product_seller.text = dataOrder!![position].productName
         holder.itemView.tvKategori_product_seller.text = dataOrder!![position].product.location
         holder.itemView.tvHarga_product_seller.text = "Rp. ${dataOrder!![position].basePrice}"
+        holder.itemView.tvStatus_product_seller.text = "status : ${dataOrder!![position].product.status}"
         Glide.with(holder.itemView.context)
             .load(dataOrder!![position].product.imageUrl)
             .into(holder.itemView.imageProductSeller)
-        holder.itemView.button_edit_card.isInvisible = true
+        holder.itemView.Hapus_danDelete_productmu.isInvisible = true
     }
 
     override fun getItemCount(): Int {

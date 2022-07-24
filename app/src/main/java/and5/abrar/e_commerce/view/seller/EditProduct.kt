@@ -13,6 +13,7 @@ import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
 import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -103,8 +104,21 @@ class EditProduct : AppCompatActivity() {
         btn_deletedataproduct.setOnClickListener {
             val dataProduct = intent.extras!!.getSerializable("detailorder") as GetDataProductSellerItem?
             val viewModelProductSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
-            viewModelProductSeller.deleteProduct(userManager.fetchAuthToken().toString(), dataProduct!!.id)
-            startActivity(Intent(this,DaftarJualActivity::class.java))
+            AlertDialog.Builder(this)
+                .setTitle("KONFIRMASI HAPUS")
+                .setMessage("Anda Yakin Ingin Menghapus Data Produk Ini ?")
+
+                .setPositiveButton("YA"){ _: DialogInterface, _: Int ->
+                    Toast.makeText(this, "Berhasil Dihapus", Toast.LENGTH_SHORT).show()
+                    viewModelProductSeller.deleteProduct(userManager.fetchAuthToken().toString(), dataProduct!!.id)
+                    startActivity(Intent(this,DaftarJualActivity::class.java))
+                }
+                .setNegativeButton("TIDAK"){ dialogInterface: DialogInterface, _: Int ->
+                    Toast.makeText(this, "Tidak Jadi Dihapus", Toast.LENGTH_SHORT).show()
+                    dialogInterface.dismiss()
+                }
+                .show()
+
         }
     }
      fun updateproduk(){
@@ -118,65 +132,79 @@ class EditProduct : AppCompatActivity() {
             val desc : RequestBody =
                 edt_deskripsi.text.toString().toRequestBody("text/plain".toMediaTypeOrNull())
             val viewModelSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
-            if (!ngambil){
-                if (!categorystatus){
-                    viewModelSeller.updateProductngnc(
-                        userManager.fetchAuthToken().toString(),
-                        idproduk,
-                        namaProdcut,
-                        desc,
-                        hargaProduct,
-                        lokasi
-                    )
-                }else {
-                    var categoryProduct : RequestBody =
-                        postCategory.toRequestBody("text/plain".toMediaTypeOrNull())
-                    viewModelSeller.updateproduct(
-                        userManager.fetchAuthToken().toString(),
-                        idproduk,
-                        namaProdcut,
-                        desc,
-                        hargaProduct,
-                        categoryProduct,
-                        lokasi
-                    )
+
+            AlertDialog.Builder(this)
+                .setTitle("KONFIRMASI UPDATE")
+                .setMessage("Anda Yakin Ingin Mengupdate Data Produk Ini ?")
+
+                .setPositiveButton("YA"){ _: DialogInterface, _: Int ->
+                    Toast.makeText(this, "Berhasil Diupdate", Toast.LENGTH_SHORT).show()
+                    if (!ngambil){
+                        if (!categorystatus){
+                            viewModelSeller.updateProductngnc(
+                                userManager.fetchAuthToken().toString(),
+                                idproduk,
+                                namaProdcut,
+                                desc,
+                                hargaProduct,
+                                lokasi
+                            )
+                        }else {
+                            var categoryProduct : RequestBody =
+                                postCategory.toRequestBody("text/plain".toMediaTypeOrNull())
+                            viewModelSeller.updateproduct(
+                                userManager.fetchAuthToken().toString(),
+                                idproduk,
+                                namaProdcut,
+                                desc,
+                                hargaProduct,
+                                categoryProduct,
+                                lokasi
+                            )
+                        }
+                    }else {
+                        val contentResolver = this.applicationContext.contentResolver
+                        val type = contentResolver.getType(image)
+                        val tempFile = File.createTempFile("temp-", null, null)
+                        val inputstream = contentResolver.openInputStream(image)
+                        tempFile.outputStream().use {
+                            inputstream?.copyTo(it)
+                        }
+                        val requestBody: RequestBody = tempFile.asRequestBody(type?.toMediaType())
+                        val body = MultipartBody.Part.createFormData("image", tempFile.name, requestBody)
+                        if (!categorystatus) {
+                            viewModelSeller.updateProductnc(
+                                userManager.fetchAuthToken().toString(),
+                                idproduk,
+                                namaProdcut,
+                                desc,
+                                hargaProduct,
+                                lokasi,
+                                body
+                            )
+                        } else {
+                            var categoryProduct : RequestBody =
+                                postCategory.toRequestBody("text/plain".toMediaTypeOrNull())
+                            viewModelSeller.updateproductgambar(
+                                userManager.fetchAuthToken().toString(),
+                                idproduk,
+                                namaProdcut,
+                                desc,
+                                hargaProduct,
+                                categoryProduct,
+                                lokasi,
+                                body
+                            )
+                        }
+                    }
+                    startActivity(Intent(this,DaftarJualActivity::class.java))
                 }
-            }else {
-                val contentResolver = this.applicationContext.contentResolver
-                val type = contentResolver.getType(image)
-                val tempFile = File.createTempFile("temp-", null, null)
-                val inputstream = contentResolver.openInputStream(image)
-                tempFile.outputStream().use {
-                    inputstream?.copyTo(it)
+                .setNegativeButton("TIDAK"){ dialogInterface: DialogInterface, _: Int ->
+                    Toast.makeText(this, "Tidak Jadi Diupdate", Toast.LENGTH_SHORT).show()
+                    dialogInterface.dismiss()
                 }
-                val requestBody: RequestBody = tempFile.asRequestBody(type?.toMediaType())
-                val body = MultipartBody.Part.createFormData("image", tempFile.name, requestBody)
-                if (!categorystatus) {
-                    viewModelSeller.updateProductnc(
-                        userManager.fetchAuthToken().toString(),
-                        idproduk,
-                        namaProdcut,
-                        desc,
-                        hargaProduct,
-                        lokasi,
-                        body
-                    )
-                } else {
-                    var categoryProduct : RequestBody =
-                        postCategory.toRequestBody("text/plain".toMediaTypeOrNull())
-                    viewModelSeller.updateproductgambar(
-                        userManager.fetchAuthToken().toString(),
-                        idproduk,
-                        namaProdcut,
-                        desc,
-                        hargaProduct,
-                        categoryProduct,
-                        lokasi,
-                        body
-                    )
-                }
-            }
-        startActivity(Intent(this,DaftarJualActivity::class.java))
+                .show()
+
         }
     }
 

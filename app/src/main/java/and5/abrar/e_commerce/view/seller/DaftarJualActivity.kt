@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_daftar_jual_seller.*
+import kotlinx.android.synthetic.main.item_product_seller.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 
 @DelicateCoroutinesApi
@@ -97,6 +98,7 @@ class DaftarJualActivity : AppCompatActivity() {
             val pindah = Intent(this,EditProduct::class.java)
             pindah.putExtras(clickedproduct)
             startActivity(pindah)
+
         }
         rvProductSeller.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rvProductSeller.adapter = adapter
