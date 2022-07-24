@@ -65,7 +65,7 @@
             android:name=".view.seller.AddProductSellerActivity"
             android:exported="false" />
         <activity
-            android:name=".view.seller.NotifikasiSellerActivity"
+            android:name=".view.buyer.OrderBuyer"
             android:exported="false" />
         <activity
             android:name=".view.buyer.NotifikasiBuyerActivity"

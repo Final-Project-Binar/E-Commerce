@@ -235,6 +235,24 @@ class ViewModelProductSeller @Inject constructor(private var productRepository: 
         })
     }
 
+    fun getorderstatusall(token : String,status: String){
+        apiServices.getOrderSellerStatus(token,status).enqueue(object : Callback<List<GetOrderSellerItem>>{
+            override fun onResponse(
+                call: Call<List<GetOrderSellerItem>>,
+                response: Response<List<GetOrderSellerItem>>
+            ) {
+                if(response.isSuccessful){
+                    livedataorder.value = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<List<GetOrderSellerItem>>, t: Throwable) {
+                //
+            }
+
+        })
+    }
+
     fun getOrder(status: String, status1: String, token: String){
         apiServices.getOrderSeller(status, status1, token).enqueue(object : Callback<List<GetOrderSellerItem>>{
             override fun onResponse(

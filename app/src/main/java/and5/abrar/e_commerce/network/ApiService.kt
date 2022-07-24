@@ -7,6 +7,8 @@ import and5.abrar.e_commerce.model.category.GetCategorySellerItem
 import and5.abrar.e_commerce.model.login.LoginRequest
 import and5.abrar.e_commerce.model.login.LoginResponse
 import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
+import and5.abrar.e_commerce.model.orderbuyer.DeleteOrder
+import and5.abrar.e_commerce.model.orderbuyer.GetBuyerOrder
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrder
 import and5.abrar.e_commerce.model.orderbuyer.PostBuyerOrderResponseItem
 import and5.abrar.e_commerce.model.orderseller.GetOrderSellerItem
@@ -237,4 +239,14 @@ interface ApiService {
         @Header("access_token") token: String
     ) : Call<List<WishListBuyer>>
 
+    @DELETE("buyer/order/{id}")
+    fun deleteorder(
+        @Header("access_token") token: String,
+        @Path("id") id : Int
+    ) : Call<DeleteOrder>
+
+    @GET("buyer/order")
+    fun getbuyerorder(
+        @Header("access_token") token: String
+    ) : Call<List<GetBuyerOrder>>
 }

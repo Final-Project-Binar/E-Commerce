@@ -22,13 +22,19 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
+import com.bumptech.glide.Glide
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_add_product_seller.*
 import kotlinx.android.synthetic.main.activity_lengkapi_detail_product.*
+import kotlinx.android.synthetic.main.activity_lengkapi_detail_product.back
+import kotlinx.android.synthetic.main.custom_dialog_hargatawar_buyer.view.*
+import kotlinx.android.synthetic.main.customdialog_preview.view.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -93,6 +99,7 @@ class LengkapiDetailProductActivity : AppCompatActivity() {
                 userManager.clearPreview()
             }
             preview()
+            getPreview()
         }
 
         icon_foto.setOnClickListener {
@@ -115,7 +122,40 @@ class LengkapiDetailProductActivity : AppCompatActivity() {
             }
         }
     }
-
+    fun getPreview(){
+        userManager = UserManager(this)
+        val viewModelDataSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
+        viewModelDataSeller.getSeller(token = userManager.fetchAuthToken().toString())
+        val dialogView = layoutInflater.inflate(R.layout.customdialog_preview, null)
+        val dialogbuilder = AlertDialog.Builder(this).setView(dialogView).create()
+        val btnpreview = dialogView.addProductSeller_btnTerbit
+        viewModelDataSeller.seller.observe(this) {
+            dialogView.TV_nama.text = "Nama Seller" + it.fullName
+            dialogView.seller_kota.text = "Kota Seller" + it.city
+            Glide.with(dialogView.IV_penjual.context).load(it.imageUrl).into(dialogView.IV_penjual)
+        }
+        userManager.harga.asLiveData().observe(this){
+            dialogView.addProduct_harga.text = "Rp.$it"
+        }
+        userManager.name.asLiveData().observe(this){
+            dialogView.addProduct_namaproduk.text = "Nama Produk : $it"
+        }
+        userManager.deskripsi.asLiveData().observe(this){
+            dialogView.addProduct_deskripsi.text = it
+        }
+        userManager.kategori.asLiveData().observe(this){
+            dialogView.addProduct_category.text = it
+        }
+        userManager.gambar.asLiveData().observe(this){
+            Glide.with(dialogView.add_gambar.context).load(it).into(dialogView.add_gambar)
+        }
+        btnpreview.setOnClickListener {
+            jualbarang()
+            dialogbuilder.dismiss()
+        }
+        dialogbuilder.setCancelable(true)
+        dialogbuilder.show()
+    }
     fun preview() {
         val namaproduk = edt_namaprodut.text.toString()
         val lokasi = edt_lokasi.text.toString()
@@ -136,11 +176,9 @@ class LengkapiDetailProductActivity : AppCompatActivity() {
                             uri
                         )
                     }
-                    startActivity(Intent(this,AddProductSellerActivity::class.java))
                 },
                 errorHandler = {
                     Toast.makeText(this, "Gagal.", Toast.LENGTH_SHORT).show()
-
                 }
             )
         }

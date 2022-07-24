@@ -158,7 +158,7 @@
         android:background="@drawable/custom_drawable"
         app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewCart"
+        app:layout_constraintEnd_toStartOf="@+id/orderbuyerlist"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -168,10 +168,10 @@
     </androidx.appcompat.widget.SearchView>
 
     <ImageView
-        android:id="@+id/imageViewCart"
-        android:layout_width="40dp"
+        android:id="@+id/orderbuyerlist"
+        android:layout_width="30dp"
         android:layout_height="40dp"
-        android:src="@drawable/cart"
+        android:src="@drawable/ic_baseline_shopping_cart_24"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="5dp"

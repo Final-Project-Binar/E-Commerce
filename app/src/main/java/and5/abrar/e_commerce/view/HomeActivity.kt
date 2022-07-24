@@ -15,6 +15,7 @@ import and5.abrar.e_commerce.view.adapter.AdapterBanner
 import and5.abrar.e_commerce.view.adapter.AdapterHome
 import and5.abrar.e_commerce.view.buyer.AddProductBuyerActivity
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
+import and5.abrar.e_commerce.view.buyer.OrderBuyer
 import and5.abrar.e_commerce.view.seller.DaftarJualActivity
 import and5.abrar.e_commerce.view.seller.LengkapiDetailProductActivity
 import and5.abrar.e_commerce.view.seller.OfflineActvty
@@ -94,7 +95,9 @@ class HomeActivity : AppCompatActivity() {
                 .show()
             startActivity(Intent(this, OfflineActvty::class.java))
         }
-
+        orderbuyerlist.setOnClickListener {
+            startActivity(Intent(this,OrderBuyer::class.java))
+        }
     }
 
     fun iniviewmodel(){

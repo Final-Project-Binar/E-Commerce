@@ -30,6 +30,8 @@ class AddProductBuyerActivity : AppCompatActivity() {
     private lateinit var userManager: UserManager
     private lateinit var apiClient: ApiClient
     private var datalengkap :String = "ada"
+    private var produk : String = ""
+    private var produkpilih : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product_buyer)
@@ -38,8 +40,30 @@ class AddProductBuyerActivity : AppCompatActivity() {
         back.setOnClickListener {
             onBackPressed()
         }
+        disablebutton()
         detailData()
         postFavorite()
+    }
+
+    private fun disablebutton(){
+        userManager = UserManager(this)
+        val viewModel = ViewModelProvider(this)[ViewModelHome::class.java]
+        viewModel.fetchbuyerorder(userManager.fetchAuthToken().toString())
+        runOnUiThread {
+        viewModel.order.observe(this) {
+            for (z in it.indices) {
+                produk = it[z].productId.toString()
+                if (produkpilih == produk) {
+                    addProductBuyer_btnTertarik.text =
+                        "Anda Sudah Memesan Produk Ini Silahkan Batalkan Orderan Terlebih Dahulu"
+                    addProductBuyer_btnTertarik.setOnClickListener {
+                        startActivity(Intent(this@AddProductBuyerActivity,OrderBuyer::class.java))
+                    }
+                }
+
+            }
+        }
+        }
     }
 
     private fun detailData(){
@@ -74,6 +98,7 @@ class AddProductBuyerActivity : AppCompatActivity() {
                 .load(dataProduct.imageUrl)
                 .override(400,350)
                 .into(tv_imgdetailproduct)
+            produkpilih = dataProduct.id.toString()
             tv_judulproductdetail.text = dataProduct.name
             tv_acesorisproductdetail.text = dataProduct.categories.toString()
             tv_hargaproductdetail.text = dataProduct.basePrice.toString()

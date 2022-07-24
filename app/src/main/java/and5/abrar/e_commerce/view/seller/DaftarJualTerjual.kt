@@ -21,10 +21,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_daftar_jual_seller.*
 import kotlinx.android.synthetic.main.activity_daftar_jual_seller.IV_penjual_product
 import kotlinx.android.synthetic.main.activity_daftar_jual_seller.TV_kota_product
 import kotlinx.android.synthetic.main.activity_daftar_jual_seller.TV_nama_product
 import kotlinx.android.synthetic.main.activity_daftar_jual_terjual.*
+import kotlinx.android.synthetic.main.activity_daftar_jual_terjual.cardView_diminatiSeller
+import kotlinx.android.synthetic.main.activity_daftar_jual_terjual.cardView_productSeller
+import kotlinx.android.synthetic.main.activity_daftar_jual_terjual.daftarHistory
 import kotlinx.coroutines.DelicateCoroutinesApi
 
 @DelicateCoroutinesApi
@@ -75,6 +79,9 @@ class DaftarJualTerjual : AppCompatActivity() {
         }
         btnedit_product.setOnClickListener {
             startActivity(Intent(this,AkunSayaActivity::class.java))
+        }
+        daftarHistory.setOnClickListener {
+            startActivity(Intent(this,DaftarJualHistory::class.java))
         }
         initView()
     }

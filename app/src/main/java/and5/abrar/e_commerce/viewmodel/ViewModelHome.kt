@@ -1,5 +1,7 @@
 package and5.abrar.e_commerce.viewmodel
 
+import and5.abrar.e_commerce.model.orderbuyer.DeleteOrder
+import and5.abrar.e_commerce.model.orderbuyer.GetBuyerOrder
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductItem
 import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponse
 import and5.abrar.e_commerce.network.ApiService
@@ -25,10 +27,14 @@ class ViewModelHome @Inject constructor( apiService: ApiService, offlineDao: Off
     private var liveDataDetail = MutableLiveData<GetBuyerProductResponse>()
     val detail : LiveData<GetBuyerProductResponse> = liveDataDetail
 
+    private var dataOrder = MutableLiveData<List<GetBuyerOrder>>()
+    val order : LiveData<List<GetBuyerOrder>> = dataOrder
+
     private val dao = offlineDao
 
     private val apiServices = apiService
 
+    private val deleteorderbuyer = MutableLiveData<DeleteOrder>()
     init {
         viewModelScope.launch {
             val dataproduct = apiService.getBuyerProduct()
@@ -36,7 +42,23 @@ class ViewModelHome @Inject constructor( apiService: ApiService, offlineDao: Off
             liveDataProduct.value = dataproduct
         }
     }
+    fun fetchbuyerorder(token : String){
+        apiServices.getbuyerorder(token).enqueue(object : Callback<List<GetBuyerOrder>>{
+            override fun onResponse(
+                call: Call<List<GetBuyerOrder>>,
+                response: Response<List<GetBuyerOrder>>
+            ) {
+                if(response.isSuccessful){
+                    dataOrder.value = response.body()
+                }
+            }
 
+            override fun onFailure(call: Call<List<GetBuyerOrder>>, t: Throwable) {
+                //
+            }
+
+        })
+    }
 
     fun insertOffline(offline: Offline){
         viewModelScope.launch {
@@ -50,6 +72,20 @@ class ViewModelHome @Inject constructor( apiService: ApiService, offlineDao: Off
         }
     }
 
+    fun deleteOrder(token: String,id: Int){
+        apiServices.deleteorder(token,id).enqueue(object : Callback<DeleteOrder>{
+            override fun onResponse(call: Call<DeleteOrder>, response: Response<DeleteOrder>) {
+                if (response.isSuccessful){
+                    deleteorderbuyer.value = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<DeleteOrder>, t: Throwable) {
+                //
+            }
+
+        })
+    }
     fun detailproduct(id : Int){
         viewModelScope.launch {
             apiServices.getdetailproduct(id)
