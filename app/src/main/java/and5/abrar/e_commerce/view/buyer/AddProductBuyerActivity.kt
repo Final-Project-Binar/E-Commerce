@@ -185,10 +185,8 @@ class AddProductBuyerActivity : AppCompatActivity() {
         }
 
         btnTawaran.setOnClickListener {
-            val dataProduct = intent.extras!!.getSerializable("detailproduk") as GetBuyerProductItem?
             val productId = detailBarang.id
             val edtTawar = dialogView.ca_hargatawar.text.toString().toInt()
-            if (dataProduct?.status == "available"){
                 if (edtTawar.toString().isNotEmpty()) {
                     val buyerOrderViewModel =
                         ViewModelProvider(this)[BuyerOrderViewModel::class.java]
@@ -199,8 +197,6 @@ class AddProductBuyerActivity : AppCompatActivity() {
                     Toast.makeText(this, "Tawaran sudah dikirim", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
                 }
-            }
-
             }
 
         dialog.setCancelable(true)

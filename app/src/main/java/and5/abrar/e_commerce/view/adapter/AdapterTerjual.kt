@@ -39,7 +39,8 @@ class AdapterTerjual(private  var onClick :(GetOrderSellerItem)->Unit) : Recycle
         Glide.with(holder.itemView.context)
             .load(dataOrder!![position].product.imageUrl)
             .into(holder.itemView.imageProductSeller)
-        holder.itemView.Hapus_danDelete_productmu.isInvisible = true
+        holder.itemView.button_edit_card.isInvisible = true
+        holder.itemView.button_delete_card.isInvisible = true
     }
 
     override fun getItemCount(): Int {

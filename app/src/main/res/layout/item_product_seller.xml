@@ -112,7 +112,7 @@ android:layout_height="wrap_content">
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/tvKategori_product_seller"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/button_edit_card"
             app:layout_constraintStart_toEndOf="@+id/imageProductSeller"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
@@ -128,6 +128,7 @@ android:layout_height="wrap_content">
             android:text="Kota"
             android:textColor="@color/black"
             android:textSize="17sp"
+            app:layout_constraintEnd_toStartOf="@id/button_edit_card"
             app:layout_constraintBottom_toTopOf="@+id/tvHarga_product_seller"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageProductSeller"
@@ -144,6 +145,7 @@ android:layout_height="wrap_content">
             android:text="Rp. 150.000"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/button_edit_card"
             app:layout_constraintBottom_toTopOf="@+id/tvStatus_product_seller"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageProductSeller"
@@ -162,58 +164,40 @@ android:layout_height="wrap_content">
             android:textColor="#EF0808"
             android:textSize="13sp"
             android:textStyle="italic"
+            app:layout_constraintEnd_toStartOf="@id/button_edit_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageProductSeller"
             app:layout_constraintTop_toBottomOf="@+id/tvHarga_product_seller"
             tools:ignore="HardcodedText,MissingConstraints" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/button_edit_card"-->
-<!--            android:layout_width="35dp"-->
-<!--            android:layout_height="35dp"-->
-<!--            android:src="@drawable/ic_edit_"-->
-<!--            android:tint="#47B89D"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:layout_marginEnd="8dp"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/button_delete_card"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_chainStyle="packed"-->
-<!--            tools:ignore="ContentDescription,MissingConstraints,UseAppTint" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/button_delete_card"-->
-<!--            android:layout_width="35dp"-->
-<!--            android:layout_height="35dp"-->
-<!--            android:src="@drawable/ic_hapus"-->
-<!--            android:tint="#CA2424"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginBottom="5dp"-->
-<!--            android:layout_marginEnd="8dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/button_edit_card"-->
-<!--            tools:ignore="ContentDescription,MissingConstraints,UseAppTint" />-->
-
-        <TextView
-            android:id="@+id/Hapus_danDelete_productmu"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+        <ImageView
+            android:id="@+id/button_edit_card"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_edit_"
+            android:tint="#47B89D"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_delete_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:ignore="ContentDescription,MissingConstraints,UseAppTint" />
+
+        <ImageView
+            android:id="@+id/button_delete_card"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_hapus"
+            android:tint="#CA2424"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:gravity="center"
-            android:text="Klik Disini Untuk Edit Dan Hapus Produkmu"
-            android:textColor="#0742F3"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            android:visibility="visible"
+            android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvStatus_product_seller"
-            tools:ignore="HardcodedText,MissingConstraints" />
+            app:layout_constraintTop_toBottomOf="@+id/button_edit_card"
+            tools:ignore="ContentDescription,MissingConstraints,UseAppTint" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

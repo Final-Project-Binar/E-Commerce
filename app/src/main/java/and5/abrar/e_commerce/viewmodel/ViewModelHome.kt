@@ -7,6 +7,9 @@ import and5.abrar.e_commerce.model.produkbuyer.GetBuyerProductResponse
 import and5.abrar.e_commerce.network.ApiService
 import and5.abrar.e_commerce.room.Offline
 import and5.abrar.e_commerce.room.OfflineDao
+import android.content.Context
+import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -113,10 +116,17 @@ class ViewModelHome @Inject constructor( apiService: ApiService, offlineDao: Off
             ) {
                 if (response.isSuccessful){
                     liveDataProduct.value = response.body()
+                }else if(response.body().isNullOrEmpty()){
+                   liveDataProduct.value = null
                 }
             }
             override fun onFailure(call: Call<List<GetBuyerProductItem>>, t: Throwable) {
+                liveDataProduct.value = null
             }
         })
     }
+
+    fun Context?.toast(@StringRes textId: Int, duration: Int = Toast.LENGTH_SHORT) =
+        this?.let { Toast.makeText(it, textId, duration).show() }
+
 }

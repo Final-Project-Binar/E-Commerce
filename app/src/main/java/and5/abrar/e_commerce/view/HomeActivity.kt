@@ -271,6 +271,7 @@ class HomeActivity : AppCompatActivity() {
         rv_homeProduk.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
         val viewModel =
             ViewModelProvider(this@HomeActivity)[ViewModelHome::class.java]
+        runOnUiThread{
         Handler(Looper.getMainLooper()).postDelayed({
                 searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
                     androidx.appcompat.widget.SearchView.OnQueryTextListener {
@@ -278,7 +279,6 @@ class HomeActivity : AppCompatActivity() {
                             viewModel.searchproduct(query!!)
                         return false
                     }
-
                     override fun onQueryTextChange(p0: String?): Boolean {
                         return false
                     }
@@ -286,19 +286,20 @@ class HomeActivity : AppCompatActivity() {
         },3000)
         viewModel.product.observe(this@HomeActivity) {
             if (it != null) {
-                runOnUiThread{
                 adapterHome.setProduk(it)
                 adapterHome.notifyDataSetChanged()
+             }else {
+                Toast.makeText(this, "Produk Yang Kamu Cari Tidak Ada", Toast.LENGTH_SHORT).show()
             }
-        }
-                adapterHome = AdapterHome{
+            adapterHome = AdapterHome{
                     val pindahdata = Intent(applicationContext, AddProductBuyerActivity::class.java)
                     pindahdata.putExtra("detailproduk",it)
                     startActivity(pindahdata)
                 }
                 rv_homeProduk.layoutManager=GridLayoutManager(this,2)
                 rv_homeProduk.adapter=adapterHome
-            }
+        }
+    }
     }
 
     private fun bannerSeller(){

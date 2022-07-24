@@ -1,12 +1,21 @@
 package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R
+import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
+import and5.abrar.e_commerce.view.seller.DaftarJualActivity
+import and5.abrar.e_commerce.view.seller.EditProduct
+import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
 import android.annotation.SuppressLint
+import android.content.DialogInterface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_product_seller.view.*
@@ -18,6 +27,7 @@ class AdapterProductSeller(private  var onClick : (GetDataProductSellerItem)->Un
     fun setDataProductSeller(list: List<GetDataProductSellerItem>){
         this.dataProductSeller = list
     }
+    private lateinit var  userManager: UserManager
 
     class ViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView)
 
@@ -41,12 +51,27 @@ class AdapterProductSeller(private  var onClick : (GetDataProductSellerItem)->Un
             .load(dataProductSeller!![position].imageUrl)
             .into(holder.itemView.imageProductSeller)
 
-        holder.itemView.Hapus_danDelete_productmu.setOnClickListener {
-            onClick(dataProductSeller!![position])
+        holder.itemView.button_delete_card.setOnClickListener {
+            userManager = UserManager(holder.itemView.context)
+            val viewModelProductSeller = ViewModelProvider(holder.itemView.context as DaftarJualActivity)[ViewModelProductSeller::class.java]
+            AlertDialog.Builder(it.context)
+                .setTitle("KONFIRMASI HAPUS")
+                .setMessage("Anda Yakin Ingin Menghapus Data Produk Ini ?")
+
+                .setPositiveButton("YA"){ _: DialogInterface, _: Int ->
+                    Toast.makeText(it.context, "Berhasil Dihapus", Toast.LENGTH_SHORT).show()
+                    viewModelProductSeller.deleteProduct(userManager.fetchAuthToken().toString(), dataProductSeller!![position].id)
+                    (holder.itemView.context as DaftarJualActivity).initView()
+                }
+                .setNegativeButton("TIDAK"){ dialogInterface: DialogInterface, _: Int ->
+                    Toast.makeText(it.context, "Tidak Jadi Dihapus", Toast.LENGTH_SHORT).show()
+                    dialogInterface.dismiss()
+                }
+                .show()
         }
 
-        holder.itemView.cardProductSeller.setOnClickListener {
-            holder.itemView.Hapus_danDelete_productmu.isVisible = true
+        holder.itemView.button_edit_card.setOnClickListener {
+            onClick(dataProductSeller!![position])
         }
     }
 

@@ -38,8 +38,7 @@ interface ApiService {
     @POST("buyer/order")
     fun updateBidPrice(
         @Header("access_token") token: String,
-        @Body reqBidPrice: PostBuyerOrder,
-        @Query("status") status: String = "available"
+        @Body reqBidPrice: PostBuyerOrder
     ): Call<PostBuyerOrderResponseItem>
 
     @GET("buyer/product")

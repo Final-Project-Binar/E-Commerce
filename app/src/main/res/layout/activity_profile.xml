@@ -31,17 +31,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,MissingConstraints" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageView
         android:id="@+id/pict_image_profile"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/ic_camera"
-        android:backgroundTint="@color/biru"
+        android:src="@drawable/ic_camera"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLengkapi_Info_Akun"
-        tools:ignore="ContentDescription,MissingConstraints" />
+        tools:ignore="ContentDescription,MissingConstraints"
+        app:tint="@color/biru" />
 
 <!--    <ImageView-->
 <!--        android:id="@+id/imagePict"-->

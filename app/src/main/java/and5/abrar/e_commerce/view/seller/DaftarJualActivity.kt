@@ -21,7 +21,8 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_daftar_jual_seller.*
-import kotlinx.android.synthetic.main.item_product_seller.*
+import kotlinx.android.synthetic.main.activity_daftar_jual_seller.daftarHistory
+import kotlinx.android.synthetic.main.activity_daftar_jual_seller.daftar_jualEdit
 import kotlinx.coroutines.DelicateCoroutinesApi
 
 @DelicateCoroutinesApi
@@ -73,10 +74,13 @@ class DaftarJualActivity : AppCompatActivity() {
         daftarTerjuall.setOnClickListener {
             startActivity(Intent(this,DaftarJualTerjual::class.java))
         }
+        daftarHistory.setOnClickListener {
+            startActivity(Intent(this,DaftarJualHistory::class.java))
+        }
 
     }
 
-    private fun initView(){
+     fun initView(){
         val viewModelDataSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
         viewModelDataSeller.getSeller(token = userManager.fetchAuthToken().toString())
         viewModelDataSeller.seller.observe(this){
@@ -90,7 +94,6 @@ class DaftarJualActivity : AppCompatActivity() {
     private fun initRecyclerView(){
         userManager = UserManager(this)
         val viewModelProductSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
-
         viewModelProductSeller.getAllSellerProduct("available", token = userManager.fetchAuthToken().toString())
         adapter = AdapterProductSeller(){
             val clickedproduct = Bundle()
@@ -98,7 +101,6 @@ class DaftarJualActivity : AppCompatActivity() {
             val pindah = Intent(this,EditProduct::class.java)
             pindah.putExtras(clickedproduct)
             startActivity(pindah)
-
         }
         rvProductSeller.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rvProductSeller.adapter = adapter

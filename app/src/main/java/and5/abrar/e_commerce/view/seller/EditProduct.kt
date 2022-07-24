@@ -1,9 +1,4 @@
-@file:Suppress("MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
-    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
-    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
-    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
-    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
-    "CanBeVal", "CanBeVal", "CanBeVal", "DEPRECATION"
+@file:Suppress("MemberVisibilityCanBePrivate", "CanBeVal",  "DEPRECATION"
 )
 
 package and5.abrar.e_commerce.view.seller
@@ -11,6 +6,7 @@ package and5.abrar.e_commerce.view.seller
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.produkseller.GetDataProductSellerItem
+import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
 import android.app.Activity
 import android.content.DialogInterface
@@ -62,6 +58,29 @@ class EditProduct : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.custom_edit_product)
         userManager = UserManager(this)
+        backkejual.setOnClickListener {
+            startActivity(Intent(this, AkunSayaActivity::class.java))
+        }
+        runOnUiThread {
+            getCategory()
+            arrayAdapter =
+                ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, categoryName)
+            edt_select_kategori.setAdapter(arrayAdapter)
+            edt_select_kategori.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
+            arrayAdapter.notifyDataSetChanged()
+            edt_select_kategori.setOnItemClickListener { _, _, position, _ ->
+                val selected: String? = arrayAdapter.getItem(position)
+                selectedName.add(arrayAdapter.getItem(position))
+                selectedID.add(categoryID[position])
+                categoryName.remove(selected)
+                categoryID.remove(categoryID[position])
+                val getID = selectedID.toString()
+                if (getID.isNotEmpty()) {
+                    categorystatus = true
+                }
+                postCategory = getID.replace("[", "").replace("]", "")
+            }
+        }
         icon_foto.setOnClickListener {
             when {
                 ContextCompat.checkSelfPermission(
@@ -78,49 +97,11 @@ class EditProduct : AppCompatActivity() {
 
             }
         }
-        getCategory()
-        arrayAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, categoryName)
-        edt_select_kategori.setAdapter(arrayAdapter)
-        edt_select_kategori.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
-        arrayAdapter.notifyDataSetChanged()
-        edt_select_kategori.setOnItemClickListener { _, _, position, _ ->
-            val selected: String? = arrayAdapter.getItem(position)
-            selectedName.add(arrayAdapter.getItem(position))
-            selectedID.add(categoryID[position])
-            categoryName.remove(selected)
-            categoryID.remove(categoryID[position])
-            val getID = selectedID.toString()
-            if (getID.isNotEmpty()){
-                categorystatus = true
-            }
-            postCategory = getID.replace("[", "").replace("]", "")
-        }
+
         getdata()
          updateproduk()
-        deleteProduct()
     }
 
-    private fun deleteProduct(){
-        btn_deletedataproduct.setOnClickListener {
-            val dataProduct = intent.extras!!.getSerializable("detailorder") as GetDataProductSellerItem?
-            val viewModelProductSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
-            AlertDialog.Builder(this)
-                .setTitle("KONFIRMASI HAPUS")
-                .setMessage("Anda Yakin Ingin Menghapus Data Produk Ini ?")
-
-                .setPositiveButton("YA"){ _: DialogInterface, _: Int ->
-                    Toast.makeText(this, "Berhasil Dihapus", Toast.LENGTH_SHORT).show()
-                    viewModelProductSeller.deleteProduct(userManager.fetchAuthToken().toString(), dataProduct!!.id)
-                    startActivity(Intent(this,DaftarJualActivity::class.java))
-                }
-                .setNegativeButton("TIDAK"){ dialogInterface: DialogInterface, _: Int ->
-                    Toast.makeText(this, "Tidak Jadi Dihapus", Toast.LENGTH_SHORT).show()
-                    dialogInterface.dismiss()
-                }
-                .show()
-
-        }
-    }
      fun updateproduk(){
         btn_updatedataproduct.setOnClickListener {
             val namaProdcut : RequestBody =
