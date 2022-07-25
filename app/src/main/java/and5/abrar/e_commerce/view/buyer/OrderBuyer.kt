@@ -4,12 +4,15 @@ import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.view.HomeActivity
+import and5.abrar.e_commerce.view.LoginActivity
 import and5.abrar.e_commerce.view.adapter.AdapterOrderBuyer
 import and5.abrar.e_commerce.viewmodel.ViewModelHome
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_order_buyer.*
@@ -28,7 +31,19 @@ class OrderBuyer : AppCompatActivity() {
         back.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
         }
-        fetchorder()
+
+        loginDisini()
+        cekUser()
+    }
+
+    private fun cekUser(){
+        userManager.ceklogin.asLiveData().observe(this){
+            if (it == true){
+                fetchorder()
+            } else {
+                textCekUser.isVisible = true
+            }
+        }
     }
 
     fun fetchorder(){
@@ -44,4 +59,12 @@ class OrderBuyer : AppCompatActivity() {
 
 
     }
+
+    private fun loginDisini(){
+        logindsiniUntukLihatPesanan.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+    }
+
 }

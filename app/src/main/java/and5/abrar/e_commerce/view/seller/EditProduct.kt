@@ -179,6 +179,7 @@ class EditProduct : AppCompatActivity() {
                         }
                     }
                     startActivity(Intent(this,DaftarJualActivity::class.java))
+                    finish()
                 }
                 .setNegativeButton("TIDAK"){ dialogInterface: DialogInterface, _: Int ->
                     Toast.makeText(this, "Tidak Jadi Diupdate", Toast.LENGTH_SHORT).show()

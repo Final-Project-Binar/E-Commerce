@@ -1,8 +1,11 @@
 package and5.abrar.e_commerce.model.wishlist
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class ProductX(
     @SerializedName("base_price")
     val basePrice: Int,
@@ -13,7 +16,7 @@ data class ProductX(
     @SerializedName("image_name")
     val imageName: String,
     @SerializedName("image_url")
-    val imageUrl: String,
+    val imageUrl: String?,
     @SerializedName("location")
     val location: String,
     @SerializedName("name")
@@ -22,4 +25,4 @@ data class ProductX(
     val updatedAt: String,
     @SerializedName("user_id")
     val userId: Int
-)
+) : Parcelable

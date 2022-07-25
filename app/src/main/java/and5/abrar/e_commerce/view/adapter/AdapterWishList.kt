@@ -10,6 +10,7 @@ import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.wishlist.GetWishListItemItem
 import and5.abrar.e_commerce.model.wishlist.WishListBuyer
+import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.view.buyer.WishListActivity
 import and5.abrar.e_commerce.view.seller.DaftarJualActivity
 import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
@@ -46,10 +47,10 @@ class AdapterWishList(private  var onClick : (GetWishListItemItem)->Unit) : Recy
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Glide.with(holder.itemView.context).load(dataFavorite!![position].product.imageUrl).error(R.drawable.ic_baseline_account_circle_24).into(holder.itemView.imageViewWishList)
-        holder.itemView.nameProduct_Wishlist.text = "Nama Produk : ${dataFavorite!![position].product.name}"
-        holder.itemView.hargaWishList.text = "Harga : Rp. ${dataFavorite!![position].product.basePrice}"
-        holder.itemView.textView10.text = "Kota : ${dataFavorite!![position].product.location}"
+        Glide.with(holder.itemView.context).load(dataFavorite!![position].product?.imageUrl).error(R.drawable.ic_baseline_account_circle_24).into(holder.itemView.imageViewWishList)
+        holder.itemView.nameProduct_Wishlist.text = "Nama Produk : ${dataFavorite!![position].product?.name}"
+        holder.itemView.hargaWishList.text = "Harga : Rp. ${dataFavorite!![position].product?.basePrice}"
+        holder.itemView.textView10.text = "Kota : ${dataFavorite!![position].product?.location}"
 
         holder.itemView.imageDeleteWishList.setOnClickListener {
             userManager = UserManager(holder.itemView.context)
@@ -62,6 +63,8 @@ class AdapterWishList(private  var onClick : (GetWishListItemItem)->Unit) : Recy
                     Toast.makeText(it.context, "Berhasil Dihapus", Toast.LENGTH_SHORT).show()
                     viewModelWishlist.getDeleteWishlist(userManager.fetchAuthToken().toString(), dataFavorite!![position].id)
                     (holder.itemView.context as WishListActivity).recreate()
+//                    (holder.itemView.context as WishListActivity).initRecyclerView()
+//                    (holder.itemView as AkunSayaActivity).recreate()
                 }
                 .setNegativeButton("TIDAK"){ dialogInterface: DialogInterface, _: Int ->
                     Toast.makeText(it.context, "Tidak Jadi Dihapus", Toast.LENGTH_SHORT).show()

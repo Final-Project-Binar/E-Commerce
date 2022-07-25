@@ -8,6 +8,7 @@ import and5.abrar.e_commerce.model.notifikasi.GetNotifikasiItem
 import and5.abrar.e_commerce.network.ApiClient
 import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.view.HomeActivity
+import and5.abrar.e_commerce.view.LoginActivity
 import and5.abrar.e_commerce.view.adapter.AdapterNotifikasiBuyer
 import and5.abrar.e_commerce.view.seller.DaftarJualActivity
 import and5.abrar.e_commerce.view.seller.LengkapiDetailProductActivity
@@ -16,6 +17,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_notifikasi_buyer.*
@@ -41,8 +43,15 @@ class NotifikasiBuyerActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.jual -> {
-                startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
-                return@OnNavigationItemSelectedListener true
+                userManager.ceklogin.asLiveData().observe(this){
+                    if (it == true){
+                        startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
+                    } else {
+                        Toast.makeText(applicationContext, "Anda Belum Login", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        finish()
+                    }
+                }
             }
             R.id.akun -> {
                 startActivity(Intent(this, AkunSayaActivity::class.java))

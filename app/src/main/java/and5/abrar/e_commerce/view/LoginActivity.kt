@@ -118,7 +118,7 @@ class LoginActivity : AppCompatActivity() {
                 ) {
                     val loginResponse = response.body()
                     if (response.isSuccessful) {
-                        Toast.makeText(this@LoginActivity, response.message(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity, "Berhasil Login", Toast.LENGTH_SHORT).show()
                         userManager.saveAuthToken(
                             token = loginResponse!!.authToken
                         )
@@ -127,6 +127,7 @@ class LoginActivity : AppCompatActivity() {
                             userManager.logindata(loginemail,loginPassword)
                         }
                         startActivity(Intent(applicationContext, HomeActivity::class.java))
+                        finish()
                     } else if (login_email.text.toString().isEmpty()){
                         Toast.makeText(applicationContext, "Email Harus Diisi", Toast.LENGTH_SHORT).show()
                     } else if (login_pass.text.toString().isEmpty()){

@@ -17,6 +17,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/textTanggalUpdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="2022012018291829182198"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:textStyle="normal"
+            android:gravity="end"
+            android:visibility="gone"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageProductSeller"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,MissingConstraints,SmallSp" />
+
         <ImageView
             android:id="@+id/imageProductSeller"
             android:layout_width="90dp"
@@ -34,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:gravity="start"
             android:text="Nama Produk : Jam Tangan Casio"
             android:textColor="@color/black"

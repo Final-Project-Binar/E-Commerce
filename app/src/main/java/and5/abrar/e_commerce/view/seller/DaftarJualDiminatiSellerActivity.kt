@@ -4,6 +4,7 @@ import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.view.HomeActivity
+import and5.abrar.e_commerce.view.LoginActivity
 import and5.abrar.e_commerce.view.adapter.AdapterDiminati
 import and5.abrar.e_commerce.view.buyer.NotifikasiBuyerActivity
 import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -41,8 +43,15 @@ class DaftarJualDiminatiSellerActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.jual -> {
-                startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
-                return@OnNavigationItemSelectedListener true
+                userManager.ceklogin.asLiveData().observe(this){
+                    if (it == true){
+                        startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
+                    } else {
+                        Toast.makeText(applicationContext, "Anda Belum Login", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        finish()
+                    }
+                }
             }
             R.id.akun -> {
                 startActivity(Intent(this, AkunSayaActivity::class.java))

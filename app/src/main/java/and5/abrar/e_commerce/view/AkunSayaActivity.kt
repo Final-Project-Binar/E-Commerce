@@ -79,8 +79,15 @@ class AkunSayaActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.jual -> {
-                startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
-                return@OnNavigationItemSelectedListener true
+                userManager.ceklogin.asLiveData().observe(this){
+                    if (it == true){
+                        startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
+                    } else {
+                        Toast.makeText(applicationContext, "Anda Belum Login", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        finish()
+                    }
+                }
             }
             R.id.akun -> {
                 Toast.makeText(this, "Kamu Sedang Berada Di Akun", Toast.LENGTH_SHORT).show()
@@ -123,12 +130,15 @@ class AkunSayaActivity : AppCompatActivity() {
                 akunsaya_favorite.isVisible = true
                 onBiometric.isVisible = true
             }else{
+                ubahAkunSaya.isInvisible = true
+                pengaturanakunsaya.isInvisible = true
                 akunsaya_btnkeluar.isInvisible = true
                 akunsaya_login.isVisible = true
                 akunsaya_favorite.isInvisible = true
                 onBiometric.isInvisible = true
                 akunsaya_login.setOnClickListener{
                     startActivity(Intent(this@AkunSayaActivity, LoginActivity::class.java))
+                    finish()
                 }
             }
         }

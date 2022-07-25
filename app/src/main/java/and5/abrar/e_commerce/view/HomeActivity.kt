@@ -34,6 +34,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -61,8 +62,15 @@ class HomeActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener false
             }
             R.id.jual -> {
-                startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
-                return@OnNavigationItemSelectedListener true
+                userManager.ceklogin.asLiveData().observe(this){
+                    if (it == true){
+                        startActivity(Intent(this, LengkapiDetailProductActivity::class.java))
+                    } else {
+                        Toast.makeText(applicationContext, "Anda Belum Login", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        finish()
+                    }
+                }
             }
             R.id.akun -> {
                 startActivity(Intent(this, AkunSayaActivity::class.java))

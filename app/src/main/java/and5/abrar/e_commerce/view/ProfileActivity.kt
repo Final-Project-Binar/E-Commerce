@@ -134,6 +134,7 @@ class ProfileActivity : AppCompatActivity() {
                      body
                  )
              }
+             Toast.makeText(this, "Berhasil Update Data", Toast.LENGTH_SHORT).show()
          }
      }
 

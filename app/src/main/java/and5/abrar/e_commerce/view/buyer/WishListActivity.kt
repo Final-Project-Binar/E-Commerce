@@ -31,7 +31,7 @@ class WishListActivity : AppCompatActivity() {
         }
     }
 
-    private fun initRecyclerView(){
+    fun initRecyclerView(){
         userManager = UserManager(this)
         adapter = AdapterWishList {
             //
@@ -48,6 +48,7 @@ class WishListActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             } else {
                 textWishlist.isVisible = true
+                WishListRV.isInvisible = true
             }
         }
         viewModelWishList.getWishListBuyer(userManager.fetchAuthToken().toString())
