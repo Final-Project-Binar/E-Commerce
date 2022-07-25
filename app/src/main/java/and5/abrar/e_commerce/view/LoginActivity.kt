@@ -15,8 +15,13 @@ import android.content.pm.PackageManager
 import android.hardware.biometrics.BiometricPrompt
 import android.os.Build
 import android.os.Bundle
+import android.os.CancellationSignal
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.view.isInvisible
+import androidx.lifecycle.asLiveData
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -25,12 +30,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.os.CancellationSignal
-import android.util.Log
-import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
-import androidx.core.view.isInvisible
-import androidx.lifecycle.asLiveData
 
 
 @DelicateCoroutinesApi
@@ -53,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
             // onAuthenticationError and show a toast
             override fun onAuthenticationError(errorCode: Int, errString: CharSequence?) {
                 super.onAuthenticationError(errorCode, errString)
-                notifyUser("Authentication Error : $errString")
+                notifyUser("Autentikasi Gagal : Fitur Sidik Jari Tidak Terbaca")
             }
 
             // If the fingerprint is recognized by the app then it will call
@@ -61,9 +60,7 @@ class LoginActivity : AppCompatActivity() {
             // Here you can also start a new activity after that
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult?) {
                 super.onAuthenticationSucceeded(result)
-                notifyUser("Authentication Succeeded")
-                Log.e("aaa", email)
-                Log.e("bbb",password)
+                notifyUser("Autentikasi Berhasil")
                 if(email.isEmpty() && password.isEmpty()){
                     notifyUser("Anda Belum Mendaftar FingerPrint")
                 }else{
@@ -99,9 +96,9 @@ class LoginActivity : AppCompatActivity() {
             // clicking it, it will cancel the process of
             // fingerprint authentication
             val biometricPrompt = BiometricPrompt.Builder(this)
-                .setTitle("Tekan Jari Anda ke fingerprint")
+                .setTitle("Tekan Jari Anda ke SidikJari")
                 .setNegativeButton("Cancel", this.mainExecutor, DialogInterface.OnClickListener { _, _ ->
-                    notifyUser("Authentication Cancelled")
+                    notifyUser("Autentikasi Dibatalkan")
                 }).build()
 
             // start the authenticationCallback in mainExecutor
@@ -146,7 +143,7 @@ class LoginActivity : AppCompatActivity() {
     private fun getCancellationSignal(): CancellationSignal {
         cancellationSignal = CancellationSignal()
         cancellationSignal?.setOnCancelListener {
-            notifyUser("Authentication was Cancelled by the user")
+            notifyUser("Autentikasi Dibatalkan Oleh Pengguna")
         }
         return cancellationSignal as CancellationSignal
     }
@@ -160,7 +157,7 @@ class LoginActivity : AppCompatActivity() {
             return false
         }
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.USE_BIOMETRIC) != PackageManager.PERMISSION_GRANTED) {
-            notifyUser("Fingerprint Authentication Permission is not enabled")
+            notifyUser("Autentikasi SidikJari Belum Di Nyalakan")
             return false
         }
         return if (packageManager.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)) {

@@ -2,7 +2,6 @@ package and5.abrar.e_commerce.view.buyer
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
-import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.view.LoginActivity
 import and5.abrar.e_commerce.view.adapter.AdapterOrderBuyer

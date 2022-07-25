@@ -1,3 +1,5 @@
+@file:Suppress("UselessCallOnNotNull")
+
 package and5.abrar.e_commerce.view.buyer
 
 import and5.abrar.e_commerce.R
@@ -55,7 +57,7 @@ class AddProductBuyerActivity : AppCompatActivity() {
                 produk = it[z].productId.toString()
                 if (produkpilih == produk) {
                     addProductBuyer_btnTertarik.text =
-                        "Anda Sudah Memesan Produk Ini Silahkan Batalkan Orderan Terlebih Dahulu"
+                        "Menunggu Respon Penjual Atau Batalkan Orderan"
                     addProductBuyer_btnTertarik.setOnClickListener {
                         startActivity(Intent(this@AddProductBuyerActivity,OrderBuyer::class.java))
                     }
@@ -197,6 +199,7 @@ class AddProductBuyerActivity : AppCompatActivity() {
                     Toast.makeText(this, "Tawaran sudah dikirim", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
                 }
+            recreate()
             }
 
         dialog.setCancelable(true)

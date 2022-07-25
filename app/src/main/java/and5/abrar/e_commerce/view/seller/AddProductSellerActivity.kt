@@ -1,4 +1,4 @@
-@file:Suppress("RedundantOverride", "RedundantOverride")
+@file:Suppress("RedundantOverride")
 
 package and5.abrar.e_commerce.view.seller
 

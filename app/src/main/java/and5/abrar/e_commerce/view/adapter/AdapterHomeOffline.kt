@@ -1,6 +1,4 @@
-@file:Suppress("KotlinDeprecation", "KotlinDeprecation", "KotlinDeprecation", "KotlinDeprecation",
-    "KotlinDeprecation", "KotlinDeprecation", "KotlinDeprecation"
-)
+@file:Suppress("KotlinDeprecation")
 
 package and5.abrar.e_commerce.view.adapter
 

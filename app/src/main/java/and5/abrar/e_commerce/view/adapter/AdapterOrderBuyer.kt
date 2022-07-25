@@ -1,4 +1,4 @@
-@file:Suppress("SimplifyBooleanWithConstants", "SimplifyBooleanWithConstants")
+@file:Suppress("SimplifyBooleanWithConstants", "unused")
 
 package and5.abrar.e_commerce.view.adapter
 
@@ -17,9 +17,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_order_buyer.view.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
 class AdapterOrderBuyer(private var dataNotif : List<GetBuyerOrder>,
-                              private var onClick : (GetBuyerOrder)->Unit):RecyclerView.Adapter<AdapterOrderBuyer.ViewHolder>()  {
+                        private var onClick : (GetBuyerOrder)->Unit):RecyclerView.Adapter<AdapterOrderBuyer.ViewHolder>()  {
     class ViewHolder(itemView : View):RecyclerView.ViewHolder(itemView)
 
     private lateinit var  userManager: UserManager

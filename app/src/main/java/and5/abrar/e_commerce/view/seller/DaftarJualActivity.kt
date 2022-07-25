@@ -1,6 +1,4 @@
-@file:Suppress("RemoveEmptyParenthesesFromLambdaCall", "RemoveEmptyParenthesesFromLambdaCall",
-    "DEPRECATION"
-)
+@file:Suppress("RemoveEmptyParenthesesFromLambdaCall", "DEPRECATION")
 
 package and5.abrar.e_commerce.view.seller
 

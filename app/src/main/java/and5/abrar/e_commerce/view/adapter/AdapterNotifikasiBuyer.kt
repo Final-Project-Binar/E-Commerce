@@ -1,6 +1,4 @@
-@file:Suppress("SimplifyBooleanWithConstants", "SimplifyBooleanWithConstants",
-    "SimplifyBooleanWithConstants", "SimplifyBooleanWithConstants", "UselessCallOnNotNull"
-)
+@file:Suppress("SimplifyBooleanWithConstants", "UselessCallOnNotNull")
 
 package and5.abrar.e_commerce.view.adapter
 

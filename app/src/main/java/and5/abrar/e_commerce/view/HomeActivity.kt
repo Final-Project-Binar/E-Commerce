@@ -1,8 +1,5 @@
-@file:Suppress("ReplaceGetOrSet", "ReplaceGetOrSet", "ReplaceGetOrSet", "DEPRECATION",
-    "NAME_SHADOWING", "NestedLambdaShadowedImplicitParameter", "MemberVisibilityCanBePrivate",
-    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
-    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
-    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate"
+@file:Suppress("ReplaceGetOrSet", "DEPRECATION",
+    "NAME_SHADOWING", "NestedLambdaShadowedImplicitParameter", "MemberVisibilityCanBePrivate"
 )
 
 package and5.abrar.e_commerce.view

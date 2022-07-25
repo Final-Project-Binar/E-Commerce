@@ -54,7 +54,7 @@ class AkunSayaActivity : AppCompatActivity() {
             // onAuthenticationError and show a toast
             override fun onAuthenticationError(errorCode: Int, errString: CharSequence?) {
                 super.onAuthenticationError(errorCode, errString)
-                notifyUser("Authentication Error : $errString")
+                notifyUser("Autentikasi Gagal : Fitur Sidik Jari Tidak Terbaca")
             }
 
             // If the fingerprint is recognized by the app then it will call
@@ -65,7 +65,7 @@ class AkunSayaActivity : AppCompatActivity() {
                 GlobalScope.launch {
                     userManager.finger(email,pass)
                 }
-                notifyUser("Pendaftaran FingerPrint Berhasil")
+                notifyUser("Pendaftaran Sidik Jari Berhasil")
             }
         }
     private val bottomNavigasi = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -191,9 +191,9 @@ class AkunSayaActivity : AppCompatActivity() {
                 userManager.clearfinger()
             }
             val biometricPrompt = BiometricPrompt.Builder(this)
-                .setTitle("Tekan Jari Anda ke fingerprint")
+                .setTitle("Tekan Jari Anda Ke SidikJari")
                 .setNegativeButton("Cancel", this.mainExecutor, DialogInterface.OnClickListener { _, _ ->
-                    notifyUser("Authentication Cancelled")
+                    notifyUser("Autentikasi Dibatalkan")
                 }).build()
 
             // start the authenticationCallback in mainExecutor
@@ -213,7 +213,7 @@ class AkunSayaActivity : AppCompatActivity() {
     private fun getCancellationSignal(): CancellationSignal {
         cancellationSignal = CancellationSignal()
         cancellationSignal?.setOnCancelListener {
-            notifyUser("Authentication was Cancelled by the user")
+            notifyUser("Autentikasi Dibatalkan Oleh Pengguna")
         }
         return cancellationSignal as CancellationSignal
     }
@@ -227,7 +227,7 @@ class AkunSayaActivity : AppCompatActivity() {
             return false
         }
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.USE_BIOMETRIC) != PackageManager.PERMISSION_GRANTED) {
-            notifyUser("Fingerprint Authentication Permission is not enabled")
+            notifyUser("Autentikasi SidikJari Belum Di Nyalakan")
             onBiometric.isInvisible = true
             return false
         }

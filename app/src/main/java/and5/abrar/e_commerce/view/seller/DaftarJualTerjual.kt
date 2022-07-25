@@ -5,7 +5,6 @@ package and5.abrar.e_commerce.view.seller
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.view.AkunSayaActivity
-import and5.abrar.e_commerce.view.EditProfileActivity
 import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.view.LoginActivity
 import and5.abrar.e_commerce.view.adapter.AdapterTerjual
@@ -23,7 +22,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_daftar_jual_seller.*
 import kotlinx.android.synthetic.main.activity_daftar_jual_seller.IV_penjual_product
 import kotlinx.android.synthetic.main.activity_daftar_jual_seller.TV_kota_product
 import kotlinx.android.synthetic.main.activity_daftar_jual_seller.TV_nama_product
@@ -110,11 +108,6 @@ class DaftarJualTerjual : AppCompatActivity() {
         val viewModelProductSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
         viewModelProductSeller.getorderstatus(token = userManager.fetchAuthToken().toString())
         adapter = AdapterTerjual(){
-            val clickedProduct = Bundle()
-            clickedProduct.putParcelable("detailproduk",it)
-            val pindah = Intent(this, EditProfileActivity::class.java)
-            pindah.putExtras(clickedProduct)
-            startActivity(pindah)
         }
         rvTerjual.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rvTerjual.adapter = adapter

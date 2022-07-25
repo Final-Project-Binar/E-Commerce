@@ -1,8 +1,4 @@
-@file:Suppress("NestedLambdaShadowedImplicitParameter", "NestedLambdaShadowedImplicitParameter",
-    "NestedLambdaShadowedImplicitParameter", "NestedLambdaShadowedImplicitParameter",
-    "NestedLambdaShadowedImplicitParameter", "NestedLambdaShadowedImplicitParameter",
-    "NestedLambdaShadowedImplicitParameter", "NestedLambdaShadowedImplicitParameter"
-)
+@file:Suppress("NestedLambdaShadowedImplicitParameter")
 
 package and5.abrar.e_commerce.view.seller
 
@@ -18,7 +14,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog

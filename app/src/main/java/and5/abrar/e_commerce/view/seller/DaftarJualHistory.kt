@@ -1,9 +1,10 @@
+@file:Suppress("DEPRECATION")
+
 package and5.abrar.e_commerce.view.seller
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.view.AkunSayaActivity
-import and5.abrar.e_commerce.view.EditProfileActivity
 import and5.abrar.e_commerce.view.HomeActivity
 import and5.abrar.e_commerce.view.LoginActivity
 import and5.abrar.e_commerce.view.adapter.AdapterTerjual
@@ -24,7 +25,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_daftar_jual_history.*
 import kotlinx.android.synthetic.main.activity_daftar_jual_history.cardView_diminatiSeller
 import kotlinx.android.synthetic.main.activity_daftar_jual_history.daftar_jualEdit
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
 @AndroidEntryPoint
 class DaftarJualHistory : AppCompatActivity() {
     private lateinit var adapter : AdapterTerjual
@@ -98,12 +101,8 @@ class DaftarJualHistory : AppCompatActivity() {
         userManager = UserManager(this)
         val viewModelProductSeller = ViewModelProvider(this)[ViewModelProductSeller::class.java]
         viewModelProductSeller.getorderstatusall(token = userManager.fetchAuthToken().toString(),"")
-        adapter = AdapterTerjual(){
-            val clickedProduct = Bundle()
-            clickedProduct.putParcelable("detailproduk",it)
-            val pindah = Intent(this, EditProfileActivity::class.java)
-            pindah.putExtras(clickedProduct)
-            startActivity(pindah)
+        adapter = AdapterTerjual {
+
         }
         rv_history.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv_history.adapter = adapter

@@ -21,9 +21,6 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_daftar_jual_diminati_seller.*
-import kotlinx.android.synthetic.main.activity_daftar_jual_diminati_seller.daftarHistory
-import kotlinx.android.synthetic.main.activity_daftar_jual_diminati_seller.daftar_jualEdit
-import kotlinx.android.synthetic.main.activity_daftar_jual_seller.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 
 @DelicateCoroutinesApi

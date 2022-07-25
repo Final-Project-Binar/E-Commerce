@@ -1,19 +1,11 @@
-@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
-    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
-    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
-    "unused", "unused", "unused", "unused", "unused", "unused"
-)
+@file:Suppress("unused")
 
 package and5.abrar.e_commerce.view.adapter
 
 import and5.abrar.e_commerce.R
 import and5.abrar.e_commerce.datastore.UserManager
 import and5.abrar.e_commerce.model.wishlist.GetWishListItemItem
-import and5.abrar.e_commerce.model.wishlist.WishListBuyer
-import and5.abrar.e_commerce.view.AkunSayaActivity
 import and5.abrar.e_commerce.view.buyer.WishListActivity
-import and5.abrar.e_commerce.view.seller.DaftarJualActivity
-import and5.abrar.e_commerce.viewmodel.ViewModelProductSeller
 import and5.abrar.e_commerce.viewmodel.ViewModelWishList
 import android.annotation.SuppressLint
 import android.content.DialogInterface
@@ -26,8 +18,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_layout_wishlist.view.*
-import kotlinx.android.synthetic.main.item_product_seller.view.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
 class AdapterWishList(private  var onClick : (GetWishListItemItem)->Unit) : RecyclerView.Adapter<AdapterWishList.ViewHolder> () {
 
     private var dataFavorite : List<GetWishListItemItem>? = null

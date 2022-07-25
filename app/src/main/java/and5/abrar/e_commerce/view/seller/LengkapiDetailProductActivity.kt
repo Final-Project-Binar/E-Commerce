@@ -1,6 +1,4 @@
-@file:Suppress("CanBeVal", "CanBeVal", "CanBeVal", "DEPRECATION", "RedundantOverride",
-    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
-    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate"
+@file:Suppress("CanBeVal",  "DEPRECATION", "RedundantOverride", "MemberVisibilityCanBePrivate"
 )
 
 package and5.abrar.e_commerce.view.seller
@@ -30,10 +28,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_add_product_seller.*
 import kotlinx.android.synthetic.main.activity_lengkapi_detail_product.*
-import kotlinx.android.synthetic.main.activity_lengkapi_detail_product.back
-import kotlinx.android.synthetic.main.custom_dialog_hargatawar_buyer.view.*
 import kotlinx.android.synthetic.main.customdialog_preview.view.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope

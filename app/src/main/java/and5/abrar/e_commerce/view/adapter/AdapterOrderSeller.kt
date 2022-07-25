@@ -1,9 +1,4 @@
-@file:Suppress("RemoveEmptyClassBody", "unused", "unused", "unused", "unused", "unused", "unused",
-    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
-    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
-    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
-    "unused", "unused", "unused", "unused"
-)
+@file:Suppress("RemoveEmptyClassBody", "unused")
 
 package and5.abrar.e_commerce.view.adapter
 
